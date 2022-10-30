@@ -1,11 +1,12 @@
-package com.pointpleasant.PointPleasantGame.models.items;
+package com.pointpleasant.PointPleasantGame.models.inventory.weapons;
 
-public class Gun {
+public class Gun extends Weapon {
 
     private String typeOfGun;
     private int bullets;
 
-    public Gun(String typeOfGun, int bullets) {
+    public Gun(String description, int damageValue, boolean equipped, String typeOfGun, int bullets) {
+        super(description, damageValue, equipped);
         this.typeOfGun = typeOfGun;
         this.bullets = bullets;
     }
