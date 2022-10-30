@@ -13,6 +13,8 @@ public class GreyAlien extends Enemy{
         this.sponginess = sponginess;
     }
 
+    public GreyAlien(){}
+
     public String getHomeDimension() {
         return homeDimension;
     }

@@ -26,6 +26,8 @@ public class Player {
         this.items = new ArrayList<>();
     }
 
+    public Player(){};
+
     public String getName() {
         return name;
     }

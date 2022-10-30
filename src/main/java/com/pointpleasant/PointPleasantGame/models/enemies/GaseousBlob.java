@@ -9,6 +9,8 @@ public class GaseousBlob extends Enemy{
         this.stinkRating = stinkRating;
     }
 
+    public GaseousBlob(){};
+
     public int getStinkRating() {
         return stinkRating;
     }

@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class MothMan extends Enemy{
 
-    ArrayList<MothmanProphecies> prophecies;
+    ArrayList<MothmanProphecy> prophecies;
 
     Player player;
 
@@ -18,11 +18,13 @@ public class MothMan extends Enemy{
         this.prophecies = new ArrayList<>();
     }
 
-    public ArrayList<MothmanProphecies> getProphecies() {
+    public MothMan(){}
+
+    public ArrayList<MothmanProphecy> getProphecies() {
         return prophecies;
     }
 
-    public void setProphecies(ArrayList<MothmanProphecies> prophecies) {
+    public void setProphecies(ArrayList<MothmanProphecy> prophecies) {
         this.prophecies = prophecies;
     }
 

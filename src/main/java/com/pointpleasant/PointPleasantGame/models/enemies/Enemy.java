@@ -22,6 +22,8 @@ public abstract class Enemy implements IEnemyAttack{
         this.enemyInsight = enemyInsight;
     }
 
+    public Enemy(){}
+
     public String getName() {
         return name;
     }

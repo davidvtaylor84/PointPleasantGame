@@ -1,4 +1,6 @@
 package com.pointpleasant.PointPleasantGame.models.items;
 
-public class Weapons {
+public interface IWeaponDamage {
+
+    int weaponDamage();
 }
