@@ -6,9 +6,10 @@ import java.awt.*;
 public class UserInterface {
 
     JFrame window;
-    JPanel titleNamePanel, startButtonPanel, locationPanel, mainTextPanel, choiceButtonPanel, imagePanel, inventoryPanel, playerStatsPanel, introPanel, introButtonPanel;
+    JPanel titleNamePanel, startButtonPanel, locationPanel, mainTextPanel, choiceButtonPanel, imagePanel, inventoryPanel, playerStatsPanel, introPanel, introButtonPanel, weaponPanel;
     JLabel titleNameLabel, healthLabel, healthLabelStat, insightLabel, insightLabelStat, defenceLabel, defenceLabelStat,intelligenceLabel, intelligenceLabelStat, inspirationLabel, inspirationLabelStat, imageLabel;
     JButton startButton, continueButton, introButton;
+    JButton weapon1, weapon2, weapon3, weapon4;
     Container container;
     JTextArea mainTextArea, locationTextArea, introTextArea;
 
@@ -16,7 +17,7 @@ public class UserInterface {
 
     ImageIcon image;
     Font font = new Font("Old Century", Font.PLAIN, 100);
-    Font font2 = new Font("Courier", Font.PLAIN, 20);
+    Font font2 = new Font("Old Century", Font.PLAIN, 20);
     Font font3 = new Font("Old Century", Font.PLAIN, 15);
 
 
@@ -129,6 +130,46 @@ public class UserInterface {
         window.add(inventoryPanel, BorderLayout.LINE_START);
         inventoryPanel.setBounds(20, 80, 290, 500);
         inventoryPanel.setBackground(Color.yellow);
+
+        weaponPanel = new JPanel();
+        weaponPanel.setBounds(1100, 400, 290, 230);
+        weaponPanel.setBackground(Color.WHITE);
+        weaponPanel.setLayout(new GridLayout(4, 1));
+
+        weapon1 = new JButton("EQUIPPED WEAPON: Alloy Tube");
+        weapon1.setBackground(Color.BLACK);
+        weapon1.setForeground(Color.BLACK);
+        weapon1.setFont(font3);
+//        choice1.addActionListener(decisionHandler);
+//        choice1.setActionCommand("c1");
+
+        weapon2 = new JButton("Shotgun");
+        weapon2.setBackground(Color.BLACK);
+        weapon2.setForeground(Color.BLACK);
+        weapon2.setFont(font3);
+        //   choice1.addActionListener(decisionHandler);
+//        choice1.setActionCommand("c1");
+
+        weapon3 = new JButton("Baseball bat");
+        weapon3.setBackground(Color.BLACK);
+        weapon3.setForeground(Color.BLACK);
+        weapon3.setFont(font3);
+        //   choice1.addActionListener(decisionHandler);
+//        choice1.setActionCommand("c1");
+
+        weapon4 = new JButton("Zap Gun");
+        weapon4.setBackground(Color.BLACK);
+        weapon4.setForeground(Color.BLACK);
+        weapon4.setFont(font3);
+        //   choice1.addActionListener(decisionHandler);
+//        choice1.setActionCommand("c1");
+
+        weaponPanel.add(weapon1);
+        weaponPanel.add(weapon2);
+        weaponPanel.add(weapon3);
+        weaponPanel.add(weapon4);
+
+        window.add(weaponPanel, BorderLayout.LINE_END);
 
         choiceButtonPanel = new JPanel();
         window.add(choiceButtonPanel, BorderLayout.LINE_END);
