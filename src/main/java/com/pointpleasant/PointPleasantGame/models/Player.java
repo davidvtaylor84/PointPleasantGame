@@ -89,4 +89,11 @@ public class Player {
     public void setItems(ArrayList<IImplement> items) {
         this.items = items;
     }
+
+    public void takeDamage(int damage){
+        this.healthPoints -= damage;
+        if(this.healthPoints < 1){
+            System.out.println(this.name+ " no longer answers to their name.");
+        }
+    }
 }
