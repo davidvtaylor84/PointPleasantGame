@@ -1,19 +1,37 @@
 package com.pointpleasant.PointPleasantGame.models.inventory.weapons;
 
-import com.pointpleasant.PointPleasantGame.models.inventory.IImplement;
-import com.pointpleasant.PointPleasantGame.models.inventory.weapons.IWeaponDamage;
+import com.pointpleasant.PointPleasantGame.models.Player;
 
-public abstract class Weapon implements IWeaponDamage, IImplement {
+import javax.persistence.*;
 
+@MappedSuperclass
+public abstract class Weapon implements IWeaponDamage {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name="name")
+    private String name;
+    @Column(name="description")
     private String description;
+
+    @Column(name="damageValue")
     private int damageValue;
 
+    @Column(name = "equipped")
     private boolean equipped;
 
-    public Weapon(String description, int damageValue, boolean equipped) {
+    @ManyToOne
+    @JoinColumn(name = "player_id", nullable = false)
+    Player player;
+
+    public Weapon(String name, String description, int damageValue, boolean equipped, Player player) {
+        this.name = name;
         this.description = description;
         this.damageValue = damageValue;
         this.equipped = equipped;
+        this.player = player;
     }
 
     public int getDamageValue() {
@@ -36,8 +54,36 @@ public abstract class Weapon implements IWeaponDamage, IImplement {
         this.description = description;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public int weaponDamage() {
         return damageValue;
+    }
+
+    public void activateItem(){
+        this.equipped = true;
     }
 
     public void setDamageValue(int damageValue) {

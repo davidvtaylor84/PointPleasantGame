@@ -1,6 +1,6 @@
 package com.pointpleasant.PointPleasantGame.models;
 
-import com.pointpleasant.PointPleasantGame.models.inventory.IImplement;
+import com.pointpleasant.PointPleasantGame.models.inventory.items.IActivateItem;
 import com.pointpleasant.PointPleasantGame.models.inventory.weapons.IWeaponDamage;
 
 import javax.persistence.*;
@@ -31,25 +31,29 @@ public class Player {
     @Column(name = "inspiration")
     Integer inspiration;
 
+    @Column(name ="cash")
+    Integer cash;
+
     @Column(name = "gameProgress")
     Integer gameProgress;
 
     @OneToMany(mappedBy = "item", fetch = FetchType.LAZY)
-    ArrayList<IImplement> items;
+    ArrayList<IActivateItem> items;
 
     @OneToMany(mappedBy = "weapon", fetch = FetchType.LAZY)
     ArrayList<IWeaponDamage> weapons;
 
-    public Player(String name, Integer healthPoints, Integer insight, Integer defence, Integer intelligence, Integer inspiration, Integer gameProgress) {
+    public Player(String name, Integer healthPoints, Integer insight, Integer defence, Integer intelligence, Integer inspiration, Integer cash, Integer gameProgress, ArrayList<IActivateItem> items, ArrayList<IWeaponDamage> weapons)  {
         this.name = name;
         this.healthPoints = healthPoints;
         this.insight = insight;
         this.defence = defence;
         this.intelligence = intelligence;
         this.inspiration = inspiration;
+        this.cash = cash;
         this.gameProgress = gameProgress;
-        this.items = new ArrayList<>();
-        this.weapons = new ArrayList<>();
+        this.items = items;
+        this.weapons = weapons;
     }
 
     public Player(){};
@@ -118,11 +122,11 @@ public class Player {
         this.gameProgress = gameProgress;
     }
 
-    public ArrayList<IImplement> getItems() {
+    public ArrayList<IActivateItem> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<IImplement> items) {
+    public void setItems(ArrayList<IActivateItem> items) {
         this.items = items;
     }
 
@@ -132,6 +136,14 @@ public class Player {
 
     public void setWeapons(ArrayList<IWeaponDamage> weapons) {
         this.weapons = weapons;
+    }
+
+    public Integer getCash() {
+        return cash;
+    }
+
+    public void setCash(Integer cash) {
+        this.cash = cash;
     }
 
     public void takeDamage(int damage){

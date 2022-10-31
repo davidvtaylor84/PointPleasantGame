@@ -1,8 +1,6 @@
 package com.pointpleasant.PointPleasantGame.models.inventory.items;
 
-import com.pointpleasant.PointPleasantGame.models.inventory.IImplement;
-
-public abstract class Item implements IImplement {
+public abstract class Item implements IActivateItem {
 
     private String name;
 
@@ -16,7 +14,7 @@ public abstract class Item implements IImplement {
         this.equipped = equipped;
     }
 
-    public void equipItem(){
-
+    public void activateItem(){
+        this.equipped = true;
     }
 }

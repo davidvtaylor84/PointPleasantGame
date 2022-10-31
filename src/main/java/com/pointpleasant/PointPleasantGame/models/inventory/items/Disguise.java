@@ -1,7 +1,5 @@
 package com.pointpleasant.PointPleasantGame.models.inventory.items;
 
-import com.pointpleasant.PointPleasantGame.models.inventory.IImplement;
-
 public class Disguise extends Item{
 
 

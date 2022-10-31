@@ -29,6 +29,7 @@ public class Game {
 
             switch (yourDecision){
                 case "start": visibilityManager.showIntroScreen();break;
+                case "Continue Game": visibilityManager.showGameScreen();break;
                 case "startAfterIntro": visibilityManager.showGameScreen(); story.enterTheTown();break;
                 case "c1": story.selectChoice(choiceButton1);break;
                 case "c2": story.selectChoice(choiceButton2);break;

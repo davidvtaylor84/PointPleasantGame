@@ -27,6 +27,7 @@ public class Story {
         userInterface.defenceLabelStat.setText(Integer.toString(3));
         userInterface.inspirationLabelStat.setText(Integer.toString(0));
         userInterface.intelligenceLabelStat.setText(Integer.toString(4));
+        userInterface.cashLabelStat.setText(Integer.toString(80));
     }
 
 //    can make into an interface:

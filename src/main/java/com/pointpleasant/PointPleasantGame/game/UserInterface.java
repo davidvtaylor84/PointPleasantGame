@@ -7,7 +7,7 @@ public class UserInterface {
 
     JFrame window;
     JPanel titleNamePanel, startButtonPanel, locationPanel, mainTextPanel, choiceButtonPanel, imagePanel, inventoryPanel, playerStatsPanel, introPanel, introButtonPanel, weaponPanel;
-    JLabel titleNameLabel, healthLabel, healthLabelStat, insightLabel, insightLabelStat, defenceLabel, defenceLabelStat,intelligenceLabel, intelligenceLabelStat, inspirationLabel, inspirationLabelStat, imageLabel;
+    JLabel titleNameLabel, healthLabel, healthLabelStat, insightLabel, insightLabelStat, defenceLabel, defenceLabelStat,intelligenceLabel, intelligenceLabelStat, inspirationLabel, inspirationLabelStat, imageLabel, cashLabel, cashLabelStat;
     JButton startButton, continueButton, introButton;
     JButton weapon1, weapon2, weapon3, weapon4;
     Container container;
@@ -225,7 +225,7 @@ public class UserInterface {
         playerStatsPanel = new JPanel();
         playerStatsPanel.setBounds(100, 650, 1220, 50);
         playerStatsPanel.setBackground(Color.RED);
-        playerStatsPanel.setLayout(new GridLayout(1,10));
+        playerStatsPanel.setLayout(new GridLayout(1,12));
         window.add(playerStatsPanel, BorderLayout.PAGE_END);
 
         healthLabel = new JLabel("HP:");
@@ -254,7 +254,7 @@ public class UserInterface {
         defenceLabelStat.setForeground(Color.WHITE);
         playerStatsPanel.add(defenceLabelStat);
 
-        intelligenceLabel = new JLabel("INTELLIGENCE:");
+        intelligenceLabel = new JLabel("INTELLECT:");
         intelligenceLabel.setFont(font3);
         intelligenceLabel.setForeground(Color.WHITE);
         playerStatsPanel.add(intelligenceLabel);
@@ -271,6 +271,15 @@ public class UserInterface {
         inspirationLabelStat.setFont(font3);
         inspirationLabelStat.setForeground(Color.WHITE);
         playerStatsPanel.add(inspirationLabelStat);
+
+        cashLabel = new JLabel("CASH:");
+        cashLabel.setFont(font3);
+        cashLabel.setForeground(Color.WHITE);
+        playerStatsPanel.add(cashLabel);
+        cashLabelStat = new JLabel("");
+        cashLabelStat.setFont(font3);
+        cashLabelStat.setForeground(Color.WHITE);
+        playerStatsPanel.add(cashLabelStat);
 
         window.setVisible(true);
 
