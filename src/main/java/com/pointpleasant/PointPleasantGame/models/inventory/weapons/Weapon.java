@@ -5,6 +5,7 @@ import com.pointpleasant.PointPleasantGame.models.Player;
 import javax.persistence.*;
 
 @MappedSuperclass
+@Table(name="weapons")
 public abstract class Weapon implements IWeaponDamage {
 
     @Id

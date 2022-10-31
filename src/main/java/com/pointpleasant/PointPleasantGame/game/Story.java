@@ -43,7 +43,7 @@ public class Story {
         }
     }
     public void enterTheTown(){
-        ImageIcon townImage = new ImageIcon("/resources/town_square.jpeg");
+        ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/point.jpeg");
         userInterface.imageLabel.setIcon(townImage);
 
         userInterface.mainTextArea.setText("Point Pleasant is a quiet town. \nA quiet fortitude lurks among the people. You wait by your parked car and decide what to do.\nWhere to go next?");

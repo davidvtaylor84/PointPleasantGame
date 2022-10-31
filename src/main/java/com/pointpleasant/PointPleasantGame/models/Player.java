@@ -5,6 +5,7 @@ import com.pointpleasant.PointPleasantGame.models.inventory.weapons.IWeaponDamag
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "players")
@@ -38,12 +39,12 @@ public class Player {
     Integer gameProgress;
 
     @OneToMany(mappedBy = "item", fetch = FetchType.LAZY)
-    ArrayList<IActivateItem> items;
+    List<IActivateItem> items;
 
     @OneToMany(mappedBy = "weapon", fetch = FetchType.LAZY)
-    ArrayList<IWeaponDamage> weapons;
+    List<IWeaponDamage> weapons;
 
-    public Player(String name, Integer healthPoints, Integer insight, Integer defence, Integer intelligence, Integer inspiration, Integer cash, Integer gameProgress, ArrayList<IActivateItem> items, ArrayList<IWeaponDamage> weapons)  {
+    public Player(String name, Integer healthPoints, Integer insight, Integer defence, Integer intelligence, Integer inspiration, Integer cash, Integer gameProgress, List<IActivateItem> items, List<IWeaponDamage> weapons)  {
         this.name = name;
         this.healthPoints = healthPoints;
         this.insight = insight;
@@ -122,19 +123,19 @@ public class Player {
         this.gameProgress = gameProgress;
     }
 
-    public ArrayList<IActivateItem> getItems() {
+    public List<IActivateItem> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<IActivateItem> items) {
+    public void setItems(List<IActivateItem> items) {
         this.items = items;
     }
 
-    public ArrayList<IWeaponDamage> getWeapons() {
+    public List<IWeaponDamage> getWeapons() {
         return weapons;
     }
 
-    public void setWeapons(ArrayList<IWeaponDamage> weapons) {
+    public void setWeapons(List<IWeaponDamage> weapons) {
         this.weapons = weapons;
     }
 

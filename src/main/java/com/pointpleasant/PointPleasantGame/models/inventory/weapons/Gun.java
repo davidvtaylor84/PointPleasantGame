@@ -2,9 +2,15 @@ package com.pointpleasant.PointPleasantGame.models.inventory.weapons;
 
 import com.pointpleasant.PointPleasantGame.models.Player;
 
+import javax.persistence.*;
+
+@Entity
 public class Gun extends Weapon {
 
+    @Column(name = "typeOfGun")
     private String typeOfGun;
+
+    @Column(name = "bullets")
     private int bullets;
 
     public Gun(String name, String description, int damageValue, boolean equipped, Player player, String typeOfGun, int bullets) {

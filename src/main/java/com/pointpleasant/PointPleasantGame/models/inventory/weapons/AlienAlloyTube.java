@@ -2,8 +2,13 @@ package com.pointpleasant.PointPleasantGame.models.inventory.weapons;
 
 import com.pointpleasant.PointPleasantGame.models.Player;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
 public class AlienAlloyTube extends Weapon {
 
+    @Column(name = "batteryPower")
     private int batteryPower;
 
     public AlienAlloyTube(String name, String description, int damageValue, boolean equipped, Player player, int batteryPower) {
