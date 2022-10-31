@@ -19,7 +19,7 @@ public class Game {
 
     public Game(){
         userInterface.createInterface(decisionHandler);
-        story.playerDefault();
+//        story.playerDefault();
         visibilityManager.showTitleScreen();
     }
 
@@ -28,7 +28,7 @@ public class Game {
             String yourDecision = e.getActionCommand();
 
             switch (yourDecision){
-                case "start": visibilityManager.showIntroScreen();break;
+                case "start": visibilityManager.showIntroScreen();story.playerDefault();break;
                 case "Continue Game": visibilityManager.showGameScreen();break;
                 case "startAfterIntro": visibilityManager.showGameScreen(); story.enterTheTown();break;
                 case "c1": story.selectChoice(choiceButton1);break;
