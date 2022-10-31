@@ -1,7 +1,9 @@
 package com.pointpleasant.PointPleasantGame.models;
 
 import com.pointpleasant.PointPleasantGame.models.inventory.items.IActivateItem;
+import com.pointpleasant.PointPleasantGame.models.inventory.items.Item;
 import com.pointpleasant.PointPleasantGame.models.inventory.weapons.IWeaponDamage;
+import com.pointpleasant.PointPleasantGame.models.inventory.weapons.Weapon;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,35 +18,35 @@ public class Player {
     private Long id;
 
     @Column(name="name")
-    String name;
+    private String name;
 
     @Column(name = "healthPoints")
-    Integer healthPoints;
+    private Integer healthPoints;
     @Column(name="insight")
-    Integer insight;
+    private Integer insight;
 
     @Column(name= "defence")
-    Integer defence;
+    private Integer defence;
 
     @Column(name = "intelligence")
-    Integer intelligence;
+    private Integer intelligence;
 
     @Column(name = "inspiration")
-    Integer inspiration;
+    private Integer inspiration;
 
     @Column(name ="cash")
-    Integer cash;
+    private Integer cash;
 
     @Column(name = "gameProgress")
-    Integer gameProgress;
+    private Integer gameProgress;
 
-    @OneToMany(mappedBy = "item", fetch = FetchType.LAZY)
-    List<IActivateItem> items;
+    @OneToMany(mappedBy = "player", fetch = FetchType.LAZY)
+    private List<Item> items;
 
-    @OneToMany(mappedBy = "weapon", fetch = FetchType.LAZY)
-    List<IWeaponDamage> weapons;
+    @OneToMany(mappedBy = "player", fetch = FetchType.LAZY)
+    private List<Weapon> weapons;
 
-    public Player(String name, Integer healthPoints, Integer insight, Integer defence, Integer intelligence, Integer inspiration, Integer cash, Integer gameProgress, List<IActivateItem> items, List<IWeaponDamage> weapons)  {
+    public Player(String name, Integer healthPoints, Integer insight, Integer defence, Integer intelligence, Integer inspiration, Integer cash, Integer gameProgress, List<Item> items, List<Weapon> weapons)  {
         this.name = name;
         this.healthPoints = healthPoints;
         this.insight = insight;
@@ -123,19 +125,19 @@ public class Player {
         this.gameProgress = gameProgress;
     }
 
-    public List<IActivateItem> getItems() {
+    public List<Item> getItems() {
         return items;
     }
 
-    public void setItems(List<IActivateItem> items) {
+    public void setItems(List<Item> items) {
         this.items = items;
     }
 
-    public List<IWeaponDamage> getWeapons() {
+    public List<Weapon> getWeapons() {
         return weapons;
     }
 
-    public void setWeapons(List<IWeaponDamage> weapons) {
+    public void setWeapons(List<Weapon> weapons) {
         this.weapons = weapons;
     }
 

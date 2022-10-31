@@ -4,9 +4,11 @@ import com.pointpleasant.PointPleasantGame.models.Player;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-public class Torch extends Item {
+@Table(name = "torch")
+public class Torch extends Item implements IActivateItem {
 
 
     @Column(name = "batteryPower")
@@ -23,5 +25,9 @@ public class Torch extends Item {
 
     public void setBatteryPower(int batteryPower) {
         this.batteryPower = batteryPower;
+    }
+
+    public void activateItem(){
+        setEquipped(true);
     }
 }

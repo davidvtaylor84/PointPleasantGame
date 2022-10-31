@@ -4,9 +4,11 @@ import com.pointpleasant.PointPleasantGame.models.Player;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-public class Disguise extends Item{
+@Table(name = "disguise")
+public class Disguise extends Item implements IActivateItem{
 
     @Column(name="armourRating")
     private int armourRating;
@@ -23,5 +25,9 @@ public class Disguise extends Item{
 
     public void setArmourRating(int armourRating) {
         this.armourRating = armourRating;
+    }
+
+    public void activateItem(){
+        setEquipped(true);
     }
 }

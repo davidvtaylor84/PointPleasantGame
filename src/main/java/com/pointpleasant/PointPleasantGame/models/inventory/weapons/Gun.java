@@ -5,7 +5,8 @@ import com.pointpleasant.PointPleasantGame.models.Player;
 import javax.persistence.*;
 
 @Entity
-public class Gun extends Weapon {
+@Table(name ="gun")
+public class Gun extends Weapon implements IWeaponDamage{
 
     @Column(name = "typeOfGun")
     private String typeOfGun;
@@ -33,5 +34,13 @@ public class Gun extends Weapon {
 
     public void setBullets(int bullets) {
         this.bullets = bullets;
+    }
+
+    public int weaponDamage() {
+        return getDamageValue();
+    }
+
+    public void activateItem(){
+        setEquipped(true);
     }
 }

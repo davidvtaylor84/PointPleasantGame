@@ -4,9 +4,11 @@ import com.pointpleasant.PointPleasantGame.models.Player;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-public class AlienAlloyTube extends Weapon {
+@Table(name = "Alien Alloy Tube")
+public class AlienAlloyTube extends Weapon implements IWeaponDamage{
 
     @Column(name = "batteryPower")
     private int batteryPower;
@@ -22,5 +24,13 @@ public class AlienAlloyTube extends Weapon {
 
     public void setBatteryPower(int batteryPower) {
         this.batteryPower = batteryPower;
+    }
+
+    public int weaponDamage() {
+        return getDamageValue();
+    }
+
+    public void activateItem(){
+        setEquipped(true);
     }
 }

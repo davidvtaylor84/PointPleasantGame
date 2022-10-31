@@ -4,9 +4,11 @@ import com.pointpleasant.PointPleasantGame.models.Player;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-public class Key extends Item {
+@Table(name="key")
+public class Key extends Item implements IActivateItem{
 
 
     @Column(name="used")
@@ -23,5 +25,9 @@ public class Key extends Item {
 
     public void setUsed(String used) {
         this.used = used;
+    }
+
+    public void activateItem(){
+        setEquipped(true);
     }
 }

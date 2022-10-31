@@ -5,8 +5,7 @@ import com.pointpleasant.PointPleasantGame.models.Player;
 import javax.persistence.*;
 
 @MappedSuperclass
-@Table(name= "items")
-public abstract class Item implements IActivateItem {
+public abstract class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +22,7 @@ public abstract class Item implements IActivateItem {
 
     @ManyToOne
     @JoinColumn(name = "player_id", nullable = false)
-    Player player;
+    private Player player;
 
     public Item(String name, String description, boolean equipped, Player player) {
         this.name = name;
@@ -32,7 +31,45 @@ public abstract class Item implements IActivateItem {
         this.player = player;
     }
 
-    public void activateItem(){
-        this.equipped = true;
+    public Item(){}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isEquipped() {
+        return equipped;
+    }
+
+    public void setEquipped(boolean equipped) {
+        this.equipped = equipped;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }

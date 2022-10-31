@@ -10,6 +10,8 @@ public class VisibilityManager {
     public void showTitleScreen(){
         userInterface.titleNamePanel.setVisible(true);
         userInterface.startButtonPanel.setVisible(true);
+        userInterface.titleImagePanel.setVisible(true);
+
 
         userInterface.introPanel.setVisible(false);
         userInterface.introButtonPanel.setVisible(false);
@@ -29,9 +31,12 @@ public class VisibilityManager {
     public void showIntroScreen(){
         userInterface.titleNamePanel.setVisible(false);
         userInterface.startButtonPanel.setVisible(false);
+        userInterface.titleImagePanel.setVisible(false);
 
         userInterface.introPanel.setVisible(true);
         userInterface.introButtonPanel.setVisible(true);
+
+
 
         userInterface.mainTextPanel.setVisible(false);
         userInterface.choiceButtonPanel.setVisible(false);
@@ -48,9 +53,12 @@ public class VisibilityManager {
     public void showGameScreen(){
         userInterface.titleNamePanel.setVisible(false);
         userInterface.startButtonPanel.setVisible(false);
+        userInterface.titleImagePanel.setVisible(false);
+
 
         userInterface.introPanel.setVisible(false);
         userInterface.introButtonPanel.setVisible(false);
+
 
         userInterface.mainTextPanel.setVisible(true);
         userInterface.choiceButtonPanel.setVisible(true);

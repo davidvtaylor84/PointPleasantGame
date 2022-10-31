@@ -6,8 +6,8 @@ import java.awt.*;
 public class UserInterface {
 
     JFrame window;
-    JPanel titleNamePanel, startButtonPanel, locationPanel, mainTextPanel, choiceButtonPanel, imagePanel, inventoryPanel, playerStatsPanel, introPanel, introButtonPanel, weaponPanel;
-    JLabel titleNameLabel, healthLabel, healthLabelStat, insightLabel, insightLabelStat, defenceLabel, defenceLabelStat,intelligenceLabel, intelligenceLabelStat, inspirationLabel, inspirationLabelStat, imageLabel, cashLabel, cashLabelStat;
+    JPanel titleNamePanel, startButtonPanel, locationPanel, mainTextPanel, choiceButtonPanel, imagePanel, inventoryPanel, playerStatsPanel, introPanel, introButtonPanel, weaponPanel, titleImagePanel;
+    JLabel titleNameLabel, healthLabel, healthLabelStat, insightLabel, insightLabelStat, defenceLabel, defenceLabelStat,intelligenceLabel, intelligenceLabelStat, inspirationLabel, inspirationLabelStat, imageLabel, cashLabel, cashLabelStat, titleImageLabel;
     JButton startButton, continueButton, introButton;
     JButton weapon1, weapon2, weapon3, weapon4;
     Container container;
@@ -16,7 +16,7 @@ public class UserInterface {
     JButton choice1, choice2, choice3, choice4, choice5;
 
     ImageIcon image;
-    Font font = new Font("Old Century", Font.PLAIN, 100);
+    Font font = new Font("Old Century", Font.PLAIN, 120);
     Font font2 = new Font("Old Century", Font.PLAIN, 20);
     Font font3 = new Font("Old Century", Font.PLAIN, 15);
 
@@ -33,17 +33,26 @@ public class UserInterface {
         window.getContentPane().setBackground(Color.BLACK);
         window.setLayout(null);
 
+
         //    Title Screen
         titleNamePanel = new JPanel();
-        titleNamePanel.setBounds(300, 150, 800, 150);
+        titleNamePanel.setBounds(300, 80, 800, 150);
         titleNamePanel.setBackground(new Color(0,0,0,0));
         titleNameLabel = new JLabel("Point Pleasant");
         titleNameLabel.setForeground(Color.WHITE);
         titleNameLabel.setFont(font);
         titleNamePanel.add(titleNameLabel);
 
+        titleImagePanel = new JPanel();
+        titleImagePanel.setBounds(0, 0, screenSize.width, 900);
+        titleImagePanel.setBackground(new Color(0,0,0,0));
+        ImageIcon starlitHighway = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/darkhighway.jpeg");
+        titleImageLabel = new JLabel();
+        titleImageLabel.setIcon(starlitHighway);
+        titleImagePanel.add(titleImageLabel);
+
         startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(600, 600, 200, 100);
+        startButtonPanel.setBounds(590, 500, 200, 100);
         startButtonPanel.setBackground(new Color(0,0,0,0));
 
         startButton = new JButton("Start New Game");
@@ -63,6 +72,7 @@ public class UserInterface {
 
         window.add(titleNamePanel);
         window.add(startButtonPanel);
+        window.add(titleImagePanel);
 
 //        Intro screen
 

@@ -5,8 +5,7 @@ import com.pointpleasant.PointPleasantGame.models.Player;
 import javax.persistence.*;
 
 @MappedSuperclass
-@Table(name="weapons")
-public abstract class Weapon implements IWeaponDamage {
+public abstract class Weapon {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +24,7 @@ public abstract class Weapon implements IWeaponDamage {
 
     @ManyToOne
     @JoinColumn(name = "player_id", nullable = false)
-    Player player;
+    private Player player;
 
     public Weapon(String name, String description, int damageValue, boolean equipped, Player player) {
         this.name = name;
@@ -34,6 +33,8 @@ public abstract class Weapon implements IWeaponDamage {
         this.equipped = equipped;
         this.player = player;
     }
+
+    public Weapon(){}
 
     public int getDamageValue() {
         return damageValue;
@@ -79,19 +80,9 @@ public abstract class Weapon implements IWeaponDamage {
         this.id = id;
     }
 
-    public int weaponDamage() {
-        return damageValue;
-    }
-
-    public void activateItem(){
-        this.equipped = true;
-    }
-
     public void setDamageValue(int damageValue) {
         this.damageValue = damageValue;
     }
 
-    public void equipItem(){
 
-    }
 }

@@ -4,9 +4,11 @@ import com.pointpleasant.PointPleasantGame.models.Player;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-public class HealthBooster extends Item{
+@Table(name="health booster")
+public class HealthBooster extends Item implements IActivateItem{
 
     @Column(name="restorativePoints")
     private int restorativePoints;
@@ -22,5 +24,9 @@ public class HealthBooster extends Item{
 
     public void setRestorativePoints(int restorativePoints) {
         this.restorativePoints = restorativePoints;
+    }
+
+    public void activateItem(){
+        setEquipped(true);
     }
 }
