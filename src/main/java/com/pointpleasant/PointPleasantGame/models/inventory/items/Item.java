@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "items")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class Item implements IActivateItem{
+public abstract class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

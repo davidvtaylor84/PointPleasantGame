@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "weapons")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class Weapon implements IWeaponDamage{
+public abstract class Weapon {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

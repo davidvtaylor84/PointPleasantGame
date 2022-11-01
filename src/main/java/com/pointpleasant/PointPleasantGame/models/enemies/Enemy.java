@@ -2,17 +2,36 @@ package com.pointpleasant.PointPleasantGame.models.enemies;
 
 import com.pointpleasant.PointPleasantGame.models.Player;
 
+import javax.persistence.*;
 import java.util.Random;
 
-public abstract class Enemy implements IEnemyAttack{
+@Entity
+@Table(name = "enemies")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Enemy {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Id
+    @Column(name = "name")
     private String name;
+
+    @Id
+    @Column(name="race")
     private String race;
+    @Id
+    @Column(name = "healthpoints")
     private int healthPoints;
 
+    @Id
+    @Column(name = "attackpower")
     private int attackPower;
+
+    @Id
+    @Column(name = "enemyinsight")
     private int enemyInsight;
-    Player player;
 
     public Enemy(String name, String race, int healthPoints, int attackPower, int enemyInsight) {
         this.name = name;

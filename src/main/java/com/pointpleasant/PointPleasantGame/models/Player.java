@@ -41,12 +41,12 @@ public class Player {
     private Integer gameProgress;
 
     @OneToMany(mappedBy = "player", fetch = FetchType.LAZY)
-    private List<IActivateItem> items;
+    private List<Item> items;
 
     @OneToMany(mappedBy = "player", fetch = FetchType.LAZY)
-    private List<IWeaponDamage> weapons;
+    private List<Weapon> weapons;
 
-    public Player(String name, Integer healthPoints, Integer insight, Integer defence, Integer intelligence, Integer inspiration, Integer cash, Integer gameProgress, List<IActivateItem> items, List<IWeaponDamage> weapons)  {
+    public Player(String name, Integer healthPoints, Integer insight, Integer defence, Integer intelligence, Integer inspiration, Integer cash, Integer gameProgress)  {
         this.name = name;
         this.healthPoints = healthPoints;
         this.insight = insight;
@@ -55,8 +55,8 @@ public class Player {
         this.inspiration = inspiration;
         this.cash = cash;
         this.gameProgress = gameProgress;
-        this.items = items;
-        this.weapons = weapons;
+        this.items = new ArrayList<>();
+        this.weapons =new ArrayList<>();
     }
 
     public Player(){};
@@ -125,19 +125,19 @@ public class Player {
         this.gameProgress = gameProgress;
     }
 
-    public List<IActivateItem> getItems() {
+    public List<Item> getItems() {
         return items;
     }
 
-    public void setItems(List<IActivateItem> items) {
+    public void setItems(List<Item> items) {
         this.items = items;
     }
 
-    public List<IWeaponDamage> getWeapons() {
+    public List<Weapon> getWeapons() {
         return weapons;
     }
 
-    public void setWeapons(List<IWeaponDamage> weapons) {
+    public void setWeapons(List<Weapon> weapons) {
         this.weapons = weapons;
     }
 
