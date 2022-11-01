@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="key")
 public class Key extends Item implements IActivateItem{
 
 

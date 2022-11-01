@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "disguise")
 public class Disguise extends Item implements IActivateItem{
 
     @Column(name="armourRating")

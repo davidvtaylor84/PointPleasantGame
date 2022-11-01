@@ -5,7 +5,6 @@ import com.pointpleasant.PointPleasantGame.models.Player;
 import javax.persistence.*;
 
 @Entity
-@Table(name ="gun")
 public class Gun extends Weapon implements IWeaponDamage{
 
     @Column(name = "typeOfGun")

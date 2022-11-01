@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Alien Alloy Tube")
 public class AlienAlloyTube extends Weapon implements IWeaponDamage{
 
     @Column(name = "batteryPower")

@@ -4,8 +4,10 @@ import com.pointpleasant.PointPleasantGame.models.Player;
 
 import javax.persistence.*;
 
-@MappedSuperclass
-public abstract class Weapon {
+@Entity
+@Table(name = "weapons")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Weapon implements IWeaponDamage{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -82,6 +84,10 @@ public abstract class Weapon {
 
     public void setDamageValue(int damageValue) {
         this.damageValue = damageValue;
+    }
+
+    public void activateItem(){
+        setEquipped(true);
     }
 
 

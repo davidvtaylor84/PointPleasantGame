@@ -4,8 +4,10 @@ import com.pointpleasant.PointPleasantGame.models.Player;
 
 import javax.persistence.*;
 
-@MappedSuperclass
-public abstract class Item {
+@Entity
+@Table(name = "items")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Item implements IActivateItem{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -71,5 +73,9 @@ public abstract class Item {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    public void activateItem(){
+        setEquipped(true);
     }
 }

@@ -5,7 +5,6 @@ import com.pointpleasant.PointPleasantGame.models.Player;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "baseball bat")
 public class BaseballBat extends Weapon implements IWeaponDamage{
 
     @Column(name = "fragility")

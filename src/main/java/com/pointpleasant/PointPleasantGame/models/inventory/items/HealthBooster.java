@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="health booster")
 public class HealthBooster extends Item implements IActivateItem{
 
     @Column(name="restorativePoints")
