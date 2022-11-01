@@ -17,6 +17,8 @@ public class AlienAlloyTube extends Weapon implements IWeaponDamage{
         this.batteryPower = batteryPower;
     }
 
+    public AlienAlloyTube(){}
+
     public int getBatteryPower() {
         return batteryPower;
     }

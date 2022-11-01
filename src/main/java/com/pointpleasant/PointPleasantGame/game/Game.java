@@ -13,15 +13,13 @@ public class Game {
 
     String choiceButton1, choiceButton2, choiceButton3, choiceButton4, choiceButton5;
 
-    public static void main(String[] args) {
-        new Game();
-    }
 
     public Game(){
         userInterface.createInterface(decisionHandler);
 //        story.playerDefault();
         visibilityManager.showTitleScreen();
     }
+
 
     public class DecisionHandler implements ActionListener{
         public void actionPerformed(ActionEvent e){

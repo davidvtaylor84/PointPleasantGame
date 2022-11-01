@@ -1,6 +1,8 @@
 package com.pointpleasant.PointPleasantGame.game;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.SoftBevelBorder;
 import java.awt.*;
 
 public class UserInterface {
@@ -139,6 +141,7 @@ public class UserInterface {
         inventoryPanel = new JPanel();
         window.add(inventoryPanel, BorderLayout.LINE_START);
         inventoryPanel.setBounds(20, 80, 290, 500);
+        inventoryPanel.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
         inventoryPanel.setBackground(Color.yellow);
 
         weaponPanel = new JPanel();

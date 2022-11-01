@@ -18,6 +18,8 @@ public class Torch extends Item implements IActivateItem {
         this.batteryPower = batteryPower;
     }
 
+    public Torch(){}
+
     public int getBatteryPower() {
         return batteryPower;
     }

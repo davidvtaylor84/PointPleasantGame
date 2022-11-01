@@ -19,6 +19,8 @@ public class Gun extends Weapon implements IWeaponDamage{
         this.bullets = bullets;
     }
 
+    public Gun(){}
+
     public String getTypeOfGun() {
         return typeOfGun;
     }

@@ -1,7 +1,14 @@
 package com.pointpleasant.PointPleasantGame.game;
 
 
+import com.pointpleasant.PointPleasantGame.models.Player;
+import com.pointpleasant.PointPleasantGame.repositories.PlayerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import javax.swing.*;
+import java.util.List;
+import java.util.Optional;
 
 
 public class Story {
@@ -9,6 +16,9 @@ public class Story {
     Game game;
     UserInterface userInterface;
     VisibilityManager visibilityManager;
+    @Autowired
+    PlayerRepository playerRepository;
+
 
     public Story(Game game, UserInterface userInterface, VisibilityManager visibilityManager){
         this.game = game;
@@ -16,13 +26,17 @@ public class Story {
         this.visibilityManager = visibilityManager;
     }
 
+    public Player getPlayer(){
+        Optional<Player> foundPlayer = playerRepository.findById(1L);
+        if(foundPlayer.isPresent()){
+            return foundPlayer.get();
+        }
+        return new Player();
+    }
+
     public void playerDefault(){
-//        player.setHealthPoints(10);
-//        player.setInsight(0);
-//        player.setDefence(3);
-//        player.setInspiration(0);
-//        player.setIntelligence(4);
-        userInterface.healthLabelStat.setText(Integer.toString(10));
+        Player player = getPlayer();
+        userInterface.healthLabelStat.setText(Integer.toString(player.getHealthPoints()));
         userInterface.insightLabelStat.setText(Integer.toString(0));
         userInterface.defenceLabelStat.setText(Integer.toString(3));
         userInterface.inspirationLabelStat.setText(Integer.toString(0));

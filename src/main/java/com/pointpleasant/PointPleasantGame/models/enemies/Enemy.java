@@ -5,32 +5,32 @@ import com.pointpleasant.PointPleasantGame.models.Player;
 import javax.persistence.*;
 import java.util.Random;
 
-@Entity
-@Table(name = "enemies")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@Entity
+//@Table(name = "enemies")
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Enemy {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
 
-    @Id
-    @Column(name = "name")
+//    @Id
+//    @Column(name = "name")
     private String name;
 
-    @Id
-    @Column(name="race")
+//    @Id
+//    @Column(name="race")
     private String race;
-    @Id
-    @Column(name = "healthpoints")
+//    @Id
+//    @Column(name = "healthpoints")
     private int healthPoints;
 
-    @Id
-    @Column(name = "attackpower")
+//    @Id
+//    @Column(name = "attackpower")
     private int attackPower;
 
-    @Id
-    @Column(name = "enemyinsight")
+//    @Id
+//    @Column(name = "enemyinsight")
     private int enemyInsight;
 
     public Enemy(String name, String race, int healthPoints, int attackPower, int enemyInsight) {

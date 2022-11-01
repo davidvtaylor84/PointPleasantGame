@@ -15,6 +15,8 @@ public class BaseballBat extends Weapon implements IWeaponDamage{
         this.fragility = fragility;
     }
 
+    public BaseballBat (){}
+
     public int getFragility() {
         return fragility;
     }

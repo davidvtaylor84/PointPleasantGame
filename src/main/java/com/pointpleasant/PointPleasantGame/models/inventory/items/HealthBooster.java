@@ -17,6 +17,8 @@ public class HealthBooster extends Item implements IActivateItem{
         this.restorativePoints = restorativePoints;
     }
 
+    public HealthBooster(){}
+
     public int getRestorativePoints() {
         return restorativePoints;
     }

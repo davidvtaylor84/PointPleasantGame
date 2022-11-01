@@ -18,6 +18,8 @@ public class Disguise extends Item implements IActivateItem{
         this.armourRating = armourRating;
     }
 
+    public Disguise(){}
+
     public int getArmourRating() {
         return armourRating;
     }

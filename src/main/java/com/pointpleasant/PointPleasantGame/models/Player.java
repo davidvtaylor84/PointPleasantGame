@@ -59,6 +59,12 @@ public class Player {
         this.weapons =new ArrayList<>();
     }
 
+    public void addWeapon(Weapon weapon){
+        this.weapons.add(weapon);
+    }
+    public void addItem(Item item){
+        this.items.add(item);
+    }
     public Player(){};
 
     public Long getId() {

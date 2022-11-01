@@ -3,13 +3,13 @@ package com.pointpleasant.PointPleasantGame.models.enemies;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-@Entity
+//@Entity
 public class GreyAlien extends Enemy{
 
-    @Column(name = "homedimension")
+//    @Column(name = "homedimension")
     private String homeDimension;
 
-    @Column(name = "sponginess")
+//    @Column(name = "sponginess")
     private int sponginess;
 
 

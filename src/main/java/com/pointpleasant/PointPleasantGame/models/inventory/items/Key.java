@@ -18,6 +18,8 @@ public class Key extends Item implements IActivateItem{
         this.used = used;
     }
 
+    public Key(){}
+
     public String getUsed() {
         return used;
     }
