@@ -12,7 +12,6 @@ public class VisibilityManager {
         userInterface.startButtonPanel.setVisible(true);
         userInterface.titleImagePanel.setVisible(true);
 
-
         userInterface.introPanel.setVisible(false);
         userInterface.introButtonPanel.setVisible(false);
 
@@ -55,7 +54,6 @@ public class VisibilityManager {
         userInterface.startButtonPanel.setVisible(false);
         userInterface.titleImagePanel.setVisible(false);
 
-
         userInterface.introPanel.setVisible(false);
         userInterface.introButtonPanel.setVisible(false);
 
@@ -70,6 +68,7 @@ public class VisibilityManager {
         userInterface.inventoryPanel.setVisible(true);
         userInterface.playerStatsPanel.setVisible(true);
         userInterface.weaponPanel.setVisible(true);
+
     }
 }
 

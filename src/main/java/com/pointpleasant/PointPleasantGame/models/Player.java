@@ -1,5 +1,6 @@
 package com.pointpleasant.PointPleasantGame.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.pointpleasant.PointPleasantGame.models.inventory.items.IActivateItem;
 import com.pointpleasant.PointPleasantGame.models.inventory.items.Item;
 import com.pointpleasant.PointPleasantGame.models.inventory.weapons.IWeaponDamage;
@@ -40,9 +41,11 @@ public class Player {
     @Column(name = "gameProgress")
     private Integer gameProgress;
 
+    @JsonIgnoreProperties("player")
     @OneToMany(mappedBy = "player", fetch = FetchType.LAZY)
     private List<Item> items;
 
+    @JsonIgnoreProperties("player")
     @OneToMany(mappedBy = "player", fetch = FetchType.LAZY)
     private List<Weapon> weapons;
 

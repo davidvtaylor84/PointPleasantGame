@@ -26,17 +26,16 @@ public class Story {
         this.visibilityManager = visibilityManager;
     }
 
-    public Player getPlayer(){
-        Optional<Player> foundPlayer = playerRepository.findById(1L);
-        if(foundPlayer.isPresent()){
-            return foundPlayer.get();
-        }
-        return new Player();
-    }
+//    public Player getPlayer(){
+//        Optional<Player> foundPlayer = playerRepository.findById(1L);
+//        if(foundPlayer.isPresent()){
+//            return foundPlayer.get();
+//        }
+//        return new Player();
+//    }
 
     public void playerDefault(){
-        Player player = getPlayer();
-        userInterface.healthLabelStat.setText(Integer.toString(player.getHealthPoints()));
+        userInterface.healthLabelStat.setText(Integer.toString(14));
         userInterface.insightLabelStat.setText(Integer.toString(0));
         userInterface.defenceLabelStat.setText(Integer.toString(3));
         userInterface.inspirationLabelStat.setText(Integer.toString(0));
@@ -56,11 +55,31 @@ public class Story {
             case "enterTheTown": enterTheTown();break;
         }
     }
+
+    public void breakdown(){
+        ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/breakdownimg.png");
+        userInterface.imageLabel.setIcon(townImage);
+        userInterface.locationTextArea.setText("Point Pleasant Town Centre");
+
+        userInterface.mainTextArea.setText("You wake with a start, certain that you have crashed. You are sitting in the passenger seat. The morning sun blinds you through the windshield. The car is on the highway roadside with dusty fields on either side. The battery is dead. Ahead is a sign that reads 'Point Pleasant: 2km'. \nWhat do you do?");
+
+        userInterface.choice1.setText("Walk towards the town");
+        userInterface.choice2.setText("Wait for a car to pass");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1 = "newspaperOffice";
+        game.choiceButton2 = "hotelRoom";
+        game.choiceButton3 = "petTheDog";
+        game.choiceButton4 = "kissYourMother";
+        game.choiceButton5 = "leaveTown";
+    }
     public void enterTheTown(){
         ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/point.jpeg");
         userInterface.imageLabel.setIcon(townImage);
 
-        userInterface.mainTextArea.setText("Point Pleasant is a quiet town. \nA quiet fortitude lurks among the people. You wait by your parked car and decide what to do.\nWhere to go next?");
+        userInterface.mainTextArea.setText("Point Pleasant is a quiet town. A quiet fortitude lurks among the people. You wait by your parked car and decide what to do. Where to go next?");
         userInterface.choice1.setText("Go into the newspaper office");
         userInterface.choice2.setText("Go into the hotel");
         userInterface.choice3.setText("Pet the dog");

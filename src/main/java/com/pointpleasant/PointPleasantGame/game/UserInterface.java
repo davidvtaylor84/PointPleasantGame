@@ -8,8 +8,8 @@ import java.awt.*;
 public class UserInterface {
 
     JFrame window;
-    JPanel titleNamePanel, startButtonPanel, locationPanel, mainTextPanel, choiceButtonPanel, imagePanel, inventoryPanel, playerStatsPanel, introPanel, introButtonPanel, weaponPanel, titleImagePanel;
-    JLabel titleNameLabel, healthLabel, healthLabelStat, insightLabel, insightLabelStat, defenceLabel, defenceLabelStat,intelligenceLabel, intelligenceLabelStat, inspirationLabel, inspirationLabelStat, imageLabel, cashLabel, cashLabelStat, titleImageLabel;
+    JPanel titleNamePanel, startButtonPanel, locationPanel, mainTextPanel, choiceButtonPanel, imagePanel, inventoryPanel, playerStatsPanel, introPanel, introButtonPanel, weaponPanel, titleImagePanel, titleImagePanel2;
+    JLabel titleNameLabel, healthLabel, healthLabelStat, insightLabel, insightLabelStat, defenceLabel, defenceLabelStat,intelligenceLabel, intelligenceLabelStat, inspirationLabel, inspirationLabelStat, imageLabel, cashLabel, cashLabelStat, titleImageLabel, titleImageLabel2;
     JButton startButton, continueButton, introButton;
     JButton weapon1, weapon2, weapon3, weapon4;
     Container container;
@@ -18,9 +18,10 @@ public class UserInterface {
     JButton choice1, choice2, choice3, choice4, choice5;
 
     ImageIcon image;
-    Font font = new Font("Old Century", Font.PLAIN, 120);
+    Font font = new Font("Impact", Font.PLAIN, 120);
     Font font2 = new Font("Old Century", Font.PLAIN, 20);
     Font font3 = new Font("Old Century", Font.PLAIN, 15);
+    Font font4 = new Font(Font.MONOSPACED, Font.PLAIN, 17);
 
 
 
@@ -68,6 +69,8 @@ public class UserInterface {
         continueButton.setFont(font2);
         continueButton.setBackground(new Color(0,0,0,0));
         continueButton.setForeground(Color.BLACK);
+        continueButton.addActionListener(decisionHandler);
+        continueButton.setActionCommand("continue");
 
         startButtonPanel.add(startButton);
         startButtonPanel.add(continueButton);
@@ -79,18 +82,21 @@ public class UserInterface {
 //        Intro screen
 
         introPanel = new JPanel();
-        introPanel.setBounds(300, 150, 800, 500);
-        introPanel.setBackground(new Color(0,0,0,0));
-        introTextArea = new JTextArea("You have been driving all night to get back to Point Pleasant.\n It had been a long drive and you are exhausted.\n The world seems full of vampires. A tedious future awaits.\n Well, you pull into the town centre eager to\n meet your dear friend, local newspaper editor, Mary Hyre.");
+        introPanel.setBounds(300, 150, 900, 500);
+        introPanel.setBackground(Color.BLACK);
+        introTextArea = new JTextArea("You have been driving for 13 hours. It is now 3am. The headlights form a cone of light on the asphalt, which is eaten up by the car's underside. \n\nBefore you is a highway emptied of traffic and darkened fields marked by telegraph poles on either side. The moon is hidden by clouds. \n\nYou are not aware of losing consciousness...  ");
         introTextArea.setBackground(new Color(0,0,0,0));
+        introTextArea.setBounds(300, 150, 900, 500);
         introTextArea.setForeground(Color.WHITE);
         introTextArea.setFont(font2);
+        introTextArea.setLineWrap(true);
+        introTextArea.setWrapStyleWord(true);
         introPanel.add(introTextArea);
         window.add(introPanel);
 
         introButton = new JButton(">>>");
         introButton.setFont(font2);
-        introButton.setBackground(new Color(0,0,0,0));
+        introButton.setBackground(Color.BLACK);
         introButton.setForeground(Color.BLACK);
         introButton.addActionListener(decisionHandler);
         introButton.setActionCommand("startAfterIntro");
@@ -106,7 +112,7 @@ public class UserInterface {
 
         locationPanel = new JPanel();
         locationPanel.setBounds(330, 30, 750, 40);
-        locationPanel.setBackground(Color.MAGENTA);
+        locationPanel.setBackground(new Color(0,0,0,0));
 
         locationTextArea = new JTextArea();
         locationTextArea.setBounds(250, 30, 750, 40);
@@ -118,35 +124,37 @@ public class UserInterface {
 
         mainTextPanel = new JPanel();
         mainTextPanel.setBounds(330, 490, 750, 140);
-        mainTextPanel.setBackground(Color.BLUE);
+        mainTextPanel.setBackground(Color.BLACK);
+        mainTextPanel.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
         window.add(mainTextPanel);
 
         mainTextArea = new JTextArea();
-        mainTextArea.setBounds(330, 490, 750, 140);
+        mainTextArea.setBounds(340, 490, 750, 140);
         mainTextArea.setBackground(new Color(0,0,0,0));
         mainTextArea.setForeground(Color.WHITE);
-        mainTextArea.setFont(font2);
+        mainTextArea.setFont(font4);
         mainTextArea.setLineWrap(true);
+        mainTextArea.setWrapStyleWord(true);
         mainTextArea.setEditable(false);
         mainTextPanel.add(mainTextArea);
 
         imagePanel = new JPanel();
         imagePanel.setBounds(330, 80, 750, 400);
-        imagePanel.setBackground(Color.yellow);
+        imagePanel.setBackground(new Color(0,0,0,0));
 
         imageLabel = new JLabel();
-        imagePanel.add(imageLabel);
+        imagePanel.add(imageLabel, BorderLayout.CENTER);
         window.add(imagePanel);
 
         inventoryPanel = new JPanel();
         window.add(inventoryPanel, BorderLayout.LINE_START);
         inventoryPanel.setBounds(20, 80, 290, 500);
         inventoryPanel.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
-        inventoryPanel.setBackground(Color.yellow);
+        inventoryPanel.setBackground(Color.LIGHT_GRAY);
 
         weaponPanel = new JPanel();
         weaponPanel.setBounds(1100, 400, 290, 230);
-        weaponPanel.setBackground(Color.WHITE);
+        weaponPanel.setBackground(Color.BLACK);
         weaponPanel.setLayout(new GridLayout(4, 1));
 
         weapon1 = new JButton("EQUIPPED WEAPON: Alloy Tube");
@@ -236,9 +244,10 @@ public class UserInterface {
         choiceButtonPanel.add(choice5);
 
         playerStatsPanel = new JPanel();
-        playerStatsPanel.setBounds(100, 650, 1220, 50);
-        playerStatsPanel.setBackground(Color.RED);
+        playerStatsPanel.setBounds(150, 650, 1220, 50);
+        playerStatsPanel.setBackground(Color.BLACK);
         playerStatsPanel.setLayout(new GridLayout(1,12));
+        inventoryPanel.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
         window.add(playerStatsPanel, BorderLayout.PAGE_END);
 
         healthLabel = new JLabel("HP:");
@@ -293,6 +302,7 @@ public class UserInterface {
         cashLabelStat.setFont(font3);
         cashLabelStat.setForeground(Color.WHITE);
         playerStatsPanel.add(cashLabelStat);
+
 
         window.setVisible(true);
 

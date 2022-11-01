@@ -77,13 +77,7 @@ public class DataLoader implements ApplicationRunner {
 
 
 
-        Game game = new Game();
-
-
-
-
-
-
+//        Game game = new Game();
 
     }
 }
