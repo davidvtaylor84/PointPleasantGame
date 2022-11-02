@@ -11,7 +11,7 @@ public class UserInterface {
     JPanel titleNamePanel, startButtonPanel, locationPanel, mainTextPanel, choiceButtonPanel, imagePanel, inventoryPanel, playerStatsPanel, introPanel, introButtonPanel, weaponPanel, titleImagePanel, titleImagePanel2;
     JLabel titleNameLabel, healthLabel, healthLabelStat, insightLabel, insightLabelStat, defenceLabel, defenceLabelStat,intelligenceLabel, intelligenceLabelStat, inspirationLabel, inspirationLabelStat, imageLabel, cashLabel, cashLabelStat, titleImageLabel, titleImageLabel2;
     JButton startButton, continueButton, introButton;
-    JButton weapon1, weapon2, weapon3, weapon4;
+    JButton weapon1, weapon2, weapon3, weapon4, inventory1, inventory2, inventory3, inventory4, inventory5, inventory6, inventory7, inventory8;
     Container container;
     JTextArea mainTextArea, locationTextArea, introTextArea;
 
@@ -151,34 +151,100 @@ public class UserInterface {
         inventoryPanel.setBounds(20, 80, 290, 500);
         inventoryPanel.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
         inventoryPanel.setBackground(Color.LIGHT_GRAY);
+        inventoryPanel.setLayout(new GridLayout(8, 1));
+
+        inventory1 = new JButton("(Inventory slot 1)");
+        inventory1.setBackground(Color.BLACK);
+        inventory1.setForeground(Color.BLACK);
+        inventory1.setFont(font3);
+        inventory1.addActionListener(decisionHandler);
+        inventory1.setActionCommand("inventory1");
+
+        inventory2 = new JButton("(Inventory slot 2)");
+        inventory2.setBackground(Color.BLACK);
+        inventory2.setForeground(Color.BLACK);
+        inventory2.setFont(font3);
+        inventory2.addActionListener(decisionHandler);
+        inventory2.setActionCommand("inventory2");
+
+        inventory3 = new JButton("(Inventory slot 3)");
+        inventory3.setBackground(Color.BLACK);
+        inventory3.setForeground(Color.BLACK);
+        inventory3.setFont(font3);
+        inventory3.addActionListener(decisionHandler);
+        inventory3.setActionCommand("inventory3");
+
+        inventory4 = new JButton("(Inventory slot 4)");
+        inventory4.setBackground(Color.BLACK);
+        inventory4.setForeground(Color.BLACK);
+        inventory4.setFont(font3);
+        inventory4.addActionListener(decisionHandler);
+        inventory4.setActionCommand("inventory4");
+
+        inventory5 = new JButton("(Inventory slot 5)");
+        inventory5.setBackground(Color.BLACK);
+        inventory5.setForeground(Color.BLACK);
+        inventory5.setFont(font3);
+        inventory5.addActionListener(decisionHandler);
+        inventory5.setActionCommand("inventory5");
+
+        inventory6 = new JButton("(Inventory slot 6)");
+        inventory6.setBackground(Color.BLACK);
+        inventory6.setForeground(Color.BLACK);
+        inventory6.setFont(font3);
+        inventory6.addActionListener(decisionHandler);
+        inventory6.setActionCommand("inventory6");
+
+        inventory7 = new JButton("(Inventory slot 7)");
+        inventory7.setBackground(Color.BLACK);
+        inventory7.setForeground(Color.BLACK);
+        inventory7.setFont(font3);
+        inventory7.addActionListener(decisionHandler);
+        inventory7.setActionCommand("inventory7");
+
+        inventory8 = new JButton("(Inventory slot 8)");
+        inventory8.setBackground(Color.BLACK);
+        inventory8.setForeground(Color.BLACK);
+        inventory8.setFont(font3);
+        inventory8.addActionListener(decisionHandler);
+        inventory8.setActionCommand("inventory8");
+
+        inventoryPanel.add(inventory1);
+        inventoryPanel.add(inventory2);
+        inventoryPanel.add(inventory3);
+        inventoryPanel.add(inventory4);
+        inventoryPanel.add(inventory5);
+        inventoryPanel.add(inventory6);
+        inventoryPanel.add(inventory7);
+        inventoryPanel.add(inventory8);
 
         weaponPanel = new JPanel();
         weaponPanel.setBounds(1100, 400, 290, 230);
         weaponPanel.setBackground(Color.BLACK);
         weaponPanel.setLayout(new GridLayout(4, 1));
 
-        weapon1 = new JButton("EQUIPPED WEAPON: Alloy Tube");
+        weapon1 = new JButton("(Weapon slot 1)");
         weapon1.setBackground(Color.BLACK);
         weapon1.setForeground(Color.BLACK);
         weapon1.setFont(font3);
 //        choice1.addActionListener(decisionHandler);
 //        choice1.setActionCommand("c1");
 
-        weapon2 = new JButton("Shotgun");
+        weapon2 = new JButton("(Weapon slot 2)");
         weapon2.setBackground(Color.BLACK);
         weapon2.setForeground(Color.BLACK);
         weapon2.setFont(font3);
         //   choice1.addActionListener(decisionHandler);
 //        choice1.setActionCommand("c1");
 
-        weapon3 = new JButton("Baseball bat");
+        weapon3 = new JButton("(Weapon slot 3)");
         weapon3.setBackground(Color.BLACK);
         weapon3.setForeground(Color.BLACK);
         weapon3.setFont(font3);
         //   choice1.addActionListener(decisionHandler);
 //        choice1.setActionCommand("c1");
 
-        weapon4 = new JButton("Zap Gun");
+        weapon4 = new JButton("(Weapon slot 4)");
         weapon4.setBackground(Color.BLACK);
         weapon4.setForeground(Color.BLACK);
         weapon4.setFont(font3);

@@ -18,6 +18,7 @@ public class Game {
     private PlayerRepository playerRepository;
 
     String choiceButton1, choiceButton2, choiceButton3, choiceButton4, choiceButton5;
+    String inventoryButton1, inventoryButton2, inventoryButton3, inventoryButton4, inventoryButton5, inventoryButton6, inventoryButton7, inventoryButton8;
 
     public static void main(String[] args){
 //        new Game();
@@ -41,7 +42,7 @@ public class Game {
             String yourDecision = e.getActionCommand();
 
             switch (yourDecision){
-                case "start": visibilityManager.showIntroScreen();story.playerDefault();break;
+                case "start": visibilityManager.showIntroScreen();story.playerDefault(); story.inventoryButtons();break;
                 case "continue": visibilityManager.showGameScreen();break;
                 case "startAfterIntro": visibilityManager.showGameScreen(); story.breakdown();break;
                 case "c1": story.selectChoice(choiceButton1);break;
@@ -49,6 +50,18 @@ public class Game {
                 case "c3": story.selectChoice(choiceButton3);break;
                 case "c4": story.selectChoice(choiceButton4);break;
                 case "c5": story.selectChoice(choiceButton5);break;
+
+                case "inventory1": story.selectChoice(inventoryButton1); break;
+                case "inventory2": story.selectChoice(inventoryButton2); break;
+                case "inventory3": story.selectChoice(inventoryButton3); break;
+                case "inventory4": story.selectChoice(inventoryButton4); break;
+                case "inventory5": story.selectChoice(inventoryButton5); break;
+                case "inventory6": story.selectChoice(inventoryButton6); break;
+                case "inventory7": story.selectChoice(inventoryButton7); break;
+                case "inventory8": story.selectChoice(inventoryButton8); break;
+
+
+
             }
 
         }

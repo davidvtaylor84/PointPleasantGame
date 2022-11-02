@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.swing.*;
+import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,6 +45,34 @@ public class Story {
         userInterface.cashLabelStat.setText(Integer.toString(getPlayer().getCash()));
     }
 
+    public void inventoryButtons(){
+        Player player = getPlayer();
+        if(player.getItems().get(1).isEquipped()){
+            userInterface.inventory1.setText(player.getItems().get(1).getName());
+        }
+        if(player.getItems().get(2).isEquipped()){
+            userInterface.inventory2.setText(player.getItems().get(2).getName());
+        }
+        if(player.getItems().get(3).isEquipped()){
+            userInterface.inventory3.setText(player.getItems().get(3).getName());
+        }
+        if(player.getItems().get(4).isEquipped()){
+            userInterface.inventory2.setText(player.getItems().get(4).getName());
+        }
+        if(player.getItems().get(5).isEquipped()){
+            userInterface.inventory2.setText(player.getItems().get(5).getName());
+        }
+        if(player.getItems().get(6).isEquipped()){
+            userInterface.inventory2.setText(player.getItems().get(6).getName());
+        }
+        if(player.getItems().get(7).isEquipped()){
+            userInterface.inventory2.setText(player.getItems().get(7).getName());
+        }
+        if(player.getItems().get(8).isEquipped()){
+            userInterface.inventory2.setText(player.getItems().get(8).getName());
+        }
+    }
+
 //    can make into an interface:
     public void selectChoice(String choiceButton){
         switch (choiceButton){
@@ -75,6 +104,7 @@ public class Story {
         game.choiceButton3 = "petTheDog";
         game.choiceButton4 = "kissYourMother";
         game.choiceButton5 = "leaveTown";
+
 
 //        getPlayer().setWeaponToEquipped(I);
     }
@@ -119,13 +149,16 @@ public class Story {
         game.choiceButton5 = "leaveTown";
 
         player.takeDamage(20);
-        player.setItemToEquipped(0);
-        
+        player.setItemToEquipped(1);
+
         this.game.getPlayerRepository().save(player);
         userInterface.healthLabelStat.setText(Integer.toString(getPlayer().getHealthPoints()));
+
     }
 
     public void askAfterMary(){
+        inventoryButtons();
+
         userInterface.mainTextArea.setText("She's been sick all day. Maybe you want to go see her at home. I can give you her address.");
         userInterface.choice1.setText("Get her address.");
         userInterface.choice2.setText("Tell him you are new in town.");
