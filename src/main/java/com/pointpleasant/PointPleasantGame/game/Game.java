@@ -1,6 +1,8 @@
 package com.pointpleasant.PointPleasantGame.game;
 
 import com.pointpleasant.PointPleasantGame.models.inventory.items.Key;
+import com.pointpleasant.PointPleasantGame.repositories.PlayerRepository;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,16 +15,23 @@ public class Game {
 
     Story story = new Story(this, userInterface, visibilityManager);
 
+    private PlayerRepository playerRepository;
+
     String choiceButton1, choiceButton2, choiceButton3, choiceButton4, choiceButton5;
 
     public static void main(String[] args){
-        new Game();
+//        new Game();
     }
 
-    public Game(){
+    public Game(PlayerRepository playerRepository){
+        this.playerRepository = playerRepository;
         userInterface.createInterface(decisionHandler);
 //        story.playerDefault();
         visibilityManager.showTitleScreen();
+    }
+
+    public PlayerRepository getPlayerRepository() {
+        return playerRepository;
     }
 
     public void Game(){}

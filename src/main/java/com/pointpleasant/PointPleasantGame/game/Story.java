@@ -5,19 +5,17 @@ import com.pointpleasant.PointPleasantGame.models.Player;
 import com.pointpleasant.PointPleasantGame.repositories.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.swing.*;
 import java.util.List;
 import java.util.Optional;
-
 
 public class Story {
 
     Game game;
     UserInterface userInterface;
     VisibilityManager visibilityManager;
-    @Autowired
-    PlayerRepository playerRepository;
 
 
     public Story(Game game, UserInterface userInterface, VisibilityManager visibilityManager){
@@ -26,16 +24,14 @@ public class Story {
         this.visibilityManager = visibilityManager;
     }
 
-//    public Player getPlayer(){
-//        Optional<Player> foundPlayer = playerRepository.findById(1L);
-//        if(foundPlayer.isPresent()){
-//            return foundPlayer.get();
-//        }
-//        return new Player();
-//    }
+    public Player getPlayer(){
+        PlayerRepository playerRepository = game.getPlayerRepository();
+        Optional<Player> foundPlayer = playerRepository.findById(1L);
+        return foundPlayer.orElseGet(Player::new);
+    }
 
     public void playerDefault(){
-        userInterface.healthLabelStat.setText(Integer.toString(14));
+        userInterface.healthLabelStat.setText(Integer.toString(getPlayer().getHealthPoints()));
         userInterface.insightLabelStat.setText(Integer.toString(0));
         userInterface.defenceLabelStat.setText(Integer.toString(3));
         userInterface.inspirationLabelStat.setText(Integer.toString(0));
@@ -61,7 +57,7 @@ public class Story {
         userInterface.imageLabel.setIcon(townImage);
         userInterface.locationTextArea.setText("Point Pleasant Town Centre");
 
-        userInterface.mainTextArea.setText("You wake with a start, certain that you have crashed. You are sitting in the passenger seat. The morning sun blinds you through the windshield. The car is on the highway roadside with dusty fields on either side. The battery is dead. Ahead is a sign that reads 'Point Pleasant: 2km'. \nWhat do you do?");
+        userInterface.mainTextArea.setText("You wake with a start, certain that you have crashed. You are sitting in the passenger seat. The morning sun blinds you through the windshield. The car is on the highway roadside with dusty fields on either side. The battery is dead. Ahead is a sign that reads 'Point Pleasant: 2km'. You step out of the car. What do you do?");
 
         userInterface.choice1.setText("Walk towards the town");
         userInterface.choice2.setText("Wait for a car to pass");

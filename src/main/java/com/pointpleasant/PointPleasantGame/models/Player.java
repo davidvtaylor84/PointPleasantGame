@@ -42,7 +42,7 @@ public class Player {
     private Integer gameProgress;
 
     @JsonIgnoreProperties("player")
-    @OneToMany(mappedBy = "player", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "player", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<Item> items;
 
     @JsonIgnoreProperties("player")
