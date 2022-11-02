@@ -2,6 +2,7 @@ package com.pointpleasant.PointPleasantGame.game;
 
 
 import com.pointpleasant.PointPleasantGame.models.Player;
+import com.pointpleasant.PointPleasantGame.models.inventory.items.Item;
 import com.pointpleasant.PointPleasantGame.repositories.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,8 +15,12 @@ import java.util.Optional;
 public class Story {
 
     Game game;
+
+    Item item;
     UserInterface userInterface;
     VisibilityManager visibilityManager;
+
+
 
 
     public Story(Game game, UserInterface userInterface, VisibilityManager visibilityManager){
@@ -32,11 +37,11 @@ public class Story {
 
     public void playerDefault(){
         userInterface.healthLabelStat.setText(Integer.toString(getPlayer().getHealthPoints()));
-        userInterface.insightLabelStat.setText(Integer.toString(0));
-        userInterface.defenceLabelStat.setText(Integer.toString(3));
-        userInterface.inspirationLabelStat.setText(Integer.toString(0));
-        userInterface.intelligenceLabelStat.setText(Integer.toString(4));
-        userInterface.cashLabelStat.setText(Integer.toString(80));
+        userInterface.insightLabelStat.setText(Integer.toString(getPlayer().getInsight()));
+        userInterface.defenceLabelStat.setText(Integer.toString(getPlayer().getDefence()));
+        userInterface.inspirationLabelStat.setText(Integer.toString(getPlayer().getInspiration()));
+        userInterface.intelligenceLabelStat.setText(Integer.toString(getPlayer().getIntelligence()));
+        userInterface.cashLabelStat.setText(Integer.toString(getPlayer().getCash()));
     }
 
 //    can make into an interface:
@@ -59,7 +64,7 @@ public class Story {
 
         userInterface.mainTextArea.setText("You wake with a start, certain that you have crashed. You are sitting in the passenger seat. The morning sun blinds you through the windshield. The car is on the highway roadside with dusty fields on either side. The battery is dead. Ahead is a sign that reads 'Point Pleasant: 2km'. You step out of the car. What do you do?");
 
-        userInterface.choice1.setText("Walk towards the town");
+        userInterface.choice1.setText("Newspaper Office");
         userInterface.choice2.setText("Wait for a car to pass");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
@@ -70,6 +75,8 @@ public class Story {
         game.choiceButton3 = "petTheDog";
         game.choiceButton4 = "kissYourMother";
         game.choiceButton5 = "leaveTown";
+
+//        getPlayer().setWeaponToEquipped(I);
     }
     public void enterTheTown(){
         ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/point.jpeg");
@@ -88,9 +95,15 @@ public class Story {
         game.choiceButton3 = "petTheDog";
         game.choiceButton4 = "kissYourMother";
         game.choiceButton5 = "leaveTown";
+
+
     }
 
     public void newsPaperOffice(){
+        Player player = getPlayer();
+        ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/point.jpeg");
+        userInterface.imageLabel.setIcon(townImage);
+
         userInterface.mainTextArea.setText("You enter the newspaper office looking for your friend, Mary Hyre. There are only a couple of people around. The room is small. One old man sits at a typewriter. He asks what you want?");
         userInterface.choice1.setText("Tell him to eat his hat");
         userInterface.choice2.setText("Tell him you are new in town.");
@@ -104,6 +117,12 @@ public class Story {
         game.choiceButton3 = "askAfterMary";
         game.choiceButton4 = "enterTheTown";
         game.choiceButton5 = "leaveTown";
+
+        player.takeDamage(20);
+        player.setItemToEquipped(0);
+        
+        this.game.getPlayerRepository().save(player);
+        userInterface.healthLabelStat.setText(Integer.toString(getPlayer().getHealthPoints()));
     }
 
     public void askAfterMary(){

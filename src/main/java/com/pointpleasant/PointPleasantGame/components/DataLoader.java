@@ -38,7 +38,7 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) {
 
 
-        Player player = new Player("John Leek", 30, 0, 20, 70, 70, 70, 1);
+        Player player = new Player("John Leek", 30, 0, 20, 70, 5, 70, 1);
         playerRepository.save(player);
 
         Disguise disguise = new Disguise("Army Uniform", "An army uniform, slightly worn, found in a locker.", false, player, 10);
@@ -77,7 +77,8 @@ public class DataLoader implements ApplicationRunner {
 
 
 
-//        Game game = new Game();
+
+
 
     }
 }

@@ -1,9 +1,7 @@
 package com.pointpleasant.PointPleasantGame.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.pointpleasant.PointPleasantGame.models.inventory.items.IActivateItem;
 import com.pointpleasant.PointPleasantGame.models.inventory.items.Item;
-import com.pointpleasant.PointPleasantGame.models.inventory.weapons.IWeaponDamage;
 import com.pointpleasant.PointPleasantGame.models.inventory.weapons.Weapon;
 
 import javax.persistence.*;
@@ -42,11 +40,11 @@ public class Player {
     private Integer gameProgress;
 
     @JsonIgnoreProperties("player")
-    @OneToMany(mappedBy = "player", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "player", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Item> items;
 
     @JsonIgnoreProperties("player")
-    @OneToMany(mappedBy = "player", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "player", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Weapon> weapons;
 
     public Player(String name, Integer healthPoints, Integer insight, Integer defence, Integer intelligence, Integer inspiration, Integer cash, Integer gameProgress)  {
@@ -66,6 +64,7 @@ public class Player {
         this.weapons.add(weapon);
     }
     public void addItem(Item item){
+        item.setPlayer(this);
         this.items.add(item);
     }
     public Player(){};
@@ -158,10 +157,18 @@ public class Player {
         this.cash = cash;
     }
 
-    public void takeDamage(int damage){
-        this.healthPoints -= damage;
-        if(this.healthPoints < 1){
-            System.out.println(this.name+ " no longer answers to their name.");
-        }
+    public Integer takeDamage(int damage){
+         this.healthPoints -= damage;
+        return healthPoints;
     }
+
+    public void setWeaponToEquipped(int index){
+        this.weapons.get(index).setEquipped(true);
+    }
+
+    public void setItemToEquipped(int index){
+        this.items.get(index).setEquipped(true);
+    }
+
+
 }
