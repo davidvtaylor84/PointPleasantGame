@@ -2,6 +2,7 @@ package com.pointpleasant.PointPleasantGame.components;
 
 import com.pointpleasant.PointPleasantGame.game.Game;
 import com.pointpleasant.PointPleasantGame.models.Player;
+import com.pointpleasant.PointPleasantGame.models.enemies.GreyAlien;
 import com.pointpleasant.PointPleasantGame.models.inventory.items.Disguise;
 import com.pointpleasant.PointPleasantGame.models.inventory.items.HealthBooster;
 import com.pointpleasant.PointPleasantGame.models.inventory.items.Key;
@@ -9,6 +10,7 @@ import com.pointpleasant.PointPleasantGame.models.inventory.items.Torch;
 import com.pointpleasant.PointPleasantGame.models.inventory.weapons.AlienAlloyTube;
 import com.pointpleasant.PointPleasantGame.models.inventory.weapons.BaseballBat;
 import com.pointpleasant.PointPleasantGame.models.inventory.weapons.Gun;
+import com.pointpleasant.PointPleasantGame.repositories.EnemyRepository;
 import com.pointpleasant.PointPleasantGame.repositories.ItemRepository;
 import com.pointpleasant.PointPleasantGame.repositories.PlayerRepository;
 import com.pointpleasant.PointPleasantGame.repositories.WeaponRepository;
@@ -30,6 +32,9 @@ public class DataLoader implements ApplicationRunner {
 
     @Autowired
     PlayerRepository playerRepository;
+
+    @Autowired
+    EnemyRepository enemyRepository;
 
     public DataLoader(){}
 
@@ -74,6 +79,9 @@ public class DataLoader implements ApplicationRunner {
 
         Gun m16 = new Gun("M16", "US Army standard issue (for imperialists)", 25, false, player, "M16", 50);
         weaponRepository.save(m16);
+
+        GreyAlien bob = new GreyAlien("Steve", "Fine Gray", 20, 12, 7, "Spain", 8);
+        enemyRepository.save(bob);
 
 
 

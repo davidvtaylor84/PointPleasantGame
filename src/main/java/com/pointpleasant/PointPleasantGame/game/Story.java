@@ -2,7 +2,9 @@ package com.pointpleasant.PointPleasantGame.game;
 
 
 import com.pointpleasant.PointPleasantGame.models.Player;
+import com.pointpleasant.PointPleasantGame.models.enemies.Enemy;
 import com.pointpleasant.PointPleasantGame.models.inventory.items.Item;
+import com.pointpleasant.PointPleasantGame.repositories.EnemyRepository;
 import com.pointpleasant.PointPleasantGame.repositories.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -34,6 +36,12 @@ public class Story {
         PlayerRepository playerRepository = game.getPlayerRepository();
         Optional<Player> foundPlayer = playerRepository.findById(1L);
         return foundPlayer.orElseGet(Player::new);
+    }
+
+    public Enemy getAlienBob(){
+        EnemyRepository enemyRepository = game.getEnemyRepository();
+        Optional<Enemy> foundBob = enemyRepository.findById(1L);
+        return foundBob.orElseGet(Enemy::new);
     }
 
     public void playerDefault(){
@@ -131,6 +139,7 @@ public class Story {
 
     public void newsPaperOffice(){
         Player player = getPlayer();
+        Enemy bob = getAlienBob();
         ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/point.jpeg");
         userInterface.imageLabel.setIcon(townImage);
 
@@ -150,6 +159,8 @@ public class Story {
 
         player.takeDamage(20);
         player.setItemToEquipped(1);
+
+        System.out.println(bob.getAttackPower());
 
         this.game.getPlayerRepository().save(player);
         userInterface.healthLabelStat.setText(Integer.toString(getPlayer().getHealthPoints()));

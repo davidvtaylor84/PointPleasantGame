@@ -3,11 +3,12 @@ package com.pointpleasant.PointPleasantGame.models.inventory.items;
 import com.pointpleasant.PointPleasantGame.models.Player;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "items")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class Item {
+public abstract class Item{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

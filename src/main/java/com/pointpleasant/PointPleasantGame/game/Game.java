@@ -1,6 +1,7 @@
 package com.pointpleasant.PointPleasantGame.game;
 
 import com.pointpleasant.PointPleasantGame.models.inventory.items.Key;
+import com.pointpleasant.PointPleasantGame.repositories.EnemyRepository;
 import com.pointpleasant.PointPleasantGame.repositories.PlayerRepository;
 import org.springframework.context.ConfigurableApplicationContext;
 
@@ -16,6 +17,7 @@ public class Game {
     Story story = new Story(this, userInterface, visibilityManager);
 
     private PlayerRepository playerRepository;
+    private EnemyRepository enemyRepository;
 
     String choiceButton1, choiceButton2, choiceButton3, choiceButton4, choiceButton5;
     String inventoryButton1, inventoryButton2, inventoryButton3, inventoryButton4, inventoryButton5, inventoryButton6, inventoryButton7, inventoryButton8;
@@ -24,8 +26,9 @@ public class Game {
 //        new Game();
     }
 
-    public Game(PlayerRepository playerRepository){
+    public Game(PlayerRepository playerRepository, EnemyRepository enemyRepository){
         this.playerRepository = playerRepository;
+        this.enemyRepository = enemyRepository;
         userInterface.createInterface(decisionHandler);
 //        story.playerDefault();
         visibilityManager.showTitleScreen();
@@ -35,6 +38,8 @@ public class Game {
         return playerRepository;
     }
 
+    public EnemyRepository getEnemyRepository(){return enemyRepository;}
+
     public void Game(){}
 
     public class DecisionHandler implements ActionListener{
@@ -43,7 +48,7 @@ public class Game {
 
             switch (yourDecision){
                 case "start": visibilityManager.showIntroScreen();story.playerDefault(); story.inventoryButtons();break;
-                case "continue": visibilityManager.showGameScreen();break;
+                case "continue": visibilityManager.showGameScreen(); story.askAfterMary();break;
                 case "startAfterIntro": visibilityManager.showGameScreen(); story.breakdown();break;
                 case "c1": story.selectChoice(choiceButton1);break;
                 case "c2": story.selectChoice(choiceButton2);break;

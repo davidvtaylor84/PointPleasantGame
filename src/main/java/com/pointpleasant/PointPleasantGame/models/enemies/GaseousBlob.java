@@ -2,11 +2,12 @@ package com.pointpleasant.PointPleasantGame.models.enemies;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import java.io.Serializable;
 
-//@Entity
-public class GaseousBlob extends Enemy{
+@Entity
+public class GaseousBlob extends Enemy implements IEnemyAttack{
 
-//    @Column(name = "stinkrating")
+    @Column(name = "stinkrating")
     private int stinkRating;
 
     public GaseousBlob(String name, String race, int healthPoints, int attackPower, int enemyInsight, int stinkRating) {

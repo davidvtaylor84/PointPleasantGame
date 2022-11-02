@@ -1,14 +1,26 @@
 package com.pointpleasant.PointPleasantGame.models.enemies;
 
-public class Weirdo extends Enemy{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import java.io.Serializable;
 
+@Entity
+public class Weirdo extends Enemy implements IEnemyAttack{
+
+    @Column(name = "psychicEnergy")
     private int psychicEnergy;
+    @Column(name = "cowardiceCounter")
     private int cowardiceCounter;
+
+
 
     public Weirdo(String name, String race, int healthPoints, int attackPower, int enemyInsight, int psychicEnergy, int cowardiceCounter) {
         super(name, race, healthPoints, attackPower, enemyInsight);
         this.psychicEnergy = psychicEnergy;
         this.cowardiceCounter = cowardiceCounter;
+    }
+
+    public Weirdo() {
     }
 
     public int getPsychicEnergy() {

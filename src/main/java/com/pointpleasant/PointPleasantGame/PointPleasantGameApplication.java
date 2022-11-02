@@ -1,6 +1,7 @@
 package com.pointpleasant.PointPleasantGame;
 
 import com.pointpleasant.PointPleasantGame.game.Game;
+import com.pointpleasant.PointPleasantGame.repositories.EnemyRepository;
 import com.pointpleasant.PointPleasantGame.repositories.PlayerRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,7 +18,8 @@ public class PointPleasantGameApplication {
 
 		ConfigurableApplicationContext context = builder.run(args);
 		PlayerRepository playerRepository = context.getBean(PlayerRepository.class);
-		new Game(playerRepository);
+		EnemyRepository enemyRepository = context.getBean(EnemyRepository.class);
+		new Game(playerRepository, enemyRepository);
 	}
 
 }

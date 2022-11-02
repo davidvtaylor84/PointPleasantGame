@@ -3,34 +3,34 @@ package com.pointpleasant.PointPleasantGame.models.enemies;
 import com.pointpleasant.PointPleasantGame.models.Player;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Random;
 
-//@Entity
-//@Table(name = "enemies")
-//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class Enemy {
+@Entity
+@Table(name = "enemies")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class Enemy{
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-//    @Id
-//    @Column(name = "name")
+    @Column(name = "name")
     private String name;
 
-//    @Id
-//    @Column(name="race")
+
+    @Column(name="race")
     private String race;
-//    @Id
-//    @Column(name = "healthpoints")
+
+    @Column(name = "healthPoints")
     private int healthPoints;
 
-//    @Id
-//    @Column(name = "attackpower")
+
+    @Column(name = "attackPower")
     private int attackPower;
 
-//    @Id
-//    @Column(name = "enemyinsight")
+
+    @Column(name = "enemyInsight")
     private int enemyInsight;
 
     public Enemy(String name, String race, int healthPoints, int attackPower, int enemyInsight) {
@@ -100,5 +100,13 @@ public abstract class Enemy {
         int upperbound = 20;
         int min = 1;
         return rand.nextInt(upperbound-min)+1;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

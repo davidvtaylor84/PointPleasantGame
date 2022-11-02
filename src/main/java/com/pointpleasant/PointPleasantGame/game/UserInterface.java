@@ -7,19 +7,19 @@ import java.awt.*;
 
 public class UserInterface {
 
-    JFrame window;
-    JPanel titleNamePanel, startButtonPanel, locationPanel, mainTextPanel, choiceButtonPanel, imagePanel, inventoryPanel, playerStatsPanel, introPanel, introButtonPanel, weaponPanel, titleImagePanel, titleImagePanel2;
+    JFrame window, inventoryDetail;
+    JPanel titleNamePanel, startButtonPanel, locationPanel, mainTextPanel, choiceButtonPanel, imagePanel, inventoryPanel, playerStatsPanel, introPanel, introButtonPanel, weaponPanel, titleImagePanel, titleImagePanel2, inventoryDetailPanel;
     JLabel titleNameLabel, healthLabel, healthLabelStat, insightLabel, insightLabelStat, defenceLabel, defenceLabelStat,intelligenceLabel, intelligenceLabelStat, inspirationLabel, inspirationLabelStat, imageLabel, cashLabel, cashLabelStat, titleImageLabel, titleImageLabel2;
     JButton startButton, continueButton, introButton;
     JButton weapon1, weapon2, weapon3, weapon4, inventory1, inventory2, inventory3, inventory4, inventory5, inventory6, inventory7, inventory8;
     Container container;
-    JTextArea mainTextArea, locationTextArea, introTextArea;
+    JTextArea mainTextArea, locationTextArea, introTextArea, inventoryDetailText;
 
     JButton choice1, choice2, choice3, choice4, choice5;
 
     ImageIcon image;
     Font font = new Font("Impact", Font.PLAIN, 120);
-    Font font2 = new Font("Old Century", Font.PLAIN, 20);
+    static Font font2 = new Font("Old Century", Font.PLAIN, 20);
     Font font3 = new Font("Old Century", Font.PLAIN, 15);
     Font font4 = new Font(Font.MONOSPACED, Font.PLAIN, 17);
 
@@ -152,6 +152,30 @@ public class UserInterface {
         inventoryPanel.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
         inventoryPanel.setBackground(Color.LIGHT_GRAY);
         inventoryPanel.setLayout(new GridLayout(8, 1));
+
+        //        inventory pop-up
+//        inventoryDetail = new JFrame();
+//        inventoryDetail.setSize(300, 200);
+//        inventoryDetail.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        inventoryDetail.getContentPane().setBackground(Color.BLACK);
+//        inventoryDetail.setLayout(null);
+//
+//        inventoryDetailPanel = new JPanel();
+//        inventoryDetailPanel.setBounds(0,0, 280, 400);
+//        inventoryDetailPanel.setBackground(new Color(0,0,0,0));
+//
+//        inventoryDetailText = new JTextArea();
+//        inventoryDetailText.setForeground(Color.WHITE);
+//        inventoryDetailText.setFont(font4);
+//        inventoryDetailText.setLineWrap(true);
+//        inventoryDetailText.setWrapStyleWord(true);
+//        inventoryDetailText.setEditable(false);
+//
+//        inventoryDetailPanel.add(inventoryDetailText);
+//        inventoryDetail.add(inventoryDetailPanel);
+
+
+
 
         inventory1 = new JButton("(Inventory slot 1)");
         inventory1.setBackground(Color.BLACK);
