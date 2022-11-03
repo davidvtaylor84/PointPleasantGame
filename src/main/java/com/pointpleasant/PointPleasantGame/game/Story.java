@@ -4,6 +4,7 @@ package com.pointpleasant.PointPleasantGame.game;
 import com.pointpleasant.PointPleasantGame.models.Player;
 import com.pointpleasant.PointPleasantGame.models.enemies.Enemy;
 import com.pointpleasant.PointPleasantGame.models.inventory.items.Item;
+import com.pointpleasant.PointPleasantGame.models.inventory.weapons.Weapon;
 import com.pointpleasant.PointPleasantGame.repositories.EnemyRepository;
 import com.pointpleasant.PointPleasantGame.repositories.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.swing.*;
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,6 +46,18 @@ public class Story {
         return foundEnemy.orElseGet(Enemy::new);
     }
 
+    public void defaultInventory(){
+        Player player = getPlayer();
+        player.getItems().get(0).setEquipped(false);
+        player.getItems().get(1).setEquipped(false);
+        player.getItems().get(2).setEquipped(false);
+        player.getItems().get(3).setEquipped(false);
+        player.getItems().get(4).setEquipped(false);
+        player.getItems().get(5).setEquipped(false);
+        player.getItems().get(6).setEquipped(false);
+        player.getItems().get(7).setEquipped(false);
+    }
+
     public void setPlayerDefault(){
         Player player = getPlayer();
         player.setHealthPoints(80);
@@ -52,14 +66,7 @@ public class Story {
         player.setInspiration(5);
         player.setCash(67);
         player.setGameProgress(0);
-        player.getItems().get(1).setEquipped(false);
-        player.getItems().get(2).setEquipped(false);
-        player.getItems().get(3).setEquipped(false);
-        player.getItems().get(4).setEquipped(false);
-        player.getItems().get(5).setEquipped(false);
-        player.getItems().get(6).setEquipped(false);
-        player.getItems().get(7).setEquipped(false);
-        player.getItems().get(8).setEquipped(false);
+        defaultInventory();
         this.game.getPlayerRepository().save(player);
     }
 
@@ -75,52 +82,52 @@ public class Story {
 
     public void inventoryButtons(){
         Player player = getPlayer();
-        if(player.getItems().get(0).isEquipped()){
-            userInterface.inventory1.setText(player.getItems().get(0).getName());
+        if(player.getItemByName("Army Uniform").isEquipped()){
+            userInterface.inventory1.setText(player.getItemByName("Army Uniform").getName());
         }
-        if(player.getItems().get(1).isEquipped()){
-            userInterface.inventory2.setText(player.getItems().get(1).getName());
+        if(player.getItemByName("Energy Bar+").isEquipped()){
+            userInterface.inventory2.setText(player.getItemByName("Energy Bar+").getName());
         }
-        if(player.getItems().get(2).isEquipped()){
-            userInterface.inventory3.setText(player.getItems().get(2).getName());
+        if(player.getItemByName("Average Energy Bar").isEquipped()){
+            userInterface.inventory3.setText(player.getItemByName("Average Energy Bar").getName());
         }
-        if(player.getItems().get(3).isEquipped()){
-            userInterface.inventory4.setText(player.getItems().get(3).getName());
+        if(player.getItemByName("Mediocre Energy Bar").isEquipped()){
+            userInterface.inventory4.setText(player.getItemByName("Mediocre Energy Bar+").getName());
         }
-        if(player.getItems().get(4).isEquipped()){
-            userInterface.inventory5.setText(player.getItems().get(4).getName());
+        if(player.getItemByName("Rusted Key").isEquipped()){
+            userInterface.inventory5.setText(player.getItemByName("Rusted Key").getName());
         }
-        if(player.getItems().get(5).isEquipped()){
-            userInterface.inventory6.setText(player.getItems().get(5).getName());
+        if(player.getItemByName("Keycard").isEquipped()){
+            userInterface.inventory6.setText(player.getItemByName("Keycard").getName());
         }
-        if(player.getItems().get(6).isEquipped()){
-            userInterface.inventory7.setText(player.getItems().get(6).getName());
+        if(player.getItemByName("Ammonite").isEquipped()){
+            userInterface.inventory7.setText(player.getItemByName("Ammonnite").getName());
         }
-        if(player.getItems().get(7).isEquipped()){
-            userInterface.inventory8.setText(player.getItems().get(7).getName());
+        if(player.getItemByName("Windup Torch").isEquipped()){
+            userInterface.inventory8.setText(player.getItemByName("Windup Torch").getName());
         }
     }
 
     public void weaponButtons(){
         Player player = getPlayer();
-        if(player.getWeapons().get(0).isEquipped()){
-            userInterface.weapon1.setText(player.getWeapons().get(0).getName());
+        if(player.getWeaponByName("Alloy Tube").isEquipped()){
+            userInterface.weapon1.setText(player.getWeaponByName("Alloy Tube").getName());
         }
-        if(player.getWeapons().get(1).isEquipped()){
-            userInterface.weapon2.setText(player.getWeapons().get(1).getName());
+        if(player.getWeaponByName("Baseball Bat").isEquipped()){
+            userInterface.weapon2.setText(player.getWeaponByName("Baseball Bat").getName());
         }
-        if(player.getWeapons().get(2).isEquipped()){
-            userInterface.weapon3.setText(player.getWeapons().get(2).getName());
+        if(player.getWeaponByName("Colt revolver").isEquipped()){
+            userInterface.weapon3.setText(player.getWeaponByName("Colt revolver").getName());
         }
-        if(player.getWeapons().get(3).isEquipped()){
-            userInterface.weapon4.setText(player.getWeapons().get(3).getName());
+        if(player.getWeaponByName("M16").isEquipped()){
+            userInterface.weapon4.setText(player.getWeaponByName("M16").getName());
         }
     }
 
     public void showItem1Description(){
         Player player = getPlayer();
-        if(player.getWeapons().get(0).isEquipped()){
-            userInterface.inventoryDetailText.setText(player.getItems().get(0).getDescription());
+        if(player.getItemByName("Army Uniform").isEquipped()){
+            userInterface.inventoryDetailText.setText(player.getItemByName("Army Uniform").getDescription());
         } else{userInterface.inventoryDetailText.setText("No item in inventory slot");};
     }
 
@@ -184,9 +191,10 @@ public class Story {
     public void newsPaperOffice(){
         Player player = getPlayer();
         player.takeDamage(20);
-        player.setItemToEquipped(0);
-        player.setWeaponToEquipped(2);
-        player.setItemToEquipped(4);
+
+        player.setItemToEquipped("Army Uniform");
+        player.setWeaponToEquipped("Alloy Tube");
+        player.setItemToEquipped("Rusted Key");
 //        Enemy bob = getAlienBob();
         ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/point.jpeg");
         userInterface.imageLabel.setIcon(townImage);

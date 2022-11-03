@@ -49,13 +49,13 @@ public class DataLoader implements ApplicationRunner {
         Disguise disguise = new Disguise("Army Uniform", "An army uniform, slightly worn, found in a locker.", false, player, 10);
         itemRepository.save(disguise);
 
-        HealthBooster energyBar = new HealthBooster("Energy Bar", "Mick's energy. Makes one feel godlike(or so goes the packaging blurb). Increases health by 10points", false, player, 10);
+        HealthBooster energyBar = new HealthBooster("Energy Bar+", "Mick's energy. Makes one feel godlike(or so goes the packaging blurb). Increases health by 10points", false, player, 15);
         itemRepository.save(energyBar);
 
-        HealthBooster energyBar2 = new HealthBooster("Energy Bar", "Mick's energy. Makes one feel godlike(or so goes the packaging blurb). Increases health by 10points", false, player, 10);
+        HealthBooster energyBar2 = new HealthBooster("Mediocre Energy Bar", "Mick's energy. Makes one feel godlike(or so goes the packaging blurb). Increases health by 10points", false, player, 5);
         itemRepository.save(energyBar2);
 
-        HealthBooster energyBar3 = new HealthBooster("Energy Bar", "Mick's energy. Makes one feel godlike(or so goes the packaging blurb). Increases health by 10points", false, player, 10);
+        HealthBooster energyBar3 = new HealthBooster("Average Energy Bar", "Mick's energy. Makes one feel godlike(or so goes the packaging blurb). Increases health by 10points", false, player, 10);
         itemRepository.save(energyBar3);
 
         Key key1 = new Key("Rusted Key", "Found on the body of a dead guy. Heart sticker on the fob.", false, player, "Unused");

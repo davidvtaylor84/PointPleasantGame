@@ -162,13 +162,48 @@ public class Player {
         return healthPoints;
     }
 
-    public void setWeaponToEquipped(int index){
-        this.weapons.get(index).setEquipped(true);
+//    public void setWeaponToEquipped(int index){
+//        this.weapons.get(index).setEquipped(true);
+//    }
+
+//    public void setItemToEquipped(int index){
+//        this.items.get(index).setEquipped(true);
+//    }
+//
+    public void setItemToEquipped(String itemName){
+        for(Item item : items){
+            if (item.getName().equals(itemName)){
+                item.setEquipped(true);
+            }
+        }
     }
 
-    public void setItemToEquipped(int index){
-        this.items.get(index).setEquipped(true);
+    public void setWeaponToEquipped(String weaponName){
+        for(Weapon weapon : weapons){
+            if (weapon.getName().equals(weaponName)){
+                weapon.setEquipped(true);
+            }
+        }
     }
+
+    public Item getItemByName(String itemName){
+        for(Item item : items){
+            if (item.getName().equals(itemName)){
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public Weapon getWeaponByName(String weaponName){
+        for(Weapon weapon : weapons){
+            if (weapon.getName().equals(weaponName)){
+                return weapon;
+            }
+        }
+        return null;
+    }
+
 
 
 }
