@@ -75,29 +75,45 @@ public class Story {
 
     public void inventoryButtons(){
         Player player = getPlayer();
+        if(player.getItems().get(0).isEquipped()){
+            userInterface.inventory1.setText(player.getItems().get(0).getName());
+        }
         if(player.getItems().get(1).isEquipped()){
-            userInterface.inventory1.setText(player.getItems().get(1).getName());
+            userInterface.inventory2.setText(player.getItems().get(1).getName());
         }
         if(player.getItems().get(2).isEquipped()){
-            userInterface.inventory2.setText(player.getItems().get(2).getName());
+            userInterface.inventory3.setText(player.getItems().get(2).getName());
         }
         if(player.getItems().get(3).isEquipped()){
-            userInterface.inventory3.setText(player.getItems().get(3).getName());
+            userInterface.inventory4.setText(player.getItems().get(4).getName());
         }
         if(player.getItems().get(4).isEquipped()){
-            userInterface.inventory2.setText(player.getItems().get(4).getName());
+            userInterface.inventory5.setText(player.getItems().get(4).getName());
         }
         if(player.getItems().get(5).isEquipped()){
-            userInterface.inventory2.setText(player.getItems().get(5).getName());
+            userInterface.inventory6.setText(player.getItems().get(5).getName());
         }
         if(player.getItems().get(6).isEquipped()){
-            userInterface.inventory2.setText(player.getItems().get(6).getName());
+            userInterface.inventory7.setText(player.getItems().get(6).getName());
         }
         if(player.getItems().get(7).isEquipped()){
-            userInterface.inventory2.setText(player.getItems().get(7).getName());
+            userInterface.inventory8.setText(player.getItems().get(7).getName());
         }
-        if(player.getItems().get(8).isEquipped()){
-            userInterface.inventory2.setText(player.getItems().get(8).getName());
+    }
+
+    public void weaponButtons(){
+        Player player = getPlayer();
+        if(player.getWeapons().get(0).isEquipped()){
+            userInterface.weapon1.setText(player.getWeapons().get(0).getName());
+        }
+        if(player.getWeapons().get(1).isEquipped()){
+            userInterface.weapon2.setText(player.getWeapons().get(1).getName());
+        }
+        if(player.getWeapons().get(2).isEquipped()){
+            userInterface.weapon3.setText(player.getWeapons().get(2).getName());
+        }
+        if(player.getWeapons().get(3).isEquipped()){
+            userInterface.weapon4.setText(player.getWeapons().get(3).getName());
         }
     }
 
@@ -179,6 +195,7 @@ public class Story {
 
         player.takeDamage(20);
         player.setItemToEquipped(1);
+        player.setWeaponToEquipped(2);
 
 //        System.out.println(bob.getAttackPower());
 
@@ -189,6 +206,7 @@ public class Story {
 
     public void askAfterMary(){
         inventoryButtons();
+        weaponButtons();
 
         userInterface.mainTextArea.setText("She's been sick all day. Maybe you want to go see her at home. I can give you her address.");
         userInterface.choice1.setText("Get her address.");
