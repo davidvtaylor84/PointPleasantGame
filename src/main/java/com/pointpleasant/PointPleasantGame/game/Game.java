@@ -20,7 +20,7 @@ public class Game {
     private EnemyRepository enemyRepository;
 
     String choiceButton1, choiceButton2, choiceButton3, choiceButton4, choiceButton5;
-    String inventoryButton1, inventoryButton2, inventoryButton3, inventoryButton4, inventoryButton5, inventoryButton6, inventoryButton7, inventoryButton8;
+    String inventoryButton1, inventoryButton2, inventoryButton3, inventoryButton4, inventoryButton5, inventoryButton6, inventoryButton7, inventoryButton8, weapon1, weapon2, weapon3, weapon4;
 
     public static void main(String[] args){
 //        new Game();
@@ -65,6 +65,10 @@ public class Game {
                 case "inventory7": story.selectChoice(inventoryButton7); break;
                 case "inventory8": story.selectChoice(inventoryButton8); break;
 
+                case "weapon1": story.selectChoice(weapon1); break;
+                case "weapon2": story.selectChoice(weapon2); break;
+                case "weapon3": story.selectChoice(weapon3); break;
+                case "weapon4": story.selectChoice(weapon4); break;
 
 
             }

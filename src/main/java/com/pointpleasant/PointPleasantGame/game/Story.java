@@ -26,8 +26,6 @@ public class Story {
     VisibilityManager visibilityManager;
 
 
-
-
     public Story(Game game, UserInterface userInterface, VisibilityManager visibilityManager){
         this.game = game;
         this.userInterface = userInterface;
@@ -124,12 +122,24 @@ public class Story {
         }
     }
 
-    public void showItem1Description(){
+
+    public void showInventoryItem(String itemName){
         Player player = getPlayer();
-        if(player.getItemByName("Army Uniform").isEquipped()){
-            userInterface.inventoryDetailText.setText(player.getItemByName("Army Uniform").getDescription());
-        } else{userInterface.inventoryDetailText.setText("No item in inventory slot");};
+        if(player.getItemByName(itemName).isEquipped()){
+            userInterface.inventoryDetailText.setText(player.getItemByName(itemName).getDescription());
+        }
     }
+
+    public void showWeaponItem(String weaponName){
+        Player player = getPlayer();
+        if(player.getWeaponByName(weaponName).isEquipped()){
+            userInterface.inventoryDetailText.setText(player.getWeaponByName(weaponName).getDescription());
+        }
+    }
+
+
+
+
 
 //    can make into an interface:
     public void selectChoice(String choiceButton){
@@ -141,7 +151,20 @@ public class Story {
             case "leaveTown": leaveTown();break;
             case "askAfterMary": askAfterMary(); break;
             case "enterTheTown": enterTheTown();break;
-            case "getItem1": showItem1Description();break;
+
+            case "getArmyUniform": showInventoryItem("Army Uniform");break;
+            case "getEnergyBarPlus": showInventoryItem("Energy Bar+");break;
+            case "getMediocreEnergyBar": showInventoryItem("Mediocre Energy Bar");break;
+            case "getAverageEnergyBar": showInventoryItem("Average Energy Bar");break;
+            case "getRustedKey": showInventoryItem("Rusted Key");break;
+            case "getKeyCard": showInventoryItem("Keycard");break;
+            case "getAmmonite": showInventoryItem("Ammonite");break;
+            case "getWindupTorch": showInventoryItem("Windup Torch");break;
+
+            case "getAlloyTube": showWeaponItem("Alloy Tube");break;
+            case "getBaseballBat": showWeaponItem("Baseball Bat"); break;
+            case "getColt": showWeaponItem("Colt"); break;
+            case "getM16": showWeaponItem("M16"); break;
         }
     }
 
@@ -241,7 +264,20 @@ public class Story {
         game.choiceButton4 = "enterTheTown";
         game.choiceButton5 = "leaveTown";
 
-        game.inventoryButton1 = "getItem1";
+        game.inventoryButton1 = "getArmyUniform";
+        game.inventoryButton2 = "getEnergyBarPlus";
+        game.inventoryButton3 = "getMediocreEnergyBar";
+        game.inventoryButton4 = "getAverageEnergyBar";
+        game.inventoryButton5 = "getRustedKey";
+        game.inventoryButton6 = "getKeyCard";
+        game.inventoryButton7 = "getAmmonite";
+        game.inventoryButton8 = "getWindupTorch";
+
+        game.weapon1 = "getAlloyTube";
+        game.weapon2 = "getBaseballBat";
+        game.weapon3 = "getColt";
+        game.weapon4 = "getM16";
+
     }
 
     public void hotelRoom(){

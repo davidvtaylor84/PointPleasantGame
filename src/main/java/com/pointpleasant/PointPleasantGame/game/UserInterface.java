@@ -23,6 +23,8 @@ public class UserInterface {
     Font font3 = new Font("Old Century", Font.PLAIN, 15);
     Font font4 = new Font(Font.MONOSPACED, Font.PLAIN, 17);
 
+    Font font5 = new Font(Font.MONOSPACED, Font.PLAIN, 14);
+
 
 
 
@@ -150,8 +152,9 @@ public class UserInterface {
         window.add(inventoryPanel, BorderLayout.LINE_START);
         inventoryPanel.setBounds(20, 80, 290, 500);
         inventoryPanel.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
-        inventoryPanel.setBackground(Color.BLACK);
+        inventoryPanel.setBackground(new Color(51, 25,0));
         inventoryPanel.setLayout(new GridLayout(13, 1));
+
 
         //        inventory pop-up
 //        inventoryDetail = new JFrame();
@@ -243,12 +246,14 @@ public class UserInterface {
         inventoryPanel.add(inventory8);
 
         itemDescriptionPanel = new JPanel();
+        itemDescriptionPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
         itemDescriptionPanel.setBounds(1100, 400, 290, 230);
-        itemDescriptionPanel.setBackground(Color.DARK_GRAY);
-        inventoryDetailText = new JTextArea();
-        inventoryDetailText.setBackground(new Color(0,0,0,0));
+        itemDescriptionPanel.setBackground(new Color(51, 25,0));
+        inventoryDetailText = new JTextArea("GAME INSTRUCTIONS\n\n1.Make choices using the buttons above.\n\n2.Inventory buttons will implement items if used correctly, otherwise they will show item description.\n\n3.Game will save on close.");
+        inventoryDetailText.setBounds(1100, 400, 285, 225);
+        inventoryDetailText.setBackground(new Color(51, 25,0));
         inventoryDetailText.setForeground(Color.WHITE);
-        inventoryDetailText.setFont(font4);
+        inventoryDetailText.setFont(font5);
         inventoryDetailText.setLineWrap(true);
         inventoryDetailText.setWrapStyleWord(true);
         inventoryDetailText.setEditable(false);
@@ -260,33 +265,33 @@ public class UserInterface {
         weapon1.setBackground(Color.BLACK);
         weapon1.setForeground(Color.BLACK);
         weapon1.setFont(font3);
-//        choice1.addActionListener(decisionHandler);
-//        choice1.setActionCommand("c1");
+        weapon1.addActionListener(decisionHandler);
+        weapon1.setActionCommand("weapon1");
 
         weapon2 = new JButton("(Weapon slot 2)");
         weapon2.setBackground(Color.BLACK);
         weapon2.setForeground(Color.BLACK);
         weapon2.setFont(font3);
-        //   choice1.addActionListener(decisionHandler);
-//        choice1.setActionCommand("c1");
+        weapon2.addActionListener(decisionHandler);
+        weapon2.setActionCommand("weapon2");
 
         weapon3 = new JButton("(Weapon slot 3)");
         weapon3.setBackground(Color.BLACK);
         weapon3.setForeground(Color.BLACK);
         weapon3.setFont(font3);
-        //   choice1.addActionListener(decisionHandler);
-//        choice1.setActionCommand("c1");
+        weapon3.addActionListener(decisionHandler);
+        weapon3.setActionCommand("weapon3");
 
         weapon4 = new JButton("(Weapon slot 4)");
         weapon4.setBackground(Color.BLACK);
         weapon4.setForeground(Color.BLACK);
         weapon4.setFont(font3);
-        //   choice1.addActionListener(decisionHandler);
-//        choice1.setActionCommand("c1");
+        weapon4.addActionListener(decisionHandler);
+        weapon4.setActionCommand("weapon4");
 
         blankButton = new JButton();
-        blankButton.setBackground(Color.BLACK);
-        blankButton.setForeground(Color.BLACK);
+        blankButton.setBackground(new Color(51, 25,0));
+        blankButton.setForeground(new Color(51, 25,0));
         blankButton.setFont(font3);
         blankButton.setOpaque(true);
         blankButton.setBorderPainted(false);

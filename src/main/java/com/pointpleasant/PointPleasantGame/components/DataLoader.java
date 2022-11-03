@@ -46,7 +46,7 @@ public class DataLoader implements ApplicationRunner {
         Player player = new Player("John Leek", 30, 0, 20, 70, 5, 70, 1);
         playerRepository.save(player);
 
-        Disguise disguise = new Disguise("Army Uniform", "An army uniform, slightly worn, found in a locker.", false, player, 10);
+        Disguise disguise = new Disguise("Army Uniform", "STANDARD ISSUE UNIFORM \n\nDescription: An army uniform, slightly worn, found in a locker.\n\nCould be used to disguise oneself, but your non-regulation haircut and startled bearing won't fool them for long.\n\nCannot be used here.", false, player, 10);
         itemRepository.save(disguise);
 
         HealthBooster energyBar = new HealthBooster("Energy Bar+", "Mick's energy. Makes one feel godlike(or so goes the packaging blurb). Increases health by 10points", false, player, 15);
