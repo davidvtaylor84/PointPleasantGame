@@ -38,19 +38,39 @@ public class Story {
         return foundPlayer.orElseGet(Player::new);
     }
 
-    public Enemy getAlienBob(){
+    public Enemy getEnemy(Long id){
         EnemyRepository enemyRepository = game.getEnemyRepository();
-        Optional<Enemy> foundBob = enemyRepository.findById(1L);
-        return foundBob.orElseGet(Enemy::new);
+        Optional<Enemy> foundEnemy = enemyRepository.findById(id);
+        return foundEnemy.orElseGet(Enemy::new);
     }
 
-    public void playerDefault(){
-        userInterface.healthLabelStat.setText(Integer.toString(getPlayer().getHealthPoints()));
-        userInterface.insightLabelStat.setText(Integer.toString(getPlayer().getInsight()));
-        userInterface.defenceLabelStat.setText(Integer.toString(getPlayer().getDefence()));
-        userInterface.inspirationLabelStat.setText(Integer.toString(getPlayer().getInspiration()));
-        userInterface.intelligenceLabelStat.setText(Integer.toString(getPlayer().getIntelligence()));
-        userInterface.cashLabelStat.setText(Integer.toString(getPlayer().getCash()));
+    public void setPlayerDefault(){
+        Player player = getPlayer();
+        player.setHealthPoints(80);
+        player.setInsight(0);
+        player.setIntelligence(40);
+        player.setInspiration(5);
+        player.setCash(67);
+        player.setGameProgress(0);
+        player.getItems().get(1).setEquipped(false);
+        player.getItems().get(2).setEquipped(false);
+        player.getItems().get(3).setEquipped(false);
+        player.getItems().get(4).setEquipped(false);
+        player.getItems().get(5).setEquipped(false);
+        player.getItems().get(6).setEquipped(false);
+        player.getItems().get(7).setEquipped(false);
+        player.getItems().get(8).setEquipped(false);
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void getPlayerDefault(){
+        Player player = getPlayer();
+        userInterface.healthLabelStat.setText(Integer.toString(player.getHealthPoints()));
+        userInterface.insightLabelStat.setText(Integer.toString(player.getInsight()));
+        userInterface.defenceLabelStat.setText(Integer.toString(player.getDefence()));
+        userInterface.inspirationLabelStat.setText(Integer.toString(player.getInspiration()));
+        userInterface.intelligenceLabelStat.setText(Integer.toString(player.getIntelligence()));
+        userInterface.cashLabelStat.setText(Integer.toString(player.getCash()));
     }
 
     public void inventoryButtons(){
@@ -139,7 +159,7 @@ public class Story {
 
     public void newsPaperOffice(){
         Player player = getPlayer();
-        Enemy bob = getAlienBob();
+//        Enemy bob = getAlienBob();
         ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/point.jpeg");
         userInterface.imageLabel.setIcon(townImage);
 
@@ -160,7 +180,7 @@ public class Story {
         player.takeDamage(20);
         player.setItemToEquipped(1);
 
-        System.out.println(bob.getAttackPower());
+//        System.out.println(bob.getAttackPower());
 
         this.game.getPlayerRepository().save(player);
         userInterface.healthLabelStat.setText(Integer.toString(getPlayer().getHealthPoints()));

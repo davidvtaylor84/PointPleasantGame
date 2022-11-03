@@ -47,9 +47,9 @@ public class Game {
             String yourDecision = e.getActionCommand();
 
             switch (yourDecision){
-                case "start": visibilityManager.showIntroScreen();story.playerDefault(); story.inventoryButtons();break;
+                case "start": visibilityManager.showIntroScreen();story.setPlayerDefault(); story.inventoryButtons();break;
                 case "continue": visibilityManager.showGameScreen(); story.askAfterMary();break;
-                case "startAfterIntro": visibilityManager.showGameScreen(); story.breakdown();break;
+                case "startAfterIntro": visibilityManager.showGameScreen(); story.getPlayerDefault(); story.breakdown();break;
                 case "c1": story.selectChoice(choiceButton1);break;
                 case "c2": story.selectChoice(choiceButton2);break;
                 case "c3": story.selectChoice(choiceButton3);break;

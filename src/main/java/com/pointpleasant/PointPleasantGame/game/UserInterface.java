@@ -11,7 +11,7 @@ public class UserInterface {
     JPanel titleNamePanel, startButtonPanel, locationPanel, mainTextPanel, choiceButtonPanel, imagePanel, inventoryPanel, playerStatsPanel, introPanel, introButtonPanel, weaponPanel, titleImagePanel, titleImagePanel2, inventoryDetailPanel;
     JLabel titleNameLabel, healthLabel, healthLabelStat, insightLabel, insightLabelStat, defenceLabel, defenceLabelStat,intelligenceLabel, intelligenceLabelStat, inspirationLabel, inspirationLabelStat, imageLabel, cashLabel, cashLabelStat, titleImageLabel, titleImageLabel2;
     JButton startButton, continueButton, introButton;
-    JButton weapon1, weapon2, weapon3, weapon4, inventory1, inventory2, inventory3, inventory4, inventory5, inventory6, inventory7, inventory8;
+    JButton weapon1, weapon2, weapon3, weapon4, inventory1, inventory2, inventory3, inventory4, inventory5, inventory6, inventory7, inventory8, blankButton;
     Container container;
     JTextArea mainTextArea, locationTextArea, introTextArea, inventoryDetailText;
 
@@ -150,8 +150,8 @@ public class UserInterface {
         window.add(inventoryPanel, BorderLayout.LINE_START);
         inventoryPanel.setBounds(20, 80, 290, 500);
         inventoryPanel.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
-        inventoryPanel.setBackground(Color.LIGHT_GRAY);
-        inventoryPanel.setLayout(new GridLayout(8, 1));
+        inventoryPanel.setBackground(Color.BLACK);
+        inventoryPanel.setLayout(new GridLayout(13, 1));
 
         //        inventory pop-up
 //        inventoryDetail = new JFrame();
@@ -244,8 +244,8 @@ public class UserInterface {
 
         weaponPanel = new JPanel();
         weaponPanel.setBounds(1100, 400, 290, 230);
-        weaponPanel.setBackground(Color.BLACK);
-        weaponPanel.setLayout(new GridLayout(4, 1));
+        weaponPanel.setBackground(Color.DARK_GRAY);
+//        weaponPanel.setLayout(new GridLayout(4, 1));
 
         weapon1 = new JButton("(Weapon slot 1)");
         weapon1.setBackground(Color.BLACK);
@@ -275,10 +275,18 @@ public class UserInterface {
         //   choice1.addActionListener(decisionHandler);
 //        choice1.setActionCommand("c1");
 
-        weaponPanel.add(weapon1);
-        weaponPanel.add(weapon2);
-        weaponPanel.add(weapon3);
-        weaponPanel.add(weapon4);
+        blankButton = new JButton();
+        blankButton.setBackground(Color.BLACK);
+        blankButton.setForeground(Color.BLACK);
+        blankButton.setFont(font3);
+        blankButton.setOpaque(true);
+        blankButton.setBorderPainted(false);
+
+        inventoryPanel.add(blankButton);
+        inventoryPanel.add(weapon1);
+        inventoryPanel.add(weapon2);
+        inventoryPanel.add(weapon3);
+        inventoryPanel.add(weapon4);
 
         window.add(weaponPanel, BorderLayout.LINE_END);
 
