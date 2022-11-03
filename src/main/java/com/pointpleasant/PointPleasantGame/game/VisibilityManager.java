@@ -24,7 +24,7 @@ public class VisibilityManager {
         userInterface.imagePanel.setVisible(false);
         userInterface.inventoryPanel.setVisible(false);
         userInterface.playerStatsPanel.setVisible(false);
-        userInterface.weaponPanel.setVisible(false);
+        userInterface.itemDescriptionPanel.setVisible(false);
     }
 
     public void showIntroScreen(){
@@ -46,7 +46,7 @@ public class VisibilityManager {
         userInterface.imagePanel.setVisible(false);
         userInterface.inventoryPanel.setVisible(false);
         userInterface.playerStatsPanel.setVisible(false);
-        userInterface.weaponPanel.setVisible(false);
+        userInterface.itemDescriptionPanel.setVisible(false);
     }
 
     public void showGameScreen(){
@@ -67,7 +67,7 @@ public class VisibilityManager {
         userInterface.imagePanel.setVisible(true);
         userInterface.inventoryPanel.setVisible(true);
         userInterface.playerStatsPanel.setVisible(true);
-        userInterface.weaponPanel.setVisible(true);
+        userInterface.itemDescriptionPanel.setVisible(true);
 
     }
 }

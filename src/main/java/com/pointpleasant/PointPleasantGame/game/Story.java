@@ -85,7 +85,7 @@ public class Story {
             userInterface.inventory3.setText(player.getItems().get(2).getName());
         }
         if(player.getItems().get(3).isEquipped()){
-            userInterface.inventory4.setText(player.getItems().get(4).getName());
+            userInterface.inventory4.setText(player.getItems().get(3).getName());
         }
         if(player.getItems().get(4).isEquipped()){
             userInterface.inventory5.setText(player.getItems().get(4).getName());
@@ -117,6 +117,13 @@ public class Story {
         }
     }
 
+    public void showItem1Description(){
+        Player player = getPlayer();
+        if(player.getWeapons().get(0).isEquipped()){
+            userInterface.inventoryDetailText.setText(player.getItems().get(0).getDescription());
+        } else{userInterface.inventoryDetailText.setText("No item in inventory slot");};
+    }
+
 //    can make into an interface:
     public void selectChoice(String choiceButton){
         switch (choiceButton){
@@ -127,6 +134,7 @@ public class Story {
             case "leaveTown": leaveTown();break;
             case "askAfterMary": askAfterMary(); break;
             case "enterTheTown": enterTheTown();break;
+            case "getItem1": showItem1Description();break;
         }
     }
 
@@ -175,6 +183,10 @@ public class Story {
 
     public void newsPaperOffice(){
         Player player = getPlayer();
+        player.takeDamage(20);
+        player.setItemToEquipped(0);
+        player.setWeaponToEquipped(2);
+        player.setItemToEquipped(4);
 //        Enemy bob = getAlienBob();
         ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/point.jpeg");
         userInterface.imageLabel.setIcon(townImage);
@@ -193,18 +205,17 @@ public class Story {
         game.choiceButton4 = "enterTheTown";
         game.choiceButton5 = "leaveTown";
 
-        player.takeDamage(20);
-        player.setItemToEquipped(1);
-        player.setWeaponToEquipped(2);
+
 
 //        System.out.println(bob.getAttackPower());
 
         this.game.getPlayerRepository().save(player);
-        userInterface.healthLabelStat.setText(Integer.toString(getPlayer().getHealthPoints()));
 
     }
 
     public void askAfterMary(){
+        Player player = getPlayer();
+        getPlayerDefault();
         inventoryButtons();
         weaponButtons();
 
@@ -221,6 +232,8 @@ public class Story {
         game.choiceButton3 = "";
         game.choiceButton4 = "enterTheTown";
         game.choiceButton5 = "leaveTown";
+
+        game.inventoryButton1 = "getItem1";
     }
 
     public void hotelRoom(){
