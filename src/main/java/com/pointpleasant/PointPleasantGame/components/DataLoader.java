@@ -43,7 +43,7 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) {
 
 
-        Player player = new Player("John Leek", 30, 0, 20, 7, 5, 70, 1);
+        Player player = new Player("John Leek", 30, 0, 14, 7, 5, 70, 1);
         playerRepository.save(player);
 
         Disguise disguise = new Disguise("Army Uniform", "STANDARD ISSUE UNIFORM \n\nDescription: An army uniform, slightly worn, found in a locker.\n\nCould be used to disguise oneself, but your non-regulation haircut and startled bearing won't fool them for long.\n\nCannot be used here.", false, player, 10);

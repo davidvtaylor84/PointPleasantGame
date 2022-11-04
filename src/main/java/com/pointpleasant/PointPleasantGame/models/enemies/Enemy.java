@@ -110,4 +110,14 @@ public class Enemy{
     public void setId(Long id) {
         this.id = id;
     }
+
+    public int attackPlayer(int playerDefence){
+        int enemyAttack = new java.util.Random().nextInt(20);
+        if(enemyAttack > playerDefence){
+            return this.attackPower;
+        }
+        else{
+            return 0;
+        }
+    }
 }
