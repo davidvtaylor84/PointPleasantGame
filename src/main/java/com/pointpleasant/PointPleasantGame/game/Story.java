@@ -143,6 +143,7 @@ public class Story {
 
 //    can make into an interface:
     public void selectChoice(String choiceButton){
+        Player player = getPlayer();
         switch (choiceButton){
             case "newspaperOffice":newsPaperOffice(); break;
             case "hotelRoom": hotelRoom();break;
@@ -151,6 +152,9 @@ public class Story {
             case "leaveTown": leaveTown();break;
             case "askAfterMary": askAfterMary(); break;
             case "enterTheTown": enterTheTown();break;
+            case "towardsShimmer": walkingTowardsShimmer();break;
+            case "upCloseWithTheShimmer": upCloseWithShimmer();break;
+            case "throughTheShimmer": player.setInsight(1);throughTheShimmer(); break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": showInventoryItem("Energy Bar+");break;
@@ -169,27 +173,165 @@ public class Story {
     }
 
     public void breakdown(){
+        Player player = getPlayer();
+        getPlayerDefault();
         ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/breakdownimg.png");
         userInterface.imageLabel.setIcon(townImage);
         userInterface.locationTextArea.setText("Point Pleasant Town Centre");
 
-        userInterface.mainTextArea.setText("You wake with a start, certain that you have crashed. You are sitting in the passenger seat. The morning sun blinds you through the windshield. The car is on the highway roadside with dusty fields on either side. The battery is dead. Ahead is a sign that reads 'Point Pleasant: 2km'. You step out of the car. What do you do?");
+        userInterface.mainTextArea.setText("You wake with a start in the passenger seat, certain that you have crashed.  The morning sun blinds you through the windshield. The car is on the roadside. The battery is dead. As is your phone.\n\nAhead, a sign reads 'Point Pleasant: 2km'. Far down the road behind, you spot a shimmer above the asphalt. You step out of the car. What do you do?");
 
-        userInterface.choice1.setText("Newspaper Office");
+        userInterface.choice1.setText("Walk into town");
         userInterface.choice2.setText("Wait for a car to pass");
+        userInterface.choice3.setText("Head towards the shimmer");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1 = "walkingIntoTown";
+        game.choiceButton2 = "waitForCar";
+        game.choiceButton3 = "towardsShimmer";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.inventoryButton1 = "getArmyUniform";
+        game.inventoryButton2 = "getEnergyBarPlus";
+        game.inventoryButton3 = "getMediocreEnergyBar";
+        game.inventoryButton4 = "getAverageEnergyBar";
+        game.inventoryButton5 = "getRustedKey";
+        game.inventoryButton6 = "getKeyCard";
+        game.inventoryButton7 = "getAmmonite";
+        game.inventoryButton8 = "getWindupTorch";
+
+        game.weapon1 = "getAlloyTube";
+        game.weapon2 = "getBaseballBat";
+        game.weapon3 = "getColt";
+        game.weapon4 = "getM16";
+
+
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void walkingTowardsShimmer(){
+        Player player = getPlayer();
+        getPlayerDefault();
+        ImageIcon towardsshimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/towardsshimmer.jpeg");
+        userInterface.imageLabel.setIcon(towardsshimmer);
+        userInterface.locationTextArea.setText("Away from town");
+
+        userInterface.mainTextArea.setText("As you draw closer to this metallic shimmer hovering a metre above the road, a strange fear tightens around your heart. The logical part of your brain tells you it is merely a mirage, though deep down, something inside is screaming that you should run from this thing as fast as possible.\n\nDo you continue?");
+
+        userInterface.choice1.setText("Yes");
+        userInterface.choice2.setText("Walk back into town");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1 = "newspaperOffice";
-        game.choiceButton2 = "hotelRoom";
-        game.choiceButton3 = "petTheDog";
-        game.choiceButton4 = "kissYourMother";
-        game.choiceButton5 = "leaveTown";
+        game.choiceButton1 = "upCloseWithTheShimmer";
+        game.choiceButton2 = "towardsTown";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
 
+        game.inventoryButton1 = "getArmyUniform";
+        game.inventoryButton2 = "getEnergyBarPlus";
+        game.inventoryButton3 = "getMediocreEnergyBar";
+        game.inventoryButton4 = "getAverageEnergyBar";
+        game.inventoryButton5 = "getRustedKey";
+        game.inventoryButton6 = "getKeyCard";
+        game.inventoryButton7 = "getAmmonite";
+        game.inventoryButton8 = "getWindupTorch";
 
-//        getPlayer().setWeaponToEquipped(I);
+        game.weapon1 = "getAlloyTube";
+        game.weapon2 = "getBaseballBat";
+        game.weapon3 = "getColt";
+        game.weapon4 = "getM16";
+
+        this.game.getPlayerRepository().save(player);
     }
+
+    public void upCloseWithShimmer(){
+        Player player = getPlayer();
+        getPlayerDefault();
+        ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/shimmer.jpeg");
+        userInterface.imageLabel.setIcon(shimmer);
+        userInterface.locationTextArea.setText("The shimmer");
+
+        userInterface.mainTextArea.setText("You cannot comprehend what you are seeing. The air warps likes the surface of a body of water, refracting rainbow light. It gives off a freezing cold when you hold your hand up to it. Terror and curiousity are mixed in your gut. You feel sick.\n\nDo you you run or do you wish to proceed into the shimmer?");
+
+        userInterface.choice1.setText("Put your head in");
+        userInterface.choice2.setText("Head towards the town");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1 = "throughTheShimmer";
+        game.choiceButton2 = "hotelRoom";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.inventoryButton1 = "getArmyUniform";
+        game.inventoryButton2 = "getEnergyBarPlus";
+        game.inventoryButton3 = "getMediocreEnergyBar";
+        game.inventoryButton4 = "getAverageEnergyBar";
+        game.inventoryButton5 = "getRustedKey";
+        game.inventoryButton6 = "getKeyCard";
+        game.inventoryButton7 = "getAmmonite";
+        game.inventoryButton8 = "getWindupTorch";
+
+        game.weapon1 = "getAlloyTube";
+        game.weapon2 = "getBaseballBat";
+        game.weapon3 = "getColt";
+        game.weapon4 = "getM16";
+
+        player.setInsight(1);
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void throughTheShimmer(){
+        Player player = getPlayer();
+        getPlayerDefault();
+//        player.setInsight(1);
+        inventoryButtons();
+        weaponButtons();
+        ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/farbeyond.jpeg");
+        userInterface.imageLabel.setIcon(shimmer);
+        userInterface.locationTextArea.setText("$%£$8mg3g33$");
+
+        userInterface.mainTextArea.setText("re$%44gg365&46;'][r[lkko397*&*^54587b69n8(*87b7t65534x243$x35 %4% ^ 65^5 Yy 8B& T^R F^%45*&*9(89*9u8644@$2%90}[{OoHkhhIy*&8&%6$ygURy£5£$28(&(re$%44gg365&46;'][r[lkko397*&*^54587b69n8(*87b7t65534x243$x35 %4% ^65^5 Yy 8B& T^R F^%45*&(\n\n(Insight has increased by +1)");
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1 = "";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.inventoryButton1 = "getArmyUniform";
+        game.inventoryButton2 = "getEnergyBarPlus";
+        game.inventoryButton3 = "getMediocreEnergyBar";
+        game.inventoryButton4 = "getAverageEnergyBar";
+        game.inventoryButton5 = "getRustedKey";
+        game.inventoryButton6 = "getKeyCard";
+        game.inventoryButton7 = "getAmmonite";
+        game.inventoryButton8 = "getWindupTorch";
+
+        game.weapon1 = "getAlloyTube";
+        game.weapon2 = "getBaseballBat";
+        game.weapon3 = "getColt";
+        game.weapon4 = "getM16";
+
+//        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
     public void enterTheTown(){
         ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/point.jpeg");
         userInterface.imageLabel.setIcon(townImage);
@@ -207,8 +349,6 @@ public class Story {
         game.choiceButton3 = "petTheDog";
         game.choiceButton4 = "kissYourMother";
         game.choiceButton5 = "leaveTown";
-
-
     }
 
     public void newsPaperOffice(){
@@ -236,7 +376,19 @@ public class Story {
         game.choiceButton4 = "enterTheTown";
         game.choiceButton5 = "leaveTown";
 
+        game.inventoryButton1 = "getArmyUniform";
+        game.inventoryButton2 = "getEnergyBarPlus";
+        game.inventoryButton3 = "getMediocreEnergyBar";
+        game.inventoryButton4 = "getAverageEnergyBar";
+        game.inventoryButton5 = "getRustedKey";
+        game.inventoryButton6 = "getKeyCard";
+        game.inventoryButton7 = "getAmmonite";
+        game.inventoryButton8 = "getWindupTorch";
 
+        game.weapon1 = "getAlloyTube";
+        game.weapon2 = "getBaseballBat";
+        game.weapon3 = "getColt";
+        game.weapon4 = "getM16";
 
 //        System.out.println(bob.getAttackPower());
 
