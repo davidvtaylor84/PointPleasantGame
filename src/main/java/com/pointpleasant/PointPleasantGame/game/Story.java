@@ -154,8 +154,10 @@ public class Story {
             case "enterTheTown": enterTheTown();break;
             case "towardsShimmer": walkingTowardsShimmer();break;
             case "upCloseWithTheShimmer": upCloseWithShimmer();break;
-            case "throughTheShimmer": throughTheShimmer(); break;
+            case "throughTheShimmer": player.setInsight(1);game.getPlayerRepository().save(player);throughTheShimmer(); break;
             case "waitForCar": waitForCar();break;
+            case "walkingIntoTown": headingIntoTown();break;
+            case "encounterWithVadig": encounterWithVadig(); break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": showInventoryItem("Energy Bar+");break;
@@ -175,6 +177,7 @@ public class Story {
 
     public void breakdown(){
         Player player = getPlayer();
+        setPlayerDefault();
         getPlayerDefault();
         ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/breakdownimg.png");
         userInterface.imageLabel.setIcon(townImage);
@@ -292,7 +295,7 @@ public class Story {
 
     public void throughTheShimmer(){
         Player player = getPlayer();
-        player.setInsight(1);
+//        player.setInsight(1);
         inventoryButtons();
         weaponButtons();
         ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/farbeyond.jpeg");
@@ -371,6 +374,90 @@ public class Story {
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
     }
+
+
+    public void headingIntoTown(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+        ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/encountervadig.png");
+        userInterface.imageLabel.setIcon(shimmer);
+        userInterface.locationTextArea.setText("Towards Point Pleasant");
+
+        userInterface.mainTextArea.setText("An very tall man emerges from the scrub from the side of the road. His unusual leer suggests malicious intent. He waves. His grin is fixed on his face. He runs towards you, his gait like that of a gazelle with a broken leg. He is in front of you in no time.");
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1 = "encounterWithVadig";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.inventoryButton1 = "getArmyUniform";
+        game.inventoryButton2 = "getEnergyBarPlus";
+        game.inventoryButton3 = "getMediocreEnergyBar";
+        game.inventoryButton4 = "getAverageEnergyBar";
+        game.inventoryButton5 = "getRustedKey";
+        game.inventoryButton6 = "getKeyCard";
+        game.inventoryButton7 = "getAmmonite";
+        game.inventoryButton8 = "getWindupTorch";
+
+        game.weapon1 = "getAlloyTube";
+        game.weapon2 = "getBaseballBat";
+        game.weapon3 = "getColt";
+        game.weapon4 = "getM16";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+
+    public void encounterWithVadig(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+        ImageIcon shimmer = new ImageIcon("/Users/charlesvaldez/codeclan_work/capstone/PointPleasantGame/src/main/java/com/pointpleasant/PointPleasantGame/game/resources/vadig.png");
+        userInterface.imageLabel.setIcon(shimmer);
+        userInterface.locationTextArea.setText("Vadig");
+
+        userInterface.mainTextArea.setText("'Do not be afraid,' he says, in an unusually high-pitched sing-song, 'We are from a country much weaker than yours.'\n\nHe grabs you by the lapels and puts his hands in your pockets.\n\n'I require your cash for my own pleasure,' he adds.\n\n");
+
+        userInterface.choice1.setText("Fight him off");
+        userInterface.choice2.setText("Let him take your money");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1 = "fightWithVadig";
+        game.choiceButton2 = "giveVadigMoney";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.inventoryButton1 = "getArmyUniform";
+        game.inventoryButton2 = "getEnergyBarPlus";
+        game.inventoryButton3 = "getMediocreEnergyBar";
+        game.inventoryButton4 = "getAverageEnergyBar";
+        game.inventoryButton5 = "getRustedKey";
+        game.inventoryButton6 = "getKeyCard";
+        game.inventoryButton7 = "getAmmonite";
+        game.inventoryButton8 = "getWindupTorch";
+
+        game.weapon1 = "getAlloyTube";
+        game.weapon2 = "getBaseballBat";
+        game.weapon3 = "getColt";
+        game.weapon4 = "getM16";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+
 
 
 

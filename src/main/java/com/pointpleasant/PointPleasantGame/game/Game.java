@@ -1,5 +1,6 @@
 package com.pointpleasant.PointPleasantGame.game;
 
+import com.pointpleasant.PointPleasantGame.models.Player;
 import com.pointpleasant.PointPleasantGame.models.inventory.items.Key;
 import com.pointpleasant.PointPleasantGame.repositories.EnemyRepository;
 import com.pointpleasant.PointPleasantGame.repositories.PlayerRepository;
@@ -45,7 +46,6 @@ public class Game {
     public class DecisionHandler implements ActionListener{
         public void actionPerformed(ActionEvent e){
             String yourDecision = e.getActionCommand();
-
             switch (yourDecision){
                 case "start": visibilityManager.showIntroScreen();story.setPlayerDefault(); story.inventoryButtons();break;
                 case "continue": visibilityManager.showGameScreen(); story.askAfterMary();break;
