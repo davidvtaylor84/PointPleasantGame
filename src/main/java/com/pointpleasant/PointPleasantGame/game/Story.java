@@ -473,7 +473,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Fight with Vadig");
 
-        userInterface.mainTextArea.setText("You grappled with Vadig and inflicted " + playerAttack+" points of damage.");
+        userInterface.mainTextArea.setText("Vadig HP: "+enemy.getHealthPoints()+"\n\nYOUR ATTACK ROLL: "+playerAttack+" vs VADIG DEFENCE RATING: "+enemy.getDefence()+"\n\nYou grapple with Vadig and inflict " + playerAttack+ " points of damage");
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -481,11 +481,18 @@ public class Story {
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1 = "fightWithVadig";
-        game.choiceButton2 = "giveVadigMoney";
-        game.choiceButton3 = "";
-        game.choiceButton4 = "";
-        game.choiceButton5 = "";
+        if(enemy.getHealthPoints()>0){
+            game.choiceButton1 = "fightWithVadig";
+            game.choiceButton2 = "";
+            game.choiceButton3 = "";
+            game.choiceButton4 = "";
+            game.choiceButton5 = "";
+        } else{
+            game.choiceButton1 = "winOverVadig";
+            game.choiceButton2 = "";
+            game.choiceButton3 = "";
+            game.choiceButton4 = "";
+            game.choiceButton5 = "";}
 
         game.inventoryButton1 = "getArmyUniform";
         game.inventoryButton2 = "getEnergyBarPlus";
@@ -505,6 +512,7 @@ public class Story {
         this.game.getEnemyRepository().save(enemy);
         this.game.getPlayerRepository().save(player);
     }
+
 
 
 
