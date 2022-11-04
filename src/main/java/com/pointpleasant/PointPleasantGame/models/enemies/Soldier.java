@@ -15,8 +15,8 @@ public class Soldier extends Enemy implements IEnemyAttack{
 
 
 
-    public Soldier(String name, String race, int healthPoints, int attackPower, int enemyInsight, int bullets, int armour) {
-        super(name, race, healthPoints, attackPower, enemyInsight);
+    public Soldier(String name, String race, int healthPoints, int attackPower, int defence, int bullets, int armour) {
+        super(name, race, healthPoints, attackPower, defence);
         this.bullets = bullets;
         this.armour = armour;
     }

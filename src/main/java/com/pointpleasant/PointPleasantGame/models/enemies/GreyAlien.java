@@ -15,8 +15,8 @@ public class GreyAlien extends Enemy implements IEnemyAttack {
 
 
 
-    public GreyAlien(String name, String race, int healthPoints, int attackPower,int enemyInsight, String homeDimension, int sponginess) {
-        super(name, race, healthPoints, attackPower, enemyInsight);
+    public GreyAlien(String name, String race, int healthPoints, int attackPower,int defence, String homeDimension, int sponginess) {
+        super(name, race, healthPoints, attackPower, defence);
         this.homeDimension = homeDimension;
         this.sponginess = sponginess;
     }

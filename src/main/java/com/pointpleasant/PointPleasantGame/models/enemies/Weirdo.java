@@ -14,8 +14,8 @@ public class Weirdo extends Enemy implements IEnemyAttack{
 
 
 
-    public Weirdo(String name, String race, int healthPoints, int attackPower, int enemyInsight, int psychicEnergy, int cowardiceCounter) {
-        super(name, race, healthPoints, attackPower, enemyInsight);
+    public Weirdo(String name, String race, int healthPoints, int attackPower, int defence, int psychicEnergy, int cowardiceCounter) {
+        super(name, race, healthPoints, attackPower, defence);
         this.psychicEnergy = psychicEnergy;
         this.cowardiceCounter = cowardiceCounter;
     }

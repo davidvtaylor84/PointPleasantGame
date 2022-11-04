@@ -30,15 +30,15 @@ public class Enemy{
     private int attackPower;
 
 
-    @Column(name = "enemyInsight")
-    private int enemyInsight;
+    @Column(name = "defence")
+    private int defence;
 
-    public Enemy(String name, String race, int healthPoints, int attackPower, int enemyInsight) {
+    public Enemy(String name, String race, int healthPoints, int attackPower, int defence) {
         this.name = name;
         this.race = race;
         this.healthPoints = healthPoints;
         this.attackPower = attackPower;
-        this.enemyInsight = enemyInsight;
+        this.defence = defence;
     }
 
     public Enemy(){}
@@ -87,13 +87,14 @@ public class Enemy{
         this.attackPower = attackPower;
     }
 
-    public int getEnemyInsight() {
-        return enemyInsight;
+    public int getDefence() {
+        return defence;
     }
 
-    public void setEnemyInsight(int enemyInsight) {
-        this.enemyInsight = enemyInsight;
+    public void setDefence(int defence) {
+        this.defence = defence;
     }
+
 
     public int diceRoll(){
         Random rand = new Random();

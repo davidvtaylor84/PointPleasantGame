@@ -20,8 +20,8 @@ public class MothMan extends Enemy  implements IEnemyAttack{
     @Column(name = "prophecy3")
     String prophecy3;
 
-    public MothMan(String name, String race, int healthPoints, int attackPower, int enemyInsight, String prophecy1, String prophecy2, String prophecy3) {
-        super(name, race, healthPoints, attackPower, enemyInsight);
+    public MothMan(String name, String race, int healthPoints, int attackPower, int defence, String prophecy1, String prophecy2, String prophecy3) {
+        super(name, race, healthPoints, attackPower, defence);
         this.prophecy1 = prophecy1;
         this.prophecy2 = prophecy2;
         this.prophecy3 = prophecy3;

@@ -27,8 +27,8 @@ public class Player {
     @Column(name= "defence")
     private Integer defence;
 
-    @Column(name = "intelligence")
-    private Integer intelligence;
+    @Column(name = "attack")
+    private Integer attack;
 
     @Column(name = "inspiration")
     private Integer inspiration;
@@ -47,12 +47,12 @@ public class Player {
     @OneToMany(mappedBy = "player", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Weapon> weapons;
 
-    public Player(String name, Integer healthPoints, Integer insight, Integer defence, Integer intelligence, Integer inspiration, Integer cash, Integer gameProgress)  {
+    public Player(String name, Integer healthPoints, Integer insight, Integer defence, Integer attack, Integer inspiration, Integer cash, Integer gameProgress)  {
         this.name = name;
         this.healthPoints = healthPoints;
         this.insight = insight;
         this.defence = defence;
-        this.intelligence = intelligence;
+        this.attack = attack;
         this.inspiration = inspiration;
         this.cash = cash;
         this.gameProgress = gameProgress;
@@ -109,12 +109,12 @@ public class Player {
         this.defence = defence;
     }
 
-    public Integer getIntelligence() {
-        return intelligence;
+    public Integer getAttack() {
+        return attack;
     }
 
-    public void setIntelligence(Integer intelligence) {
-        this.intelligence = intelligence;
+    public void setAttack(Integer attack) {
+        this.attack = attack;
     }
 
     public Integer getInspiration() {
@@ -204,7 +204,15 @@ public class Player {
         return null;
     }
 
-
+    public int attackEnemy(int enemyDefence){
+        int playerAttack = new java.util.Random().nextInt(20);
+        if(playerAttack > enemyDefence){
+            return this.attack;
+        }
+        else{
+            return 0;
+        }
+    }
 
 
 

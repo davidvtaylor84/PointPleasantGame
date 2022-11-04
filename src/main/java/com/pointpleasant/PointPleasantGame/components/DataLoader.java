@@ -43,7 +43,7 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) {
 
 
-        Player player = new Player("John Leek", 30, 0, 20, 70, 5, 70, 1);
+        Player player = new Player("John Leek", 30, 0, 20, 7, 5, 70, 1);
         playerRepository.save(player);
 
         Disguise disguise = new Disguise("Army Uniform", "STANDARD ISSUE UNIFORM \n\nDescription: An army uniform, slightly worn, found in a locker.\n\nCould be used to disguise oneself, but your non-regulation haircut and startled bearing won't fool them for long.\n\nCannot be used here.", false, player, 10);
@@ -80,7 +80,7 @@ public class DataLoader implements ApplicationRunner {
         Gun m16 = new Gun("M16", "US Army standard issue (for imperialists)", 25, false, player, "M16", 50);
         weaponRepository.save(m16);
 
-        Weirdo vadig = new Weirdo("Vadig", "A short man with thyroid eyes. Talks in a high-pitched sing-song voice", 14, 7, 8, 4, 0);
+        Weirdo vadig = new Weirdo("Vadig", "A short man with thyroid eyes. Talks in a high-pitched sing-song voice", 20, 7, 8, 4, 0);
         enemyRepository.save(vadig);
 
         Weirdo smith = new Weirdo("Indrid", "Apparently human man with dark complexion. Grins constantly", 16, 8,9, 3, 0 );

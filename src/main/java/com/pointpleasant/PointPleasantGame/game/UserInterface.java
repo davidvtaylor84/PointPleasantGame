@@ -388,7 +388,7 @@ public class UserInterface {
         defenceLabelStat.setForeground(Color.WHITE);
         playerStatsPanel.add(defenceLabelStat);
 
-        intelligenceLabel = new JLabel("INTELLECT:");
+        intelligenceLabel = new JLabel("ATTACK:");
         intelligenceLabel.setFont(font3);
         intelligenceLabel.setForeground(Color.WHITE);
         playerStatsPanel.add(intelligenceLabel);

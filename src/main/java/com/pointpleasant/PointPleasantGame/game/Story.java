@@ -60,7 +60,8 @@ public class Story {
         Player player = getPlayer();
         player.setHealthPoints(80);
         player.setInsight(0);
-        player.setIntelligence(40);
+        player.setDefence(20);
+        player.setAttack(7);
         player.setInspiration(5);
         player.setCash(67);
         player.setGameProgress(0);
@@ -74,7 +75,7 @@ public class Story {
         userInterface.insightLabelStat.setText(Integer.toString(player.getInsight()));
         userInterface.defenceLabelStat.setText(Integer.toString(player.getDefence()));
         userInterface.inspirationLabelStat.setText(Integer.toString(player.getInspiration()));
-        userInterface.intelligenceLabelStat.setText(Integer.toString(player.getIntelligence()));
+        userInterface.intelligenceLabelStat.setText(Integer.toString(player.getAttack()));
         userInterface.cashLabelStat.setText(Integer.toString(player.getCash()));
     }
 
@@ -158,6 +159,7 @@ public class Story {
             case "waitForCar": waitForCar();break;
             case "walkingIntoTown": headingIntoTown();break;
             case "encounterWithVadig": encounterWithVadig(); break;
+            case "fightWithVadig": battleWithVadig();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": showInventoryItem("Energy Bar+");break;
@@ -384,7 +386,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Towards Point Pleasant");
 
-        userInterface.mainTextArea.setText("An very tall man emerges from the scrub from the side of the road. His unusual leer suggests malicious intent. He waves. His grin is fixed on his face. He runs towards you, his gait like that of a gazelle with a broken leg. He is in front of you in no time.");
+        userInterface.mainTextArea.setText("After walking for 20 minutes, a very tall man emerges from the scrub from the side of the road. His unusual leer suggests malicious intent. He waves and runs towards you, his gait like that of a gazelle with a broken leg, and is in front of you in no time.");
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -454,6 +456,53 @@ public class Story {
         game.weapon4 = "getM16";
 
         getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void battleWithVadig(){
+        Player player = getPlayer();
+        Enemy enemy = getEnemy(1L);
+        inventoryButtons();
+        weaponButtons();
+
+        int playerAttack = player.attackEnemy(enemy.getDefence());
+
+        enemy.takeDamage(playerAttack);
+
+        ImageIcon shimmer = new ImageIcon("/Users/charlesvaldez/codeclan_work/capstone/PointPleasantGame/src/main/java/com/pointpleasant/PointPleasantGame/game/resources/vadig.png");
+        userInterface.imageLabel.setIcon(shimmer);
+        userInterface.locationTextArea.setText("Fight with Vadig");
+
+        userInterface.mainTextArea.setText("You grappled with Vadig and inflicted " + playerAttack+" points of damage.");
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1 = "fightWithVadig";
+        game.choiceButton2 = "giveVadigMoney";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.inventoryButton1 = "getArmyUniform";
+        game.inventoryButton2 = "getEnergyBarPlus";
+        game.inventoryButton3 = "getMediocreEnergyBar";
+        game.inventoryButton4 = "getAverageEnergyBar";
+        game.inventoryButton5 = "getRustedKey";
+        game.inventoryButton6 = "getKeyCard";
+        game.inventoryButton7 = "getAmmonite";
+        game.inventoryButton8 = "getWindupTorch";
+
+        game.weapon1 = "getAlloyTube";
+        game.weapon2 = "getBaseballBat";
+        game.weapon3 = "getColt";
+        game.weapon4 = "getM16";
+
+        getPlayerDefault();
+        this.game.getEnemyRepository().save(enemy);
         this.game.getPlayerRepository().save(player);
     }
 
