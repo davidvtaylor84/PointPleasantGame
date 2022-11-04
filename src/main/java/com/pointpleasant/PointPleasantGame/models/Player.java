@@ -98,7 +98,7 @@ public class Player {
     }
 
     public void setInsight(Integer insight) {
-        this.insight = insight;
+        this.insight += insight;
     }
 
     public Integer getDefence() {
