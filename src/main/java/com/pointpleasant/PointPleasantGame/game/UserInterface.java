@@ -249,7 +249,7 @@ public class UserInterface {
         itemDescriptionPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
         itemDescriptionPanel.setBounds(1100, 400, 290, 230);
         itemDescriptionPanel.setBackground(new Color(51, 25,0));
-        inventoryDetailText = new JTextArea("GAME INSTRUCTIONS\n\n1.Make choices using the buttons above.\n\n2.Inventory buttons will implement items if used correctly, otherwise they will show item description.\n\n3.Game will save on close. You will awaken elsewhere.");
+        inventoryDetailText = new JTextArea("GAME INSTRUCTIONS\n\n1.Make choices using the buttons above.\n\n2.Use inventory and weapon items by clicking buttons to the left.\n\n3.Game will save on close. You will awaken elsewhere.");
         inventoryDetailText.setBounds(1100, 400, 285, 225);
         inventoryDetailText.setBackground(new Color(51, 25,0));
         inventoryDetailText.setForeground(Color.WHITE);

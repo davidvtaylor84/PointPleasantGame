@@ -204,8 +204,8 @@ public class Player {
         return null;
     }
 
-    public int attackEnemy(int enemyDefence){
-        int playerAttack = new java.util.Random().nextInt(20);
+    public int attackEnemy(int enemyDefence, int playerAttack){
+//        int playerAttack = new java.util.Random().nextInt(20);
         if(playerAttack > enemyDefence){
             return this.attack;
         }

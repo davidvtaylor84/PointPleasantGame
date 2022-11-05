@@ -111,9 +111,8 @@ public class Enemy{
         this.id = id;
     }
 
-    public int attackPlayer(int playerDefence){
-        int enemyAttack = new java.util.Random().nextInt(20);
-        if(enemyAttack > playerDefence){
+    public int attackPlayer(int playerDefence, int attackRoll){
+        if(attackRoll > playerDefence){
             return this.attackPower;
         }
         else{

@@ -49,13 +49,13 @@ public class DataLoader implements ApplicationRunner {
         Disguise disguise = new Disguise("Army Uniform", "STANDARD ISSUE UNIFORM \n\nDescription: An army uniform, slightly worn, found in a locker.\n\nCould be used to disguise oneself, but your non-regulation haircut and startled bearing won't fool them for long.\n\nCannot be used here.", false, player, 10);
         itemRepository.save(disguise);
 
-        HealthBooster energyBar = new HealthBooster("Energy Bar+", "Mick's energy. Makes one feel godlike(or so goes the packaging blurb). Increases health by 10points", false, player, 15);
+        HealthBooster energyBar = new HealthBooster("Energy Bar+", "BAZLINTON'S ENERGY BAR PLUS.\n\nMakes one feel godlike(or so goes the packaging blurb).\n\nOne-liner on the side reads: 'I’ve got a friend who has got a butler whose left arm is missing; serves him right'.\n\nIncreases health by 25 points", false, player, 25);
         itemRepository.save(energyBar);
 
-        HealthBooster energyBar2 = new HealthBooster("Mediocre Energy Bar", "Mick's energy. Makes one feel godlike(or so goes the packaging blurb). Increases health by 10points", false, player, 5);
+        HealthBooster energyBar2 = new HealthBooster("Mediocre Energy Bar", "INDRID'S ENERGY BAR.\n\nKeeps death at bay(or so goes the packaging blurb).\n\nOne-liner on the side reads: 'I saw this bloke chatting up a cheetah and I thought 'He’s trying to pull a fast one.'\n\nIncreases health by 15 points", false, player, 15);
         itemRepository.save(energyBar2);
 
-        HealthBooster energyBar3 = new HealthBooster("Average Energy Bar", "Mick's energy. Makes one feel godlike(or so goes the packaging blurb). Increases health by 10points", false, player, 10);
+        HealthBooster energyBar3 = new HealthBooster("Average Energy Bar", "CREEPER'S ENERGY BAR.\n\nMakes your blood fire hot(or so goes the packaging blurb).\n\nOne-liner on the side reads: 'I had a dream last night that I was cutting carrots with the Grim Reaper… dicing with death!\n\nIncreases health by 20 points", false, player, 20);
         itemRepository.save(energyBar3);
 
         Key key1 = new Key("Rusted Key", "Found on the body of a dead guy. Heart sticker on the fob.", false, player, "Unused");

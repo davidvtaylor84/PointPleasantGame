@@ -163,6 +163,10 @@ public class Story {
             case "vadigFightsBack": vadigFightsBack();break;
             case "winOverVadig": winOverVadig(); break;
             case "afterShimmer": afterShimmer(); break;
+            case "winOverVadig2": winOverVadig2();break;
+            case "giveVadigMoney":player.setCash(0);player.setItemToEquipped("Mediocre Energy Bar");game.getPlayerRepository().save(player);giveVadigMoney();break;
+            case "fieldInvestigation": player.setItemToEquipped("Average Energy Bar");game.getPlayerRepository().save(player);fieldInvestigation();break;
+            case "inspiredAttackAgainstVadig": inspiredAttackAgainstVadig();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": showInventoryItem("Energy Bar+");break;
@@ -188,7 +192,7 @@ public class Story {
         userInterface.imageLabel.setIcon(townImage);
         userInterface.locationTextArea.setText("Point Pleasant Town Centre");
 
-        userInterface.mainTextArea.setText("You wake with a start in the passenger seat, certain that you have crashed.  The morning sun blinds you through the windshield. The car is on the roadside. The battery is dead. As is your phone.\n\nAhead, a sign reads 'Point Pleasant: 2km'. Far down the road behind, you spot a shimmer above the asphalt. You step out of the car. What do you do?");
+        userInterface.mainTextArea.setText("You wake with a start in the passenger seat, certain that you have crashed. The morning sun blinds you through the windshield. The car is on the roadside. The battery is dead. As is your phone.\n\nAhead, a sign reads 'Point Pleasant: 2km'. Far down the road behind, you spot a shimmer above the asphalt. You step out of the car. What do you do?");
 
         userInterface.choice1.setText("Walk into town");
         userInterface.choice2.setText("Wait for a car to pass");
@@ -204,8 +208,8 @@ public class Story {
 
         game.inventoryButton1 = "getArmyUniform";
         game.inventoryButton2 = "getEnergyBarPlus";
-        game.inventoryButton3 = "getMediocreEnergyBar";
-        game.inventoryButton4 = "getAverageEnergyBar";
+        game.inventoryButton3 = "getAverageEnergyBar";
+        game.inventoryButton4 = "getMediocreEnergyBar";
         game.inventoryButton5 = "getRustedKey";
         game.inventoryButton6 = "getKeyCard";
         game.inventoryButton7 = "getAmmonite";
@@ -223,8 +227,8 @@ public class Story {
     public void walkingTowardsShimmer(){
         Player player = getPlayer();
         getPlayerDefault();
-        ImageIcon towardsshimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/towardsshimmer.jpeg");
-        userInterface.imageLabel.setIcon(towardsshimmer);
+        ImageIcon towardsShimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/towardsshimmer.jpeg");
+        userInterface.imageLabel.setIcon(towardsShimmer);
         userInterface.locationTextArea.setText("Away from town");
 
         userInterface.mainTextArea.setText("As you draw closer to this metallic shimmer hovering a metre above the road, a strange fear tightens around your heart. The logical part of your brain tells you it is merely a mirage, though deep down, something inside is screaming that you should run from this thing as fast as possible.\n\nWhat do you do?");
@@ -240,20 +244,6 @@ public class Story {
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
-
-        game.inventoryButton1 = "getArmyUniform";
-        game.inventoryButton2 = "getEnergyBarPlus";
-        game.inventoryButton3 = "getMediocreEnergyBar";
-        game.inventoryButton4 = "getAverageEnergyBar";
-        game.inventoryButton5 = "getRustedKey";
-        game.inventoryButton6 = "getKeyCard";
-        game.inventoryButton7 = "getAmmonite";
-        game.inventoryButton8 = "getWindupTorch";
-
-        game.weapon1 = "getAlloyTube";
-        game.weapon2 = "getBaseballBat";
-        game.weapon3 = "getColt";
-        game.weapon4 = "getM16";
 
         this.game.getPlayerRepository().save(player);
     }
@@ -278,21 +268,6 @@ public class Story {
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
-
-        game.inventoryButton1 = "getArmyUniform";
-        game.inventoryButton2 = "getEnergyBarPlus";
-        game.inventoryButton3 = "getMediocreEnergyBar";
-        game.inventoryButton4 = "getAverageEnergyBar";
-        game.inventoryButton5 = "getRustedKey";
-        game.inventoryButton6 = "getKeyCard";
-        game.inventoryButton7 = "getAmmonite";
-        game.inventoryButton8 = "getWindupTorch";
-
-        game.weapon1 = "getAlloyTube";
-        game.weapon2 = "getBaseballBat";
-        game.weapon3 = "getColt";
-        game.weapon4 = "getM16";
-
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
@@ -320,20 +295,6 @@ public class Story {
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
-
-        game.inventoryButton1 = "getArmyUniform";
-        game.inventoryButton2 = "getEnergyBarPlus";
-        game.inventoryButton3 = "getMediocreEnergyBar";
-        game.inventoryButton4 = "getAverageEnergyBar";
-        game.inventoryButton5 = "getRustedKey";
-        game.inventoryButton6 = "getKeyCard";
-        game.inventoryButton7 = "getAmmonite";
-        game.inventoryButton8 = "getWindupTorch";
-
-        game.weapon1 = "getAlloyTube";
-        game.weapon2 = "getBaseballBat";
-        game.weapon3 = "getColt";
-        game.weapon4 = "getM16";
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
@@ -363,20 +324,6 @@ public class Story {
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
-        game.inventoryButton1 = "getArmyUniform";
-        game.inventoryButton2 = "getEnergyBarPlus";
-        game.inventoryButton3 = "getMediocreEnergyBar";
-        game.inventoryButton4 = "getAverageEnergyBar";
-        game.inventoryButton5 = "getRustedKey";
-        game.inventoryButton6 = "getKeyCard";
-        game.inventoryButton7 = "getAmmonite";
-        game.inventoryButton8 = "getWindupTorch";
-
-        game.weapon1 = "getAlloyTube";
-        game.weapon2 = "getBaseballBat";
-        game.weapon3 = "getColt";
-        game.weapon4 = "getM16";
-
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
     }
@@ -404,20 +351,6 @@ public class Story {
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
-        game.inventoryButton1 = "getArmyUniform";
-        game.inventoryButton2 = "getEnergyBarPlus";
-        game.inventoryButton3 = "getMediocreEnergyBar";
-        game.inventoryButton4 = "getAverageEnergyBar";
-        game.inventoryButton5 = "getRustedKey";
-        game.inventoryButton6 = "getKeyCard";
-        game.inventoryButton7 = "getAmmonite";
-        game.inventoryButton8 = "getWindupTorch";
-
-        game.weapon1 = "getAlloyTube";
-        game.weapon2 = "getBaseballBat";
-        game.weapon3 = "getColt";
-        game.weapon4 = "getM16";
-
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
     }
@@ -431,7 +364,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Towards Point Pleasant");
 
-        userInterface.mainTextArea.setText("After walking for 20 minutes, a very tall man emerges from the scrub from the side of the road. His unusual leer suggests malicious intent. He waves and runs towards you, his gait like that of a gazelle with a broken leg, and is in front of you in no time.");
+        userInterface.mainTextArea.setText("After walking for 20 minutes in the increasingly hot sun, a very tall man emerges from the scrub from the side of the road.\n\nHe waves and runs to you, grinning and laughing, his gait like that of a gazelle with a broken leg. In less time that you can think to react, he stands with his face very close to yours. His breath smells like almonds.");
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -444,20 +377,6 @@ public class Story {
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
-
-        game.inventoryButton1 = "getArmyUniform";
-        game.inventoryButton2 = "getEnergyBarPlus";
-        game.inventoryButton3 = "getMediocreEnergyBar";
-        game.inventoryButton4 = "getAverageEnergyBar";
-        game.inventoryButton5 = "getRustedKey";
-        game.inventoryButton6 = "getKeyCard";
-        game.inventoryButton7 = "getAmmonite";
-        game.inventoryButton8 = "getWindupTorch";
-
-        game.weapon1 = "getAlloyTube";
-        game.weapon2 = "getBaseballBat";
-        game.weapon3 = "getColt";
-        game.weapon4 = "getM16";
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
@@ -472,7 +391,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Vadig");
 
-        userInterface.mainTextArea.setText("'Do not be afraid,' he says, in an unusually high-pitched sing-song, 'We are from a country much weaker than yours.'\n\nHe grabs you by the lapels and puts his hands in your pockets.\n\n'I require your cash for my own pleasure,' he adds.\n\n");
+        userInterface.mainTextArea.setText("'Do not be afraid. The name's Vadig,' he says, in an unusually high-pitched sing-song, 'We are from a country much weaker than yours.'\n\nHe grabs you by the lapels and puts his hands in your pockets.\n\n'I require your cash for my own pleasure,' he adds.\n\n");
 
         userInterface.choice1.setText("Fight him off");
         userInterface.choice2.setText("Let him take your money");
@@ -486,19 +405,31 @@ public class Story {
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
-        game.inventoryButton1 = "getArmyUniform";
-        game.inventoryButton2 = "getEnergyBarPlus";
-        game.inventoryButton3 = "getMediocreEnergyBar";
-        game.inventoryButton4 = "getAverageEnergyBar";
-        game.inventoryButton5 = "getRustedKey";
-        game.inventoryButton6 = "getKeyCard";
-        game.inventoryButton7 = "getAmmonite";
-        game.inventoryButton8 = "getWindupTorch";
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
 
-        game.weapon1 = "getAlloyTube";
-        game.weapon2 = "getBaseballBat";
-        game.weapon3 = "getColt";
-        game.weapon4 = "getM16";
+    public void giveVadigMoney(){
+        Player player = getPlayer();
+//        inventoryButtons();
+        weaponButtons();
+        ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/vadigTakes.png");
+        userInterface.imageLabel.setIcon(shimmer);
+        userInterface.locationTextArea.setText("Vadig Takes Your Money");
+
+        userInterface.mainTextArea.setText("'This will not do,' he says. 'I was going to give you a key. Now I won't. Use this if you ever get into a fight. It will help, but I'm taking your money.'\n\nVadig hands over a Mediocre Energy Bar(+10 HP) and walks away from you down the road.");
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1 = "enteringTheTown";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
@@ -510,7 +441,9 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        int playerAttack = player.attackEnemy(enemy.getDefence());
+        int attackRoll = new java.util.Random().nextInt(20);
+
+        int playerAttack = player.attackEnemy(enemy.getDefence(), attackRoll);
 
         enemy.takeDamage(playerAttack);
 
@@ -518,7 +451,53 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Fight with Vadig");
 
-        userInterface.mainTextArea.setText("Vadig HP: "+enemy.getHealthPoints()+"\n\nYOUR ATTACK ROLL: "+playerAttack+" vs VADIG DEFENCE RATING: "+enemy.getDefence()+"\n\nYou grapple with Vadig and inflict " + playerAttack+ " points of damage");
+        userInterface.mainTextArea.setText("Vadig HP: "+enemy.getHealthPoints()+"\n\nYOUR D20 ATTACK ROLL: "+attackRoll+" vs VADIG DEFENCE RATING: "+enemy.getDefence()+"\n\nYou grapple with Vadig and inflict " + playerAttack+ " points of damage");
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("Inspired Attack");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        if(enemy.getHealthPoints()>0){
+            game.choiceButton1 = "vadigFightsBack";
+            if(player.getInspiration()>0){
+                game.choiceButton2 = "inspiredAttackAgainstVadig";}
+            else {game.choiceButton2 = "";}
+        } else{
+            game.choiceButton1 = "winOverVadig";
+            game.choiceButton2 = "";
+        }
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getEnemyRepository().save(enemy);
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void inspiredAttackAgainstVadig(){
+        Player player = getPlayer();
+        Enemy enemy = getEnemy(1L);
+        inventoryButtons();
+        weaponButtons();
+
+        int attackRoll = new java.util.Random().nextInt(20);
+
+        int roll = player.attackEnemy(enemy.getDefence(), attackRoll);
+
+        int damageTotal = roll +8;
+
+        enemy.takeDamage(damageTotal);
+
+        player.setInspiration(player.getInspiration()-1);
+
+        ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/grappleVadig.png");
+        userInterface.imageLabel.setIcon(shimmer);
+        userInterface.locationTextArea.setText("Fight with Vadig");
+
+        userInterface.mainTextArea.setText("Vadig HP:"+enemy.getHealthPoints()+"\nYou used 1 point of Inspiration to add +8 damage to a successful or unsuccessful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs VADIG DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.");
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -530,25 +509,12 @@ public class Story {
             game.choiceButton1 = "vadigFightsBack";
         } else{
             game.choiceButton1 = "winOverVadig";
+            userInterface.choice2.setText("");
         }
         game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
-
-        game.inventoryButton1 = "getArmyUniform";
-        game.inventoryButton2 = "getEnergyBarPlus";
-        game.inventoryButton3 = "getMediocreEnergyBar";
-        game.inventoryButton4 = "getAverageEnergyBar";
-        game.inventoryButton5 = "getRustedKey";
-        game.inventoryButton6 = "getKeyCard";
-        game.inventoryButton7 = "getAmmonite";
-        game.inventoryButton8 = "getWindupTorch";
-
-        game.weapon1 = "getAlloyTube";
-        game.weapon2 = "getBaseballBat";
-        game.weapon3 = "getColt";
-        game.weapon4 = "getM16";
 
         getPlayerDefault();
         this.game.getEnemyRepository().save(enemy);
@@ -561,7 +527,9 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        int enemyAttack = enemy.attackPlayer(player.getDefence());
+        int attackRoll = new java.util.Random().nextInt(20);
+
+        int enemyAttack = enemy.attackPlayer(player.getDefence(), attackRoll);
 
         player.takeDamage(enemyAttack);
 
@@ -569,7 +537,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Fight with Vadig");
 
-        userInterface.mainTextArea.setText("ENEMY ATTACK ROLL: "+enemyAttack+" vs YOUR DEFENCE RATING:()\n\nVadig inflicts " + enemyAttack+ " points of damage");
+        userInterface.mainTextArea.setText("Vadig giggles inanely as he tries to wrestle you to the ground.\n\nENEMY D20 ATTACK ROLL: "+attackRoll+" vs YOUR DEFENCE RATING: "+player.getDefence()+"\n\nVadig inflicts " + enemyAttack+ " points of damage");
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -579,30 +547,13 @@ public class Story {
 
         if(player.getHealthPoints()>0){
             game.choiceButton1 = "fightWithVadig";
-            game.choiceButton2 = "";
-            game.choiceButton3 = "";
-            game.choiceButton4 = "";
-            game.choiceButton5 = "";
         } else{
             game.choiceButton1 = "youDie";
-            game.choiceButton2 = "";
-            game.choiceButton3 = "";
-            game.choiceButton4 = "";
-            game.choiceButton5 = "";}
-
-        game.inventoryButton1 = "getArmyUniform";
-        game.inventoryButton2 = "getEnergyBarPlus";
-        game.inventoryButton3 = "getMediocreEnergyBar";
-        game.inventoryButton4 = "getAverageEnergyBar";
-        game.inventoryButton5 = "getRustedKey";
-        game.inventoryButton6 = "getKeyCard";
-        game.inventoryButton7 = "getAmmonite";
-        game.inventoryButton8 = "getWindupTorch";
-
-        game.weapon1 = "getAlloyTube";
-        game.weapon2 = "getBaseballBat";
-        game.weapon3 = "getColt";
-        game.weapon4 = "getM16";
+        }
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
 
         getPlayerDefault();
         this.game.getEnemyRepository().save(enemy);
@@ -612,15 +563,16 @@ public class Story {
     public void winOverVadig(){
         Player player = getPlayer();
         player.setItemToEquipped("Rusted Key");
+        player.setDefence(player.getDefence()+2);
+        player.setAttack(player.getAttack()+3);
         inventoryButtons();
         weaponButtons();
-
 
         ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/vadiglaughing.png");
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Highway fight aftermath");
 
-        userInterface.mainTextArea.setText("Vadig falls to the ground and laughs.\n\n'Well done', he says. 'I had to test you for what is to come.'\n\nHe stands up slowly and hands you a rusted key. His height seems to have increased.\n\n'You will find this useful in the coming days.'");
+        userInterface.mainTextArea.setText("Vadig falls to the ground and laughs.\n\n'Well done', he says. 'I had to test you for what is to come.'\n\nHe stands up slowly and hands you a rusted key. His height seems to have increased.");
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -628,31 +580,71 @@ public class Story {
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1="";
+        game.choiceButton1="winOverVadig2";
         game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
-
-        game.inventoryButton1 = "getArmyUniform";
-        game.inventoryButton2 = "getEnergyBarPlus";
-        game.inventoryButton3 = "getMediocreEnergyBar";
-        game.inventoryButton4 = "getAverageEnergyBar";
-        game.inventoryButton5 = "getRustedKey";
-        game.inventoryButton6 = "getKeyCard";
-        game.inventoryButton7 = "getAmmonite";
-        game.inventoryButton8 = "getWindupTorch";
-
-        game.weapon1 = "getAlloyTube";
-        game.weapon2 = "getBaseballBat";
-        game.weapon3 = "getColt";
-        game.weapon4 = "getM16";
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
     }
 
 
+    public void winOverVadig2(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/vadiglaughing.png");
+        userInterface.imageLabel.setIcon(shimmer);
+        userInterface.locationTextArea.setText("Highway fight aftermath");
+
+        userInterface.mainTextArea.setText("'You must visit my sisters in the factory on the outskirts of the town.'\n\nHe nods and runs off into the field before descending some unseen staircase hidden by scrub.\n\n(Rusted Key has been added to Inventory. +2 Defence. +3 Attack.)");
+
+        userInterface.choice1.setText("On to Point Pleasant");
+        userInterface.choice2.setText("Investigate field");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="enteringTheTown";
+        game.choiceButton2 = "fieldInvestigation";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void fieldInvestigation(){
+        Player player = getPlayer();
+        player.setItemToEquipped("Average Health Bar");
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/emptyField.jpeg");
+        userInterface.imageLabel.setIcon(shimmer);
+        userInterface.locationTextArea.setText("Investigate Field");
+
+        userInterface.mainTextArea.setText("You enter the field and seek out the place where Vadig vanished.\n\nYou can find no sign of a staircase or door amidst the dirt and dried out cornstalks, only an Average Energy Bar(+20 HP) with a note attached that reads: 'Eat this during your next fight. It can help.'");
+
+        userInterface.choice1.setText("On to Point Pleasant");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="enteringTheTown";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
 
 
 
