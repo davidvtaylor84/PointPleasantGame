@@ -422,7 +422,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Vadig Takes Your Money");
 
-        userInterface.mainTextArea.setText("'This will not do,' he says. 'I was going to give you a special key for your courage. Now I won't. Use this if you ever get into a fight. Thanks for the cash.'\n\nVadig hands over a Mediocre Energy Bar(+10 HP) and walks away from you down the road.");
+        userInterface.mainTextArea.setText("'This will not do,' he says. 'I was going to give you something for your courage. Now I won't. Use this if you ever get into a fight. Thanks for the cash.'\n\nVadig hands over a Mediocre Energy Bar(+10 HP) and walks away from you down the road.");
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
