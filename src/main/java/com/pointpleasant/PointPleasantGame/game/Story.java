@@ -63,7 +63,7 @@ public class Story {
         player.setDefence(10);
         player.setAttack(7);
         player.setInspiration(5);
-        player.setCash(67);
+        player.setCash(180);
         player.setGameProgress(0);
         defaultInventory();
         this.game.getPlayerRepository().save(player);
@@ -340,12 +340,17 @@ public class Story {
         userInterface.mainTextArea.setText("You wait for an hour. No cars pass. Everything is still and quiet save for the gentle rustling of wind through the crops. You have drunk the remnants of your water bottle. You are now very hungry.");
 
         userInterface.choice1.setText("Walk into town");
-        userInterface.choice2.setText("Head towards shimmer");
+        if(player.getInsight()==0){
+        userInterface.choice2.setText("Head towards shimmer");}
+        else {userInterface.choice2.setText("");}
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
         game.choiceButton1 = "walkingIntoTown";
+        if(player.getInsight()==0){
+            game.choiceButton2 = "towardsShimmer";
+        } else {game.choiceButton2 = "";}
         game.choiceButton2 = "towardsShimmer";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
@@ -417,7 +422,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Vadig Takes Your Money");
 
-        userInterface.mainTextArea.setText("'This will not do,' he says. 'I was going to give you a key. Now I won't. Use this if you ever get into a fight. It will help, but I'm taking your money.'\n\nVadig hands over a Mediocre Energy Bar(+10 HP) and walks away from you down the road.");
+        userInterface.mainTextArea.setText("'This will not do,' he says. 'I was going to give you a special key for your courage. Now I won't. Use this if you ever get into a fight. Thanks for the cash.'\n\nVadig hands over a Mediocre Energy Bar(+10 HP) and walks away from you down the road.");
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -629,7 +634,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Investigate Field");
 
-        userInterface.mainTextArea.setText("You enter the field and seek out where Vadig vanished.\n\nYou can find no sign of a staircase or door amidst the dirt and dried out cornstalks, only an Average Energy Bar(+20 HP) with a note attached that reads: 'Eat this during your next fight. It can help.'\n\nOnly then do you realise that your wallet is gone. You only have $4 in change.'");
+        userInterface.mainTextArea.setText("You can find no sign of a staircase or door amidst the dirt and dried out cornstalks, only an Average Energy Bar(+20 HP) with a note attached that reads: 'Eat this during your next fight. It can help.'\n\nYou realise that your wallet is gone. You only have $4 in change.'");
 
         userInterface.choice1.setText("On to Point Pleasant");
         userInterface.choice2.setText("");
