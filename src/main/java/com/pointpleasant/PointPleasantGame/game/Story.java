@@ -621,6 +621,7 @@ public class Story {
     public void fieldInvestigation(){
         Player player = getPlayer();
         player.setItemToEquipped("Average Health Bar");
+        player.setCash(4);
         inventoryButtons();
         weaponButtons();
 
@@ -628,7 +629,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Investigate Field");
 
-        userInterface.mainTextArea.setText("You enter the field and seek out the place where Vadig vanished.\n\nYou can find no sign of a staircase or door amidst the dirt and dried out cornstalks, only an Average Energy Bar(+20 HP) with a note attached that reads: 'Eat this during your next fight. It can help.'");
+        userInterface.mainTextArea.setText("You enter the field and seek out where Vadig vanished.\n\nYou can find no sign of a staircase or door amidst the dirt and dried out cornstalks, only an Average Energy Bar(+20 HP) with a note attached that reads: 'Eat this during your next fight. It can help.'\n\nOnly then do you realise that your wallet is gone. You only have $4 in change.'");
 
         userInterface.choice1.setText("On to Point Pleasant");
         userInterface.choice2.setText("");
@@ -667,6 +668,7 @@ public class Story {
         game.choiceButton4 = "kissYourMother";
         game.choiceButton5 = "leaveTown";
     }
+
 
     public void newsPaperOffice(){
         Player player = getPlayer();
