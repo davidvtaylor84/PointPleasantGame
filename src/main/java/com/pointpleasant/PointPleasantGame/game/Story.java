@@ -169,6 +169,12 @@ public class Story {
             case "inspiredAttackAgainstVadig": inspiredAttackAgainstVadig();break;
             case "theTownSquare": theTownSquare();break;
             case "enterLocalShop": enterLocalShop();break;
+            case "tellShopkeeper": tellShopkeeper();break;
+            case "whatToBuy": whatToBuy();break;
+            case "buyTorch": buyTorch();break;
+            case "useShopkeepersPhone": useShopkeepersPhone(); break;
+            case "earningMoneyAtShop": earningMoneyAtShop();break;
+            case "chopLog": chopLog();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": showInventoryItem("Energy Bar+");break;
@@ -425,7 +431,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Vadig Takes Your Money");
 
-        userInterface.mainTextArea.setText("'This will not do,' he says. 'I was going to give you something for your courage. Now I won't. Use this if you ever get into a fight. Thanks for the cash.'\n\nVadig hands over a Mediocre Energy Bar(+10 HP) and walks away from you down the road.");
+        userInterface.mainTextArea.setText("'This will not do,' he says. 'I was going to give you something for your courage. Now I won't. Use this if you ever get into a fight. Thanks for the cash.'\n\nVadig hands over an Energy Bar(+25 HP) and walks away from you down the road.");
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -729,11 +735,11 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/shopkeeper.png");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/mainshopkeeper.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Pleasant Store");
 
-        userInterface.mainTextArea.setText("It is dry and dusty inside the store. The shelves are threadbare. The shopkeeper is a small man with no chin and thick glasses sitting in a chair to the side.\n\nYou immediately erupt into a fit of coughing\n\nThe man ignores you, his head buried in a book entitled, 'The History of Glue'.");
+        userInterface.mainTextArea.setText("It is dry and dusty inside the store. The shelves are threadbare. The shopkeeper is a small man with no chin and thick glasses sitting in a chair to the side.You immediately erupt into a fit of coughing\n\nThe man ignores you, his head buried in a book entitled, 'The History of Glue'.");
 
         userInterface.choice1.setText("Tell Shopkeeper your story");
         userInterface.choice2.setText("What can I buy?");
@@ -743,7 +749,7 @@ public class Story {
 
         game.choiceButton1= "tellShopkeeper";
         game.choiceButton2 = "whatToBuy";
-        game.choiceButton3 = "useShopKeepersPhone";
+        game.choiceButton3 = "useShopkeepersPhone";
         game.choiceButton4 = "theTownSquare";
         game.choiceButton5 = "";
 
@@ -756,19 +762,19 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/shopkeeper.png");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/mainshopkeeper.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Pleasant Store");
 
-        userInterface.mainTextArea.setText("It is dry and dusty inside the store. The shelves are threadbare. The shopkeeper is a small man with no chin and thick glasses sitting in a chair to the side.\n\nYou immediately erupt into a fit of coughing\n\nThe man ignores you, his head buried in a book entitled, 'The History of Glue'.");
+        userInterface.mainTextArea.setText("'A lot of strange things going on in town at the moment,' he says. 'I think it has something to do with the power plant three towns over. Leaking poisonous fumes or somethin, causing hallucinations. Might explain your eyes as well.'\n\nHe looks you up and down:'You gonna buy anything?'");
 
-        userInterface.choice1.setText("Tell Shopkeeper your story");
+        userInterface.choice1.setText("< < <");
         userInterface.choice2.setText("What can I buy?");
         userInterface.choice3.setText("Can I use your phone?");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1="tellShopkeeper";
+        game.choiceButton1="enterLocalShop";
         game.choiceButton2 = "whatToBuy";
         game.choiceButton3 = "useShopKeepersPhone";
         game.choiceButton4 = "";
@@ -777,6 +783,163 @@ public class Story {
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
     }
+
+    public void useShopkeepersPhone(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/mainshopkeeper.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Pleasant Store");
+
+        userInterface.mainTextArea.setText("The old man chuckles: 'I don't think so, sonny. Phone and internet service has been out for three days. You want to make contact with someone outside, the quickest way would be through post.'\n\n'Doesn't bother me much since I never use the internet, but I hear this is a mighty unusual occurrence.'");
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("What can I buy?");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="enterLocalShop";
+        game.choiceButton2 = "whatToBuy";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void whatToBuy(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/mainshopkeeper.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Pleasant Store");
+
+        userInterface.mainTextArea.setText("The store is a mess of faded signage, old boardgames, machinery parts sitting on a table like pieces of abstract sculpture.\n\nYou are not interested in most of it, save for a nifty wind-up torch($30) that reminds you of something you had as a child.");
+
+        userInterface.choice1.setText("< < <");
+
+        userInterface.choice3.setText("Ask about earning money");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        if(player.getItemByName("Windup Torch").isEquipped()==true) {
+            userInterface.choice2.setText("");
+            game.choiceButton2 = "";
+        } else{
+            userInterface.choice2.setText("Buy Torch");
+            game.choiceButton2 = "buyTorch";
+        }
+
+        game.choiceButton1="enterLocalShop";
+
+        game.choiceButton3 = "earningMoneyAtShop";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void buyTorch(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/mainshopkeeper.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Pleasant Store");
+
+        if(player.getCash()>=30 && !player.getItemByName("Windup Torch").isEquipped()) {
+            player.setCash(player.getCash() - 30);
+            userInterface.mainTextArea.setText("'There you go, sir, one torch,' he says. 'This is a classic.'\n\n(Windup Torch added to inventory. Cash -$30)");
+            player.setItemToEquipped("Windup Torch");
+        }else{userInterface.mainTextArea.setText("'Not enough cash, hombre,' he mutters.\n\nHe sits down and continues reading his book, then looks up:'Got some logs need chopping out back if you want to earn $40'");}
+
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("Chop logs");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="enterLocalShop";
+        game.choiceButton2 = "earningMoneyAtShop";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void earningMoneyAtShop(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/liftaxe.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Chopping Wood");
+
+        userInterface.choice1.setText("< < <");
+        if(player.getCash()<46){
+            userInterface.mainTextArea.setText("You have followed him into the courtyard out through the back of the shop. Thigh-high rank weeds grow out of the cracks in the paving. A pile of wood sits next to the door.\n\n'I'll give you two dollars for every split log... up to $40,' he hastily adds. 'Well... what you waiting for?'");
+            userInterface.choice2.setText("Chop Log");
+            game.choiceButton2 = "chopLog";
+        } else{userInterface.mainTextArea.setText("'Excellent work,' he says. 'Can't quite do these things like I used to. You should go get some food at the diner across the road. The beef tacos are pretty good.'");
+        }
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("Chop Log");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="enterLocalShop";
+        game.choiceButton2 = "chopLog";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void chopLog(){
+        Player player = getPlayer();
+        player.setCash(player.getCash()+2);
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/axedrop.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Chopping Wood");
+
+        userInterface.mainTextArea.setText("The handle is greasy, the axehead is damn heavy and threatens to fly off completely. You strain to chop the wood as the old man watches on with a dumb grin on his face.\n\n(+$2 cash)");
+
+        userInterface.choice1.setText("Lift axe");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="earningMoneyAtShop";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+
+
 
 
 
