@@ -180,6 +180,11 @@ public class Story {
             case "beefTacos": beefTacos();break;
             case "usePhoneInDiner": usePhoneInDiner();break;
             case "talkToManInDiner":talkToManInDiner();break;
+            case "marleeHotel": marleeHotel();break;
+            case "hypnotist": hypnotist();break;
+            case "hypnotised": hypnotised(); break;
+            case "hypnotised2": hypnotised2();break;
+            case "hypnotised3": hypnotised3();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": showInventoryItem("Energy Bar+");break;
@@ -1260,23 +1265,25 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/marleeHotel.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Marlee Hotel");
 
-        if(player.getInsight()>=2) {
-            userInterface.mainTextArea.setText("You enter the hushed lobby of the hotel. Everything in here is still, quiet and dusty. A sense of faded grandeur lingers in the immense paintings of Civil War battles and ornate chandeliers, yet the place smells of mildew.");
+        if(player.getInsight()<2) {
+            userInterface.mainTextArea.setText("You enter the hushed lobby of the hotel. Everything in here is still, quiet and dusty. A sense of faded grandeur lingers in the immense paintings of Civil War battles and ornate chandeliers, yet the place smells of mildew.\n\nAbruptly, Mary Hyre appears and tells you how glad she is that you have come.");
+            userInterface.choice1.setText("Go with her");
+            game.choiceButton1="hypnotist";
+        }else {userInterface.mainTextArea.setText("You enter the hushed lobby of the hotel. Everything in here is still, quiet and dusty. A sense of faded grandeur lingers in the immense paintings of Civil War battles and ornate chandeliers, yet the place smells of mildew.");
             userInterface.choice1.setText("");
             game.choiceButton1="";
-        }else {userInterface.mainTextArea.setText("You enter the hushed lobby of the hotel. Everything in here is still, quiet and dusty. A sense of faded grandeur lingers in the immense paintings of Civil War battles and ornate chandeliers, yet the place smells of mildew.\n\nAbruptly, Mary Hyre appears and tells you how glad she is that you have come.");}
+        }
 
-        userInterface.choice1.setText("Go with her");
         userInterface.choice2.setText("Leave");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1="hypnotist";
+
         game.choiceButton2 = "theTownSquare";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
@@ -1291,7 +1298,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/hypnotist1.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Marlee Hotel");
 
@@ -1318,7 +1325,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/hypnotist2.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Marlee Hotel");
 
@@ -1346,11 +1353,11 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/presents.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Marlee Hotel");
 
-        userInterface.mainTextArea.setText("You see yourself driving along the highway at night, suddenly struck by a blinding light in the sky... a sensation of floating... a tall winged creature with red eyes lurking in the trees attacked by men with guns. However surreal these sensations and images, the one that sticks most is of Christmas presents floating in the water.\n\n(Insight increased by +2)");
+        userInterface.mainTextArea.setText("You see yourself driving along the highway at night, suddenly struck by a blinding light in the sky... a sensation of floating... a tall winged creature with red eyes lurking in the trees attacked by men with guns. However surreal these sensations and images, the one that sticks most is of Christmas presents floating in the water.\n(Insight increased by +2)");
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -1370,15 +1377,14 @@ public class Story {
 
     public void hypnotised3(){
         Player player = getPlayer();
-        player.setInsight(getPlayer().getInsight()+2);
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/hyreInRoom.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Marlee Hotel");
 
-        userInterface.mainTextArea.setText("");
+        userInterface.mainTextArea.setText("Upon waking, you tell Mary Hyre and the hypnotist what you experienced.\n\n'This is the most promising candidate yet,'Mary says to her companion and to you, 'You saw the Mothman! Please come back to the office later and I'll explain everything.'");
 
         userInterface.choice1.setText("Leave");
         userInterface.choice2.setText("");
