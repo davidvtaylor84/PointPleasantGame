@@ -30,4 +30,5 @@ public class HealthBooster extends Item implements IActivateItem{
     public void activateItem(){
         setEquipped(true);
     }
+
 }

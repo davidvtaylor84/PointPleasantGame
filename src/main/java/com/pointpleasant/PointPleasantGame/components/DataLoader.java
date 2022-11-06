@@ -98,7 +98,7 @@ public class DataLoader implements ApplicationRunner {
         GreyAlien x47 = new GreyAlien("x47", "Grey alien with broken arm as if having recently been in an accident", 9, 12, 13, "Lanulos", 4);
         enemyRepository.save(x47);
 
-        ManInBlack agentK = new ManInBlack("agentK", "Humanoid. Very red lips. Slow deliberate way of talking", 18, 15, 18, "Has no teeth");
+        ManInBlack agentK = new ManInBlack("agentK", "Humanoid. Very red lips. Slow deliberate way of talking", 30, 15, 18, "Has no teeth");
         enemyRepository.save(agentK);
 
         ManInBlack agentJ = new ManInBlack("agentJ", "Humanoid. Very red lips. Slow deliberate way of talking", 25, 8, 13, "Has no teeth");

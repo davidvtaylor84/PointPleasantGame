@@ -207,6 +207,9 @@ public class Story {
             case "dumpsterEncounter": dumpsterEncounter();break;
             case "openBox": openBox();break;
             case "manInBlack": manInBlack();break;
+            case "MIBAttacks": MIBAttacks();break;
+            case "playerAttacksMIB": playerAttacksMIB();break;
+            case "inspiredAttackAgainstMIB": inspiredAttackAgainstMIB();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": showInventoryItem("Energy Bar+");break;
@@ -500,20 +503,17 @@ public class Story {
         userInterface.mainTextArea.setText("Vadig HP: "+enemy.getHealthPoints()+"\n\nYOUR D20 ATTACK ROLL: "+attackRoll+" vs VADIG DEFENCE RATING: "+enemy.getDefence()+"\n\nYou grapple with Vadig and inflict " + playerAttack+ " points of damage");
 
         userInterface.choice1.setText("> > >");
-        userInterface.choice2.setText("Inspired Attack");
+        userInterface.choice2.setText("");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
         if(enemy.getHealthPoints()>0){
             game.choiceButton1 = "vadigFightsBack";
-            if(player.getInspiration()>0){
-                game.choiceButton2 = "inspiredAttackAgainstVadig";}
-            else {game.choiceButton2 = "";}
         } else{
             game.choiceButton1 = "winOverVadig";
-            game.choiceButton2 = "";
         }
+        game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
@@ -586,17 +586,21 @@ public class Story {
         userInterface.mainTextArea.setText("Vadig giggles inanely as he tries to wrestle you to the ground.\n\nENEMY D20 ATTACK ROLL: "+attackRoll+" vs YOUR DEFENCE RATING: "+player.getDefence()+"\n\nVadig inflicts " + enemyAttack+ " points of damage");
 
         userInterface.choice1.setText("> > >");
-        userInterface.choice2.setText("");
+        userInterface.choice2.setText("Inspired Attack");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
         if(player.getHealthPoints()>0){
             game.choiceButton1 = "fightWithVadig";
+            if(player.getInspiration()>0){
+                game.choiceButton2 = "inspiredAttackAgainstVadig";}
+            else {game.choiceButton2 = "";}
         } else{
-            game.choiceButton1 = "youDie";
+            game.choiceButton1 = "winOverVadig";
+            game.choiceButton2 = "";
         }
-        game.choiceButton2 = "";
+
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
@@ -1506,7 +1510,7 @@ public class Story {
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1="manInBlackAttacks";
+        game.choiceButton1="MIBAttacks";
         game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
@@ -1516,17 +1520,65 @@ public class Story {
         this.game.getPlayerRepository().save(player);
     }
 
-    public void manInBlackAttacks(){
+    public void MIBAttacks() {
         Player player = getPlayer();
         Enemy enemy = getEnemyByName("agentK");
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
-        userInterface.imageLabel.setIcon(image);
-        userInterface.locationTextArea.setText("Dumpster Encounter");
+        int attackRoll = new java.util.Random().nextInt(20);
 
-        userInterface.mainTextArea.setText("");
+        int enemyAttack = enemy.attackPlayer(player.getDefence(), attackRoll);
+
+        player.takeDamage(enemyAttack);
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/black3.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Fight against MIB");
+
+        userInterface.mainTextArea.setText("MIB swings his immense fists down on your head.\n\nENEMY D20 ATTACK ROLL: " + attackRoll + " vs YOUR DEFENCE RATING: " + player.getDefence() + "\n\nMIB inflicts " + enemyAttack + " points of damage");
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("Inspired Attack");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        if (player.getHealthPoints() > 0) {
+            game.choiceButton1 = "playerAttacksMIB";
+            if(player.getInspiration()>0){
+                game.choiceButton2 = "inspiredAttackAgainstMIB";}
+        } else {
+            game.choiceButton1 = "youAwaken";
+            game.choiceButton2 = "youAwaken";
+        }
+
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getEnemyRepository().save(enemy);
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void playerAttacksMIB(){
+        Player player = getPlayer();
+        Enemy enemy = getEnemyByName("agentK");
+        inventoryButtons();
+        weaponButtons();
+
+        int attackRoll = new java.util.Random().nextInt(20);
+
+        int playerAttack = player.attackEnemy(enemy.getDefence(), attackRoll);
+
+        enemy.takeDamage(playerAttack);
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/black2.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Fight against MIB");
+
+        userInterface.mainTextArea.setText("MIB HP: "+enemy.getHealthPoints()+"\n\nYOUR D20 ATTACK ROLL: "+attackRoll+" vs MIB DEFENCE RATING: "+enemy.getDefence()+"\n\nYou grapple with MIB and inflict " + playerAttack+ " points of damage");
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -1534,13 +1586,61 @@ public class Story {
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1="fightManInBlack";
+        if(enemy.getHealthPoints()>0){
+            game.choiceButton1 = "MIBAttacks";
+        } else{
+            game.choiceButton1 = "winOverMIB";
+        }
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getEnemyRepository().save(enemy);
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void inspiredAttackAgainstMIB(){
+        Player player = getPlayer();
+        Enemy enemy = getEnemyByName("agentK");
+        inventoryButtons();
+        weaponButtons();
+
+        int attackRoll = new java.util.Random().nextInt(20);
+
+        int roll = player.attackEnemy(enemy.getDefence(), attackRoll);
+
+        int damageTotal = roll +8;
+
+        enemy.takeDamage(damageTotal);
+
+        player.setInspiration(player.getInspiration()-1);
+
+        ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/black1.png");
+        userInterface.imageLabel.setIcon(shimmer);
+        userInterface.locationTextArea.setText("Fight with MIB");
+
+        userInterface.mainTextArea.setText("MIB HP:"+enemy.getHealthPoints()+"\nYou used 1 point of Inspiration to add +8 damage to a successful or unsuccessful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs MIB DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.");
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        if(enemy.getHealthPoints()>0){
+            game.choiceButton1 = "MIBAttacks";
+        } else{
+            game.choiceButton1 = "winOverMIB";
+        }
         game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
         getPlayerDefault();
+        this.game.getEnemyRepository().save(enemy);
         this.game.getPlayerRepository().save(player);
     }
+
 }
