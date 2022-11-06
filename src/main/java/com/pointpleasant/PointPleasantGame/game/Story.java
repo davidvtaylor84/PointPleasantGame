@@ -168,6 +168,7 @@ public class Story {
             case "fieldInvestigation": player.setItemToEquipped("Average Energy Bar");game.getPlayerRepository().save(player);fieldInvestigation();break;
             case "inspiredAttackAgainstVadig": inspiredAttackAgainstVadig();break;
             case "theTownSquare": theTownSquare();break;
+            case "enterLocalShop": enterLocalShop();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": showInventoryItem("Energy Bar+");break;
@@ -600,6 +601,7 @@ public class Story {
 
     public void winOverVadig2(){
         Player player = getPlayer();
+        player.setCash(4);
         inventoryButtons();
         weaponButtons();
 
@@ -607,7 +609,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Highway fight aftermath");
 
-        userInterface.mainTextArea.setText("'You must visit my sisters in the factory on the outskirts of the town.'\n\nHe nods and runs off into the field before descending some unseen staircase hidden by scrub.\n\n(Rusted Key has been added to Inventory. +2 Defence. +3 Attack.)");
+        userInterface.mainTextArea.setText("'You must visit my sister in library in town.'\n\nHe nods and runs off into the field before descending some unseen staircase hidden by scrub.\n\n(Rusted Key has been added to Inventory. +2 Defence. +3 Attack.)");
 
         userInterface.choice1.setText("On to Point Pleasant");
         userInterface.choice2.setText("Investigate field");
@@ -636,7 +638,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Investigate Field");
 
-        userInterface.mainTextArea.setText("You can find no sign of a staircase or door amidst the dirt and dried out cornstalks, only an Average Energy Bar(+20 HP) with a note attached that reads: 'Eat this during your next fight. It can help.'\n\nYou realise that your wallet is gone. You only have $4 in change.'");
+        userInterface.mainTextArea.setText("You can find no sign of a staircase or door amidst the dirt and dried out cornstalks, only an Average Energy Bar(+20 HP) with a note attached that reads: 'Eat this during your next fight. It can help.");
 
         userInterface.choice1.setText("On to Point Pleasant");
         userInterface.choice2.setText("");
@@ -665,7 +667,9 @@ public class Story {
 
         userInterface.locationTextArea.setText("Welcome to Point Pleasant");
 
-        userInterface.mainTextArea.setText("After walking for an hour, you enter Point Pleasant. It is small town, a population of around 4,000, according the signage on approach. It's main thoroughfare features thrift shops, bars, locally owned shops. The citizens of the town eye you warily. Your hair is a mess and it's only now you notice after looking in a shop window that your eyes are rimmed red and swollen. ");
+        if(player.getCash()==0) {
+            userInterface.mainTextArea.setText("After walking for an hour, you enter Point Pleasant. It is small town, a population of around 4,000, according to the signage on approach. The main thoroughfare features thrift stores, bars, locally owned shops. You notice, after looking in a shop window, that your eyes are rimmed red and swollen.");
+        } else {userInterface.mainTextArea.setText("After walking for an hour, you enter Point Pleasant. It is small town, a population of around 4,000, according to the signage on approach. The main thoroughfare features thrift stores, bars, locally owned shops. You notice, after looking in a shop window, that your eyes are rimmed red and swollen.\n\nYou realise that your wallet is gone. You only have $4 in change.");}
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -719,6 +723,63 @@ public class Story {
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
     }
+
+    public void enterLocalShop(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/shopkeeper.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Pleasant Store");
+
+        userInterface.mainTextArea.setText("It is dry and dusty inside the store. The shelves are threadbare. The shopkeeper is a small man with no chin and thick glasses sitting in a chair to the side.\n\nYou immediately erupt into a fit of coughing\n\nThe man ignores you, his head buried in a book entitled, 'The History of Glue'.");
+
+        userInterface.choice1.setText("Tell Shopkeeper your story");
+        userInterface.choice2.setText("What can I buy?");
+        userInterface.choice3.setText("Can I use your phone?");
+        userInterface.choice4.setText("Leave store");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "tellShopkeeper";
+        game.choiceButton2 = "whatToBuy";
+        game.choiceButton3 = "useShopKeepersPhone";
+        game.choiceButton4 = "theTownSquare";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void tellShopkeeper(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/shopkeeper.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Pleasant Store");
+
+        userInterface.mainTextArea.setText("It is dry and dusty inside the store. The shelves are threadbare. The shopkeeper is a small man with no chin and thick glasses sitting in a chair to the side.\n\nYou immediately erupt into a fit of coughing\n\nThe man ignores you, his head buried in a book entitled, 'The History of Glue'.");
+
+        userInterface.choice1.setText("Tell Shopkeeper your story");
+        userInterface.choice2.setText("What can I buy?");
+        userInterface.choice3.setText("Can I use your phone?");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="tellShopkeeper";
+        game.choiceButton2 = "whatToBuy";
+        game.choiceButton3 = "useShopKeepersPhone";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+
+
 
 
     public void newsPaperOffice(){
