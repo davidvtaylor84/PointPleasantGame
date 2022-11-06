@@ -147,11 +147,6 @@ public class Story {
         Player player = getPlayer();
         switch (choiceButton){
             case "newspaperOffice":newsPaperOffice(); break;
-            case "hotelRoom": hotelRoom();break;
-            case "petTheDog": petTheDog();break;
-            case "kissYourMother": kissYourMother();break;
-            case "leaveTown": leaveTown();break;
-            case "askAfterMary": askAfterMary(); break;
             case "enteringTheTown": enteringTheTown();break;
             case "towardsShimmer": walkingTowardsShimmer();break;
             case "upCloseWithTheShimmer": upCloseWithShimmer();break;
@@ -178,6 +173,9 @@ public class Story {
             case "enterCarGarage": enterCarGarage();break;
             case "tellMechanic": tellMechanic();break;
             case "useMechanicPhone": useMechanicPhone();break;
+            case "maryTells": maryTells();break;
+            case "maryTellsMore": maryTellsMore();break;
+            case "maryTellsMoreAgain": maryTellsMoreAgain();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": showInventoryItem("Energy Bar+");break;
@@ -702,7 +700,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/townsquare.png");
+        ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/newtownsquare.png");
         userInterface.imageLabel.setIcon(townImage);
 
         userInterface.locationTextArea.setText("Point Pleasant");
@@ -1023,108 +1021,114 @@ public class Story {
         this.game.getPlayerRepository().save(player);
     }
 
-
-
-
-
-
-
-
     public void newsPaperOffice(){
         Player player = getPlayer();
-        player.takeDamage(20);
-
-        player.setItemToEquipped("Army Uniform");
-        player.setWeaponToEquipped("Alloy Tube");
-        player.setItemToEquipped("Rusted Key");
-//        Enemy bob = getAlienBob();
-        ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/point.jpeg");
-        userInterface.imageLabel.setIcon(townImage);
-
-        userInterface.mainTextArea.setText("You enter the newspaper office looking for your friend, Mary Hyre. There are only a couple of people around. The room is small. One old man sits at a typewriter. He asks what you want?");
-        userInterface.choice1.setText("Tell him to eat his hat");
-        userInterface.choice2.setText("Tell him you are new in town.");
-        userInterface.choice3.setText("Ask after Mary");
-        userInterface.choice4.setText("Leave the post office.");
-        userInterface.choice5.setText("");
-        userInterface.locationTextArea.setText("Point Pleasant Enquirer");
-
-        game.choiceButton1 = "";
-        game.choiceButton2 = "";
-        game.choiceButton3 = "askAfterMary";
-        game.choiceButton4 = "enterTheTown";
-        game.choiceButton5 = "leaveTown";
-
-        game.inventoryButton1 = "getArmyUniform";
-        game.inventoryButton2 = "getEnergyBarPlus";
-        game.inventoryButton3 = "getMediocreEnergyBar";
-        game.inventoryButton4 = "getAverageEnergyBar";
-        game.inventoryButton5 = "getRustedKey";
-        game.inventoryButton6 = "getKeyCard";
-        game.inventoryButton7 = "getAmmonite";
-        game.inventoryButton8 = "getWindupTorch";
-
-        game.weapon1 = "getAlloyTube";
-        game.weapon2 = "getBaseballBat";
-        game.weapon3 = "getColt";
-        game.weapon4 = "getM16";
-
-//        System.out.println(bob.getAttackPower());
-
-        this.game.getPlayerRepository().save(player);
-
-    }
-
-    public void askAfterMary(){
-        Player player = getPlayer();
-        getPlayerDefault();
         inventoryButtons();
         weaponButtons();
 
-        userInterface.mainTextArea.setText("She's been sick all day. Maybe you want to go see her at home. I can give you her address.");
-        userInterface.choice1.setText("Get her address.");
-        userInterface.choice2.setText("Tell him you are new in town.");
-        userInterface.choice3.setText("Tell him about the bright lights you saw on the way into town.");
-        userInterface.choice4.setText("Leave the post office.");
-        userInterface.choice5.setText("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/maryHyre2.png");
+        userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
-        game.choiceButton1 = "askAfterMary";
+        userInterface.mainTextArea.setText("You enter the offices of the Point Pleasant Enquirer located in a converted mobile home in a lot off the main square. It is surprisingly bright and airy inside. The sole journalist in the office stands up when she notices your wild look\n\n'Aha!' She says.'You've seen them too!'");
+
+        userInterface.choice1.setText("What are you talking about?");
+        userInterface.choice2.setText("Leave");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="maryTells";
+        game.choiceButton2 = "theTownSquare";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void maryTells(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/maryHyre2.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Point Pleasant Enquirer");
+
+        userInterface.mainTextArea.setText("'Let me guess,' she says. 'You suspect you fell asleep at the wheel of your and you woke up in the morning at the side of the road.'\n\n'It's happened a bunch of times over the past few weeks, ever since everything started going crazy round here. Kooks and soldiers showing up and whatnot.'");
+
+        userInterface.choice1.setText("Tell me more");
+        userInterface.choice2.setText("Leave");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="maryTellsMore";
+        game.choiceButton2 = "theTownSquare";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void maryTellsMore(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/ufo2.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Point Pleasant Enquirer");
+
+        userInterface.mainTextArea.setText("'Can I show you a video?' She says.\n\nWithout waiting for a reply she plays you a video on her phone of a large pill-shaped object floating above the desert outside Point Pleasant.\n\n'Does this look familiar?'");
+
+        userInterface.choice1.setText("Shrug");
+        userInterface.choice2.setText("Leave");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="maryTellsMoreAgain";
+        game.choiceButton2 = "theTownSquare";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void maryTellsMoreAgain(){
+        Player player = getPlayer();
+        player.setGameProgress(2);
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/maryHyre2.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Point Pleasant Enquirer");
+
+        userInterface.mainTextArea.setText("Although the import of the video is not immediately obvious, something about this UFO footage resonates makes your stomach drop.\n\n'If you would like to find out more, come see me at the Marlee Hotel later on. I have a hypnotist friend staying there helping people like you recover lost memories.'");
+
+        userInterface.choice1.setText("Leave");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="theTownSquare";
         game.choiceButton2 = "";
         game.choiceButton3 = "";
-        game.choiceButton4 = "enterTheTown";
-        game.choiceButton5 = "leaveTown";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
 
-        game.inventoryButton1 = "getArmyUniform";
-        game.inventoryButton2 = "getEnergyBarPlus";
-        game.inventoryButton3 = "getMediocreEnergyBar";
-        game.inventoryButton4 = "getAverageEnergyBar";
-        game.inventoryButton5 = "getRustedKey";
-        game.inventoryButton6 = "getKeyCard";
-        game.inventoryButton7 = "getAmmonite";
-        game.inventoryButton8 = "getWindupTorch";
-
-        game.weapon1 = "getAlloyTube";
-        game.weapon2 = "getBaseballBat";
-        game.weapon3 = "getColt";
-        game.weapon4 = "getM16";
-
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
     }
 
-    public void hotelRoom(){
-
-    }
-
-    public void petTheDog(){
-
-    }
-
-    public void kissYourMother(){
-
-    }
-
-    public void leaveTown(){
-
-    }
 
 }
