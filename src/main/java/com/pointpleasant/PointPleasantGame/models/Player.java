@@ -162,6 +162,8 @@ public class Player {
         return healthPoints;
     }
 
+
+
 //    public void setWeaponToEquipped(int index){
 //        this.weapons.get(index).setEquipped(true);
 //    }

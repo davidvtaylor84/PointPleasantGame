@@ -152,7 +152,7 @@ public class Story {
             case "kissYourMother": kissYourMother();break;
             case "leaveTown": leaveTown();break;
             case "askAfterMary": askAfterMary(); break;
-            case "enterTheTown": enterTheTown();break;
+            case "enteringTheTown": enteringTheTown();break;
             case "towardsShimmer": walkingTowardsShimmer();break;
             case "upCloseWithTheShimmer": upCloseWithShimmer();break;
             case "throughTheShimmer": player.setInsight(1);game.getPlayerRepository().save(player);throughTheShimmer(); break;
@@ -164,9 +164,10 @@ public class Story {
             case "winOverVadig": winOverVadig(); break;
             case "afterShimmer": afterShimmer(); break;
             case "winOverVadig2": winOverVadig2();break;
-            case "giveVadigMoney":player.setCash(0);player.setItemToEquipped("Mediocre Energy Bar");game.getPlayerRepository().save(player);giveVadigMoney();break;
+            case "giveVadigMoney":giveVadigMoney();break;
             case "fieldInvestigation": player.setItemToEquipped("Average Energy Bar");game.getPlayerRepository().save(player);fieldInvestigation();break;
             case "inspiredAttackAgainstVadig": inspiredAttackAgainstVadig();break;
+            case "theTownSquare": theTownSquare();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": showInventoryItem("Energy Bar+");break;
@@ -275,7 +276,6 @@ public class Story {
 
     public void throughTheShimmer(){
         Player player = getPlayer();
-//        player.setInsight(1);
         inventoryButtons();
         weaponButtons();
         ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/farbeyond.jpeg");
@@ -416,7 +416,9 @@ public class Story {
 
     public void giveVadigMoney(){
         Player player = getPlayer();
-//        inventoryButtons();
+        player.setCash(0);
+        player.setItemToEquipped("Energy Bar+");
+        inventoryButtons();
         weaponButtons();
         ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/vadigTakes.png");
         userInterface.imageLabel.setIcon(shimmer);
@@ -653,25 +655,69 @@ public class Story {
     }
 
 
+    public void enteringTheTown(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
 
-
-    public void enterTheTown(){
-        ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/point.jpeg");
+        ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/pleasantMain.png");
         userInterface.imageLabel.setIcon(townImage);
 
-        userInterface.mainTextArea.setText("Point Pleasant is a quiet town. A quiet fortitude lurks among the people. You wait by your parked car and decide what to do. Where to go next?");
-        userInterface.choice1.setText("Go into the newspaper office");
-        userInterface.choice2.setText("Go into the hotel");
-        userInterface.choice3.setText("Pet the dog");
-        userInterface.choice4.setText("Kiss your mother");
-        userInterface.choice5.setText("Leave town");
-        userInterface.locationTextArea.setText("Point Pleasant Town Centre");
+        userInterface.locationTextArea.setText("Welcome to Point Pleasant");
 
-        game.choiceButton1 = "newspaperOffice";
-        game.choiceButton2 = "hotelRoom";
-        game.choiceButton3 = "petTheDog";
-        game.choiceButton4 = "kissYourMother";
-        game.choiceButton5 = "leaveTown";
+        userInterface.mainTextArea.setText("After walking for an hour, you enter Point Pleasant. It is small town, a population of around 4,000, according the signage on approach. It's main thoroughfare features thrift shops, bars, locally owned shops. The citizens of the town eye you warily. Your hair is a mess and it's only now you notice after looking in a shop window that your eyes are rimmed red and swollen. ");
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+
+        game.choiceButton1 = "theTownSquare";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void theTownSquare(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/townsquare.png");
+        userInterface.imageLabel.setIcon(townImage);
+
+        userInterface.locationTextArea.setText("Point Pleasant");
+
+        userInterface.mainTextArea.setText("In the town square, you notice that you are being actively avoided, as if you are a symptom of psychosis. Everyone talks to one another in hushed tones. It is cold, with the grey shell of cloud threatening rain.\n\nA handful of shops and businesses are open. Most are closed. Where do you want to go?");
+
+        userInterface.choice1.setText("Local Shop");
+        userInterface.choice2.setText("Car Garage");
+        userInterface.choice3.setText("Diner");
+
+        game.choiceButton1 = "enterLocalShop";
+        game.choiceButton2 = "enterCarGarage";
+        game.choiceButton3 = "enterDiner";
+
+        if(player.getGameProgress()==1){
+            userInterface.choice4.setText("Point Pleasant Enquirer");
+            game.choiceButton4 = "newspaperOffice";
+        } else{userInterface.choice4.setText("");
+            game.choiceButton4 = "";
+        }
+        if(player.getGameProgress()==2){
+            userInterface.choice5.setText("The Marlee Hotel");
+            game.choiceButton5 = "marleeHotel";
+        } else{userInterface.choice5.setText("");
+            game.choiceButton5 = "";}
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
     }
 
 
