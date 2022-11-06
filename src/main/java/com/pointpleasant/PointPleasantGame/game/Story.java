@@ -176,6 +176,10 @@ public class Story {
             case "maryTells": maryTells();break;
             case "maryTellsMore": maryTellsMore();break;
             case "maryTellsMoreAgain": maryTellsMoreAgain();break;
+            case "enterDiner": enterDiner();break;
+            case "beefTacos": beefTacos();break;
+            case "usePhoneInDiner": usePhoneInDiner();break;
+            case "talkToManInDiner":talkToManInDiner();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": showInventoryItem("Energy Bar+");break;
@@ -1130,5 +1134,265 @@ public class Story {
         this.game.getPlayerRepository().save(player);
     }
 
+    public void enterDiner(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
 
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/dinerMain.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Dynamite Diner");
+
+        userInterface.mainTextArea.setText("The diner is quiet. The owner, or owner, sits behind the counter doing a crossword. She doesn't look up.\n\nA man sitting in one of the booths perks up at your entrance. Like you, his hair is wild and his eyes are red and swollen. He tries to catch your eye and weakly smiles.");
+
+        userInterface.choice1.setText("Order Beef Tacos($7)");
+        userInterface.choice2.setText("Talk to man");
+        userInterface.choice3.setText("Ask to use phone");
+        userInterface.choice4.setText("Leave");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="beefTacos";
+        game.choiceButton2 = "talkToManInDiner";
+        game.choiceButton3 = "usePhoneInDiner";
+        game.choiceButton4 = "theTownSquare";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void beefTacos(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/dinerMain.png");
+        ImageIcon image2 = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/beeftacos.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Dynamite Diner");
+
+        if(player.getCash()>=7){
+            player.setCash(getPlayer().getCash()-7);
+            player.setHealthPoints(getPlayer().getHealthPoints()+10);
+            userInterface.mainTextArea.setText("These are the worst beef tacos you've ever eaten, but they are somewhat nutritious.\n\n(HP +10. CASH -7)");
+            userInterface.imageLabel.setIcon(image2);
+        } else{userInterface.mainTextArea.setText("You don't have enough cash. Maybe try doing some work.");}
+
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("Talk to man");
+        userInterface.choice3.setText("Ask to use phone");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="enterDiner";
+        game.choiceButton2 = "talkToManInDiner";
+        game.choiceButton3 = "usePhoneInDiner";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void usePhoneInDiner(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/dinerMain.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Dynamite Diner");
+
+        userInterface.mainTextArea.setText("'Sorry, sugar,' says the waitress.'Phones are all busted in this stupid town. Everything has gone to hell. Even the beef we're getting is all weird. Something to do with the cattle mutilations I reckon.'\n\n'I gotta get out of this place,' she adds.");
+
+        userInterface.choice1.setText("Order Beef Tacos($7)");
+        userInterface.choice2.setText("Talk to man");
+        userInterface.choice3.setText("< < <");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="beefTacos";
+        game.choiceButton2 = "talkToManInDiner";
+        game.choiceButton3 = "enterDiner";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void talkToManInDiner(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/realdinerman.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Dynamite Diner");
+
+        if(player.getInsight()>=2){
+        userInterface.mainTextArea.setText("'Now you know', the man says. It's as if he has been waiting for you.'Maybe you're a braver man than I. There's something out back of this diner that frightens me more than anything in this world. A man that isn't a man. A box...'\n\nAt this he breaks off into a fit of giggles and says no more.");
+            userInterface.choice2.setText("Go out the back door");
+            game.choiceButton2 = "dumpsterEncounter";
+
+        }else{userInterface.mainTextArea.setText("The man looks more crazed up close. His hands shake, jittering the surface of his black coffee.\n\n'You think you know but you don't,' he whispers without looking up. 'Not yet. I can see it in your eyes.'\n(2 Insight Required)");
+        }
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="enterDiner";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void marleeHotel(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("The Marlee Hotel");
+
+        if(player.getInsight()>=2) {
+            userInterface.mainTextArea.setText("You enter the hushed lobby of the hotel. Everything in here is still, quiet and dusty. A sense of faded grandeur lingers in the immense paintings of Civil War battles and ornate chandeliers, yet the place smells of mildew.");
+            userInterface.choice1.setText("");
+            game.choiceButton1="";
+        }else {userInterface.mainTextArea.setText("You enter the hushed lobby of the hotel. Everything in here is still, quiet and dusty. A sense of faded grandeur lingers in the immense paintings of Civil War battles and ornate chandeliers, yet the place smells of mildew.\n\nAbruptly, Mary Hyre appears and tells you how glad she is that you have come.");}
+
+        userInterface.choice1.setText("Go with her");
+        userInterface.choice2.setText("Leave");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="hypnotist";
+        game.choiceButton2 = "theTownSquare";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void hypnotist(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("The Marlee Hotel");
+
+        userInterface.mainTextArea.setText("You follow her into a bedroom on the first where a man in long jacket sits on an armchair by the window. His eyes are very large. He motions for you to sit on the chair opposite his.\n\n'I believe you are another experiencer,' he says. 'Do you consent to be hypnotised so we can help you discover the truth?'");
+
+        userInterface.choice1.setText("Be hypnotised");
+        userInterface.choice2.setText("Leave");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="hypnotised";
+        game.choiceButton2 = "theTownSquare";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void hypnotised(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("The Marlee Hotel");
+
+        userInterface.mainTextArea.setText("The gentleman waves his pocket watch in front of your eyes, as Mary Hyre sits on the bed and observes. No noise can be heard from outside the room. Only the hypnotist's sonorous voice as he counts down from 3...2...1");
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="hypnotised2";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void hypnotised2(){
+        Player player = getPlayer();
+        player.setInsight(getPlayer().getInsight()+2);
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("The Marlee Hotel");
+
+        userInterface.mainTextArea.setText("You see yourself driving along the highway at night, suddenly struck by a blinding light in the sky... a sensation of floating... a tall winged creature with red eyes lurking in the trees attacked by men with guns. However surreal these sensations and images, the one that sticks most is of Christmas presents floating in the water.\n\n(Insight increased by +2)");
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="hypnotised3";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void hypnotised3(){
+        Player player = getPlayer();
+        player.setInsight(getPlayer().getInsight()+2);
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("The Marlee Hotel");
+
+        userInterface.mainTextArea.setText("");
+
+        userInterface.choice1.setText("Leave");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="theTownSquare";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
 }
