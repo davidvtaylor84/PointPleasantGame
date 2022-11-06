@@ -175,6 +175,9 @@ public class Story {
             case "useShopkeepersPhone": useShopkeepersPhone(); break;
             case "earningMoneyAtShop": earningMoneyAtShop();break;
             case "chopLog": chopLog();break;
+            case "enterCarGarage": enterCarGarage();break;
+            case "tellMechanic": tellMechanic();break;
+            case "useMechanicPhone": useMechanicPhone();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": showInventoryItem("Energy Bar+");break;
@@ -706,21 +709,21 @@ public class Story {
 
         userInterface.mainTextArea.setText("In the town square, you notice that you are being actively avoided, as if you are a symptom of psychosis. Everyone talks to one another in hushed tones. It is cold, with the grey shell of cloud threatening rain.\n\nA handful of shops and businesses are open. Most are closed. Where do you want to go?");
 
-        userInterface.choice1.setText("Local Shop");
-        userInterface.choice2.setText("Car Garage");
-        userInterface.choice3.setText("Diner");
+        userInterface.choice1.setText("Pleasant Store");
+        userInterface.choice2.setText("Rita's Car Garage");
+        userInterface.choice3.setText("Dynamite Diner");
 
         game.choiceButton1 = "enterLocalShop";
         game.choiceButton2 = "enterCarGarage";
         game.choiceButton3 = "enterDiner";
 
-        if(player.getGameProgress()==1){
+        if(player.getGameProgress()>=1){
             userInterface.choice4.setText("Point Pleasant Enquirer");
             game.choiceButton4 = "newspaperOffice";
         } else{userInterface.choice4.setText("");
             game.choiceButton4 = "";
         }
-        if(player.getGameProgress()==2){
+        if(player.getGameProgress()>=2){
             userInterface.choice5.setText("The Marlee Hotel");
             game.choiceButton5 = "marleeHotel";
         } else{userInterface.choice5.setText("");
@@ -828,7 +831,7 @@ public class Story {
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        if(player.getItemByName("Windup Torch").isEquipped()==true) {
+        if(player.getItemByName("Windup Torch").isEquipped()) {
             userInterface.choice2.setText("");
             game.choiceButton2 = "";
         } else{
@@ -931,6 +934,88 @@ public class Story {
         game.choiceButton1="earningMoneyAtShop";
         game.choiceButton2 = "";
         game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void enterCarGarage(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/mechanic.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Rita's Garage and Parts");
+
+        userInterface.mainTextArea.setText("You enter the garage.A woman in overalls is working on a disassembled Ford Cortina and glares at you suspiciously. She appears exhausted and has dark rings under her eyes as she hasn't slept in days.\n\n'Can I help you?' She says.");
+
+        userInterface.choice1.setText("Tell her your car broke down");
+        userInterface.choice2.setText("Can I use your phone?");
+        userInterface.choice3.setText("Leave garage");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "tellMechanic";
+        game.choiceButton2 = "useMechanicPhone";
+        game.choiceButton3 = "theTownSquare";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void tellMechanic(){
+        Player player = getPlayer();
+        player.setGameProgress(1);
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/mechanic.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Rita's Garage and Parts");
+
+        userInterface.mainTextArea.setText("'Well that's a mighty sad story,' she mutters.'Happening with increasing frequency around here, but I don't see how it's my problem.'\n\nShe ponders for a moment, then:'Maybe go see Mary at the newspaper offices. She's good with cars and has a thing for charity cases like yours.'");
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("Can I use your phone?");
+        userInterface.choice3.setText("Leave garage");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "enterCarGarage";
+        game.choiceButton2 = "useMechanicPhone";
+        game.choiceButton3 = "theTownSquare";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void useMechanicPhone(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/mechanic.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Rita's Garage and Parts");
+
+        userInterface.mainTextArea.setText("'Can't just wander into town and demand things.'\n\nShe sighs and apologises: 'I'm sorry. There's been many a stranger come into down recently. Some may be regular folks, others turn out to be lunatics. I don't know you, so even if the phone was working it would still be a no.");
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("Tell her your car broke down");
+        userInterface.choice3.setText("Leave garage");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "enterCarGarage";
+        game.choiceButton2 = "tellMechanic";
+        game.choiceButton3 = "theTownSquare";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
