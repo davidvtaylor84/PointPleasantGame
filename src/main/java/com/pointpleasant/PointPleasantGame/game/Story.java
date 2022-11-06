@@ -44,6 +44,12 @@ public class Story {
         return foundEnemy.orElseGet(Enemy::new);
     }
 
+    public Enemy getEnemyByName(String name){
+        EnemyRepository enemyRepository = game.getEnemyRepository();
+        Optional<Enemy> foundEnemy = enemyRepository.findByName(name);
+        return foundEnemy.orElseGet(Enemy::new);
+    }
+
     public void defaultInventory(){
         Player player = getPlayer();
         player.getItems().get(0).setEquipped(false);
@@ -58,7 +64,7 @@ public class Story {
 
     public void setPlayerDefault(){
         Player player = getPlayer();
-        player.setHealthPoints(80);
+        player.setHealthPoints(40);
         player.setInsight(0);
         player.setDefence(10);
         player.setAttack(7);
@@ -100,7 +106,7 @@ public class Story {
             userInterface.inventory6.setText(player.getItemByName("Keycard").getName());
         }
         if(player.getItemByName("Ammonite").isEquipped()){
-            userInterface.inventory7.setText(player.getItemByName("Ammonnite").getName());
+            userInterface.inventory7.setText(player.getItemByName("Ammonite").getName());
         }
         if(player.getItemByName("Windup Torch").isEquipped()){
             userInterface.inventory8.setText(player.getItemByName("Windup Torch").getName());
@@ -138,6 +144,19 @@ public class Story {
         }
     }
 
+    public void continueGame(){
+        Player player = getPlayer();
+        if(player.getGameProgress()==0){
+            theTownSquare();
+            getPlayerDefault();
+            inventoryButtons();
+            weaponButtons();
+        }else{breakdown();
+            visibilityManager.showIntroScreen();
+            setPlayerDefault();
+            inventoryButtons();
+        }
+    }
 
 
 
@@ -185,6 +204,9 @@ public class Story {
             case "hypnotised": hypnotised(); break;
             case "hypnotised2": hypnotised2();break;
             case "hypnotised3": hypnotised3();break;
+            case "dumpsterEncounter": dumpsterEncounter();break;
+            case "openBox": openBox();break;
+            case "manInBlack": manInBlack();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": showInventoryItem("Energy Bar+");break;
@@ -299,7 +321,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("$%£$8mg3g33$");
 
-        userInterface.mainTextArea.setText("re$%44gg365&46;'][r[lkko397*&*^54587b69n8(*87b7t65534x243$x35 %4% ^ 65^5 Yy 8B& T^R F^%45*&*9(89*9u8644@$2%90}[{OoHkhhIy*&8&%6$ygURy£5£$28(&(re$%44gg365&46;'][r[lkko397*&*^54587b69n8(*87b7t65534x243$x35 %4% ^65^5 Yy 8B& T^R F^%45*&(\n\n(Insight has increased by +1)");
+        userInterface.mainTextArea.setText("re$%44gg365&46;'][r[lkko397*&*^54587b69n8(*87b7t65534x243$x35 %4%^65^5Yy8B& T^R F^%45*&*9(89*9u8644@$2%90}[{OoHkhhIy*&8&%6$ygURy£5£$28(&(re$%44gg365&46;'][r[lkko397*&*^54587b69n8(*87b7t65534x243$x35 %4%^65^5Yy8B&T^RF^%45*&(\n\n(Insight has increased by +1)");
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -382,7 +404,7 @@ public class Story {
         Player player = getPlayer();
         inventoryButtons();
         weaponButtons();
-        ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/encountervadig.png");
+        ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/vadigEncounter.png");
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Towards Point Pleasant");
 
@@ -898,20 +920,22 @@ public class Story {
         userInterface.locationTextArea.setText("Chopping Wood");
 
         userInterface.choice1.setText("< < <");
-        if(player.getCash()<46){
+        if(player.getCash()<44){
             userInterface.mainTextArea.setText("You have followed him into the courtyard out through the back of the shop. Thigh-high rank weeds grow out of the cracks in the paving. A pile of wood sits next to the door.\n\n'I'll give you two dollars for every split log... up to $40,' he hastily adds. 'Well... what you waiting for?'");
             userInterface.choice2.setText("Chop Log");
             game.choiceButton2 = "chopLog";
-        } else{userInterface.mainTextArea.setText("'Excellent work,' he says. 'Can't quite do these things like I used to. You should go get some food at the diner across the road. The beef tacos are pretty good.'");
+        } else{userInterface.mainTextArea.setText("'You've done the work,' he says. 'Can't quite do these things like I used to. You should go get some food at the diner across the road. The beef tacos are pretty good.'");
+            userInterface.choice2.setText("");
+            game.choiceButton2 = "";
         }
         userInterface.choice1.setText("< < <");
-        userInterface.choice2.setText("Chop Log");
+
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
         game.choiceButton1="enterLocalShop";
-        game.choiceButton2 = "chopLog";
+
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
@@ -1242,16 +1266,18 @@ public class Story {
             game.choiceButton2 = "dumpsterEncounter";
 
         }else{userInterface.mainTextArea.setText("The man looks more crazed up close. His hands shake, jittering the surface of his black coffee.\n\n'You think you know but you don't,' he whispers without looking up. 'Not yet. I can see it in your eyes.'\n(2 Insight Required)");
+            userInterface.choice2.setText("");
+            game.choiceButton2 = "";
         }
 
         userInterface.choice1.setText("< < <");
-        userInterface.choice2.setText("");
+
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
         game.choiceButton1="enterDiner";
-        game.choiceButton2 = "";
+
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
@@ -1393,6 +1419,122 @@ public class Story {
         userInterface.choice5.setText("");
 
         game.choiceButton1="theTownSquare";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void dumpsterEncounter(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/dumpster2.jpeg");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Dumpster Encounter");
+
+        userInterface.mainTextArea.setText("Behind the diner is a small lot filled with trash and overgrown weeds. Nothing appears untoward. You approach the dumpster filled with food waste and find a small ornate wooden box attached to the wall with a chain. It is very out of place.\n\nYou pick it up. A heart is carved onto the lid.");
+
+        userInterface.choice1.setText("Leave");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="enterDiner";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.inventoryButton5 = "openBox";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void openBox(){
+        Player player = getPlayer();
+        player.setItemToEquipped("Ammonite");
+        player.setInsight(getPlayer().getInsight()+1);
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/ammonite.jpeg");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Dumpster Encounter");
+
+        userInterface.mainTextArea.setText("You unlock the box with the Rusted Key. Within is an ammonite fossil. A plunging sensation move through your body. A mental image of the Mothman, red eyes gleaming from a glass enclosure enshrouded by smoke. It feels like your brain is going to crack.\n\n(Insight increased by +1. Ammonite added to Inventory)");
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="manInBlack";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.inventoryButton5 = "getRustedKey";
+//        game.inventoryButton5 = "openBox";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void manInBlack(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/manInBlack.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Dumpster Encounter");
+
+        userInterface.mainTextArea.setText("'We demand that you must and will give us the object', says a squeaking voice behind you.\n\nYou turn and are confronted by an incredibly broad man in black trenchcoat and black fedora blocking the door to the diner.Quicker than humanly possible, he lunges towards you.");
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="manInBlackAttacks";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void manInBlackAttacks(){
+        Player player = getPlayer();
+        Enemy enemy = getEnemyByName("agentK");
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Dumpster Encounter");
+
+        userInterface.mainTextArea.setText("");
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="fightManInBlack";
         game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";

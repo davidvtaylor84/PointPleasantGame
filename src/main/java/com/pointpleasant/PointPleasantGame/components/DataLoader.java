@@ -58,12 +58,12 @@ public class DataLoader implements ApplicationRunner {
         HealthBooster energyBar3 = new HealthBooster("Average Energy Bar", "CREEPER'S ENERGY BAR.\n\nMakes your blood fire hot(or so goes the packaging blurb).\n\nOne-liner on the side reads: 'I had a dream last night that I was cutting carrots with the Grim Reaper… dicing with death!\n\nIncreases health by 20 points", false, player, 20);
         itemRepository.save(energyBar3);
 
-        Key key1 = new Key("Rusted Key", "Found on the body of a dead guy. Heart sticker on the fob.", false, player, "Unused");
+        Key key1 = new Key("Rusted Key", "RUSTED KEY\n\nSmall metal key given to you by Vadig. Only distinguishing feature is a heart-shape on the bow.\n\nCannot be used here", false, player, "Unused");
         itemRepository.save(key1);
 
         Key key2 = new Key("Keycard", "Given to you by Mary Hyre. Claims it opens a secret door on the outskirts of town", false, player, "Unused");
         itemRepository.save(key2);
-        Key key3 = new Key("Ammonite", "Ammonite whorl. Suspect it is used as a key", false, player, "Unused");
+        Key key3 = new Key("Ammonite", "AMMONITE WHORL\n\nWeird fossil found in a box behind the Dynamite Diner. Use is unknown(for now).\n\nCannot be used here", false, player, "Unused");
         itemRepository.save(key3);
         Torch torch = new Torch("Windup Torch", "Windup torch. Popular amongst children", false, player, 20);
         itemRepository.save(torch);
@@ -101,7 +101,7 @@ public class DataLoader implements ApplicationRunner {
         ManInBlack agentK = new ManInBlack("agentK", "Humanoid. Very red lips. Slow deliberate way of talking", 18, 15, 18, "Has no teeth");
         enemyRepository.save(agentK);
 
-        ManInBlack agentJ = new ManInBlack("agentJ", "Humanoid. Very red lips. Slow deliberate way of talking", 18, 15, 18, "Has no teeth");
+        ManInBlack agentJ = new ManInBlack("agentJ", "Humanoid. Very red lips. Slow deliberate way of talking", 25, 8, 13, "Has no teeth");
         enemyRepository.save(agentJ);
 
         ManInBlack agentF = new ManInBlack("agentF", "Humanoid. Very red lips. Slow deliberate way of talking", 18, 15, 18, "Has no teeth");
