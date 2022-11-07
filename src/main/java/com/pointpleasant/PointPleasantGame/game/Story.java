@@ -239,6 +239,7 @@ public class Story {
             case "buyEnergyBar": buyEnergyBar();break;
             case "vadigsKey": vadigsKey();break;
             case "buyBaseballBat": buyBaseballBat();break;
+            case "attacksWithBat": attacksWithBat();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": healthItem("Energy Bar+");userInterface.inventory2.setText("(Inventory slot 2)");break;
@@ -578,7 +579,7 @@ public class Story {
 
         int roll = player.attackEnemy(enemy.getDefence(), attackRoll);
 
-        int damageTotal = roll +5;
+        int damageTotal = roll +3;
 
         enemy.takeDamage(damageTotal);
 
@@ -588,7 +589,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Fight with Vadig");
 
-        userInterface.text = "Vadig HP:"+enemy.getHealthPoints()+"\nYou used 1 point of Inspiration to add +5 damage to a successful or unsuccessful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs VADIG DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
+        userInterface.text = "Vadig HP:"+enemy.getHealthPoints()+"\nYou used 1 point of Inspiration to add +3 damage to a successful or unsuccessful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs VADIG DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -633,7 +634,7 @@ public class Story {
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
-        userInterface.choice2.setText("Inspired Attack");
+        userInterface.choice2.setText("Inspired Grapple");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
@@ -1757,7 +1758,7 @@ public class Story {
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
-        userInterface.choice2.setText("Inspired Attack");
+        userInterface.choice2.setText("Inspired Grapple");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
@@ -1770,9 +1771,10 @@ public class Story {
             game.choiceButton1 = "youAwaken";
             game.choiceButton2 = "youAwaken";
             player.unEquipItem("Ammonite");
-            player.setHealthPoints(20);
-            enemy.setHealthPoints(40);
+            enemy.setHealthPoints(30);
         }
+        if(player.getWeaponByName("Baseball Bat").isEquipped()){
+        game.weapon2 = "attacksWithBat";}
 
         game.choiceButton3 = "";
         game.choiceButton4 = "";
@@ -1817,6 +1819,8 @@ public class Story {
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
+        game.weapon2 = "";
+
         getPlayerDefault();
         this.game.getEnemyRepository().save(enemy);
         this.game.getPlayerRepository().save(player);
@@ -1832,7 +1836,7 @@ public class Story {
 
         int roll = player.attackEnemy(enemy.getDefence(), attackRoll);
 
-        int damageTotal = roll +5;
+        int damageTotal = roll +3;
 
         enemy.takeDamage(damageTotal);
 
@@ -1842,7 +1846,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Fight with MIB");
 
-        userInterface.text = "MIB HP:"+enemy.getHealthPoints()+"\nYou used 1 point of Inspiration to add +5 damage to a successful or unsuccessful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs MIB DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
+        userInterface.text = "MIB HP:"+enemy.getHealthPoints()+"\nYou used 1 point of Inspiration to add +3 damage to a successful or unsuccessful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs MIB DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -1861,6 +1865,49 @@ public class Story {
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
+        game.weapon2 = "";
+
+        getPlayerDefault();
+        this.game.getEnemyRepository().save(enemy);
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void attacksWithBat(){
+        Player player = getPlayer();
+        Enemy enemy = getEnemyByName("agentK");
+        inventoryButtons();
+        weaponButtons();
+
+        int attackRoll = new java.util.Random().nextInt(20);
+
+        int damageTotal = player.attackEnemyWithWeapon(enemy.getDefence(), attackRoll, "Baseball Bat");
+
+        enemy.takeDamage(damageTotal);
+
+        ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/baseball.png");
+        userInterface.imageLabel.setIcon(shimmer);
+        userInterface.locationTextArea.setText("Fight with MIB");
+
+        userInterface.text = "MIB HP:"+enemy.getHealthPoints()+"\nYou used the Baseball Bat to add +9 damage to a successful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs MIB DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        if(enemy.getHealthPoints()>0){
+            game.choiceButton1 = "MIBAttacks";
+        } else{
+            game.choiceButton1 = "winOverMIB";
+        }
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon2 = "";
         getPlayerDefault();
         this.game.getEnemyRepository().save(enemy);
         this.game.getPlayerRepository().save(player);
@@ -1868,6 +1915,8 @@ public class Story {
 
     public void youAwaken(){
         Player player = getPlayer();
+        if(player.getHealthPoints()<=0){
+        player.setHealthPoints(20);}
         inventoryButtons();
         weaponButtons();
 
