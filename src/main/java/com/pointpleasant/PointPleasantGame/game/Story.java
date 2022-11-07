@@ -153,7 +153,7 @@ public class Story {
             getPlayerDefault();
             inventoryButtons();
             weaponButtons();
-        }else{breakdown();
+        }else{youAwaken();
             visibilityManager.showIntroScreen();
             setPlayerDefault();
             inventoryButtons();
@@ -1292,7 +1292,7 @@ public class Story {
             userInterface.text = "These are the worst beef tacos you've ever eaten, but they are somewhat nutritious.\n\n(HP +10. CASH -7)";
             userInterface.imageLabel.setIcon(image2);
         } else{userInterface.text = "You don't have enough cash. Maybe try doing some work.";}
-
+        userInterface.prepareText();
 
         userInterface.choice1.setText("< < <");
         userInterface.choice2.setText("Talk to man");
@@ -1739,7 +1739,36 @@ public class Story {
     }
 
     public void youAwaken(){
-        
+        Player player = getPlayer();
+        Enemy enemy = getEnemyByName("agentK");
+        player.unEquipItem("Ammonite");
+        enemy.setHealthPoints(30);
+        player.setHealthPoints(20);
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/youAwaken.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("You awaken");
+
+        userInterface.text = "You wake in an alleyway off the main square shaking off troubling dreams featuring a winged creature with glowing red eyes. You were not aware of losing consciousness, as if some outside force has some terrible hold over your destiny.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Leave alleyway");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="theTownSquare";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
     }
+
 
 }
