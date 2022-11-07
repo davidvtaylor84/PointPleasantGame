@@ -164,10 +164,24 @@ public class Story {
             setPlayerDefault();
             visibilityManager.showIntroScreen();
         }else{youAwaken();
+            if(player.getHealthPoints()<=0){
+                player.setHealthPoints(20);
+            }
         }
         getPlayerDefault();
-        inventoryButtons();
-        weaponButtons();
+        game.inventoryButton1 = "getArmyUniform";
+        game.inventoryButton2 = "getEnergyBarPlus";
+        game.inventoryButton3 = "getAverageEnergyBar";
+        game.inventoryButton4 = "getMediocreEnergyBar";
+        game.inventoryButton5 = "getRustedKey";
+        game.inventoryButton6 = "getKeyCard";
+        game.inventoryButton7 = "getAmmonite";
+        game.inventoryButton8 = "getWindupTorch";
+
+        game.weapon1 = "getAlloyTube";
+        game.weapon2 = "getBaseballBat";
+        game.weapon3 = "getColt";
+        game.weapon4 = "getM16";
         this.game.getPlayerRepository().save(player);
     }
 
@@ -240,11 +254,13 @@ public class Story {
             case "vadigsKey": vadigsKey();break;
             case "buyBaseballBat": buyBaseballBat();break;
             case "attacksWithBat": attacksWithBat();break;
+            case "arrested": arrested();break;
+            case "winOverMIB": winOverMIB();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": healthItem("Energy Bar+");userInterface.inventory2.setText("(Inventory slot 2)");break;
-            case "getMediocreEnergyBar": healthItem("Mediocre Energy Bar");userInterface.inventory4.setText("(Inventory slot 4)");break;
             case "getAverageEnergyBar": healthItem("Average Energy Bar");userInterface.inventory3.setText("(Inventory slot 3)");break;
+            case "getMediocreEnergyBar": healthItem("Mediocre Energy Bar");userInterface.inventory4.setText("(Inventory slot 4)");break;
             case "getRustedKey": showInventoryItem("Rusted Key");break;
             case "getKeyCard": showInventoryItem("Keycard");break;
             case "getAmmonite": showInventoryItem("Ammonite");break;
@@ -1383,7 +1399,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Dynamite Diner");
 
-        userInterface.text = "The diner is quiet. The owner, or owner, sits behind the counter doing a crossword. She doesn't look up.\n\nA man sitting in one of the booths perks up at your entrance. Like you, his hair is wild and his eyes are red and swollen. He tries to catch your eye and weakly smiles.";
+        userInterface.text = "The diner is quiet. The waitress, or owner, sits behind the counter doing a crossword. She doesn't look up.\n\nA man sitting in one of the booths perks up at your entrance. Like you, his hair is wild and his eyes are red and swollen. He tries to catch your eye and weakly smiles.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Order Beef Tacos($7)");
@@ -1679,7 +1695,8 @@ public class Story {
 
     public void openBox(){
         Player player = getPlayer();
-        player.setItemToEquipped("Ammonite");
+        if(!player.getItemByName("Ammonite").isEquipped())
+            {player.setItemToEquipped("Ammonite");}
         player.setInsight(getPlayer().getInsight()+1);
         inventoryButtons();
         weaponButtons();
@@ -1763,17 +1780,16 @@ public class Story {
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        if (player.getHealthPoints() > 0) {
-            game.choiceButton1 = "playerAttacksMIB";
-            if(player.getInspiration()>0){
-                game.choiceButton2 = "inspiredAttackAgainstMIB";}
-        } else {
+        if (player.getHealthPoints() <= 0) {
             game.choiceButton1 = "youAwaken";
             game.choiceButton2 = "youAwaken";
+        } else {
+            game.choiceButton1 = "playerAttacksMIB";
             player.unEquipItem("Ammonite");
-            enemy.setHealthPoints(30);
+            if(player.getInspiration()>0){
+                game.choiceButton2 = "inspiredAttackAgainstMIB";}
         }
-        if(player.getWeaponByName("Baseball Bat").isEquipped()){
+        if(player.getWeaponByName("Baseball Bat").isEquipped() && player.getHealthPoints()>0){
         game.weapon2 = "attacksWithBat";}
 
         game.choiceButton3 = "";
@@ -1819,7 +1835,12 @@ public class Story {
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
-        game.weapon2 = "";
+        if(enemy.getHealthPoints()>0){
+            game.weapon2 = "";
+        } else{
+            game.choiceButton1 = "winOverMIB";
+        }
+
 
         getPlayerDefault();
         this.game.getEnemyRepository().save(enemy);
@@ -1915,8 +1936,8 @@ public class Story {
 
     public void youAwaken(){
         Player player = getPlayer();
-        if(player.getHealthPoints()<=0){
-        player.setHealthPoints(20);}
+        Enemy enemy = getEnemyByName("agentK");
+        enemy.setHealthPoints(30);
         inventoryButtons();
         weaponButtons();
 
@@ -1934,6 +1955,65 @@ public class Story {
         userInterface.choice5.setText("");
 
         game.choiceButton1="theTownSquare";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+        this.game.getEnemyRepository().save(enemy);
+    }
+
+    public void winOverMIB(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/mibdead.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Dumpster Encounter");
+
+        userInterface.text = "The broad body crumples to the floor, his body thudding on the asphalt. His body shakes as it lies prone and a purple noxious gas pours forth from under his clothing. His body dissolves into a putrid puddle before your eyes, leaving only a heap of black clothing.\n\n'Don't move creep!' Yells a voice behind you.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="arrested";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon2 = "getBaseballBat";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void arrested(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/cop.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Dumpster Encounter");
+
+        userInterface.text = "You turn and are confronted by a heavy-set cop with a bullish demeanour.\n\n'What the hell ?!'He says.'I'm sick of you weirdos stinking up our town.'\n\nYou drop the Baseball Bat, look at the clothes pile and realise that this cop would not care for your explanation.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="jailed";
         game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";

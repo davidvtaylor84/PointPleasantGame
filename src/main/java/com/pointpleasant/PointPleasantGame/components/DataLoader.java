@@ -58,12 +58,12 @@ public class DataLoader implements ApplicationRunner {
         HealthBooster energyBar3 = new HealthBooster("Average Energy Bar", "CREEPER'S ENERGY BAR.\n\nMakes your blood fire hot(or so goes the packaging blurb).\n\nOne-liner on the wrapper reads: 'I had a dream last night that I was cutting carrots with the Grim Reaper… dicing with death!\n\nHealth increased by 20 points", false, 20, player, 20);
         itemRepository.save(energyBar3);
 
-        Key key1 = new Key("Rusted Key", "RUSTED KEY\n\nSmall metal key given to you by Vadig. Only distinguishing feature is a heart-shape on the bow.\n\nCannot be used here", false, 0, player, "Unused");
+        Key key1 = new Key("Rusted Key", "RUSTED KEY\n\nSmall metal key given to you by Vadig. What it opens, god only knows, and I'm guessing he doesn't want to know. Only distinguishing feature is a heart-shape on the bow.\n\nCannot be used here", false, 0, player, "Unused");
         itemRepository.save(key1);
 
         Key key2 = new Key("Keycard", "Given to you by Mary Hyre. Claims it opens a secret door on the outskirts of town", false, 0, player, "Unused");
         itemRepository.save(key2);
-        Key key3 = new Key("Ammonite", "AMMONITE WHORL\n\nWeird fossil found in a box behind the Dynamite Diner. Use is unknown(for now).\n\nCannot be used here", false, 0,player, "Unused");
+        Key key3 = new Key("Ammonite", "AMMONITE WHORL\n\nWeird fossil found in a box behind the Dynamite Diner. It feels heavier than it should. Fossils lie heavy with dream, or so some ostensibly useful idiot once quipped. Use is unknown(for now).\n\nCannot be used here", false, 0,player, "Unused");
         itemRepository.save(key3);
         Torch torch = new Torch("Windup Torch", "Windup torch. Popular amongst children", false, 0,player, 20);
         itemRepository.save(torch);
@@ -71,7 +71,7 @@ public class DataLoader implements ApplicationRunner {
         AlienAlloyTube alienAlloyTube = new AlienAlloyTube("Alloy Tube", "Non-descript polished alloy tube. Intention makes it fire an invisible paralysing beam", 20, false,  player, 78);
         weaponRepository.save(alienAlloyTube);
 
-        BaseballBat baseballBat = new BaseballBat("Baseball Bat", "BASEBALL BAT\n\nA children's toy or a crude weapon for adult meatheads. Are you a child or man?\n\nAdds +9 damage to successful attack.\n\nCannot be used here", 9, false, player, 150);
+        BaseballBat baseballBat = new BaseballBat("Baseball Bat", "BASEBALL BAT\n\nA children's toy. Some good advice: 'If you don't think too much, don't think too much'. If that makes sense, maybe this weapon is for you.\n\nAdds +9 damage to successful attack.\n\nCannot be used here", 9, false, player, 150);
         weaponRepository.save(baseballBat);
 
         Gun pistol = new Gun("Colt revolver", "A greasy gun found in a locker", 15, false, player, "Colt revolver", 20);
