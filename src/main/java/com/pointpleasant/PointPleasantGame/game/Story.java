@@ -52,20 +52,19 @@ public class Story {
         return foundEnemy.orElseGet(Enemy::new);
     }
 
-    public void defaultInventory(){
-        Player player = getPlayer();
-        player.getItems().get(0).setEquipped(false);
-        player.getItems().get(1).setEquipped(false);
-        player.getItems().get(2).setEquipped(false);
-        player.getItems().get(3).setEquipped(false);
-        player.getItems().get(4).setEquipped(false);
-        player.getItems().get(5).setEquipped(false);
-        player.getItems().get(6).setEquipped(false);
-        player.getItems().get(7).setEquipped(false);
-    }
+//    public void defaultInventory(){
+//        Player player = getPlayer();
+//        player.getItems().get(0).setEquipped(false);
+//        player.getItems().get(1).setEquipped(false);
+//        player.getItems().get(2).setEquipped(false);
+//        player.getItems().get(3).setEquipped(false);
+//        player.getItems().get(4).setEquipped(false);
+//        player.getItems().get(5).setEquipped(false);
+//        player.getItems().get(6).setEquipped(false);
+//        player.getItems().get(7).setEquipped(false);
+//    }
 
     public void setPlayerDefault(){
-        defaultInventory();
         Player player = getPlayer();
         player.setHealthPoints(38);
         player.setInsight(0);
@@ -74,6 +73,14 @@ public class Story {
         player.setInspiration(4);
         player.setCash(180);
         player.setGameProgress(0);
+        player.getItems().get(0).setEquipped(false);
+        player.getItems().get(1).setEquipped(false);
+        player.getItems().get(2).setEquipped(false);
+        player.getItems().get(3).setEquipped(false);
+        player.getItems().get(4).setEquipped(false);
+        player.getItems().get(5).setEquipped(false);
+        player.getItems().get(6).setEquipped(false);
+        player.getItems().get(7).setEquipped(false);
         this.game.getPlayerRepository().save(player);
     }
 
@@ -497,7 +504,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Vadig Takes Your Money");
 
-        userInterface.text = ("'This will not do,' he says. 'I was going to give you something special for your courage. Now I won't. You might still get it yet if you prove you can work hard. Thanks for the cash. Take this.'\n\nVadig hands over an Energy Bar(+25 HP) and ambles off down the road.");
+        userInterface.text = ("'This will not do,' he says. 'I was going to give you something special for your courage. Now I won't. You might still get it yet if you prove yourself to be a HARD WORKER. Thanks for the cash. Take this.'\n\nVadig hands over an Energy Bar(+25 HP) and ambles off down the road.");
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -1024,10 +1031,9 @@ public class Story {
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
-        if(!player.getItemByName("Rusted Key").isEquipped()&&player.getCash()>40){
-            game.choiceButton1 = "vadigsKey";
-        } else {game.choiceButton1="enterLocalShop";
-        }
+
+
+        game.choiceButton1="enterLocalShop";
 
         game.choiceButton3 = "";
         game.choiceButton4 = "";
@@ -1056,7 +1062,9 @@ public class Story {
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1="earningMoneyAtShop";
+        if(!player.getItemByName("Rusted Key").isEquipped()&&player.getCash()>30){
+            game.choiceButton1 = "vadigsKey";
+        } else {game.choiceButton1="earningMoneyAtShop";}
         game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
@@ -1076,7 +1084,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Chopping Wood");
 
-        userInterface.text = "You are exhausted from splitting these logs. As you split another nondescript piece of wood, something shiny erupts from its centre. You bend down and pick up an old rusted key.A tattered note attached to it reads: 'I told you I would reward your hard work. Very impressive. Vadig.\n\n(Rusted Key has been added to inventory";
+        userInterface.text = "You are exhausted from splitting these logs. As you split another nondescript piece of wood, something shiny erupts from its centre. You bend down and pick up an old rusted key. A tattered note attached to it reads: 'I told you I would reward your hard work. Very impressive. Vadig.\n\n(Rusted Key has been added to Inventory)";
         userInterface.prepareText();
 
         userInterface.choice1.setText("< < <");
