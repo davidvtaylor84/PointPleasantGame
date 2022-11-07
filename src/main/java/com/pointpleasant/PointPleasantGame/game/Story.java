@@ -81,6 +81,10 @@ public class Story {
         player.getItems().get(5).setEquipped(false);
         player.getItems().get(6).setEquipped(false);
         player.getItems().get(7).setEquipped(false);
+        player.getWeaponByName("Alloy Tube").setEquipped(false);
+        player.getWeaponByName("Baseball Bat").setEquipped(false);
+        player.getWeaponByName("Colt revolver").setEquipped(false);
+        player.getWeaponByName("M16").setEquipped(false);
         this.game.getPlayerRepository().save(player);
     }
 
@@ -234,6 +238,7 @@ public class Story {
             case "askAboutVadig": askAboutVadig();break;
             case "buyEnergyBar": buyEnergyBar();break;
             case "vadigsKey": vadigsKey();break;
+            case "buyBaseballBat": buyBaseballBat();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": healthItem("Energy Bar+");userInterface.inventory2.setText("(Inventory slot 2)");break;
@@ -912,8 +917,8 @@ public class Story {
 
         userInterface.choice1.setText("< < <");
 
-        userInterface.choice4.setText("Ask about earning money");
-        userInterface.choice5.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("Ask about earning money");
 
         if(player.getItemByName("Windup Torch").isEquipped()) {
             userInterface.choice2.setText("");
@@ -931,10 +936,16 @@ public class Story {
             game.choiceButton3 = "buyEnergyBar";
         }
 
-        game.choiceButton1="enterLocalShop";
+        if(player.getWeaponByName("Baseball Bat").isEquipped()) {
+            userInterface.choice4.setText("");
+            game.choiceButton4 = "";
+        } else{
+            userInterface.choice4.setText("Baseball Bat($20)");
+            game.choiceButton4 = "buyBaseballBat";
+        }
 
-        game.choiceButton4 = "earningMoneyAtShop";
-        game.choiceButton5 = "";
+        game.choiceButton1="enterLocalShop";
+        game.choiceButton5 = "earningMoneyAtShop";
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
@@ -951,7 +962,7 @@ public class Story {
 
         if(player.getCash()>=30 && !player.getItemByName("Windup Torch").isEquipped()) {
             player.setCash(player.getCash() - 30);
-            userInterface.text = "'There you go, sir, one torch,' he says. 'This is a classic.'\n\n(Windup Torch added to inventory. Cash -$30)";
+            userInterface.text = "'There you go, sir, one torch,' he says. 'This is a classic.'\n\n(Windup Torch added to Inventory. Cash -$30)";
             player.setItemToEquipped("Windup Torch");
         }else{userInterface.text = "'Not enough cash, hombre,' he mutters.\n\nHe sits down and continues reading his book, then looks up:'Got some logs need chopping out back if you want to earn $40'";}
         userInterface.prepareText();
@@ -984,8 +995,41 @@ public class Story {
 
         if(player.getCash()>=2 && !player.getItemByName("Mediocre Energy Bar").isEquipped()) {
             player.setCash(player.getCash() - 2);
-            userInterface.text = "'There you go, sir, one crummy energy bar,' he says. 'You must be in dire straits.'\n\nR(Mediocre Energy Bar added to inventory(HP+15). Cash -$2)";
+            userInterface.text = "'There you go, sir, one crummy energy bar,' he says. 'You must be in dire straits.'\n\nR(Mediocre Energy Bar added to Inventory(HP+15). Cash -$2)";
             player.setItemToEquipped("Mediocre Energy Bar");
+        }else{userInterface.text = "'Not enough cash, hombre,' he mutters.\n\nHe sits down and continues reading his book, then looks up:'Got some logs need chopping out back if you want to earn $40'";}
+        userInterface.prepareText();
+
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("Chop logs");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="enterLocalShop";
+        game.choiceButton2 = "earningMoneyAtShop";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void buyBaseballBat(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/mainshopkeeper.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Pleasant Store");
+
+        if(player.getCash()>=20 && !player.getWeaponByName("Baseball Bat").isEquipped()) {
+            player.setCash(player.getCash() - 20);
+            userInterface.text = "'There you go, sir, one baseball bat,' he says. 'Don't know what the hell you need this for. Hope you're not a lunatic.'\n\nBaseball Bat added to Inventory. Cash -$20)";
+            player.setWeaponToEquipped("Baseball Bat");
         }else{userInterface.text = "'Not enough cash, hombre,' he mutters.\n\nHe sits down and continues reading his book, then looks up:'Got some logs need chopping out back if you want to earn $40'";}
         userInterface.prepareText();
 

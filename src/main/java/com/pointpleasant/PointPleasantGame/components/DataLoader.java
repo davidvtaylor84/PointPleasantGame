@@ -49,13 +49,13 @@ public class DataLoader implements ApplicationRunner {
         Disguise disguise = new Disguise("Army Uniform", "STANDARD ISSUE UNIFORM \n\nDescription: An army uniform, slightly worn, found in a locker.\n\nCould be used to disguise oneself, but your non-regulation haircut and startled bearing won't fool them for long.\n\nCannot be used here.", false, 0,player, 10);
         itemRepository.save(disguise);
 
-        HealthBooster energyBar = new HealthBooster("Energy Bar+", "BAZLINTON'S ENERGY BAR PLUS.\n\nMakes one feel godlike(or so goes the packaging blurb).\n\nOne-liner on the side reads: 'I’ve got a friend who has got a butler whose left arm is missing; serves him right'.\n\nHealth increased by 25 points", false, 25,player, 25);
+        HealthBooster energyBar = new HealthBooster("Energy Bar+", "BAZLINTON'S ENERGY BAR PLUS.\n\nMakes one feel godlike(or so goes the packaging blurb).\n\nOne-liner on the wrapper reads: 'I’ve got a friend who has got a butler whose left arm is missing; serves him right'.\n\nHealth increased by 25 points", false, 25,player, 25);
         itemRepository.save(energyBar);
 
-        HealthBooster energyBar2 = new HealthBooster("Mediocre Energy Bar", "INDRID'S ENERGY BAR.\n\nKeeps death at bay(or so goes the packaging blurb).\n\nOne-liner on the side reads: 'I saw this bloke chatting up a cheetah and I thought 'He’s trying to pull a fast one.'\n\nHealth increased by 15 points", false, 15, player, 15);
+        HealthBooster energyBar2 = new HealthBooster("Mediocre Energy Bar", "INDRID'S ENERGY BAR.\n\nKeeps death at bay(or so goes the packaging blurb).\n\nOne-liner on the wrapper reads: 'I saw this bloke chatting up a cheetah and I thought 'He’s trying to pull a fast one.'\n\nHealth increased by 15 points", false, 15, player, 15);
         itemRepository.save(energyBar2);
 
-        HealthBooster energyBar3 = new HealthBooster("Average Energy Bar", "CREEPER'S ENERGY BAR.\n\nMakes your blood fire hot(or so goes the packaging blurb).\n\nOne-liner on the side reads: 'I had a dream last night that I was cutting carrots with the Grim Reaper… dicing with death!\n\nHealth increased by 20 points", false, 20, player, 20);
+        HealthBooster energyBar3 = new HealthBooster("Average Energy Bar", "CREEPER'S ENERGY BAR.\n\nMakes your blood fire hot(or so goes the packaging blurb).\n\nOne-liner on the wrapper reads: 'I had a dream last night that I was cutting carrots with the Grim Reaper… dicing with death!\n\nHealth increased by 20 points", false, 20, player, 20);
         itemRepository.save(energyBar3);
 
         Key key1 = new Key("Rusted Key", "RUSTED KEY\n\nSmall metal key given to you by Vadig. Only distinguishing feature is a heart-shape on the bow.\n\nCannot be used here", false, 0, player, "Unused");
@@ -71,7 +71,7 @@ public class DataLoader implements ApplicationRunner {
         AlienAlloyTube alienAlloyTube = new AlienAlloyTube("Alloy Tube", "Non-descript polished alloy tube. Intention makes it fire an invisible paralysing beam", 20, false,  player, 78);
         weaponRepository.save(alienAlloyTube);
 
-        BaseballBat baseballBat = new BaseballBat("Baseball Bat", "A crude weapon for meatheads", 9, false, player, 150);
+        BaseballBat baseballBat = new BaseballBat("Baseball Bat", "BASEBALL BAT\n\nA children's toy or a crude weapon for adult meatheads. Are you a child or man?\n\nAdds +9 damage to successful attack.\n\nCannot be used here", 9, false, player, 150);
         weaponRepository.save(baseballBat);
 
         Gun pistol = new Gun("Colt revolver", "A greasy gun found in a locker", 15, false, player, "Colt revolver", 20);
