@@ -1831,7 +1831,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("You awaken");
 
-        userInterface.text = "You wake in an alleyway off the main square shaking off troubling dreams featuring a winged creature with glowing red eyes. You were not aware of losing consciousness, as if some outside force has some terrible hold over your destiny.";
+        userInterface.text = "You wake in an alleyway off the main square shaking off troubling dreams featuring a winged creature with glowing red eyes. You were not aware of losing consciousness, as if some outside force has some terrible hold over your destiny.\n\nYou look at your watch. Somehow you've travelled back an hour.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Leave alleyway");
