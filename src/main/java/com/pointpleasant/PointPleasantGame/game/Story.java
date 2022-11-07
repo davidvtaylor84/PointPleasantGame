@@ -578,7 +578,7 @@ public class Story {
 
         int roll = player.attackEnemy(enemy.getDefence(), attackRoll);
 
-        int damageTotal = roll +8;
+        int damageTotal = roll +5;
 
         enemy.takeDamage(damageTotal);
 
@@ -588,7 +588,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Fight with Vadig");
 
-        userInterface.text = "Vadig HP:"+enemy.getHealthPoints()+"\nYou used 1 point of Inspiration to add +8 damage to a successful or unsuccessful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs VADIG DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
+        userInterface.text = "Vadig HP:"+enemy.getHealthPoints()+"\nYou used 1 point of Inspiration to add +5 damage to a successful or unsuccessful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs VADIG DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -1832,7 +1832,7 @@ public class Story {
 
         int roll = player.attackEnemy(enemy.getDefence(), attackRoll);
 
-        int damageTotal = roll +8;
+        int damageTotal = roll +5;
 
         enemy.takeDamage(damageTotal);
 
@@ -1842,7 +1842,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Fight with MIB");
 
-        userInterface.text = "MIB HP:"+enemy.getHealthPoints()+"\nYou used 1 point of Inspiration to add +8 damage to a successful or unsuccessful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs MIB DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
+        userInterface.text = "MIB HP:"+enemy.getHealthPoints()+"\nYou used 1 point of Inspiration to add +5 damage to a successful or unsuccessful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs MIB DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");

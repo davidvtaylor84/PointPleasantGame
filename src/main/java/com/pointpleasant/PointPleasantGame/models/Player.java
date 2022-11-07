@@ -216,7 +216,6 @@ public class Player {
     }
 
     public int attackEnemy(int enemyDefence, int playerAttack){
-//        int playerAttack = new java.util.Random().nextInt(20);
         if(playerAttack > enemyDefence){
             return this.attack;
         }
@@ -224,6 +223,18 @@ public class Player {
             return 0;
         }
     }
+
+    public int attackEnemyWithWeapon(int enemyDefence, int playerAttack, String weaponName){
+        int weaponDamage = getWeaponByName(weaponName).getDamageValue();
+        if(playerAttack > enemyDefence){
+            return this.attack + weaponDamage;
+        }
+        else{
+            return 0;
+        }
+    }
+
+
 
     public void useHealthBooster(String name){
         int restoration = getItemByName(name).getRestoration();
