@@ -65,15 +65,15 @@ public class Story {
     }
 
     public void setPlayerDefault(){
+        defaultInventory();
         Player player = getPlayer();
-        player.setHealthPoints(10);
+        player.setHealthPoints(38);
         player.setInsight(0);
         player.setDefence(10);
         player.setAttack(7);
         player.setInspiration(4);
         player.setCash(180);
         player.setGameProgress(0);
-        defaultInventory();
         this.game.getPlayerRepository().save(player);
     }
 
@@ -99,7 +99,7 @@ public class Story {
             userInterface.inventory3.setText(player.getItemByName("Average Energy Bar").getName());
         }
         if(player.getItemByName("Mediocre Energy Bar").isEquipped()){
-            userInterface.inventory4.setText(player.getItemByName("Mediocre Energy Bar+").getName());
+            userInterface.inventory4.setText(player.getItemByName("Mediocre Energy Bar").getName());
         }
         if(player.getItemByName("Rusted Key").isEquipped()){
             userInterface.inventory5.setText(player.getItemByName("Rusted Key").getName());
@@ -149,15 +149,15 @@ public class Story {
     public void continueGame(){
         Player player = getPlayer();
         if(player.getGameProgress()==0){
-            theTownSquare();
-            getPlayerDefault();
-            inventoryButtons();
-            weaponButtons();
-        }else{youAwaken();
-            visibilityManager.showIntroScreen();
+            breakdown();
             setPlayerDefault();
-            inventoryButtons();
+            visibilityManager.showIntroScreen();
+        }else{youAwaken();
         }
+        getPlayerDefault();
+        inventoryButtons();
+        weaponButtons();
+        this.game.getPlayerRepository().save(player);
     }
 
     public void healthItem(String name){
@@ -225,6 +225,8 @@ public class Story {
             case "playerAttacksMIB": playerAttacksMIB();break;
             case "inspiredAttackAgainstMIB": inspiredAttackAgainstMIB();break;
             case "askAboutVadig": askAboutVadig();break;
+            case "buyEnergyBar": buyEnergyBar();break;
+            case "vadigsKey": vadigsKey();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": healthItem("Energy Bar+");userInterface.inventory2.setText("(Inventory slot 2)");break;
@@ -715,7 +717,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Investigate Field");
 
-        userInterface.text = "You can find no sign of a staircase or door amidst the dirt and dried out cornstalks, only an Average Energy Bar(+20 HP) with a note attached that reads: 'Eat this during your next fight. It can help.";
+        userInterface.text = "You can find no sign of a staircase or door amidst the dirt and dried out cornstalks, only an Average Energy Bar(+20 HP) with a note attached that reads: 'Eat this if you are feeling weak. It can help.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("On to Point Pleasant");
@@ -778,6 +780,7 @@ public class Story {
         userInterface.locationTextArea.setText("Point Pleasant");
 
         userInterface.text = "In the town square, you notice that you are being actively avoided, as if you are a symptom of psychosis. Everyone talks to one another in hushed tones. It is cold, with the grey shell of cloud threatening rain.\n\nA handful of shops and businesses are open. Most are closed. Where do you want to go?";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("Pleasant Store");
         userInterface.choice2.setText("Rita's Car Garage");
@@ -902,22 +905,28 @@ public class Story {
 
         userInterface.choice1.setText("< < <");
 
-        userInterface.choice3.setText("Ask about earning money");
-        userInterface.choice4.setText("");
+        userInterface.choice4.setText("Ask about earning money");
         userInterface.choice5.setText("");
 
         if(player.getItemByName("Windup Torch").isEquipped()) {
             userInterface.choice2.setText("");
             game.choiceButton2 = "";
         } else{
-            userInterface.choice2.setText("Buy Torch");
+            userInterface.choice2.setText("Buy Torch($30)");
             game.choiceButton2 = "buyTorch";
+        }
+
+        if(player.getItemByName("Mediocre Energy Bar").isEquipped()) {
+            userInterface.choice3.setText("");
+            game.choiceButton3 = "";
+        } else{
+            userInterface.choice3.setText("Mediocre Energy Bar($2)");
+            game.choiceButton3 = "buyEnergyBar";
         }
 
         game.choiceButton1="enterLocalShop";
 
-        game.choiceButton3 = "earningMoneyAtShop";
-        game.choiceButton4 = "";
+        game.choiceButton4 = "earningMoneyAtShop";
         game.choiceButton5 = "";
 
         getPlayerDefault();
@@ -957,6 +966,39 @@ public class Story {
         this.game.getPlayerRepository().save(player);
     }
 
+    public void buyEnergyBar(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/mainshopkeeper.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Pleasant Store");
+
+        if(player.getCash()>=2 && !player.getItemByName("Mediocre Energy Bar").isEquipped()) {
+            player.setCash(player.getCash() - 2);
+            userInterface.text = "'There you go, sir, one crummy energy bar,' he says. 'You must be in dire straits.'\n\nR(Mediocre Energy Bar added to inventory(HP+15). Cash -$2)";
+            player.setItemToEquipped("Mediocre Energy Bar");
+        }else{userInterface.text = "'Not enough cash, hombre,' he mutters.\n\nHe sits down and continues reading his book, then looks up:'Got some logs need chopping out back if you want to earn $40'";}
+        userInterface.prepareText();
+
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("Chop logs");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="enterLocalShop";
+        game.choiceButton2 = "earningMoneyAtShop";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
     public void earningMoneyAtShop(){
         Player player = getPlayer();
         inventoryButtons();
@@ -967,7 +1009,7 @@ public class Story {
         userInterface.locationTextArea.setText("Chopping Wood");
 
         userInterface.choice1.setText("< < <");
-        if(player.getCash()<44){
+        if(player.getCash()<42){
             userInterface.text = "You have followed him into the courtyard out through the back of the shop. Thigh-high rank weeds grow out of the cracks in the paving. A pile of wood sits next to the door.\n\n'I'll give you two dollars for every split log... up to $40,' he hastily adds. 'Well... what you waiting for?'";
             userInterface.choice2.setText("Chop Log");
             game.choiceButton2 = "chopLog";
@@ -982,8 +1024,10 @@ public class Story {
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
-
-        game.choiceButton1="enterLocalShop";
+        if(!player.getItemByName("Rusted Key").isEquipped()&&player.getCash()>40){
+            game.choiceButton1 = "vadigsKey";
+        } else {game.choiceButton1="enterLocalShop";
+        }
 
         game.choiceButton3 = "";
         game.choiceButton4 = "";
@@ -1013,6 +1057,35 @@ public class Story {
         userInterface.choice5.setText("");
 
         game.choiceButton1="earningMoneyAtShop";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void vadigsKey(){
+        Player player = getPlayer();
+        player.setItemToEquipped("Rusted Key");
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/rustedkey.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Chopping Wood");
+
+        userInterface.text = "You are exhausted from splitting these logs. As you split another nondescript piece of wood, something shiny erupts from its centre. You bend down and pick up an old rusted key.A tattered note attached to it reads: 'I told you I would reward your hard work. Very impressive. Vadig.\n\n(Rusted Key has been added to inventory";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="enterLocalShop";
         game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
@@ -1644,6 +1717,9 @@ public class Story {
         } else {
             game.choiceButton1 = "youAwaken";
             game.choiceButton2 = "youAwaken";
+            player.unEquipItem("Ammonite");
+            player.setHealthPoints(20);
+            enemy.setHealthPoints(40);
         }
 
         game.choiceButton3 = "";
@@ -1740,10 +1816,6 @@ public class Story {
 
     public void youAwaken(){
         Player player = getPlayer();
-        Enemy enemy = getEnemyByName("agentK");
-        player.unEquipItem("Ammonite");
-        enemy.setHealthPoints(30);
-        player.setHealthPoints(20);
         inventoryButtons();
         weaponButtons();
 
