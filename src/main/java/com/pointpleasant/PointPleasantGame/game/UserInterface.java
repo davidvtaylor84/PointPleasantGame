@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class UserInterface {
 
@@ -25,7 +27,8 @@ public class UserInterface {
 
     Font font5 = new Font(Font.MONOSPACED, Font.PLAIN, 14);
 
-
+    String text ="";
+    int i;
 
 
     public void createInterface(Game.DecisionHandler decisionHandler){
@@ -415,10 +418,38 @@ public class UserInterface {
         cashLabelStat.setForeground(Color.WHITE);
         playerStatsPanel.add(cashLabelStat);
 
-
         window.setVisible(true);
 
     }
+
+    Timer timer = new Timer(50, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            char[] character = text.toCharArray();
+            int arrayNumber = character.length;
+
+            String addedCharacter ="";
+            String blank = "";
+
+            addedCharacter = blank + character[i];
+            mainTextArea.append(addedCharacter);
+
+            i++;
+
+            if(i==arrayNumber){
+                i=0;
+                timer.stop();
+            }
+        }
+    });
+
+    public void prepareText(){
+        i=0;
+        mainTextArea.setText("");
+        timer.start();
+    }
+
+
 
 
 }

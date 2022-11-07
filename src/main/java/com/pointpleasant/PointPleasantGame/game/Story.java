@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
@@ -160,7 +162,6 @@ public class Story {
 
 
 
-
 //    can make into an interface:
     public void selectChoice(String choiceButton){
         Player player = getPlayer();
@@ -232,10 +233,12 @@ public class Story {
         setPlayerDefault();
         getPlayerDefault();
         ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/breakdownimg.png");
-        userInterface.imageLabel.setIcon(townImage);
-        userInterface.locationTextArea.setText("Point Pleasant Town Centre");
 
-        userInterface.mainTextArea.setText("You wake with a start in the passenger seat, certain that you have crashed. The morning sun blinds you through the windshield. The car is on the roadside. The battery is dead. As is your phone.\n\nAhead, a sign reads 'Point Pleasant: 2km'. Far down the road behind, you spot a shimmer above the asphalt. You step out of the car. What do you do?");
+        userInterface.imageLabel.setIcon(townImage);
+        userInterface.locationTextArea.setText("Outskirts of Town");
+
+        userInterface.text = "You wake with a start in the passenger seat, certain that you have crashed. The morning sun blinds you through the windshield. The car is on the roadside. The battery is dead. As is your phone.\n\nAhead, a sign reads 'Point Pleasant: 2km'. Far down the road behind, you spot a shimmer above the asphalt. You step out of the car. What do you do?";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("Walk into town");
         userInterface.choice2.setText("Wait for a car to pass");
@@ -274,7 +277,8 @@ public class Story {
         userInterface.imageLabel.setIcon(towardsShimmer);
         userInterface.locationTextArea.setText("Away from town");
 
-        userInterface.mainTextArea.setText("As you draw closer to this metallic shimmer hovering a metre above the road, a strange fear tightens around your heart. The logical part of your brain tells you it is merely a mirage, though deep down, something inside is screaming that you should run from this thing as fast as possible.\n\nWhat do you do?");
+        userInterface.text = "As you draw closer to this metallic shimmer hovering a metre above the road, a strange fear tightens around your heart. The logical part of your brain tells you it is merely a mirage, though deep down, something inside is screaming that you should run from this thing as fast as possible.\n\nWhat do you do?";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("Head towards horror");
         userInterface.choice2.setText("Walk back into town");
@@ -298,7 +302,9 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("The shimmer");
 
-        userInterface.mainTextArea.setText("You cannot comprehend what you are seeing. The air warps likes the surface of a body of water, refracting rainbow light. It gives off a freezing cold when you hold your hand up to it. Terror and curiousity are mixed in your gut. You feel sick.\n\nDo you you run or do you wish to proceed into the shimmer?");
+        userInterface.text = "You cannot comprehend what you are seeing. The air warps likes the surface of a body of water, refracting rainbow light. It gives off a freezing cold when you hold your hand up to it. Terror and curiosity are mixed in your gut. You feel sick.\n\nDo you you run or do you wish to proceed into the shimmer?";
+        userInterface.prepareText();
+
 
         userInterface.choice1.setText("Put your head in");
         userInterface.choice2.setText("Head towards the town");
@@ -324,7 +330,9 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("$%£$8mg3g33$");
 
-        userInterface.mainTextArea.setText("re$%44gg365&46;'][r[lkko397*&*^54587b69n8(*87b7t65534x243$x35 %4%^65^5Yy8B& T^R F^%45*&*9(89*9u8644@$2%90}[{OoHkhhIy*&8&%6$ygURy£5£$28(&(re$%44gg365&46;'][r[lkko397*&*^54587b69n8(*87b7t65534x243$x35 %4%^65^5Yy8B&T^RF^%45*&(\n\n(Insight has increased by +1)");
+        userInterface.text = "re$%44gg365&46;'][r[lkko397*&*^54587b69n8(*87b7t65534x243$x35 %4%^65^5Yy8B& T^R F^%45*&*9(89*9u8644@$2%90}[{OoHkhhIy*&8&%6$ygURy£5£$28(&(re$%44gg365&46;'][r[lkko397*&*^54587b69n8(*87b7t65534x243$x35 %4%^65^5Yy8B&T^RF^%45*&(\n\n(Insight has increased by +1)";
+        userInterface.prepareText();
+
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -352,7 +360,8 @@ public class Story {
         userInterface.imageLabel.setIcon(townImage);
         userInterface.locationTextArea.setText("Wake Up");
 
-        userInterface.mainTextArea.setText("Again, you wake sitting in the passenger seat of your car. You quickly step out and look for the telltale shimmer in air above the road behind. This time there is nothing untoward above the asphalt.\n\nYou sigh, relieved, yet the feeling that you are still dreaming is hard to shake.\n\nWhat do you do?");
+        userInterface.text = "Again, you wake sitting in the passenger seat of your car. You quickly step out and look for the telltale shimmer in air above the road behind. This time there is nothing untoward above the asphalt.\n\nYou sigh, relieved, yet the feeling that you are still dreaming is hard to shake.\n\nWhat do you do?";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("Walk into town");
         userInterface.choice2.setText("Wait for a car to pass");
@@ -379,7 +388,9 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Roadside");
 
-        userInterface.mainTextArea.setText("You wait for an hour. No cars pass. Everything is still and quiet save for the gentle rustling of wind through the crops. You have drunk the remnants of your water bottle. You are now very hungry.");
+        userInterface.text ="You wait for an hour. No cars pass. Everything is still and quiet save for the gentle rustling of wind through the crops. You have drunk the remnants of your water bottle. You are now very hungry.";
+        userInterface.prepareText();
+
 
         userInterface.choice1.setText("Walk into town");
         if(player.getInsight()==0){
@@ -411,7 +422,8 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Towards Point Pleasant");
 
-        userInterface.mainTextArea.setText("After walking for 20 minutes in the increasingly hot sun, a very tall man emerges from the scrub from the side of the road.\n\nHe waves and runs to you, grinning and laughing, his gait like that of a gazelle with a broken leg. In less time that you can think to react, he stands with his face very close to yours. His breath smells like almonds.");
+        userInterface.text = "After walking for 20 minutes in the increasingly hot sun, a very tall man emerges from the scrub from the side of the road.\n\nHe waves and runs to you, grinning and laughing, his gait like that of a gazelle with a broken leg. In less time that you can think to react, he stands with his face very close to yours. His breath smells like almonds.";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -438,7 +450,8 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Vadig");
 
-        userInterface.mainTextArea.setText("'Do not be afraid. The name's Vadig,' he says, in an unusually high-pitched sing-song, 'We are from a country much weaker than yours.'\n\nHe grabs you by the lapels and puts his hands in your pockets.\n\n'I require your cash for my own pleasure,' he adds.\n\n");
+        userInterface.text = "'Do not be afraid. The name's Vadig,' he says, in an unusually high-pitched sing-song, 'We are from a country much weaker than yours.'\n\nHe grabs you by the lapels and puts his hands in your pockets.\n\n'I require your cash for my own pleasure,' he adds.";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("Fight him off");
         userInterface.choice2.setText("Let him take your money");
@@ -466,7 +479,8 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Vadig Takes Your Money");
 
-        userInterface.mainTextArea.setText("'This will not do,' he says. 'I was going to give you something for your courage. Now I won't. Use this if you ever get into a fight. Thanks for the cash.'\n\nVadig hands over an Energy Bar(+25 HP) and walks away from you down the road.");
+        userInterface.text = ("'This will not do,' he says. 'I was going to give you something for your courage. Now I won't. Use this if you ever get into a fight. Thanks for the cash.'\n\nVadig hands over an Energy Bar(+25 HP) and walks away from you down the road.");
+        userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -500,7 +514,8 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Fight with Vadig");
 
-        userInterface.mainTextArea.setText("Vadig HP: "+enemy.getHealthPoints()+"\n\nYOUR D20 ATTACK ROLL: "+attackRoll+" vs VADIG DEFENCE RATING: "+enemy.getDefence()+"\n\nYou grapple with Vadig and inflict " + playerAttack+ " points of damage");
+        userInterface.text = "Vadig HP: "+enemy.getHealthPoints()+"\n\nYOUR D20 ATTACK ROLL: "+attackRoll+" vs VADIG DEFENCE RATING: "+enemy.getDefence()+"\n\nYou grapple with Vadig and inflict " + playerAttack+ " points of damage";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -543,7 +558,8 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Fight with Vadig");
 
-        userInterface.mainTextArea.setText("Vadig HP:"+enemy.getHealthPoints()+"\nYou used 1 point of Inspiration to add +8 damage to a successful or unsuccessful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs VADIG DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.");
+        userInterface.text = "Vadig HP:"+enemy.getHealthPoints()+"\nYou used 1 point of Inspiration to add +8 damage to a successful or unsuccessful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs VADIG DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -583,7 +599,8 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Fight with Vadig");
 
-        userInterface.mainTextArea.setText("Vadig giggles inanely as he tries to wrestle you to the ground.\n\nENEMY D20 ATTACK ROLL: "+attackRoll+" vs YOUR DEFENCE RATING: "+player.getDefence()+"\n\nVadig inflicts " + enemyAttack+ " points of damage");
+        userInterface.text = "Vadig giggles inanely as he tries to wrestle you to the ground.\n\nENEMY D20 ATTACK ROLL: "+attackRoll+" vs YOUR DEFENCE RATING: "+player.getDefence()+"\n\nVadig inflicts " + enemyAttack+ " points of damage";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("Inspired Attack");
@@ -622,7 +639,8 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Highway fight aftermath");
 
-        userInterface.mainTextArea.setText("Vadig falls to the ground and laughs.\n\n'Well done', he says. 'I had to test you for what is to come.'\n\nHe stands up slowly and hands you a rusted key. His height seems to have increased.");
+        userInterface.text = "Vadig falls to the ground and laughs.\n\n'Well done', he says. 'I had to test you for what is to come.'\n\nHe stands up slowly and hands you a rusted key. His height seems to have increased.";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -651,7 +669,8 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Highway fight aftermath");
 
-        userInterface.mainTextArea.setText("'You must visit my sister in library in town.'\n\nHe nods and runs off into the field before descending some unseen staircase hidden by scrub.\n\n(Rusted Key has been added to Inventory. +2 Defence. +3 Attack.)");
+        userInterface.text = "'You must visit my sister in library in town.'\n\nHe nods and runs off into the field before descending some unseen staircase hidden by scrub.\n\n(Rusted Key has been added to Inventory. +2 Defence. +3 Attack.)";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("On to Point Pleasant");
         userInterface.choice2.setText("Investigate field");
@@ -680,7 +699,8 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Investigate Field");
 
-        userInterface.mainTextArea.setText("You can find no sign of a staircase or door amidst the dirt and dried out cornstalks, only an Average Energy Bar(+20 HP) with a note attached that reads: 'Eat this during your next fight. It can help.");
+        userInterface.text = "You can find no sign of a staircase or door amidst the dirt and dried out cornstalks, only an Average Energy Bar(+20 HP) with a note attached that reads: 'Eat this during your next fight. It can help.");
+        userInterface.prepareText();
 
         userInterface.choice1.setText("On to Point Pleasant");
         userInterface.choice2.setText("");
@@ -710,8 +730,9 @@ public class Story {
         userInterface.locationTextArea.setText("Welcome to Point Pleasant");
 
         if(player.getCash()==0) {
-            userInterface.mainTextArea.setText("After walking for an hour, you enter Point Pleasant. It is small town, a population of around 4,000, according to the signage on approach. The main thoroughfare features thrift stores, bars, locally owned shops. You notice, after looking in a shop window, that your eyes are rimmed red and swollen.");
-        } else {userInterface.mainTextArea.setText("After walking for an hour, you enter Point Pleasant. It is small town, a population of around 4,000, according to the signage on approach. The main thoroughfare features thrift stores, bars, locally owned shops. You notice, after looking in a shop window, that your eyes are rimmed red and swollen.\n\nYou realise that your wallet is gone. You only have $4 in change.");}
+            userInterface.text = ("After walking for an hour, you enter Point Pleasant. It is small town, a population of around 4,000, according to the signage on approach. The main thoroughfare features thrift stores, bars, locally owned shops. You notice, after looking in a shop window, that your eyes are rimmed red and swollen.");
+        } else {userInterface.text = "After walking for an hour, you enter Point Pleasant. It is small town, a population of around 4,000, according to the signage on approach. The main thoroughfare features thrift stores, bars, locally owned shops. You notice, after looking in a shop window, that your eyes are rimmed red and swollen.\n\nYou realise that your wallet is gone. You only have $4 in change.";}
+        userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -740,7 +761,7 @@ public class Story {
 
         userInterface.locationTextArea.setText("Point Pleasant");
 
-        userInterface.mainTextArea.setText("In the town square, you notice that you are being actively avoided, as if you are a symptom of psychosis. Everyone talks to one another in hushed tones. It is cold, with the grey shell of cloud threatening rain.\n\nA handful of shops and businesses are open. Most are closed. Where do you want to go?");
+        userInterface.text = "In the town square, you notice that you are being actively avoided, as if you are a symptom of psychosis. Everyone talks to one another in hushed tones. It is cold, with the grey shell of cloud threatening rain.\n\nA handful of shops and businesses are open. Most are closed. Where do you want to go?";
 
         userInterface.choice1.setText("Pleasant Store");
         userInterface.choice2.setText("Rita's Car Garage");
@@ -775,7 +796,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Pleasant Store");
 
-        userInterface.mainTextArea.setText("It is dry and dusty inside the store. The shelves are threadbare. The shopkeeper is a small man with no chin and thick glasses sitting in a chair to the side.You immediately erupt into a fit of coughing\n\nThe man ignores you, his head buried in a book entitled, 'The History of Glue'.");
+        userInterface.text = "It is dry and dusty inside the store. The shelves are threadbare. The shopkeeper is a small man with no chin and thick glasses sitting in a chair to the side.You immediately erupt into a fit of coughing\n\nThe man ignores you, his head buried in a book entitled, 'The History of Glue'.";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("Tell Shopkeeper your story");
         userInterface.choice2.setText("What can I buy?");
@@ -802,7 +824,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Pleasant Store");
 
-        userInterface.mainTextArea.setText("'A lot of strange things going on in town at the moment,' he says. 'I think it has something to do with the power plant three towns over. Leaking poisonous fumes or somethin, causing hallucinations. Might explain your eyes as well.'\n\nHe looks you up and down:'You gonna buy anything?'");
+        userInterface.text = "'A lot of strange things going on in town at the moment,' he says. 'I think it has something to do with the power plant three towns over. Leaking poisonous fumes or somethin, causing hallucinations. Might explain your eyes as well.'\n\nHe looks you up and down:'You gonna buy anything?'";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("< < <");
         userInterface.choice2.setText("What can I buy?");
@@ -829,7 +852,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Pleasant Store");
 
-        userInterface.mainTextArea.setText("The old man chuckles: 'I don't think so, sonny. Phone and internet service has been out for three days. You want to make contact with someone outside, the quickest way would be through post.'\n\n'Doesn't bother me much since I never use the internet, but I hear this is a mighty unusual occurrence.'");
+        userInterface.text = "The old man chuckles: 'I don't think so, sonny. Phone and internet service has been out for three days. You want to make contact with someone outside, the quickest way would be through post.'\n\n'Doesn't bother me much since I never use the internet, but I hear this is a mighty unusual occurrence.'";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("< < <");
         userInterface.choice2.setText("What can I buy?");
@@ -856,7 +880,9 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Pleasant Store");
 
-        userInterface.mainTextArea.setText("The store is a mess of faded signage, old boardgames, machinery parts sitting on a table like pieces of abstract sculpture.\n\nYou are not interested in most of it, save for a nifty wind-up torch($30) that reminds you of something you had as a child.");
+        userInterface.text = "The store is a mess of faded signage, old boardgames, machinery parts sitting on a table like pieces of abstract sculpture.\n\nYou are not interested in most of it, save for a nifty wind-up torch($30) that reminds you of something you had as a child.";
+        userInterface.prepareText();
+
 
         userInterface.choice1.setText("< < <");
 
@@ -893,9 +919,10 @@ public class Story {
 
         if(player.getCash()>=30 && !player.getItemByName("Windup Torch").isEquipped()) {
             player.setCash(player.getCash() - 30);
-            userInterface.mainTextArea.setText("'There you go, sir, one torch,' he says. 'This is a classic.'\n\n(Windup Torch added to inventory. Cash -$30)");
+            userInterface.text = "'There you go, sir, one torch,' he says. 'This is a classic.'\n\n(Windup Torch added to inventory. Cash -$30)";
             player.setItemToEquipped("Windup Torch");
-        }else{userInterface.mainTextArea.setText("'Not enough cash, hombre,' he mutters.\n\nHe sits down and continues reading his book, then looks up:'Got some logs need chopping out back if you want to earn $40'");}
+        }else{userInterface.text = "'Not enough cash, hombre,' he mutters.\n\nHe sits down and continues reading his book, then looks up:'Got some logs need chopping out back if you want to earn $40'";}
+        userInterface.prepareText();
 
 
         userInterface.choice1.setText("< < <");
@@ -925,13 +952,15 @@ public class Story {
 
         userInterface.choice1.setText("< < <");
         if(player.getCash()<44){
-            userInterface.mainTextArea.setText("You have followed him into the courtyard out through the back of the shop. Thigh-high rank weeds grow out of the cracks in the paving. A pile of wood sits next to the door.\n\n'I'll give you two dollars for every split log... up to $40,' he hastily adds. 'Well... what you waiting for?'");
+            userInterface.text = "You have followed him into the courtyard out through the back of the shop. Thigh-high rank weeds grow out of the cracks in the paving. A pile of wood sits next to the door.\n\n'I'll give you two dollars for every split log... up to $40,' he hastily adds. 'Well... what you waiting for?'";
             userInterface.choice2.setText("Chop Log");
             game.choiceButton2 = "chopLog";
-        } else{userInterface.mainTextArea.setText("'You've done the work,' he says. 'Can't quite do these things like I used to. You should go get some food at the diner across the road. The beef tacos are pretty good.'");
+        } else{userInterface.text = "'You've done the work,' he says. 'Can't quite do these things like I used to. You should go get some food at the diner across the road. The beef tacos are pretty good.'";
             userInterface.choice2.setText("");
             game.choiceButton2 = "";
         }
+        userInterface.prepareText();
+
         userInterface.choice1.setText("< < <");
 
         userInterface.choice3.setText("");
@@ -958,7 +987,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Chopping Wood");
 
-        userInterface.mainTextArea.setText("The handle is greasy, the axehead is damn heavy and threatens to fly off completely. You strain to chop the wood as the old man watches on with a dumb grin on his face.\n\n(+$2 cash)");
+        userInterface.text = "The handle is greasy, the axehead is damn heavy and threatens to fly off completely. You strain to chop the wood as the old man watches on with a dumb grin on his face.\n\n(+$2 cash)";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("Lift axe");
         userInterface.choice2.setText("");
@@ -985,7 +1015,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Rita's Garage and Parts");
 
-        userInterface.mainTextArea.setText("You enter the garage.A woman in overalls is working on a disassembled Ford Cortina and glares at you suspiciously. She appears exhausted and has dark rings under her eyes as she hasn't slept in days.\n\n'Can I help you?' She says.");
+        userInterface.text = "You enter the garage.A woman in overalls is working on a disassembled Ford Cortina and glares at you suspiciously. She appears exhausted and has dark rings under her eyes as she hasn't slept in days.\n\n'Can I help you?' She says.";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("Tell her your car broke down");
         userInterface.choice2.setText("Can I use your phone?");
@@ -1013,7 +1044,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Rita's Garage and Parts");
 
-        userInterface.mainTextArea.setText("'Well that's a mighty sad story,' she mutters.'Happening with increasing frequency around here, but I don't see how it's my problem.'\n\nShe ponders for a moment, then:'Maybe go see Mary at the newspaper offices. She's good with cars and has a thing for charity cases like yours.'");
+        userInterface.text = "'Well that's a mighty sad story,' she mutters.'Happening with increasing frequency around here, but I don't see how it's my problem.'\n\nShe ponders for a moment, then:'Maybe go see Mary at the newspaper offices. She's good with cars and has a thing for charity cases like yours.'";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("< < <");
         userInterface.choice2.setText("Can I use your phone?");
@@ -1040,7 +1072,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Rita's Garage and Parts");
 
-        userInterface.mainTextArea.setText("'Can't just wander into town and demand things.'\n\nShe sighs and apologises: 'I'm sorry. There's been many a stranger come into down recently. Some may be regular folks, others turn out to be lunatics. I don't know you, so even if the phone was working it would still be a no.");
+        userInterface.text = "'Can't just wander into town and demand things.'\n\nShe sighs and apologises: 'I'm sorry. There's been many a stranger come into down recently. Some may be regular folks, others turn out to be lunatics. I don't know you, so even if the phone was working it would still be a no.";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("< < <");
         userInterface.choice2.setText("Tell her your car broke down");
@@ -1067,7 +1100,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
-        userInterface.mainTextArea.setText("You enter the offices of the Point Pleasant Enquirer located in a converted mobile home in a lot off the main square. It is surprisingly bright and airy inside. The sole journalist in the office stands up when she notices your wild look\n\n'Aha!' She says.'You've seen them too!'");
+        userInterface.text = "You enter the offices of the Point Pleasant Enquirer located in a converted mobile home in a lot off the main square. It is surprisingly bright and airy inside. The sole journalist in the office stands up when she notices your wild look\n\n'Aha!' She says.'You've seen them too!'";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("What are you talking about?");
         userInterface.choice2.setText("Leave");
@@ -1094,7 +1128,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
-        userInterface.mainTextArea.setText("'Let me guess,' she says. 'You suspect you fell asleep at the wheel of your and you woke up in the morning at the side of the road.'\n\n'It's happened a bunch of times over the past few weeks, ever since everything started going crazy round here. Kooks and soldiers showing up and whatnot.'");
+        userInterface.text = "'Let me guess,' she says. 'You suspect you fell asleep at the wheel of your and you woke up in the morning at the side of the road.'\n\n'It's happened a bunch of times over the past few weeks, ever since everything started going crazy round here. Kooks and soldiers showing up and whatnot.'";
 
         userInterface.choice1.setText("Tell me more");
         userInterface.choice2.setText("Leave");
@@ -1121,7 +1155,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
-        userInterface.mainTextArea.setText("'Can I show you a video?' She says.\n\nWithout waiting for a reply she plays you a video on her phone of a large pill-shaped object floating above the desert outside Point Pleasant.\n\n'Does this look familiar?'");
+        userInterface.text = "'Can I show you a video?' She says.\n\nWithout waiting for a reply she plays you a video on her phone of a large pill-shaped object floating above the desert outside Point Pleasant.\n\n'Does this look familiar?'";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("Shrug");
         userInterface.choice2.setText("Leave");
@@ -1149,7 +1184,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
-        userInterface.mainTextArea.setText("Although the import of the video is not immediately obvious, something about this UFO footage resonates makes your stomach drop.\n\n'If you would like to find out more, come see me at the Marlee Hotel later on. I have a hypnotist friend staying there helping people like you recover lost memories.'");
+        userInterface.text = "Although the import of the video is not immediately obvious, something about this UFO footage resonates makes your stomach drop.\n\n'If you would like to find out more, come see me at the Marlee Hotel later on. I have a hypnotist friend staying there helping people like you recover lost memories.'";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("Leave");
         userInterface.choice2.setText("");
@@ -1176,7 +1212,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Dynamite Diner");
 
-        userInterface.mainTextArea.setText("The diner is quiet. The owner, or owner, sits behind the counter doing a crossword. She doesn't look up.\n\nA man sitting in one of the booths perks up at your entrance. Like you, his hair is wild and his eyes are red and swollen. He tries to catch your eye and weakly smiles.");
+        userInterface.text = "The diner is quiet. The owner, or owner, sits behind the counter doing a crossword. She doesn't look up.\n\nA man sitting in one of the booths perks up at your entrance. Like you, his hair is wild and his eyes are red and swollen. He tries to catch your eye and weakly smiles.";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("Order Beef Tacos($7)");
         userInterface.choice2.setText("Talk to man");
@@ -1207,9 +1244,9 @@ public class Story {
         if(player.getCash()>=7){
             player.setCash(getPlayer().getCash()-7);
             player.setHealthPoints(getPlayer().getHealthPoints()+10);
-            userInterface.mainTextArea.setText("These are the worst beef tacos you've ever eaten, but they are somewhat nutritious.\n\n(HP +10. CASH -7)");
+            userInterface.text = "These are the worst beef tacos you've ever eaten, but they are somewhat nutritious.\n\n(HP +10. CASH -7)";
             userInterface.imageLabel.setIcon(image2);
-        } else{userInterface.mainTextArea.setText("You don't have enough cash. Maybe try doing some work.");}
+        } else{userInterface.text = "You don't have enough cash. Maybe try doing some work.";}
 
 
         userInterface.choice1.setText("< < <");
@@ -1237,7 +1274,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Dynamite Diner");
 
-        userInterface.mainTextArea.setText("'Sorry, sugar,' says the waitress.'Phones are all busted in this stupid town. Everything has gone to hell. Even the beef we're getting is all weird. Something to do with the cattle mutilations I reckon.'\n\n'I gotta get out of this place,' she adds.");
+        userInterface.text = "'Sorry, sugar,' says the waitress.'Phones are all busted in this stupid town. Everything has gone to hell. Even the beef we're getting is all weird. Something to do with the cattle mutilations I reckon.'\n\n'I gotta get out of this place,' she adds.";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("Order Beef Tacos($7)");
         userInterface.choice2.setText("Talk to man");
@@ -1265,14 +1303,15 @@ public class Story {
         userInterface.locationTextArea.setText("Dynamite Diner");
 
         if(player.getInsight()>=2){
-        userInterface.mainTextArea.setText("'Now you know', the man says. It's as if he has been waiting for you.'Maybe you're a braver man than I. There's something out back of this diner that frightens me more than anything in this world. A man that isn't a man. A box...'\n\nAt this he breaks off into a fit of giggles and says no more.");
+        userInterface.text = ("'Now you know', the man says. It's as if he has been waiting for you.'Maybe you're a braver man than I. There's something out back of this diner that frightens me more than anything in this world. A man that isn't a man. A box...'\n\nAt this he breaks off into a fit of giggles and says no more.");
             userInterface.choice2.setText("Go out the back door");
             game.choiceButton2 = "dumpsterEncounter";
 
-        }else{userInterface.mainTextArea.setText("The man looks more crazed up close. His hands shake, jittering the surface of his black coffee.\n\n'You think you know but you don't,' he whispers without looking up. 'Not yet. I can see it in your eyes.'\n(2 Insight Required)");
+        }else{userInterface.text = "The man looks more crazed up close. His hands shake, jittering the surface of his black coffee.\n\n'You think you know but you don't,' he whispers without looking up. 'Not yet. I can see it in your eyes.'\n(2 Insight Required)";
             userInterface.choice2.setText("");
             game.choiceButton2 = "";
         }
+        userInterface.prepareText();
 
         userInterface.choice1.setText("< < <");
 
@@ -1300,13 +1339,14 @@ public class Story {
         userInterface.locationTextArea.setText("The Marlee Hotel");
 
         if(player.getInsight()<2) {
-            userInterface.mainTextArea.setText("You enter the hushed lobby of the hotel. Everything in here is still, quiet and dusty. A sense of faded grandeur lingers in the immense paintings of Civil War battles and ornate chandeliers, yet the place smells of mildew.\n\nAbruptly, Mary Hyre appears and tells you how glad she is that you have come.");
+            userInterface.text = "You enter the hushed lobby of the hotel. Everything in here is still, quiet and dusty. A sense of faded grandeur lingers in the immense paintings of Civil War battles and ornate chandeliers, yet the place smells of mildew.\n\nAbruptly, Mary Hyre appears and tells you how glad she is that you have come.";
             userInterface.choice1.setText("Go with her");
             game.choiceButton1="hypnotist";
-        }else {userInterface.mainTextArea.setText("You enter the hushed lobby of the hotel. Everything in here is still, quiet and dusty. A sense of faded grandeur lingers in the immense paintings of Civil War battles and ornate chandeliers, yet the place smells of mildew.");
+        }else {userInterface.text = "You enter the hushed lobby of the hotel. Everything in here is still, quiet and dusty. A sense of faded grandeur lingers in the immense paintings of Civil War battles and ornate chandeliers, yet the place smells of mildew.";
             userInterface.choice1.setText("");
             game.choiceButton1="";
         }
+        userInterface.prepareText();
 
         userInterface.choice2.setText("Leave");
         userInterface.choice3.setText("");
@@ -1332,7 +1372,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Marlee Hotel");
 
-        userInterface.mainTextArea.setText("You follow her into a bedroom on the first where a man in long jacket sits on an armchair by the window. His eyes are very large. He motions for you to sit on the chair opposite his.\n\n'I believe you are another experiencer,' he says. 'Do you consent to be hypnotised so we can help you discover the truth?'");
+        userInterface.text = "You follow her into a bedroom on the first where a man in long jacket sits on an armchair by the window. His eyes are very large. He motions for you to sit on the chair opposite his.\n\n'I believe you are another experiencer,' he says. 'Do you consent to be hypnotised so we can help you discover the truth?'";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("Be hypnotised");
         userInterface.choice2.setText("Leave");
@@ -1359,7 +1400,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Marlee Hotel");
 
-        userInterface.mainTextArea.setText("The gentleman waves his pocket watch in front of your eyes, as Mary Hyre sits on the bed and observes. No noise can be heard from outside the room. Only the hypnotist's sonorous voice as he counts down from 3...2...1");
+        userInterface.text = "The gentleman waves his pocket watch in front of your eyes, as Mary Hyre sits on the bed and observes. No noise can be heard from outside the room. Only the hypnotist's sonorous voice as he counts down from 3...2...1";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -1387,7 +1429,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Marlee Hotel");
 
-        userInterface.mainTextArea.setText("You see yourself driving along the highway at night, suddenly struck by a blinding light in the sky... a sensation of floating... a tall winged creature with red eyes lurking in the trees attacked by men with guns. However surreal these sensations and images, the one that sticks most is of Christmas presents floating in the water.\n(Insight increased by +2)");
+        userInterface.text = "You see yourself driving along the highway at night, suddenly struck by a blinding light in the sky... a sensation of floating... a tall winged creature with red eyes lurking in the trees attacked by men with guns. However surreal these sensations and images, the one that sticks most is of Christmas presents floating in the water.\n(Insight increased by +2)";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -1414,7 +1457,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Marlee Hotel");
 
-        userInterface.mainTextArea.setText("Upon waking, you tell Mary Hyre and the hypnotist what you experienced.\n\n'This is the most promising candidate yet,'Mary says to her companion and to you, 'You saw the Mothman! Please come back to the office later and I'll explain everything.'");
+        userInterface.text = "Upon waking, you tell Mary Hyre and the hypnotist what you experienced.\n\n'This is the most promising candidate yet,'Mary says to her companion and to you, 'You saw the Mothman! Please come back to the office later and I'll explain everything.'";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("Leave");
         userInterface.choice2.setText("");
@@ -1441,7 +1485,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Dumpster Encounter");
 
-        userInterface.mainTextArea.setText("Behind the diner is a small lot filled with trash and overgrown weeds. Nothing appears untoward. You approach the dumpster filled with food waste and find a small ornate wooden box attached to the wall with a chain. It is very out of place.\n\nYou pick it up. A heart is carved onto the lid.");
+        userInterface.text = "Behind the diner is a small lot filled with trash and overgrown weeds. Nothing appears untoward. You approach the dumpster filled with food waste and find a small ornate wooden box attached to the wall with a chain. It is very out of place.\n\nYou pick it up. A heart is carved onto the lid.";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("Leave");
         userInterface.choice2.setText("");
@@ -1472,7 +1517,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Dumpster Encounter");
 
-        userInterface.mainTextArea.setText("You unlock the box with the Rusted Key. Within is an ammonite fossil. A plunging sensation move through your body. A mental image of the Mothman, red eyes gleaming from a glass enclosure enshrouded by smoke. It feels like your brain is going to crack.\n\n(Insight increased by +1. Ammonite added to Inventory)");
+        userInterface.text = "You unlock the box with the Rusted Key. Within is an ammonite fossil. A plunging sensation move through your body. A mental image of the Mothman, red eyes gleaming from a glass enclosure enshrouded by smoke. It feels like your brain is going to crack.\n\n(Insight increased by +1. Ammonite added to Inventory)";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -1502,7 +1548,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Dumpster Encounter");
 
-        userInterface.mainTextArea.setText("'We demand that you must and will give us the object', says a squeaking voice behind you.\n\nYou turn and are confronted by an incredibly broad man in black trenchcoat and black fedora blocking the door to the diner.Quicker than humanly possible, he lunges towards you.");
+        userInterface.text = "'We demand that you must and will give us the object', says a squeaking voice behind you.\n\nYou turn and are confronted by an incredibly broad man in black trenchcoat and black fedora blocking the door to the diner.Quicker than humanly possible, he lunges towards you.";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -1536,7 +1583,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Fight against MIB");
 
-        userInterface.mainTextArea.setText("MIB swings his immense fists down on your head.\n\nENEMY D20 ATTACK ROLL: " + attackRoll + " vs YOUR DEFENCE RATING: " + player.getDefence() + "\n\nMIB inflicts " + enemyAttack + " points of damage");
+        userInterface.text = "MIB swings his immense fists down on your head.\n\nENEMY D20 ATTACK ROLL: " + attackRoll + " vs YOUR DEFENCE RATING: " + player.getDefence() + "\n\nMIB inflicts " + enemyAttack + " points of damage";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("Inspired Attack");
@@ -1578,7 +1626,8 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Fight against MIB");
 
-        userInterface.mainTextArea.setText("MIB HP: "+enemy.getHealthPoints()+"\n\nYOUR D20 ATTACK ROLL: "+attackRoll+" vs MIB DEFENCE RATING: "+enemy.getDefence()+"\n\nYou grapple with MIB and inflict " + playerAttack+ " points of damage");
+        userInterface.text = "MIB HP: "+enemy.getHealthPoints()+"\n\nYOUR D20 ATTACK ROLL: "+attackRoll+" vs MIB DEFENCE RATING: "+enemy.getDefence()+"\n\nYou grapple with MIB and inflict " + playerAttack+ " points of damage";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -1620,7 +1669,8 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Fight with MIB");
 
-        userInterface.mainTextArea.setText("MIB HP:"+enemy.getHealthPoints()+"\nYou used 1 point of Inspiration to add +8 damage to a successful or unsuccessful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs MIB DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.");
+        userInterface.text = "MIB HP:"+enemy.getHealthPoints()+"\nYou used 1 point of Inspiration to add +8 damage to a successful or unsuccessful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs MIB DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
