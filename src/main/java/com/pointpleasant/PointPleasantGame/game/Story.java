@@ -66,11 +66,11 @@ public class Story {
 
     public void setPlayerDefault(){
         Player player = getPlayer();
-        player.setHealthPoints(40);
+        player.setHealthPoints(10);
         player.setInsight(0);
         player.setDefence(10);
         player.setAttack(7);
-        player.setInspiration(5);
+        player.setInspiration(4);
         player.setCash(180);
         player.setGameProgress(0);
         defaultInventory();
@@ -160,12 +160,25 @@ public class Story {
         }
     }
 
+    public void healthItem(String name){
+        Player player = getPlayer();
+        showInventoryItem(name);
+        if(player.getItemByName(name).isEquipped()){
+        player.useHealthBooster(name);
+        player.unEquipItem(name);
+        this.game.getPlayerRepository().save(player);
+        showInventoryItem(name);
+        inventoryButtons();
+        }
+    }
+
 
 
 //    can make into an interface:
     public void selectChoice(String choiceButton){
         Player player = getPlayer();
         switch (choiceButton){
+            case "breakdown": setPlayerDefault();breakdown();break;
             case "newspaperOffice":newsPaperOffice(); break;
             case "enteringTheTown": enteringTheTown();break;
             case "towardsShimmer": walkingTowardsShimmer();break;
@@ -211,11 +224,12 @@ public class Story {
             case "MIBAttacks": MIBAttacks();break;
             case "playerAttacksMIB": playerAttacksMIB();break;
             case "inspiredAttackAgainstMIB": inspiredAttackAgainstMIB();break;
+            case "askAboutVadig": askAboutVadig();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
-            case "getEnergyBarPlus": showInventoryItem("Energy Bar+");break;
-            case "getMediocreEnergyBar": showInventoryItem("Mediocre Energy Bar");break;
-            case "getAverageEnergyBar": showInventoryItem("Average Energy Bar");break;
+            case "getEnergyBarPlus": healthItem("Energy Bar+");userInterface.inventory2.setText("(Inventory slot 2)");break;
+            case "getMediocreEnergyBar": healthItem("Mediocre Energy Bar");userInterface.inventory4.setText("(Inventory slot 4)");break;
+            case "getAverageEnergyBar": healthItem("Average Energy Bar");userInterface.inventory3.setText("(Inventory slot 3)");break;
             case "getRustedKey": showInventoryItem("Rusted Key");break;
             case "getKeyCard": showInventoryItem("Keycard");break;
             case "getAmmonite": showInventoryItem("Ammonite");break;
@@ -230,6 +244,8 @@ public class Story {
 
     public void breakdown(){
         Player player = getPlayer();
+        Enemy enemy = getEnemy(1L);
+        enemy.setHealthPoints(20);
         setPlayerDefault();
         getPlayerDefault();
         ImageIcon townImage = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/breakdownimg.png");
@@ -266,8 +282,8 @@ public class Story {
         game.weapon3 = "getColt";
         game.weapon4 = "getM16";
 
-
-        this.game.getPlayerRepository().save(player);
+     this.game.getPlayerRepository().save(player);
+     this.game.getEnemyRepository().save(enemy);
     }
 
     public void walkingTowardsShimmer(){
@@ -479,7 +495,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Vadig Takes Your Money");
 
-        userInterface.text = ("'This will not do,' he says. 'I was going to give you something for your courage. Now I won't. Use this if you ever get into a fight. Thanks for the cash.'\n\nVadig hands over an Energy Bar(+25 HP) and walks away from you down the road.");
+        userInterface.text = ("'This will not do,' he says. 'I was going to give you something special for your courage. Now I won't. You might still get it yet if you prove you can work hard. Thanks for the cash. Take this.'\n\nVadig hands over an Energy Bar(+25 HP) and ambles off down the road.");
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -614,7 +630,7 @@ public class Story {
                 game.choiceButton2 = "inspiredAttackAgainstVadig";}
             else {game.choiceButton2 = "";}
         } else{
-            game.choiceButton1 = "winOverVadig";
+            game.choiceButton1 = "breakdown";
             game.choiceButton2 = "";
         }
 
@@ -1187,6 +1203,35 @@ public class Story {
         userInterface.text = "Although the import of the video is not immediately obvious, something about this UFO footage resonates makes your stomach drop.\n\n'If you would like to find out more, come see me at the Marlee Hotel later on. I have a hypnotist friend staying there helping people like you recover lost memories.'";
         userInterface.prepareText();
 
+        userInterface.choice1.setText("Ask about Vadig");
+        userInterface.choice2.setText("Leave");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="askAboutVadig";
+        game.choiceButton2 = "theTownSquare";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void askAboutVadig(){
+        Player player = getPlayer();
+        player.setGameProgress(2);
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/maryHyre2.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Point Pleasant Enquirer");
+
+        userInterface.text = "'Your description of this man doesn't ring any bells,' she says, 'but we have had incidents in the town in recent days where strange men and women turn up trying to convince people that that they are local. They say that their sister works in the library, which doesn't make sense. The library shut down three years ago.'";
+        userInterface.prepareText();
+
         userInterface.choice1.setText("Leave");
         userInterface.choice2.setText("");
         userInterface.choice3.setText("");
@@ -1691,6 +1736,10 @@ public class Story {
         getPlayerDefault();
         this.game.getEnemyRepository().save(enemy);
         this.game.getPlayerRepository().save(player);
+    }
+
+    public void youAwaken(){
+        
     }
 
 }

@@ -13,8 +13,8 @@ public class Disguise extends Item implements IActivateItem{
     private int armourRating;
 
 
-    public Disguise(String name, String description, boolean equipped, Player player, int armourRating) {
-        super(name, description, equipped, player);
+    public Disguise(String name, String description, boolean equipped, int restoration, Player player, int armourRating) {
+        super(name, description, equipped, restoration, player);
         this.armourRating = armourRating;
     }
 

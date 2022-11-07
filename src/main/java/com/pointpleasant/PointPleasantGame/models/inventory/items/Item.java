@@ -3,6 +3,7 @@ package com.pointpleasant.PointPleasantGame.models.inventory.items;
 import com.pointpleasant.PointPleasantGame.models.Player;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.io.Serializable;
 
 @Entity
@@ -23,14 +24,18 @@ public abstract class Item{
     @Column(name = "equipped")
     private boolean equipped;
 
+    @Column(name ="restoration")
+    private int restoration;
+
     @ManyToOne
     @JoinColumn(name = "player_id", nullable = false)
     private Player player;
 
-    public Item(String name, String description, boolean equipped, Player player) {
+    public Item(String name, String description, boolean equipped, int restoration, Player player) {
         this.name = name;
         this.description = description;
         this.equipped = equipped;
+        this.restoration = restoration;
         this.player = player;
     }
 
@@ -80,7 +85,11 @@ public abstract class Item{
         setEquipped(true);
     }
 
+    public int getRestoration() {
+        return restoration;
+    }
 
-
-
+    public void setRestoration(int restoration) {
+        this.restoration = restoration;
+    }
 }

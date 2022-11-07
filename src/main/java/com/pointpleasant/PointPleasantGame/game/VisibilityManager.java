@@ -36,7 +36,6 @@ public class VisibilityManager {
         userInterface.introButtonPanel.setVisible(true);
 
 
-
         userInterface.mainTextPanel.setVisible(false);
         userInterface.choiceButtonPanel.setVisible(false);
         userInterface.playerStatsPanel.setVisible(false);
@@ -56,7 +55,6 @@ public class VisibilityManager {
 
         userInterface.introPanel.setVisible(false);
         userInterface.introButtonPanel.setVisible(false);
-
 
         userInterface.mainTextPanel.setVisible(true);
         userInterface.choiceButtonPanel.setVisible(true);

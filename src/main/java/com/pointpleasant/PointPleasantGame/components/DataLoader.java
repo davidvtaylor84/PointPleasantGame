@@ -46,29 +46,29 @@ public class DataLoader implements ApplicationRunner {
         Player player = new Player("John Leek", 30, 0, 14, 7, 5, 70, 1);
         playerRepository.save(player);
 
-        Disguise disguise = new Disguise("Army Uniform", "STANDARD ISSUE UNIFORM \n\nDescription: An army uniform, slightly worn, found in a locker.\n\nCould be used to disguise oneself, but your non-regulation haircut and startled bearing won't fool them for long.\n\nCannot be used here.", false, player, 10);
+        Disguise disguise = new Disguise("Army Uniform", "STANDARD ISSUE UNIFORM \n\nDescription: An army uniform, slightly worn, found in a locker.\n\nCould be used to disguise oneself, but your non-regulation haircut and startled bearing won't fool them for long.\n\nCannot be used here.", false, 0,player, 10);
         itemRepository.save(disguise);
 
-        HealthBooster energyBar = new HealthBooster("Energy Bar+", "BAZLINTON'S ENERGY BAR PLUS.\n\nMakes one feel godlike(or so goes the packaging blurb).\n\nOne-liner on the side reads: 'I’ve got a friend who has got a butler whose left arm is missing; serves him right'.\n\nIncreases health by 25 points", false, player, 25);
+        HealthBooster energyBar = new HealthBooster("Energy Bar+", "BAZLINTON'S ENERGY BAR PLUS.\n\nMakes one feel godlike(or so goes the packaging blurb).\n\nOne-liner on the side reads: 'I’ve got a friend who has got a butler whose left arm is missing; serves him right'.\n\nHealth increased by 25 points", false, 25,player, 25);
         itemRepository.save(energyBar);
 
-        HealthBooster energyBar2 = new HealthBooster("Mediocre Energy Bar", "INDRID'S ENERGY BAR.\n\nKeeps death at bay(or so goes the packaging blurb).\n\nOne-liner on the side reads: 'I saw this bloke chatting up a cheetah and I thought 'He’s trying to pull a fast one.'\n\nIncreases health by 15 points", false, player, 15);
+        HealthBooster energyBar2 = new HealthBooster("Mediocre Energy Bar", "INDRID'S ENERGY BAR.\n\nKeeps death at bay(or so goes the packaging blurb).\n\nOne-liner on the side reads: 'I saw this bloke chatting up a cheetah and I thought 'He’s trying to pull a fast one.'\n\nHealth increased by 15 points", false, 15, player, 15);
         itemRepository.save(energyBar2);
 
-        HealthBooster energyBar3 = new HealthBooster("Average Energy Bar", "CREEPER'S ENERGY BAR.\n\nMakes your blood fire hot(or so goes the packaging blurb).\n\nOne-liner on the side reads: 'I had a dream last night that I was cutting carrots with the Grim Reaper… dicing with death!\n\nIncreases health by 20 points", false, player, 20);
+        HealthBooster energyBar3 = new HealthBooster("Average Energy Bar", "CREEPER'S ENERGY BAR.\n\nMakes your blood fire hot(or so goes the packaging blurb).\n\nOne-liner on the side reads: 'I had a dream last night that I was cutting carrots with the Grim Reaper… dicing with death!\n\nHealth increased by 20 points", false, 20, player, 20);
         itemRepository.save(energyBar3);
 
-        Key key1 = new Key("Rusted Key", "RUSTED KEY\n\nSmall metal key given to you by Vadig. Only distinguishing feature is a heart-shape on the bow.\n\nCannot be used here", false, player, "Unused");
+        Key key1 = new Key("Rusted Key", "RUSTED KEY\n\nSmall metal key given to you by Vadig. Only distinguishing feature is a heart-shape on the bow.\n\nCannot be used here", false, 0, player, "Unused");
         itemRepository.save(key1);
 
-        Key key2 = new Key("Keycard", "Given to you by Mary Hyre. Claims it opens a secret door on the outskirts of town", false, player, "Unused");
+        Key key2 = new Key("Keycard", "Given to you by Mary Hyre. Claims it opens a secret door on the outskirts of town", false, 0, player, "Unused");
         itemRepository.save(key2);
-        Key key3 = new Key("Ammonite", "AMMONITE WHORL\n\nWeird fossil found in a box behind the Dynamite Diner. Use is unknown(for now).\n\nCannot be used here", false, player, "Unused");
+        Key key3 = new Key("Ammonite", "AMMONITE WHORL\n\nWeird fossil found in a box behind the Dynamite Diner. Use is unknown(for now).\n\nCannot be used here", false, 0,player, "Unused");
         itemRepository.save(key3);
-        Torch torch = new Torch("Windup Torch", "Windup torch. Popular amongst children", false, player, 20);
+        Torch torch = new Torch("Windup Torch", "Windup torch. Popular amongst children", false, 0,player, 20);
         itemRepository.save(torch);
 
-        AlienAlloyTube alienAlloyTube = new AlienAlloyTube("Alloy Tube", "Non-descript polished alloy tube. Intention makes it fire an invisible paralysing beam", 20, false, player, 78);
+        AlienAlloyTube alienAlloyTube = new AlienAlloyTube("Alloy Tube", "Non-descript polished alloy tube. Intention makes it fire an invisible paralysing beam", 20, false,  player, 78);
         weaponRepository.save(alienAlloyTube);
 
         BaseballBat baseballBat = new BaseballBat("Baseball Bat", "A crude weapon for meatheads", 9, false, player, 150);

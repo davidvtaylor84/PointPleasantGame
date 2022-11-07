@@ -180,6 +180,14 @@ public class Player {
         }
     }
 
+    public void unEquipItem(String itemName){
+        for(Item item : items){
+            if (item.getName().equals(itemName)){
+                item.setEquipped(false);
+            }
+        }
+    }
+
     public void setWeaponToEquipped(String weaponName){
         for(Weapon weapon : weapons){
             if (weapon.getName().equals(weaponName)){
@@ -187,6 +195,7 @@ public class Player {
             }
         }
     }
+
 
     public Item getItemByName(String itemName){
         for(Item item : items){
@@ -214,6 +223,11 @@ public class Player {
         else{
             return 0;
         }
+    }
+
+    public void useHealthBooster(String name){
+        int restoration = getItemByName(name).getRestoration();
+        this.setHealthPoints(healthPoints + restoration);
     }
 
 

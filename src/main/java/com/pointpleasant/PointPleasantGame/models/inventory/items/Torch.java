@@ -13,8 +13,8 @@ public class Torch extends Item implements IActivateItem {
     @Column(name = "batteryPower")
     private int batteryPower;
 
-    public Torch(String name, String description, boolean equipped, Player player, int batteryPower) {
-        super(name, description, equipped, player);
+    public Torch(String name, String description, boolean equipped, int restoration, Player player, int batteryPower) {
+        super(name, description, equipped, restoration, player);
         this.batteryPower = batteryPower;
     }
 

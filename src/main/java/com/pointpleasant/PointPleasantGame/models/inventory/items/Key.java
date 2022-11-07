@@ -13,8 +13,8 @@ public class Key extends Item implements IActivateItem{
     @Column(name="used")
     private String used;
 
-    public Key(String name, String description, boolean equipped, Player player, String used) {
-        super(name, description, equipped, player);
+    public Key(String name, String description, boolean equipped, int restoration, Player player, String used) {
+        super(name, description, equipped, restoration, player);
         this.used = used;
     }
 

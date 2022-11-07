@@ -12,8 +12,8 @@ public class HealthBooster extends Item implements IActivateItem{
     @Column(name="restorativePoints")
     private int restorativePoints;
 
-    public HealthBooster(String name, String description, boolean equipped, Player player, int restorativePoints) {
-        super(name, description, equipped, player);
+    public HealthBooster(String name, String description, boolean equipped, int restoration, Player player, int restorativePoints) {
+        super(name, description, equipped, restoration, player);
         this.restorativePoints = restorativePoints;
     }
 

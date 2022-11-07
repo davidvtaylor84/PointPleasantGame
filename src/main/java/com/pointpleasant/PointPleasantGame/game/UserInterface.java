@@ -10,8 +10,8 @@ import java.awt.event.ActionListener;
 public class UserInterface {
 
     JFrame window, inventoryDetail;
-    JPanel titleNamePanel, startButtonPanel, locationPanel, mainTextPanel, choiceButtonPanel, imagePanel, inventoryPanel, playerStatsPanel, introPanel, introButtonPanel, itemDescriptionPanel, titleImagePanel, titleImagePanel2, inventoryDetailPanel;
-    JLabel titleNameLabel, healthLabel, healthLabelStat, insightLabel, insightLabelStat, defenceLabel, defenceLabelStat,intelligenceLabel, intelligenceLabelStat, inspirationLabel, inspirationLabelStat, imageLabel, cashLabel, cashLabelStat, titleImageLabel, titleImageLabel2;
+    JPanel titleNamePanel, startButtonPanel, locationPanel, mainTextPanel, choiceButtonPanel, imagePanel, inventoryPanel, playerStatsPanel, introPanel, introButtonPanel, itemDescriptionPanel, titleImagePanel, openingImagePanel;
+    JLabel titleNameLabel, healthLabel, healthLabelStat, insightLabel, insightLabelStat, defenceLabel, defenceLabelStat,intelligenceLabel, intelligenceLabelStat, inspirationLabel, inspirationLabelStat, imageLabel, cashLabel, cashLabelStat, titleImageLabel, openingImageLabel;
     JButton startButton, continueButton, introButton;
     JButton weapon1, weapon2, weapon3, weapon4, inventory1, inventory2, inventory3, inventory4, inventory5, inventory6, inventory7, inventory8, blankButton;
     Container container;
@@ -159,30 +159,6 @@ public class UserInterface {
         inventoryPanel.setLayout(new GridLayout(13, 1));
 
 
-        //        inventory pop-up
-//        inventoryDetail = new JFrame();
-//        inventoryDetail.setSize(300, 200);
-//        inventoryDetail.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        inventoryDetail.getContentPane().setBackground(Color.BLACK);
-//        inventoryDetail.setLayout(null);
-//
-//        inventoryDetailPanel = new JPanel();
-//        inventoryDetailPanel.setBounds(0,0, 280, 400);
-//        inventoryDetailPanel.setBackground(new Color(0,0,0,0));
-//
-//        inventoryDetailText = new JTextArea();
-//        inventoryDetailText.setForeground(Color.WHITE);
-//        inventoryDetailText.setFont(font4);
-//        inventoryDetailText.setLineWrap(true);
-//        inventoryDetailText.setWrapStyleWord(true);
-//        inventoryDetailText.setEditable(false);
-//
-//        inventoryDetailPanel.add(inventoryDetailText);
-//        inventoryDetail.add(inventoryDetailPanel);
-
-
-
-
         inventory1 = new JButton("(Inventory slot 1)");
         inventory1.setBackground(Color.BLACK);
         inventory1.setForeground(Color.BLACK);
@@ -252,7 +228,7 @@ public class UserInterface {
         itemDescriptionPanel.setBorder(new BevelBorder(BevelBorder.RAISED));
         itemDescriptionPanel.setBounds(1100, 400, 290, 230);
         itemDescriptionPanel.setBackground(new Color(51, 25,0));
-        inventoryDetailText = new JTextArea("GAME INSTRUCTIONS\n\n1.Make choices using the buttons above.\n\n2.Use inventory and weapon items by clicking buttons to the left.\n\n3.Game will save on close. You will awaken elsewhere.");
+        inventoryDetailText = new JTextArea("GAME INSTRUCTIONS\n\n1.Make choices using the buttons above.\n\n2.Use inventory and discover inventory clues by clicking buttons to the left.\n\n3.Game will save on close. You will awaken at save point.");
         inventoryDetailText.setBounds(1100, 400, 285, 225);
         inventoryDetailText.setBackground(new Color(51, 25,0));
         inventoryDetailText.setForeground(Color.WHITE);
