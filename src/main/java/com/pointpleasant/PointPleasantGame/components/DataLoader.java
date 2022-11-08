@@ -74,7 +74,7 @@ public class DataLoader implements ApplicationRunner {
         BaseballBat baseballBat = new BaseballBat("Baseball Bat", "BASEBALL BAT\n\nA children's toy. Some advice: 'If you don't think too much, don't think too much'. If that makes sense, maybe this weapon is for you.\n\nAdds +9 damage to successful attack.\n\nCannot be used here", 9, false, player, 150);
         weaponRepository.save(baseballBat);
 
-        Gun pistol = new Gun("Colt revolver", "A greasy gun found in a locker", 15, false, player, "Colt revolver", 20);
+        Gun pistol = new Gun("Colt revolver", "A greasy gun found in a locker", 12, false, player, "Colt revolver", 20);
         weaponRepository.save(pistol);
 
         Gun m16 = new Gun("M16", "US Army standard issue (for imperialists)", 25, false, player, "M16", 50);
@@ -92,7 +92,7 @@ public class DataLoader implements ApplicationRunner {
         GaseousBlob hank = new GaseousBlob("Hank", "Pink gaseous blob. Noxious smelling", 30, 13, 8, 4);
         enemyRepository.save(hank);
 
-        GreyAlien x42 = new GreyAlien("x42", "Grey alien with dented forehead as if having recently been in an accident", 9, 12, 13, "Lanulos", 4);
+        GreyAlien x42 = new GreyAlien("x42", "Grey alien with dented forehead as if having recently been in an accident", 40, 12, 13, "Lanulos", 4);
         enemyRepository.save(x42);
 
         GreyAlien x47 = new GreyAlien("x47", "Grey alien with broken arm as if having recently been in an accident", 9, 12, 13, "Lanulos", 4);

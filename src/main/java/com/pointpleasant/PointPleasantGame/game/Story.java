@@ -280,6 +280,11 @@ public class Story {
             case "takeGunAndUniform": takeGunAndUniform();break;
             case "alienEncounter2": alienEncounter2();break;
             case "runAwayFromAlien": runAwayFromAlien();break;
+            case "shootAtAlien": shootAtAlien();break;
+            case "alienAttacks": alienAttacks();break;
+            case "winOverAlien": winOverAlien();break;
+            case "backToHouseAfterAlienAttack": backToHouseAfterAlienAttack();break;
+            case "takeTube": takeTube();break;
 
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
@@ -2607,7 +2612,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bedlam Forest");
 
-        userInterface.text = "You turn on the light and enter the forest, glad of your sentimental nature when you saw the torch in the shop. You pick your way over the dead leaves and thick roots that snag on your boots as you walk.\n\nYou can hear a distant buzzing sound and eventually glimpse an eerie blue light up ahead.";
+        userInterface.text = "You turn on the light and enter the forest, glad of your sentimental nature when you saw the torch in the shop. You pick your way over the dead leaves and thick roots that snag on your boots as you walk.\n\nYou can hear a distant buzzing sound and glimpse an eerie blue light up ahead.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Go back to garden");
@@ -2638,18 +2643,24 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bedlam Forest");
 
-        userInterface.text = "Before you can reach the source of the blue light, you come across a clearing upon which sits an upturned US army jeep. Casting around the light from your torch, you discover five dead soldiers in a shallow leafy embankment, and near them, a pile of black clothing lying in a noxious puddle.";
+        userInterface.text = "You come across a clearing upon which sits an upturned US army jeep. Casting around the light from your torch, you discover five dead soldiers in a shallow leafy embankment, and near them, a pile of black clothing lying in a noxious puddle.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Go back to garden");
         userInterface.choice2.setText("Investigate");
-        userInterface.choice3.setText("Towards the blue light");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
+        if(player.getWeaponByName("Alloy Tube").isEquipped()){
+            game.choiceButton3 = "";
+            userInterface.choice3.setText("");
+        } else{
+            game.choiceButton3 = "alienEncounter";
+            userInterface.choice3.setText("Towards the blue light");
+        }
+
         game.choiceButton1="intoTheForest";
         game.choiceButton2 = "armyDetritus2";
-        game.choiceButton3 = "alienEncounter";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
@@ -2781,7 +2792,8 @@ public class Story {
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
-        game.weapon3 ="shootAtAlien";
+        if(player.getWeaponByName("Colt revolver").isEquipped())
+        {game.weapon3 ="shootAtAlien";}
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
@@ -2811,7 +2823,183 @@ public class Story {
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
+
         game.weapon3 ="getColt";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void shootAtAlien(){
+        Player player = getPlayer();
+        Enemy enemy = getEnemyByName("x42");
+        inventoryButtons();
+        weaponButtons();
+
+        int attackRoll = new java.util.Random().nextInt(20);
+
+        int damageTotal = player.attackEnemyWithWeapon(enemy.getDefence(), attackRoll, "Colt revolver");
+
+        enemy.takeDamage(damageTotal);
+
+        ImageIcon shimmer = new ImageIcon("");
+        userInterface.imageLabel.setIcon(shimmer);
+        userInterface.locationTextArea.setText("Gun Fight with X-42");
+
+        userInterface.text = "X-42 HP:"+enemy.getHealthPoints()+"\nYou shoot the Colt Revolver to add +12 damage to a successful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs X-42 DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        if(enemy.getHealthPoints()>0){
+            game.choiceButton1 = "alienAttacks";
+        } else{
+            game.choiceButton1 = "winOverAlien";
+        }
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon3 ="";
+        getPlayerDefault();
+        this.game.getEnemyRepository().save(enemy);
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void alienAttacks(){
+        Player player = getPlayer();
+        Enemy enemy = getEnemyByName("x42");
+        inventoryButtons();
+        weaponButtons();
+
+        int attackRoll = new java.util.Random().nextInt(20);
+
+        int enemyAttack = enemy.attackPlayer(player.getDefence(), attackRoll);
+
+        player.takeDamage(enemyAttack);
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Gun Fight with X-42");
+
+        userInterface.text = "X-42 shoots his zap gun.\n\nENEMY D20 ATTACK ROLL: " + attackRoll + " vs YOUR DEFENCE RATING: " + player.getDefence() + "\n\nX-42 inflicts " + enemyAttack + " points of damage";
+        userInterface.prepareText();
+
+
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        if (player.getHealthPoints() <= 0) {
+            game.choiceButton1 = "youAwaken";
+            userInterface.choice1.setText("> > >");
+        } else {
+            game.choiceButton1 = "";
+            userInterface.choice1.setText("");
+        }
+
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        if(player.getWeaponByName("Colt revolver").isEquipped()&&player.getHealthPoints()>0)
+        {game.weapon3 ="shootAtAlien";}
+
+        getPlayerDefault();
+        this.game.getEnemyRepository().save(enemy);
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void winOverAlien(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bedlam Forest");
+
+        userInterface.text = "The grey alien slumps forward and tumbles down the embankment, scoring a line down the leaves as he falls. He is dead. Blue blood pours from his head.\n\nYou pick up the zap gun. Nothing happens when you pull the trigger. It's out of charge. Attached to its belt is a shiny alloy tube.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Take Alloy Tube");
+        userInterface.choice2.setText("Go back to the house");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="takeTube";
+        game.choiceButton2 = "backToHouseAfterAlienAttack";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+
+        game.weapon3 ="getColt";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+    public void takeTube(){
+        Player player = getPlayer();
+        player.setWeaponToEquipped("Alloy Tube");
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bedlam Forest");
+
+        userInterface.text = "This extraordinarily light, metallic tube is featureless save for a slight fingerprint sized depression in its side.\n\nYou press down on this and it makes the slight imperceptible sound of a vacuum cleaner.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("");
+        userInterface.choice2.setText("Go back to the house");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="";
+        game.choiceButton2 = "backToHouseAfterAlienAttack";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void backToHouseAfterAlienAttack(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bedlam Forest");
+
+        userInterface.text = "You pick your way back to the house using the Windup Torch. No other sounds or lights appear through the forest.\n\nYou need to find Mary. She seems like the only person in this town who knows what is really going on.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("");
+        userInterface.choice2.setText("Go back to the house");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="";
+        game.choiceButton2 = "intoTheForest";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);

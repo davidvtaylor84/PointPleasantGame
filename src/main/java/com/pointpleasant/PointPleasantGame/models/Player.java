@@ -226,7 +226,7 @@ public class Player {
 
     public int attackEnemyWithWeapon(int enemyDefence, int playerAttack, String weaponName){
         int weaponDamage = getWeaponByName(weaponName).getDamageValue();
-        if(playerAttack > enemyDefence){
+        if(playerAttack >= enemyDefence){
             return this.attack + weaponDamage;
         }
         else{
