@@ -256,6 +256,12 @@ public class Story {
             case "attacksWithBat": attacksWithBat();break;
             case "arrested": arrested();break;
             case "winOverMIB": winOverMIB();break;
+            case "jailed": jailed();break;
+            case "jailed2": jailed2();break;
+            case "jailed3": jailed3();break;
+            case "waitForMary": waitForMary();break;
+            case "waitForMary2": waitForMary2();break;
+            case "waitForMary3": waitForMary3();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": healthItem("Energy Bar+");userInterface.inventory2.setText("(Inventory slot 2)");break;
@@ -812,24 +818,37 @@ public class Story {
         userInterface.prepareText();
 
         userInterface.choice1.setText("Pleasant Store");
-        userInterface.choice2.setText("Rita's Car Garage");
         userInterface.choice3.setText("Dynamite Diner");
 
         game.choiceButton1 = "enterLocalShop";
-        game.choiceButton2 = "enterCarGarage";
         game.choiceButton3 = "enterDiner";
 
-        if(player.getGameProgress()>=1){
+        if(player.getGameProgress()>=1&&player.getGameProgress()<=2){
             userInterface.choice4.setText("Point Pleasant Enquirer");
             game.choiceButton4 = "newspaperOffice";
+        } else if(player.getGameProgress()>=3){
+            userInterface.choice4.setText("Point Pleasant Enquirer");
+            game.choiceButton4 ="waitForMary";
         } else{userInterface.choice4.setText("");
-            game.choiceButton4 = "";
-        }
-        if(player.getGameProgress()>=2){
+            game.choiceButton4 = "";};
+
+        if(player.getGameProgress()==2){
             userInterface.choice5.setText("The Marlee Hotel");
             game.choiceButton5 = "marleeHotel";
+        } else if(player.getGameProgress()>=3){
+            userInterface.choice5.setText("35 Tom Duck Way");
+            game.choiceButton5 ="library";
         } else{userInterface.choice5.setText("");
             game.choiceButton5 = "";}
+
+        if(player.getGameProgress()>=4){
+            userInterface.choice2.setText("To Mary's House");
+            game.choiceButton2 = "toMarysHouse";
+        } else {
+            userInterface.choice2.setText("Rita's Car Garage");
+            game.choiceButton2 = "enterCarGarage";
+        }
+
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
@@ -1363,7 +1382,6 @@ public class Story {
 
     public void askAboutVadig(){
         Player player = getPlayer();
-        player.setGameProgress(2);
         inventoryButtons();
         weaponButtons();
 
@@ -1399,17 +1417,23 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Dynamite Diner");
 
-        userInterface.text = "The diner is quiet. The waitress, or owner, sits behind the counter doing a crossword. She doesn't look up.\n\nA man sitting in one of the booths perks up at your entrance. Like you, his hair is wild and his eyes are red and swollen. He tries to catch your eye and weakly smiles.";
+        if(player.getGameProgress()>=3){
+            userInterface.choice2.setText("");
+            game.choiceButton2 = "";
+            userInterface.text = "The diner is quiet. The waitress, or owner, sits behind the counter doing a crossword. She doesn't look up.";
+        } else{
+            userInterface.text = "The diner is quiet. The waitress, or owner, sits behind the counter doing a crossword. She doesn't look up.\n\nA man sitting in one of the booths perks up at your entrance. Like you, his hair is wild and his eyes are red and swollen. He tries to catch your eye and weakly smiles.";
+            userInterface.choice2.setText("Talk to man");
+            game.choiceButton2 = "talkToManInDiner";
+        }
         userInterface.prepareText();
 
         userInterface.choice1.setText("Order Beef Tacos($7)");
-        userInterface.choice2.setText("Talk to man");
         userInterface.choice3.setText("Ask to use phone");
         userInterface.choice4.setText("Leave");
         userInterface.choice5.setText("");
 
         game.choiceButton1="beefTacos";
-        game.choiceButton2 = "talkToManInDiner";
         game.choiceButton3 = "usePhoneInDiner";
         game.choiceButton4 = "theTownSquare";
         game.choiceButton5 = "";
@@ -1437,13 +1461,13 @@ public class Story {
         userInterface.prepareText();
 
         userInterface.choice1.setText("< < <");
-        userInterface.choice2.setText("Talk to man");
+        userInterface.choice2.setText("");
         userInterface.choice3.setText("Ask to use phone");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
         game.choiceButton1="enterDiner";
-        game.choiceButton2 = "talkToManInDiner";
+        game.choiceButton2 = "";
         game.choiceButton3 = "usePhoneInDiner";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
@@ -1465,16 +1489,23 @@ public class Story {
         userInterface.prepareText();
 
         userInterface.choice1.setText("Order Beef Tacos($7)");
-        userInterface.choice2.setText("Talk to man");
         userInterface.choice3.setText("< < <");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
         game.choiceButton1="beefTacos";
-        game.choiceButton2 = "talkToManInDiner";
+
         game.choiceButton3 = "enterDiner";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
+
+        if(player.getGameProgress()>=3){
+            userInterface.choice2.setText("");
+            game.choiceButton2 = "";
+        } else{
+            userInterface.choice2.setText("Talk to man");
+            game.choiceButton2 = "talkToManInDiner";
+        }
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
@@ -1967,6 +1998,8 @@ public class Story {
 
     public void winOverMIB(){
         Player player = getPlayer();
+        player.setAttack(player.getAttack()+3);
+        player.setDefence(player.getDefence()+2);
         inventoryButtons();
         weaponButtons();
 
@@ -1974,7 +2007,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Dumpster Encounter");
 
-        userInterface.text = "The broad body crumples to the floor, his body thudding on the asphalt. His body shakes as it lies prone and a purple noxious gas pours forth from under his clothing. His body dissolves into a putrid puddle before your eyes, leaving only a heap of black clothing.\n\n'Don't move creep!' Yells a voice behind you.";
+        userInterface.text = "The broad body crumples to the floor, his body thudding on the asphalt. A purple noxious gas pours forth from under his clothing. His body dissolves into a putrid puddle, leaving only a heap of black clothing.\n\n'Don't move creep!' Yells a voice behind you.\n(Defence increased +2. Attack increased +3)";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -2015,6 +2048,177 @@ public class Story {
 
         game.choiceButton1="jailed";
         game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+//    Game part 2
+    public void jailed(){
+        Player player = getPlayer();
+        player.setGameProgress(3);
+        inventoryButtons();
+         weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Point Pleasant Sheriff's Department");
+
+        userInterface.text = "You have been sitting in the jail cell of the Point Pleasant Sheriff's Dept for three hours arrested on suspicion of criminal activity. It is dank in there with only a small window high-up in the wall to let in the paltry light. There is an old drunk in there locked in to dry off. He mumbles in his sleep";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="jailed2";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void jailed2(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Point Pleasant Sheriff's Department");
+
+        userInterface.text = "Eventually he sits up.\n\n'I know you,' he says, his diction slurred.'I had a dream about you. In the dream, a woman told me she wanted to meet you at her house. I'd never seen her in my life. She gave me an address. It's at 35 Tom Duck Way. That's a real address by the way. There's nothing there though. Weird, huh?'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="jailed3";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void jailed3(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Point Pleasant Sheriff's Department");
+
+        userInterface.text = "You ignore the man, too tired and sore. Eventually the Sheriff comes in, the same burly man who arrested you.\n\n'Mary vouched for you and I'm gonna let you go,'he say,'but I still think you're up to no good. No way of checking with the computers down. Keep out of trouble. You should go see her.'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Leave jail");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="theTownSquare";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void waitForMary(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Point Pleasant Enquirer");
+
+        userInterface.text = "You enter the small office and a small balding man you have never seen before looks up from his computer.\n\n'Oh it's you!' He exclaims,'Mary has filled me in. The name's Derek. I'm the Copy Editor. She isn't here at the moment but you're free to wait for her if you'd like.'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Wait for Mary");
+        userInterface.choice2.setText("Leave");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="waitForMary2";
+        game.choiceButton2 = "theTownSquare";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void waitForMary2(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Point Pleasant Enquirer");
+
+        userInterface.text = "Half an hour passes. The room is soundproofed against the outside world. Only the sound of Derek typing on his keyboard disturbs the silence. He has a deadline to meet. Every so often he sighs loudly, frustrated that the internet and phones are still out.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Wait for Mary");
+        userInterface.choice2.setText("Leave");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="waitForMary3";
+        game.choiceButton2 = "theTownSquare";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void waitForMary3(){
+        Player player = getPlayer();
+        player.setGameProgress(4);
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Point Pleasant Enquirer");
+
+        userInterface.text = "Two hours pass. Derek looks at his watch. He is worried.\n\n'Dammit!' He says. 'She should be back by now.Where the hell could she have gotten to? Do me favour. Here's here address. Go check on her.'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("");
+        userInterface.choice2.setText("Leave");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="";
+        game.choiceButton2 = "theTownSquare";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
