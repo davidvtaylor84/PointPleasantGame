@@ -272,6 +272,11 @@ public class Story {
             case "investigateMarysHouse": investigateMarysHouse();break;
             case "basement": basement();break;
             case "gaseousBlobAttacks": gaseousBlobAttacks();break;
+            case "intoTheForest": intoTheForest();break;
+            case "useTorchInForest": useTorchInForest();break;
+            case "armyDetritus": armyDetritus();break;
+            case "armyDetritus2": armyDetritus2();break;
+            case "alienEncounter": alienEncounter();break;
 
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
@@ -285,7 +290,7 @@ public class Story {
 
             case "getAlloyTube": showWeaponItem("Alloy Tube");break;
             case "getBaseballBat": showWeaponItem("Baseball Bat"); break;
-            case "getColt": showWeaponItem("Colt"); break;
+            case "getColt": showWeaponItem("Colt revolver"); break;
             case "getM16": showWeaponItem("M16"); break;
         }
     }
@@ -1729,7 +1734,8 @@ public class Story {
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
-        game.inventoryButton5 = "openBox";
+        if(player.getItemByName("Rusted Key").isEquipped())
+            {game.inventoryButton5 = "openBox";}
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
@@ -2345,13 +2351,13 @@ public class Story {
         userInterface.text = "She cackles and grabs you by the hand and shakes it forcefully: 'I'd like a bed from the bed factory as a present.\n\n'21st February,' she repeats and freezes, looking up into the corner of the room. She doesn't move. Doesn't appear to breathe. She is as mad as her brother.";
         userInterface.prepareText();
 
-        userInterface.choice1.setText("> > >");
+        userInterface.choice1.setText("");
         userInterface.choice2.setText("Leave");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1="library3";
+        game.choiceButton1="";
         game.choiceButton2 = "theTownSquare";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
@@ -2501,8 +2507,6 @@ public class Story {
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
-        game.weapon2 = "getBaseballBat";
-
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
     }
@@ -2569,22 +2573,145 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's back garden");
 
-        userInterface.text = "You round the bottom of the stairs. The first thing you notice is a thick green fog entirely localised at the far end amidst cardboard boxes and an old exercise bike.\n\nThe fog rumbles and groans. Through it, you can see a small safe embedded in the wall.";
+        userInterface.text = "You enter the back garden. Beyond the trim lawn, the thick red oak trees of the forest are closely knitted. There is no birdsong, only the shushing of the leaves in wind.\n\nYou approach and discover it is so dark in there that you would not be able to find your way through without a light source.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Go back in house");
-        userInterface.choice2.setText("Enter Forest");
+        userInterface.choice2.setText("");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
         game.choiceButton1="enterMarysHouse";
-        game.choiceButton2 = "approachForest";
+        game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
-        game.weapon2 = "getBaseballBat";
+        if(player.getItemByName("Windup Torch").isEquipped())
+        {game.inventoryButton8 = "useTorchInForest";}
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void useTorchInForest(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bedlam Forest");
+
+        userInterface.text = "You turn on the light and enter the forest, glad of your sentimental nature when you saw the torch in the shop. You pick your way over the dead leaves and thick roots that snag on your boots as you walk.\n\nYou can hear a distant buzzing sound and eventually glimpse an eerie blue light up ahead.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Go back to garden");
+        userInterface.choice2.setText("Push on");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="intoTheForest";
+        game.choiceButton2 = "armyDetritus";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+
+        game.inventoryButton8 = "getWindupTorch";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void armyDetritus(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bedlam Forest");
+
+        userInterface.text = "Before you can reach the source of the blue light, you come across a clearing upon which sits an upturned US army jeep. Casting around the light from your torch, you discover five dead soldiers in a shallow leafy embankment, and near them, a pile of black clothing lying in a noxious puddle.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Go back to garden");
+        userInterface.choice2.setText("Investigate");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="intoTheForest";
+        game.choiceButton2 = "armyDetritus2";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void armyDetritus2(){
+        Player player = getPlayer();
+        player.setWeaponToEquipped("Colt revolver");
+        player.setItemToEquipped("Army Uniform");
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bedlam Forest");
+
+        userInterface.text = "You search through the upturned jeep, trying to ignore the corpses littering the ground. From a regulation issue duffel bag you take an army uniform and a revolver that you think might come in handy.\n\n(Army Uniform and Colt Revolver added to Inventory)";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Go back to garden");
+        userInterface.choice2.setText("Push on");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="intoTheForest";
+        game.choiceButton2 = "alienEncounter";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void alienEncounter(){
+        Player player = getPlayer();
+        player.setWeaponToEquipped("Colt revolver");
+        player.setItemToEquipped("Army Uniform");
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bedlam Forest");
+
+        userInterface.text = "You search through the upturned jeep, trying to ignore the corpses littering the ground. From a regulation issue duffel bag you take an army uniform and a revolver that you think might come in handy.\n\n(Army Uniform and Colt Revolver added to Inventory)";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Go back to garden");
+        userInterface.choice2.setText("Push on");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="intoTheForest";
+        game.choiceButton2 = "Push On";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);

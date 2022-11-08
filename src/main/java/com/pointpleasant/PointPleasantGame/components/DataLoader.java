@@ -65,7 +65,7 @@ public class DataLoader implements ApplicationRunner {
         itemRepository.save(key2);
         Key key3 = new Key("Ammonite", "AMMONITE WHORL\n\nWeird fossil found in a box behind the Dynamite Diner. It feels heavier than it should. Fossils lie heavy with dream, or so some ostensibly useful idiot once quipped. Use is unknown(for now).\n\nCannot be used here", false, 0,player, "Unused");
         itemRepository.save(key3);
-        Torch torch = new Torch("Windup Torch", "Windup torch. Popular amongst children", false, 0,player, 20);
+        Torch torch = new Torch("Windup Torch", "WINDUP TORCH\n\nA mere toy that reminds of a gift you received as a child. You chide yourself for being so sentimental\n\nIt's use is obvious", false, 0,player, 20);
         itemRepository.save(torch);
 
         AlienAlloyTube alienAlloyTube = new AlienAlloyTube("Alloy Tube", "Non-descript polished alloy tube. Intention makes it fire an invisible paralysing beam", 20, false,  player, 78);
