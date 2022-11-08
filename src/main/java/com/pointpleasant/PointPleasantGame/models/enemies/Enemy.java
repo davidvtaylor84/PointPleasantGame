@@ -112,7 +112,7 @@ public class Enemy{
     }
 
     public int attackPlayer(int playerDefence, int attackRoll){
-        if(attackRoll > playerDefence){
+        if(attackRoll >= playerDefence){
             return this.attackPower;
         }
         else{

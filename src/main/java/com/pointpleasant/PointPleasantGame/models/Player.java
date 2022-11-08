@@ -216,7 +216,7 @@ public class Player {
     }
 
     public int attackEnemy(int enemyDefence, int playerAttack){
-        if(playerAttack > enemyDefence){
+        if(playerAttack >= enemyDefence){
             return this.attack;
         }
         else{

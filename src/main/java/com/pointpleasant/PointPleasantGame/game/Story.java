@@ -269,6 +269,10 @@ public class Story {
             case "toMarysHouse": toMarysHouse();break;
             case "marysHouse": marysHouse();break;
             case "enterMarysHouse": enterMarysHouse();break;
+            case "investigateMarysHouse": investigateMarysHouse();break;
+            case "basement": basement();break;
+            case "gaseousBlobAttacks": gaseousBlobAttacks();break;
+
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": healthItem("Energy Bar+");userInterface.inventory2.setText("(Inventory slot 2)");break;
@@ -1812,7 +1816,7 @@ public class Story {
         userInterface.text = "MIB swings his immense fists down on your head.\n\nENEMY D20 ATTACK ROLL: " + attackRoll + " vs YOUR DEFENCE RATING: " + player.getDefence() + "\n\nMIB inflicts " + enemyAttack + " points of damage";
         userInterface.prepareText();
 
-        userInterface.choice1.setText("> > >");
+        userInterface.choice1.setText("Grapple");
         userInterface.choice2.setText("Inspired Grapple");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
@@ -2210,6 +2214,7 @@ public class Story {
 
     public void waitForMary3(){
         Player player = getPlayer();
+        player.setGameProgress(4);
         inventoryButtons();
         weaponButtons();
 
@@ -2444,5 +2449,145 @@ public class Story {
         this.game.getPlayerRepository().save(player);
     }
 
+    public void investigateMarysHouse(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Mary's House");
+
+        userInterface.text = "You pick through the letters and pieces of paper lying around her laptop on the breakfast bar. You then spot a note lying propped up on the coffee table.\n\nIt reads: 'Heard some strange noises out back. I'm frightened but have gone to investigate. Am afraid someone wants to get into my safe.'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("Go out the back door");
+        userInterface.choice3.setText("Basement");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="enterMarysHouse";
+        game.choiceButton2 = "intoTheForest";
+        game.choiceButton3 = "basement";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void basement(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Mary's House");
+
+        userInterface.text = "You round the bottom of the stairs. The first thing you notice is a thick green fog entirely localised at the far end amidst cardboard boxes and an old exercise bike.\n\nThe fog rumbles and groans. Through it, you can see a small safe embedded in the wall.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Go back upstairs");
+        userInterface.choice2.setText("Approach Safe");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="enterMarysHouse";
+        game.choiceButton2 = "gaseousBlobAttacks";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon2 = "getBaseballBat";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void gaseousBlobAttacks(){
+        Player player = getPlayer();
+        Enemy enemy = getEnemyByName("Hank");
+        inventoryButtons();
+        weaponButtons();
+
+        int attackRoll = new java.util.Random().nextInt(20);
+
+        int enemyAttack = enemy.attackPlayer(player.getDefence(), attackRoll);
+
+        player.takeDamage(enemyAttack);
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Mary's House");
+
+        userInterface.text = "The fog extends a tendril and lashes out at you.\n\nENEMY D20 ATTACK ROLL: " + attackRoll + " vs YOUR DEFENCE RATING: " + player.getDefence() + "\n\nGaseous Blob inflicts " + enemyAttack + " points of damage. It is immune to conventional attack.";
+        userInterface.prepareText();
+
+        if (player.getHealthPoints() > 0) {
+            game.choiceButton1 = "enterMarysHouse";
+            game.choiceButton2 = "gaseousBlobAttacks";
+            game.choiceButton3 = "gaseousBlobAttacks";
+            userInterface.choice1.setText("Flee");
+            userInterface.choice2.setText("Grapple");
+            userInterface.choice3.setText("Inspired Grapple");
+        } else {
+            game.choiceButton1 = "youAwaken";
+            game.choiceButton2 = "";
+            game.choiceButton3 = "";
+            userInterface.choice1.setText("> > >");
+            userInterface.choice2.setText("");
+            userInterface.choice3.setText("");
+        }
+
+        if(player.getWeaponByName("Alloy Tube").isEquipped() && player.getHealthPoints()>0){
+            game.weapon1 = "attackBlob";}
+
+        userInterface.choice1.setText("Flee");
+        userInterface.choice2.setText("Grapple");
+        userInterface.choice3.setText("Inspired Grapple");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+        this.game.getEnemyRepository().save(enemy);
+    }
+
+    public void intoTheForest(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Mary's back garden");
+
+        userInterface.text = "You round the bottom of the stairs. The first thing you notice is a thick green fog entirely localised at the far end amidst cardboard boxes and an old exercise bike.\n\nThe fog rumbles and groans. Through it, you can see a small safe embedded in the wall.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Go back in house");
+        userInterface.choice2.setText("Enter Forest");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="enterMarysHouse";
+        game.choiceButton2 = "approachForest";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon2 = "getBaseballBat";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
 
 }
