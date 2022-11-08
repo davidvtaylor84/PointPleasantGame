@@ -277,6 +277,9 @@ public class Story {
             case "armyDetritus": armyDetritus();break;
             case "armyDetritus2": armyDetritus2();break;
             case "alienEncounter": alienEncounter();break;
+            case "takeGunAndUniform": takeGunAndUniform();break;
+            case "alienEncounter2": alienEncounter2();break;
+            case "runAwayFromAlien": runAwayFromAlien();break;
 
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
@@ -2573,7 +2576,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's back garden");
 
-        userInterface.text = "You enter the back garden. Beyond the trim lawn, the thick red oak trees of the forest are closely knitted. There is no birdsong, only the shushing of the leaves in wind.\n\nYou approach and discover it is so dark in there that you would not be able to find your way through without a light source.";
+        userInterface.text = "You enter the back garden. Beyond the trim lawn, the thick red oak trees of the forest are closely knitted. There is no birdsong, only the shushing of the leaves in wind.\n\nIt's so dark in there that you would not be able to find your way through without a light source.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Go back in house");
@@ -2640,13 +2643,13 @@ public class Story {
 
         userInterface.choice1.setText("Go back to garden");
         userInterface.choice2.setText("Investigate");
-        userInterface.choice3.setText("");
+        userInterface.choice3.setText("Towards the blue light");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
         game.choiceButton1="intoTheForest";
         game.choiceButton2 = "armyDetritus2";
-        game.choiceButton3 = "";
+        game.choiceButton3 = "alienEncounter";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
@@ -2657,8 +2660,6 @@ public class Story {
 
     public void armyDetritus2(){
         Player player = getPlayer();
-        player.setWeaponToEquipped("Colt revolver");
-        player.setItemToEquipped("Army Uniform");
         inventoryButtons();
         weaponButtons();
 
@@ -2666,17 +2667,26 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bedlam Forest");
 
-        userInterface.text = "You search through the upturned jeep, trying to ignore the corpses littering the ground. From a regulation issue duffel bag you take an army uniform and a revolver that you think might come in handy.\n\n(Army Uniform and Colt Revolver added to Inventory)";
+        if(player.getItemByName("Ammonite").isEquipped()){
+            userInterface.text = "You search through the upturned jeep, trying to ignore the corpses littering the ground. In a regulation issue duffel bag you find several guns and army uniforms. It looks they died fighting whatever it was wearing the pile of black clothing.";
+        } else{userInterface.text = "You search through the upturned jeep, trying to ignore the corpses littering the ground. In a regulation issue duffel bag you find several small guns and uniforms. Searching through the black clothing, you find a strange fossil.\n\n(Ammonite added to Inventory)";
+            player.setItemToEquipped("Ammonite");}
         userInterface.prepareText();
 
-        userInterface.choice1.setText("Go back to garden");
-        userInterface.choice2.setText("Push on");
+        if(player.getItemByName("Army Uniform").isEquipped()&&player.getWeaponByName("Colt revolver").isEquipped()){
+            userInterface.choice2.setText("");
+            game.choiceButton2 = "";
+        } else{
+            userInterface.choice2.setText("Take Gun & Uniform");
+            game.choiceButton2 = "takeGunAndUniform";
+        }
+
+        userInterface.choice1.setText("< < <");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1="intoTheForest";
-        game.choiceButton2 = "alienEncounter";
+        game.choiceButton1="armyDetritus";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
@@ -2688,8 +2698,7 @@ public class Story {
 
     public void alienEncounter(){
         Player player = getPlayer();
-        player.setWeaponToEquipped("Colt revolver");
-        player.setItemToEquipped("Army Uniform");
+        player.setInsight(player.getInsight()+2);
         inventoryButtons();
         weaponButtons();
 
@@ -2697,17 +2706,17 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bedlam Forest");
 
-        userInterface.text = "You search through the upturned jeep, trying to ignore the corpses littering the ground. From a regulation issue duffel bag you take an army uniform and a revolver that you think might come in handy.\n\n(Army Uniform and Colt Revolver added to Inventory)";
+        userInterface.text = "Walking on to the blue light, some invisible force knocks you back and a great white flash blinds you through the silhouetted trees. Above the clearing now spins a metallic flying saucer, the hull gently pulsating blue. This is what you saw before you blacked out on the road.\n\n(Insight increased by +2)";
         userInterface.prepareText();
 
-        userInterface.choice1.setText("Go back to garden");
-        userInterface.choice2.setText("Push on");
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1="intoTheForest";
-        game.choiceButton2 = "Push On";
+        game.choiceButton1="alienEncounter2";
+        game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
@@ -2717,4 +2726,94 @@ public class Story {
         this.game.getPlayerRepository().save(player);
     }
 
+    public void takeGunAndUniform(){
+        Player player = getPlayer();
+        player.setWeaponToEquipped("Colt revolver");
+        player.setItemToEquipped("Army Uniform");
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bedlam Forest");
+
+        userInterface.text = "The gun feels unnatural in your hand. Alongside the items are bullets which you fill your pockets with. These are strange times. You feel as though you are being directed by some unnatural force to do things you wouldn't otherwise do.\n\n(Colt revolver and Army Uniform added to Inventory)";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="armyDetritus";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void alienEncounter2(){
+        Player player = getPlayer();
+        player.takeDamage(2);
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bedlam Forest");
+
+        userInterface.text = "A green bolt strikes your shoulder, the pain is immense, and you scrabble backwards behind behind a small boulder. Blood pours from the wound. Luckily the gash is not deep. A squat creature with a bulbous grey head and large black almond eyes is shooting at you with some kind of laser gun.\n\n(HP decreased by -2)";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Flee");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="runAwayFromAlien";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon3 ="shootAtAlien";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void runAwayFromAlien(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bedlam Forest");
+
+        userInterface.text = "Your breathing is ragged as you stumble through the forest dodging green lasers that zip past your head and legs. Luckily the alien is a poor shot. You're able to hide between the trees and where they grow thick close to Mary's house, you are able to evade him completely in the darkness there.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="intoTheForest";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon3 ="getColt";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
 }
