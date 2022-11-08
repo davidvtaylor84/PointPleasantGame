@@ -263,6 +263,12 @@ public class Story {
             case "waitForMary2": waitForMary2();break;
             case "waitForMary3": waitForMary3();break;
             case "library": library();break;
+            case "library2": library2();break;
+            case "library3": library3();break;
+            case "library4": library4();break;
+            case "toMarysHouse": toMarysHouse();break;
+            case "marysHouse": marysHouse();break;
+            case "enterMarysHouse": enterMarysHouse();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": healthItem("Energy Bar+");userInterface.inventory2.setText("(Inventory slot 2)");break;
@@ -2147,6 +2153,7 @@ public class Story {
 
     public void waitForMary(){
         Player player = getPlayer();
+        player.setInsight(5);
         inventoryButtons();
         weaponButtons();
 
@@ -2203,7 +2210,6 @@ public class Story {
 
     public void waitForMary3(){
         Player player = getPlayer();
-        player.setGameProgress(4);
         inventoryButtons();
         weaponButtons();
 
@@ -2251,7 +2257,7 @@ public class Story {
         userInterface.prepareText();
 
 
-        userInterface.choice2.setText("Leave");
+        userInterface.choice2.setText("Back to Town Square");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
@@ -2259,6 +2265,179 @@ public class Story {
         game.choiceButton2 = "theTownSquare";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void library2(){
+        Player player = getPlayer();
+        player.setGameProgress(5);
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Point Pleasant Library");
+
+        userInterface.text = "You enter a large library overflowing with books on tables, under tables, piled around the floor. At its centre is a large oak desk where a very pale young woman with dolled-up hair wearing a green dress with squared shoulders. She's dressed as if she had just stepped out of the 1940's.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("Leave");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="library3";
+        game.choiceButton2 = "theTownSquare";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void library3(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Point Pleasant Library");
+
+        userInterface.text = "'I've been expecting you,' she says as she stands up and walk around the desk.\n\nAt once she is standing too close. She smells of burnt plastic: 'I just wanted to tell you that my birthday is the 21st February.' Her smile unnervingly wide.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("Leave");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="library4";
+        game.choiceButton2 = "theTownSquare";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void library4(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Point Pleasant Library");
+
+        userInterface.text = "She cackles and grabs you by the hand and shakes it forcefully: 'I'd like a bed from the bed factory as a present.\n\n'21st February,' she repeats and freezes, looking up into the corner of the room. She doesn't move. Doesn't appear to breathe. She is as mad as her brother.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("Leave");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="library3";
+        game.choiceButton2 = "theTownSquare";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void toMarysHouse(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("To Mary's House");
+
+        userInterface.text = "You walk along a gravel path alongside the woods and down below the hill, a run-down industrial estate. A few men and woman shuttle back and forth between buildings loading packaged double beds into the back of a truck.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("To Mary's House");
+        userInterface.choice2.setText("Back To Town");
+        if(player.getGameProgress()>=5){
+            userInterface.choice3.setText("Bed Factory");
+            game.choiceButton3 = "bedFactory";
+        } else{userInterface.choice3.setText("");
+            game.choiceButton3 = "";}
+
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="marysHouse";
+        game.choiceButton2 = "theTownSquare";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void marysHouse(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Mary's House");
+
+        userInterface.text = "Mary's house is a single-storey terracotta-walled bungalow with a gabled roof and overhanging eaves. It stands alone, swathed in mist, with its back against a very thick and imposing forest. The next closet house is five minutes away.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Enter");
+        userInterface.choice2.setText("Back towards town");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="enterMarysHouse";
+        game.choiceButton2 = "toMarysHouse";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void enterMarysHouse(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Mary's House");
+
+        userInterface.text = "The main area of the house combines a kitchenette and living room. Dark, earthy tones predominate. Framed photos of her family, nieces and nephews, brothers, parents, are in abundance.\n\nYou hear an odd groaning coming from the basement";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Investigate");
+        userInterface.choice2.setText("Go out the back door");
+        userInterface.choice3.setText("Basement");
+        userInterface.choice4.setText("Leave");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="investigateMarysHouse";
+        game.choiceButton2 = "intoTheForest";
+        game.choiceButton3 = "basement";
+        game.choiceButton4 = "marysHouse";
         game.choiceButton5 = "";
 
         getPlayerDefault();
