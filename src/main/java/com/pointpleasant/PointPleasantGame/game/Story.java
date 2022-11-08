@@ -262,6 +262,7 @@ public class Story {
             case "waitForMary": waitForMary();break;
             case "waitForMary2": waitForMary2();break;
             case "waitForMary3": waitForMary3();break;
+            case "library": library();break;
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
             case "getEnergyBarPlus": healthItem("Energy Bar+");userInterface.inventory2.setText("(Inventory slot 2)");break;
@@ -2030,6 +2031,7 @@ public class Story {
 
     public void arrested(){
         Player player = getPlayer();
+        player.unEquipItem("Baseball Bat");
         inventoryButtons();
         weaponButtons();
 
@@ -2116,6 +2118,7 @@ public class Story {
 
     public void jailed3(){
         Player player = getPlayer();
+        player.setWeaponToEquipped("Baseball Bat");
         inventoryButtons();
         weaponButtons();
 
@@ -2218,6 +2221,41 @@ public class Story {
         userInterface.choice5.setText("");
 
         game.choiceButton1="";
+        game.choiceButton2 = "theTownSquare";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void library(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Tom Duck Way");
+
+        if(player.getInsight()>=4) {
+            userInterface.text = "Tom Duck Way is located down a narrow alleyway off the town square. It is part of an old derelict looking building with smashed in windows. A large oak door you were certain was not there before now stands next to imposing black sedan.";
+            userInterface.choice1.setText("Enter Building");
+            game.choiceButton1="library2";
+        }else {
+            userInterface.text = "Tom Duck Way is located down a narrow alleyway off the town square. It is part of an old derelict looking building with smashed in windows. A series of plain black doors line the wall, each marked by brass numbers. It is is difficult to discern what the purpose of this building was. The numbers however only go up to 28.(+4 Insight required)";
+            userInterface.choice1.setText("");
+            game.choiceButton1="";
+        }
+        userInterface.prepareText();
+
+
+        userInterface.choice2.setText("Leave");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
         game.choiceButton2 = "theTownSquare";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
