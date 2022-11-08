@@ -49,32 +49,32 @@ public class DataLoader implements ApplicationRunner {
         Disguise disguise = new Disguise("Army Uniform", "STANDARD ISSUE UNIFORM \n\nDescription: An army uniform, slightly worn, found in a locker.\n\nCould be used to disguise oneself, but your non-regulation haircut and startled bearing won't fool them for long.\n\nCannot be used here.", false, 0,player, 10);
         itemRepository.save(disguise);
 
-        HealthBooster energyBar = new HealthBooster("Energy Bar+", "BAZLINTON'S ENERGY BAR PLUS.\n\nMakes one feel godlike(or so goes the packaging blurb).\n\nOne-liner on the wrapper reads: 'I’ve got a friend who has got a butler whose left arm is missing; serves him right'.\n\nHealth increased by 25 points", false, 25,player, 25);
+        HealthBooster energyBar = new HealthBooster("Energy Bar+", "BAZLINTON'S ENERGY BAR PLUS.\n\nDescription: Makes one feel godlike(or so goes the packaging blurb).\n\nOne-liner on the wrapper reads: 'I’ve got a friend who has got a butler whose left arm is missing; serves him right'.\n\nHealth increased by 25 points", false, 25,player, 25);
         itemRepository.save(energyBar);
 
-        HealthBooster energyBar2 = new HealthBooster("Mediocre Energy Bar", "INDRID'S ENERGY BAR.\n\nKeeps death at bay(or so goes the packaging blurb).\n\nOne-liner on the wrapper reads: 'I saw this bloke chatting up a cheetah and I thought 'He’s trying to pull a fast one.'\n\nHealth increased by 15 points", false, 15, player, 15);
+        HealthBooster energyBar2 = new HealthBooster("Mediocre Energy Bar", "INDRID'S ENERGY BAR.\n\nDescription: Keeps death at bay(or so goes the packaging blurb).\n\nOne-liner on the wrapper reads: 'I saw this bloke chatting up a cheetah and I thought 'He’s trying to pull a fast one.'\n\nHealth increased by 15 points", false, 15, player, 15);
         itemRepository.save(energyBar2);
 
-        HealthBooster energyBar3 = new HealthBooster("Average Energy Bar", "CREEPER'S ENERGY BAR.\n\nMakes your blood fire hot(or so goes the packaging blurb).\n\nOne-liner on the wrapper reads: 'I had a dream last night that I was cutting carrots with the Grim Reaper… dicing with death!\n\nHealth increased by 20 points", false, 20, player, 20);
+        HealthBooster energyBar3 = new HealthBooster("Average Energy Bar", "CREEPER'S ENERGY BAR.\n\nDescription: Makes your blood fire hot(or so goes the packaging blurb).\n\nOne-liner on the wrapper reads: 'I had a dream last night that I was cutting carrots with the Grim Reaper… dicing with death!\n\nHealth increased by 20 points", false, 20, player, 20);
         itemRepository.save(energyBar3);
 
-        Key key1 = new Key("Rusted Key", "RUSTED KEY\n\nSmall metal key given to you by Vadig. What it opens, god only knows, and I'm guessing god doesn't want to know. Only distinguishing feature is a heart-shape on the bow.\n\nCannot be used here", false, 0, player, "Unused");
+        Key key1 = new Key("Rusted Key", "RUSTED KEY\n\nDescription: Small metal key given to you by Vadig. What it opens, god only knows, and I'm guessing god doesn't want to know.\n\nOnly distinguishing feature is a heart-shape on the bow.\n\nCannot be used here", false, 0, player, "Unused");
         itemRepository.save(key1);
 
         Key key2 = new Key("Keycard", "Given to you by Mary Hyre. Claims it opens a secret door on the outskirts of town", false, 0, player, "Unused");
         itemRepository.save(key2);
-        Key key3 = new Key("Ammonite", "AMMONITE WHORL\n\nWeird fossil found in a box behind the Dynamite Diner. It feels heavier than it should. Fossils lie heavy with dream, or so some ostensibly useful idiot once quipped. Use is unknown(for now).\n\nCannot be used here", false, 0,player, "Unused");
+        Key key3 = new Key("Ammonite", "AMMONITE WHORL\n\nDescription: Weird fossil found in a box behind the Dynamite Diner. It feels heavier than it should.\n\nFossils lie heavy with dream, or so some ostensibly useful idiot once quipped. Use is unknown(for now).\n\nCannot be used here", false, 0,player, "Unused");
         itemRepository.save(key3);
-        Torch torch = new Torch("Windup Torch", "WINDUP TORCH\n\nA mere toy that reminds of a gift you received as a child. You chide yourself for being so sentimental\n\nIt's use is obvious", false, 0,player, 20);
+        Torch torch = new Torch("Windup Torch", "WINDUP TORCH\n\nDescription: A mere toy that reminds of a gift you received as a child. You chide yourself for being so sentimental, but it's stuff like this that makes us human.\n\nIt's use is obvious", false, 0,player, 20);
         itemRepository.save(torch);
 
-        AlienAlloyTube alienAlloyTube = new AlienAlloyTube("Alloy Tube", "Non-descript polished alloy tube. Intention makes it fire an invisible paralysing beam", 20, false,  player, 78);
+        AlienAlloyTube alienAlloyTube = new AlienAlloyTube("Alloy Tube", "ALLOY TUBE\n\nDescription: Non-descript polished metal tube found on a dead alien. It's use is currently unknown but it'll probably come in useful.\n\nMakes a slight sucking sound.\n\nCannot be used here", 20, false,  player, 78);
         weaponRepository.save(alienAlloyTube);
 
-        BaseballBat baseballBat = new BaseballBat("Baseball Bat", "BASEBALL BAT\n\nA children's toy. Some advice: 'If you don't think too much, don't think too much'. If that makes sense, maybe this weapon is for you.\n\nAdds +9 damage to successful attack.\n\nCannot be used here", 9, false, player, 150);
+        BaseballBat baseballBat = new BaseballBat("Baseball Bat", "BASEBALL BAT\n\nDescription: A children's toy. Some advice: 'If you don't think too much, don't think too much'. If that makes sense, maybe this weapon is for you.\n\nAdds +9 damage to successful attack.\n\nCannot be used here", 9, false, player, 150);
         weaponRepository.save(baseballBat);
 
-        Gun pistol = new Gun("Colt revolver", "A greasy gun found in a locker", 12, false, player, "Colt revolver", 20);
+        Gun pistol = new Gun("Colt revolver", "COLT REVOLVER\n\nDescription: Standard revolver pistol found amidst a pile of bodies. Don't worry about the number of bullets you have left. Your pockets are stuffed with them.\n\nCannot be used here.", 12, false, player, "Colt revolver", 20);
         weaponRepository.save(pistol);
 
         Gun m16 = new Gun("M16", "US Army standard issue (for imperialists)", 25, false, player, "M16", 50);
