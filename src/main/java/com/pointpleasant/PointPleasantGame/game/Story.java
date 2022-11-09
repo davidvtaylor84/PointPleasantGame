@@ -470,7 +470,6 @@ public class Story {
         if(player.getInsight()==0){
             game.choiceButton2 = "towardsShimmer";
         } else {game.choiceButton2 = "";}
-        game.choiceButton2 = "towardsShimmer";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
@@ -843,7 +842,7 @@ public class Story {
             userInterface.choice4.setText("Point Pleasant Enquirer");
             game.choiceButton4 ="waitForMary";
         } else{userInterface.choice4.setText("");
-            game.choiceButton4 = "";};
+            game.choiceButton4 = "";}
 
         if(player.getGameProgress()==2){
             userInterface.choice5.setText("The Marlee Hotel");
@@ -3087,9 +3086,6 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House Basement");
 
-//        userInterface.text = "You approach the safe in the basement wall. There is obviously something of great import inside that the gaseous blob was protecting or trying to get to. One of the keys to the mystery plaguing this town.\n\nExamining the keypad, you notice that the numbers 0,1,2 are most worn.";
-//        userInterface.prepareText();
-
         userInterface.mainTextArea.setText("You approach the safe in the basement wall. It's the kind that takes four digit passwords.\n\nExamining the keypad, you notice that the numbers 0,1, and 2 are most worn.");
 
         userInterface.choice1.setText("1");
@@ -3117,9 +3113,6 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House Basement");
 
-//        userInterface.text = "You approach the safe in the basement wall. There is obviously something of great import inside that the gaseous blob was protecting or trying to get to. One of the keys to the mystery plaguing this town.\n\nExamining the keypad, you notice that the numbers 0,1,2 are most worn.";
-//        userInterface.prepareText();
-
         userInterface.mainTextArea.setText("You approach the safe in the basement wall. It's the kind that takes four digit passwords.\n\nExamining the keypad, you notice that the numbers 0,1, and 2 are most worn.");
 
         userInterface.choice1.setText("1");
@@ -3146,9 +3139,7 @@ public class Story {
         ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/thesafe.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House Basement");
-
-//        userInterface.text = "You approach the safe in the basement wall. There is obviously something of great import inside that the gaseous blob was protecting or trying to get to. One of the keys to the mystery plaguing this town.\n\nExamining the keypad, you notice that the numbers 0,1,2 are most worn.";
-//        userInterface.prepareText();
+        
         userInterface.mainTextArea.setText("You approach the safe in the basement wall. It's the kind that takes four digit passwords.\n\nExamining the keypad, you notice that the numbers 0,1, and 2 are most worn.");
 
         userInterface.choice1.setText("1");
