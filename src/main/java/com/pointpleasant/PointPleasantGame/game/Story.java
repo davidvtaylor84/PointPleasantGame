@@ -1017,13 +1017,13 @@ public class Story {
 
 
         userInterface.choice1.setText("< < <");
-        userInterface.choice2.setText("");
+        userInterface.choice2.setText("Earn some money");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
         game.choiceButton1="enterLocalShop";
-        game.choiceButton2 = "";
+        game.choiceButton2 = "earningMoneyAtShop";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
@@ -1050,13 +1050,13 @@ public class Story {
 
 
         userInterface.choice1.setText("< < <");
-        userInterface.choice2.setText("");
+        userInterface.choice2.setText("Earn some money");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
         game.choiceButton1="enterLocalShop";
-        game.choiceButton2 = "";
+        game.choiceButton2 = "earningMoneyAtShop";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
@@ -1083,13 +1083,13 @@ public class Story {
 
 
         userInterface.choice1.setText("< < <");
-        userInterface.choice2.setText("");
+        userInterface.choice2.setText("Earn some money");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
         game.choiceButton1="enterLocalShop";
-        game.choiceButton2 = "";
+        game.choiceButton2 = "earningMoneyAtShop";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
@@ -1207,7 +1207,7 @@ public class Story {
         userInterface.text = "You enter the garage.A woman in overalls is working on a disassembled Ford Cortina and glares at you suspiciously. She appears exhausted and has dark rings under her eyes as if she hasn't slept in days.\n\n'Can I help you?' She says.";
         userInterface.prepareText();
 
-        userInterface.choice1.setText("Tell her your car broke down");
+        userInterface.choice1.setText("Tell her your travails");
         userInterface.choice2.setText("Can I use your phone?");
         userInterface.choice3.setText("Leave garage");
         userInterface.choice4.setText("");
