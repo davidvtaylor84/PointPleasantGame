@@ -285,6 +285,12 @@ public class Story {
             case "winOverAlien": winOverAlien();break;
             case "backToHouseAfterAlienAttack": backToHouseAfterAlienAttack();break;
             case "takeTube": takeTube();break;
+            case "attackBlob": attackBlob();break;
+            case "marysSafe": marysSafe();break;
+            case "twoButtonOnSafe": twoButtonOnSafe();break;
+            case "oneButtonOnSafe": oneButtonOnSafe();break;
+            case "zeroButtonOnSafe": zeroButtonOnSafe();break;
+            case "twoButtonOnSafe2": twoButtonOnSafe2();break;
 
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
@@ -465,7 +471,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Roadside");
 
-        userInterface.text ="You wait for an hour. No cars pass. Everything is still and quiet save for the gentle rustling of wind through the crops. You have drunk the remnants of your water bottle. You are now very hungry.";
+        userInterface.text ="You wait for an hour. No cars pass. Everything is still and quiet save for the gentle rustling of wind through the crops. You have drunk the remnants of your water bottle.\n\nYou are now very hungry.";
         userInterface.prepareText();
 
 
@@ -556,7 +562,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Vadig Takes Your Money");
 
-        userInterface.text = ("'This will not do,' he says. 'I was going to give you something special for your courage. Now I won't. You might still get it yet if you prove yourself to be a HARD WORKER. Thanks for the cash. Take this.'\n\nVadig hands over an Energy Bar(+25 HP) and ambles off down the road.");
+        userInterface.text = ("'This will not do,' he says. 'I was going to give you a special key for your courage. Now I won't. You might still get it yet if you prove yourself to be a HARD WORKER. Thanks for the cash. Take this.'\n\nVadig hands over an Energy Bar(+25 HP) and ambles off down the road.");
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -716,7 +722,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Highway fight aftermath");
 
-        userInterface.text = "Vadig falls to the ground and laughs.\n\n'Well done', he says. 'I had to test you for what is to come.'\n\nHe stands up slowly and hands you a rusted key. His height seems to have increased.";
+        userInterface.text = "Vadig falls to the ground and laughs.\n\n'Well done', he says. 'I had to test you for what is to come.'\n\nHe stands up slowly and hands you a rusted key. His height seems to have increased.\n(+2 Defence. +3 Attack)";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -746,7 +752,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Highway fight aftermath");
 
-        userInterface.text = "'You must visit my sister in library in town.'\n\nHe nods and runs off into the field before descending some unseen staircase hidden by scrub.\n\n(Rusted Key has been added to Inventory. +2 Defence. +3 Attack.)";
+        userInterface.text = "'You must visit my sister in the library in town.'\n\nHe nods and runs off into the field before descending some unseen staircase hidden by scrub.\n\n(Rusted Key has been added to Inventory)";
         userInterface.prepareText();
 
         userInterface.choice1.setText("On to Point Pleasant");
@@ -776,7 +782,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Investigate Field");
 
-        userInterface.text = "You can find no sign of a staircase or door amidst the dirt and dried out cornstalks, only an Average Energy Bar(+20 HP) with a note attached that reads: 'Eat this if you are feeling weak. It can help.";
+        userInterface.text = "You can find no sign of a staircase or door amidst the dirt and dried out cornstalks, only an Average Energy Bar(+20 HP) with a note attached.\n\nIt reads: 'Eat this if you are feeling weak. It can help.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("On to Point Pleasant");
@@ -807,8 +813,8 @@ public class Story {
         userInterface.locationTextArea.setText("Welcome to Point Pleasant");
 
         if(player.getCash()==0) {
-            userInterface.text = ("After walking for an hour, you enter Point Pleasant. It is small town, a population of around 4,000, according to the signage on approach. The main thoroughfare features thrift stores, bars, locally owned shops. You notice, after looking in a shop window, that your eyes are rimmed red and swollen.");
-        } else {userInterface.text = "After walking for an hour, you enter Point Pleasant. It is small town, a population of around 4,000, according to the signage on approach. The main thoroughfare features thrift stores, bars, locally owned shops. You notice, after looking in a shop window, that your eyes are rimmed red and swollen.\n\nYou realise that your wallet is gone. You only have $4 in change.";}
+            userInterface.text = ("After walking for an hour, you enter Point Pleasant. It is a small town, a population of around 4,000, according to the signage on approach. The main thoroughfare features thrift stores, bars, locally owned shops. You notice, after looking in a shop window, that your eyes are rimmed red and swollen.");
+        } else {userInterface.text = "After walking for an hour, you enter Point Pleasant. It is a small town, a population of around 4,000, according to the signage on approach. The main thoroughfare features thrift stores, bars, locally owned shops. You notice, after looking in a shop window, that your eyes are rimmed red and swollen.\n\nYou realise that your wallet is gone. You only have $4 in change.";}
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -887,7 +893,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Pleasant Store");
 
-        userInterface.text = "It is dry and dusty inside the store. The shelves are threadbare. The shopkeeper is a small man with no chin and thick glasses sitting in a chair to the side.You immediately erupt into a fit of coughing\n\nThe man ignores you, his head buried in a book entitled, 'The History of Glue'.";
+        userInterface.text = "It is dry and dusty inside the store. The shelves are threadbare. The shopkeeper is a small man with no chin and thick glasses sitting in a chair to the side. You immediately erupt into a fit of coughing. It's dusty.\n\nThe man ignores you, his head buried in a book entitled, 'The History of Glue'.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Tell Shopkeeper your story");
@@ -915,7 +921,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Pleasant Store");
 
-        userInterface.text = "'A lot of strange things going on in town at the moment,' he says. 'I think it has something to do with the power plant three towns over. Leaking poisonous fumes or somethin, causing hallucinations. Might explain your eyes as well.'\n\nHe looks you up and down:'You gonna buy anything?'";
+        userInterface.text = "'A lot of strange things going on in town at the moment,' he says. 'I think it has something to do with the power plant three towns over. Leaking poisonous fumes or somethin, causing hallucinations. Might explain your swollen eyes as well.'\n\nHe looks you up and down:'You gonna buy anything?'";
         userInterface.prepareText();
 
         userInterface.choice1.setText("< < <");
@@ -926,7 +932,7 @@ public class Story {
 
         game.choiceButton1="enterLocalShop";
         game.choiceButton2 = "whatToBuy";
-        game.choiceButton3 = "useShopKeepersPhone";
+        game.choiceButton3 = "useShopkeepersPhone";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
@@ -1029,13 +1035,13 @@ public class Story {
 
 
         userInterface.choice1.setText("< < <");
-        userInterface.choice2.setText("Chop logs");
+        userInterface.choice2.setText("");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
         game.choiceButton1="enterLocalShop";
-        game.choiceButton2 = "earningMoneyAtShop";
+        game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
@@ -1055,20 +1061,20 @@ public class Story {
 
         if(player.getCash()>=2 && !player.getItemByName("Mediocre Energy Bar").isEquipped()) {
             player.setCash(player.getCash() - 2);
-            userInterface.text = "'There you go, sir, one crummy energy bar,' he says. 'You must be in dire straits.'\n\nR(Mediocre Energy Bar added to Inventory(HP+15). Cash -$2)";
+            userInterface.text = "'There you go, sir, one crummy energy bar,' he says. 'You must be in dire straits.'\n\n(Mediocre Energy Bar added to Inventory(HP+15). Cash -$2)";
             player.setItemToEquipped("Mediocre Energy Bar");
         }else{userInterface.text = "'Not enough cash, hombre,' he mutters.\n\nHe sits down and continues reading his book, then looks up:'Got some logs need chopping out back if you want to earn $40'";}
         userInterface.prepareText();
 
 
         userInterface.choice1.setText("< < <");
-        userInterface.choice2.setText("Chop logs");
+        userInterface.choice2.setText("");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
         game.choiceButton1="enterLocalShop";
-        game.choiceButton2 = "earningMoneyAtShop";
+        game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
@@ -1095,13 +1101,13 @@ public class Story {
 
 
         userInterface.choice1.setText("< < <");
-        userInterface.choice2.setText("Chop logs");
+        userInterface.choice2.setText("");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
         game.choiceButton1="enterLocalShop";
-        game.choiceButton2 = "earningMoneyAtShop";
+        game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
@@ -1216,7 +1222,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Rita's Garage and Parts");
 
-        userInterface.text = "You enter the garage.A woman in overalls is working on a disassembled Ford Cortina and glares at you suspiciously. She appears exhausted and has dark rings under her eyes as she hasn't slept in days.\n\n'Can I help you?' She says.";
+        userInterface.text = "You enter the garage.A woman in overalls is working on a disassembled Ford Cortina and glares at you suspiciously. She appears exhausted and has dark rings under her eyes as if she hasn't slept in days.\n\n'Can I help you?' She says.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Tell her your car broke down");
@@ -1245,7 +1251,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Rita's Garage and Parts");
 
-        userInterface.text = "'Well that's a mighty sad story,' she mutters.'Happening with increasing frequency around here, but I don't see how it's my problem.'\n\nShe ponders for a moment, then:'Maybe go see Mary at the newspaper offices. She's good with cars and has a thing for charity cases like yours.'";
+        userInterface.text = "'Well that's a mighty sad story,' she mutters. 'Happening with increasing frequency around here, but I don't see how it's my problem.'\n\nShe ponders for a moment, then: 'Maybe go see Mary at the newspaper offices. She's good with cars and has a thing for charity cases like yours.'";
         userInterface.prepareText();
 
         userInterface.choice1.setText("< < <");
@@ -1273,7 +1279,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Rita's Garage and Parts");
 
-        userInterface.text = "'Can't just wander into town and demand things.'\n\nShe sighs and apologises: 'I'm sorry. There's been many a stranger come into down recently. Some may be regular folks, others turn out to be lunatics. I don't know you, so even if the phone was working it would still be a no.";
+        userInterface.text = "'Can't just wander into town and demand things.'\n\nShe sighs and apologises: 'I'm sorry. There's been many a stranger come into town recently. Some may be regular folks, others turn out to be lunatics. I don't know you, so even if the phone was working it would still be a no.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("< < <");
@@ -1301,16 +1307,22 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
+        if(player.getInsight()>=2){
         userInterface.text = "You enter the offices of the Point Pleasant Enquirer located in a converted mobile home in a lot off the main square. It is surprisingly bright and airy inside. The sole journalist in the office stands up when she notices your wild look\n\n'Aha!' She says.'You've seen them too!'";
+        userInterface.choice1.setText("What are you talking about?");
+        game.choiceButton1="maryTells";
+        }else{userInterface.text = "'Oh, you're back so soon,' says Mary. 'I have an incredible amount of work to do. Can you come back in an hour or so? Everything is going crazy around here. Bright lights in the sky! Winged creatures swooping out of the air! Wild times!'";
+            userInterface.choice1.setText("");
+            game.choiceButton1="";
+        }
+
         userInterface.prepareText();
 
-        userInterface.choice1.setText("What are you talking about?");
         userInterface.choice2.setText("Leave");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1="maryTells";
         game.choiceButton2 = "theTownSquare";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
@@ -1385,7 +1397,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
-        userInterface.text = "Although the import of the video is not immediately obvious, something about this UFO footage resonates makes your stomach drop.\n\n'If you would like to find out more, come see me at the Marlee Hotel later on. I have a hypnotist friend staying there helping people like you recover lost memories.'";
+        userInterface.text = "Although the import of the video is not immediately obvious, something about this UFO footage resonates and makes your stomach drop.\n\n'If you would like to find out more, come see me at the Marlee Hotel later on. I have a hypnotist friend staying there helping people like you recover lost memories.'";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Ask about Vadig");
@@ -1413,7 +1425,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
-        userInterface.text = "'Your description of this man doesn't ring any bells,' she says, 'but we have had incidents in the town in recent days where strange men and women turn up trying to convince people that that they are local. They say that their sister works in the library, which doesn't make sense. The library shut down three years ago.'";
+        userInterface.text = "'Your description of this man doesn't ring any bells,' she says, 'but we have had incidents in the town in recent days where strange people turn up and try to convince people that that they are from here.\n\n'Vadig said that his sister works in the library?,' she adds, 'That doesn't make sense. The library shut down three years ago.'";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Leave");
@@ -1614,7 +1626,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Marlee Hotel");
 
-        userInterface.text = "You follow her into a bedroom on the first where a man in long jacket sits on an armchair by the window. His eyes are very large. He motions for you to sit on the chair opposite his.\n\n'I believe you are another experiencer,' he says. 'Do you consent to be hypnotised so we can help you discover the truth?'";
+        userInterface.text = "You follow her into a bedroom on the first floor where a man in long jacket sits on an armchair by the window. His eyes are very large. He motions for you to sit on the chair opposite his.\n\n'We believe you are another experiencer,' he says. 'Do you consent to be hypnotised so we can help you discover the truth?'";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Be hypnotised");
@@ -1671,7 +1683,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Marlee Hotel");
 
-        userInterface.text = "You see yourself driving along the highway at night, suddenly struck by a blinding light in the sky... a sensation of floating... a tall winged creature with red eyes lurking in the trees attacked by men with guns. However surreal these sensations and images, the one that sticks most is of Christmas presents floating in the water.\n(Insight increased by +2)";
+        userInterface.text = "You see yourself driving along the highway at night, struck by a blinding light in the sky... a sensation of floating... a tall winged creature with red eyes lurking in the trees attacked by armed men.\n\nHowever surreal these sensations and images, the one that mysteriously affects you most is of Christmas presents floating in the water.(Insight increased by +2)";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -1751,8 +1763,7 @@ public class Story {
 
     public void openBox(){
         Player player = getPlayer();
-        if(!player.getItemByName("Ammonite").isEquipped())
-            {player.setItemToEquipped("Ammonite");}
+        player.setItemToEquipped("Ammonite");
         player.setInsight(getPlayer().getInsight()+1);
         inventoryButtons();
         weaponButtons();
@@ -1792,7 +1803,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Dumpster Encounter");
 
-        userInterface.text = "'We demand that you must and will give us the object', says a squeaking voice behind you.\n\nYou turn and are confronted by an incredibly broad man in black trenchcoat and black fedora blocking the door to the diner.Quicker than humanly possible, he lunges towards you.";
+        userInterface.text = "'You will give me that object', says a squeaking voice behind you.\n\nYou turn and are confronted by an incredibly broad man in black trenchcoat and black fedora blocking the door to the diner.Quicker than humanly possible, he lunges towards you.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -2093,7 +2104,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Sheriff's Department");
 
-        userInterface.text = "You have been sitting in the jail cell of the Point Pleasant Sheriff's Dept for three hours arrested on suspicion of criminal activity. It is dank in there with only a small window high-up in the wall to let in the paltry light. There is an old drunk in there locked in to dry off. He mumbles in his sleep";
+        userInterface.text = "You have been sitting in the jail cell of the Point Pleasant Sheriff's Dept for three hours arrested on suspicion of criminal activity. It is dank in there with only a small window high-up in the wall to let in the paltry light.\n\nThere is an old drunk in there locked in to dry off. He mumbles in his sleep.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -2171,7 +2182,6 @@ public class Story {
 
     public void waitForMary(){
         Player player = getPlayer();
-        player.setInsight(5);
         inventoryButtons();
         weaponButtons();
 
@@ -2236,7 +2246,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
-        userInterface.text = "Two hours pass. Derek looks at his watch. He is worried.\n\n'Dammit!' He says. 'She should be back by now.Where the hell could she have gotten to? Do me favour. Here's here address. Go check on her.'";
+        userInterface.text = "Two hours pass. Derek looks at his watch. He is worried.\n\n'Dammit!' He says. 'She should be back by now. Where the hell could she have gotten to? Do me favour. Here's Mary's address. Go check on her.'";
         userInterface.prepareText();
 
         userInterface.choice1.setText("");
@@ -2265,7 +2275,7 @@ public class Story {
         userInterface.locationTextArea.setText("Tom Duck Way");
 
         if(player.getInsight()>=4) {
-            userInterface.text = "Tom Duck Way is located down a narrow alleyway off the town square. It is part of an old derelict looking building with smashed in windows. A large oak door you were certain was not there before now stands next to imposing black sedan.";
+            userInterface.text = "Tom Duck Way is located down a narrow alleyway off the town square. It is part of an old derelict looking building with smashed in windows.\n\nA large oak door you were certain was not there before now stands next to imposing black sedan.";
             userInterface.choice1.setText("Enter Building");
             game.choiceButton1="library2";
         }else {
@@ -2300,7 +2310,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Library");
 
-        userInterface.text = "You enter a large library overflowing with books on tables, under tables, piled around the floor. At its centre is a large oak desk where a very pale young woman with dolled-up hair wearing a green dress with squared shoulders. She's dressed as if she had just stepped out of the 1940's.";
+        userInterface.text = "You enter a large library overflowing with books on tables, under tables, piled around the floor.\n\nAt its centre is a large oak desk where a very pale young woman with dolled-up hair wearing a green dress with squared shoulders. She's dressed as if she had just stepped out of the 1940's.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -2416,7 +2426,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House");
 
-        userInterface.text = "Mary's house is a single-storey terracotta-walled bungalow with a gabled roof and overhanging eaves. It stands alone, swathed in mist, with its back against a very thick and imposing forest. The next closet house is five minutes away.";
+        userInterface.text = "Mary's house is a single-storey terracotta-walled bungalow with a gabled roof and overhanging eaves. It stands alone, swathed in mist, with its back against a very thick and imposing forest.\n\nThe next closet house is five minutes away.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Enter");
@@ -2437,6 +2447,7 @@ public class Story {
 
     public void enterMarysHouse(){
         Player player = getPlayer();
+        Enemy enemy = getEnemyByName("Hank");
         inventoryButtons();
         weaponButtons();
 
@@ -2444,18 +2455,29 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House");
 
-        userInterface.text = "The main area of the house combines a kitchenette and living room. Dark, earthy tones predominate. Framed photos of her family, nieces and nephews, brothers, parents, are in abundance.\n\nYou hear an odd groaning coming from the basement";
+        if(player.getItemByName("Alloy Tube").isEquipped()){
+            userInterface.text = "The main area of the house combines a kitchenette and living room. Dark, earthy tones predominate. Framed photos of her family, nieces and nephews, brothers, parents, are in abundance.\n\nYou hear an odd groaning coming from the basement";
+        }else{
+            userInterface.text = "The main area of the house combines a kitchenette and living room. Dark, earthy tones predominate. Framed photos of her family, nieces and nephews, brothers, parents, are in abundance.\n\nThe shelves in the main living area are bursting with books.";
+        }
         userInterface.prepareText();
+
+        if(enemy.getHealthPoints()==0 && !player.getItemByName("Keycard").isEquipped()){
+            game.choiceButton3 = "marysSafe";
+            userInterface.choice3.setText("Basement");
+        } else if(enemy.getHealthPoints()==0 && player.getItemByName("Keycard").isEquipped()){
+            game.choiceButton3 = "";
+            userInterface.choice3.setText("");}
+        else{game.choiceButton3 = "basement";
+            userInterface.choice3.setText("Basement");}
 
         userInterface.choice1.setText("Investigate");
         userInterface.choice2.setText("Go out the back door");
-        userInterface.choice3.setText("Basement");
         userInterface.choice4.setText("Leave");
         userInterface.choice5.setText("");
 
         game.choiceButton1="investigateMarysHouse";
         game.choiceButton2 = "intoTheForest";
-        game.choiceButton3 = "basement";
         game.choiceButton4 = "marysHouse";
         game.choiceButton5 = "";
 
@@ -2465,6 +2487,7 @@ public class Story {
 
     public void investigateMarysHouse(){
         Player player = getPlayer();
+        Enemy enemy = getEnemyByName("Hank");
         inventoryButtons();
         weaponButtons();
 
@@ -2475,6 +2498,12 @@ public class Story {
         userInterface.text = "You pick through the letters and pieces of paper lying around her laptop on the breakfast bar. You then spot a note lying propped up on the coffee table.\n\nIt reads: 'Heard some strange noises out back. I'm frightened but have gone to investigate. Am afraid someone wants to get into my safe.'";
         userInterface.prepareText();
 
+        if(enemy.getHealthPoints()==0){
+            game.choiceButton3 = "marysSafe";
+        } else{
+            game.choiceButton3 = "basement";
+        }
+
         userInterface.choice1.setText("< < <");
         userInterface.choice2.setText("Go out the back door");
         userInterface.choice3.setText("Basement");
@@ -2483,7 +2512,6 @@ public class Story {
 
         game.choiceButton1="enterMarysHouse";
         game.choiceButton2 = "intoTheForest";
-        game.choiceButton3 = "basement";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
@@ -2498,7 +2526,7 @@ public class Story {
 
         ImageIcon image = new ImageIcon("");
         userInterface.imageLabel.setIcon(image);
-        userInterface.locationTextArea.setText("Mary's House");
+        userInterface.locationTextArea.setText("Mary's House Basement");
 
         userInterface.text = "You round the bottom of the stairs. The first thing you notice is a thick green fog entirely localised at the far end amidst cardboard boxes and an old exercise bike.\n\nThe fog rumbles and groans. Through it, you can see a small safe embedded in the wall.";
         userInterface.prepareText();
@@ -2514,6 +2542,9 @@ public class Story {
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
+
+        if(player.getWeaponByName("Alloy Tube").isEquipped()){
+            game.weapon1 = "attackBlob";}
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
@@ -2533,7 +2564,7 @@ public class Story {
 
         ImageIcon image = new ImageIcon("");
         userInterface.imageLabel.setIcon(image);
-        userInterface.locationTextArea.setText("Mary's House");
+        userInterface.locationTextArea.setText("Mary's House Basement");
 
         userInterface.text = "The fog extends a tendril and lashes out at you.\n\nENEMY D20 ATTACK ROLL: " + attackRoll + " vs YOUR DEFENCE RATING: " + player.getDefence() + "\n\nGaseous Blob inflicts " + enemyAttack + " points of damage. It is immune to conventional attack.";
         userInterface.prepareText();
@@ -2554,7 +2585,7 @@ public class Story {
             userInterface.choice3.setText("");
         }
 
-        if(player.getWeaponByName("Alloy Tube").isEquipped() && player.getHealthPoints()>0){
+        if(player.getWeaponByName("Alloy Tube").isEquipped()){
             game.weapon1 = "attackBlob";}
 
         userInterface.choice1.setText("Flee");
@@ -2997,6 +3028,183 @@ public class Story {
 
         game.choiceButton1="";
         game.choiceButton2 = "intoTheForest";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+    public void attackBlob(){
+        Player player = getPlayer();
+        Enemy enemy = getEnemyByName("Hank");
+        enemy.setHealthPoints(0);
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Mary's House Basement");
+
+        userInterface.text = "You press your thumb to the depression on the alloy tube and the gaseous blob groans. It writhes in the air for a moment, purple tendrils lashing out in all directions until it succumbs to the effects of the device you are holding and is slowly, reluctantly, sucked into the tube.\n\nYou can now get to the safe on the wall.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Examine the safe");
+        userInterface.choice2.setText("Leave the basement");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="marysSafe";
+        game.choiceButton2 = "enterMarysHouse";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon1 = "getAlloyTube";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+        this.game.getEnemyRepository().save(enemy);
+    }
+
+    public void marysSafe(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Mary's House Basement");
+
+        userInterface.text = "You approach the safe in the basement wall. It's the kind that takes four digit passwords.\n\nExamining the keypad, you notice that the numbers 0,1, and 2 are most worn.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("1");
+        userInterface.choice2.setText("2");
+        userInterface.choice3.setText("0");
+        userInterface.choice4.setText("Reset");
+        userInterface.choice5.setText("Leave the basement");
+
+        game.choiceButton1="";
+        game.choiceButton2 = "twoButtonOnSafe";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "marysSafe";
+        game.choiceButton5 = "enterMarysHouse";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void twoButtonOnSafe(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Mary's House Basement");
+
+//        userInterface.text = "You approach the safe in the basement wall. There is obviously something of great import inside that the gaseous blob was protecting or trying to get to. One of the keys to the mystery plaguing this town.\n\nExamining the keypad, you notice that the numbers 0,1,2 are most worn.";
+//        userInterface.prepareText();
+
+        userInterface.mainTextArea.setText("You approach the safe in the basement wall. It's the kind that takes four digit passwords.\n\nExamining the keypad, you notice that the numbers 0,1, and 2 are most worn.");
+
+        userInterface.choice1.setText("1");
+        userInterface.choice2.setText("2");
+        userInterface.choice3.setText("0");
+        userInterface.choice4.setText("Reset");
+        userInterface.choice5.setText("Leave the basement");
+
+        game.choiceButton1="oneButtonOnSafe";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "marysSafe";
+        game.choiceButton5 = "enterMarysHouse";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void oneButtonOnSafe(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Mary's House Basement");
+
+//        userInterface.text = "You approach the safe in the basement wall. There is obviously something of great import inside that the gaseous blob was protecting or trying to get to. One of the keys to the mystery plaguing this town.\n\nExamining the keypad, you notice that the numbers 0,1,2 are most worn.";
+//        userInterface.prepareText();
+
+        userInterface.mainTextArea.setText("You approach the safe in the basement wall. It's the kind that takes four digit passwords.\n\nExamining the keypad, you notice that the numbers 0,1, and 2 are most worn.");
+
+        userInterface.choice1.setText("1");
+        userInterface.choice2.setText("2");
+        userInterface.choice3.setText("0");
+        userInterface.choice4.setText("Reset");
+        userInterface.choice5.setText("Leave the basement");
+
+        game.choiceButton1="";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "zeroButtonOnSafe";
+        game.choiceButton4 = "marysSafe";
+        game.choiceButton5 = "enterMarysHouse";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void zeroButtonOnSafe(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Mary's House Basement");
+
+//        userInterface.text = "You approach the safe in the basement wall. There is obviously something of great import inside that the gaseous blob was protecting or trying to get to. One of the keys to the mystery plaguing this town.\n\nExamining the keypad, you notice that the numbers 0,1,2 are most worn.";
+//        userInterface.prepareText();
+        userInterface.mainTextArea.setText("You approach the safe in the basement wall. It's the kind that takes four digit passwords.\n\nExamining the keypad, you notice that the numbers 0,1, and 2 are most worn.");
+
+        userInterface.choice1.setText("1");
+        userInterface.choice2.setText("2");
+        userInterface.choice3.setText("0");
+        userInterface.choice4.setText("Reset");
+        userInterface.choice5.setText("Leave the basement");
+
+        game.choiceButton1="";
+        game.choiceButton2 = "twoButtonOnSafe2";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "marysSafe";
+        game.choiceButton5 = "enterMarysHouse";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+    public void twoButtonOnSafe2(){
+        Player player = getPlayer();
+        player.setItemToEquipped("Keycard");
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Mary's House Basement");
+
+        userInterface.text = "The safe clicks open and reveals a wooden jewellery box, some piles of cash and a plain brown manilla envelope. You open the envelope and out slips a plain white keycard. This must be what Mary was protecting. You take the card and lock the safe.\n\n(Keycard added to Inventory)";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Leave basement");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "enterMarysHouse";
+        game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
