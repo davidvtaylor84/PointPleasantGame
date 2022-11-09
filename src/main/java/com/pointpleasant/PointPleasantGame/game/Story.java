@@ -2270,7 +2270,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/blackdoors.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Tom Duck Way");
 
@@ -2306,11 +2306,11 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/vsister.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Library");
 
-        userInterface.text = "You enter a large library overflowing with books on tables, under tables, piled around the floor.\n\nAt its centre is a large oak desk where a very pale young woman with dolled-up hair wearing a green dress with squared shoulders. She's dressed as if she had just stepped out of the 1940's.";
+        userInterface.text = "You enter a large library overflowing with books on tables, under tables, piled around the floor.\n\nAt its centre is an oak desk where a very pale young woman with dolled-up hair wearing a green dress with squared shoulders. She's dressed as if she had just stepped out of the 1940's.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -2334,7 +2334,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/vsister2.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Library");
 
@@ -2362,7 +2362,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/vsister3.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Library");
 
@@ -2390,7 +2390,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/beds.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("To Mary's House");
 
@@ -2422,7 +2422,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/maryshouse.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House");
 
@@ -2451,7 +2451,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/marysinterior.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House");
 
@@ -2491,7 +2491,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/marysinterior.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House");
 
@@ -2524,7 +2524,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/greenfog.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House Basement");
 
@@ -2562,7 +2562,7 @@ public class Story {
 
         player.takeDamage(enemyAttack);
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/fogattack.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House Basement");
 
@@ -2608,7 +2608,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/forest.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's back garden");
 
@@ -2639,7 +2639,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/torch.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bedlam Forest");
 
@@ -2670,7 +2670,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/soldiers.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bedlam Forest");
 
@@ -2705,7 +2705,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/jeep.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bedlam Forest");
 
@@ -2744,7 +2744,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/saucer.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bedlam Forest");
 
@@ -2775,7 +2775,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/gunny.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bedlam Forest");
 
@@ -2804,7 +2804,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/laser.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bedlam Forest");
 
@@ -2835,7 +2835,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/runningaway.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bedlam Forest");
 
@@ -2873,7 +2873,7 @@ public class Story {
 
         enemy.takeDamage(damageTotal);
 
-        ImageIcon shimmer = new ImageIcon("");
+        ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/shot.png");
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Gun Fight with X-42");
 
@@ -2914,7 +2914,7 @@ public class Story {
 
         player.takeDamage(enemyAttack);
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/laser2.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Gun Fight with X-42");
 
@@ -3073,7 +3073,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/thesafe.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House Basement");
 
@@ -3101,7 +3101,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/thesafe.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House Basement");
 
@@ -3131,7 +3131,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/thesafe.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House Basement");
 
@@ -3161,7 +3161,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/thesafe.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House Basement");
 
@@ -3190,7 +3190,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/thesafe.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House Basement");
 
