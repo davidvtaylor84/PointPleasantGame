@@ -61,7 +61,7 @@ public class DataLoader implements ApplicationRunner {
         Key key1 = new Key("Rusted Key", "RUSTED KEY\n\nDescription: Small metal key given to you by Vadig. What it opens, god only knows, and I'm guessing god doesn't want to know.\n\nOnly distinguishing feature is a heart-shape on the bow.\n\nCannot be used here", false, 0, player, "Unused");
         itemRepository.save(key1);
 
-        Key key2 = new Key("Keycard", "Given to you by Mary Hyre. Claims it opens a secret door on the outskirts of town", false, 0, player, "Unused");
+        Key key2 = new Key("Keycard", "KEYCARD\n\nDescription: Found in Mary Hyre's safe. You hope that this is the item she was protecting and it wasn't some of the jewels, or even the cash. Maybe the aliens need money?!\n\nCannot be used here", false, 0, player, "Unused");
         itemRepository.save(key2);
         Key key3 = new Key("Ammonite", "AMMONITE WHORL\n\nDescription: Weird fossil found in a box behind the Dynamite Diner. It feels heavier than it should.\n\nFossils lie heavy with dream, or so some ostensibly useful idiot once quipped. Use is unknown(for now).\n\nCannot be used here", false, 0,player, "Unused");
         itemRepository.save(key3);

@@ -52,18 +52,6 @@ public class Story {
         return foundEnemy.orElseGet(Enemy::new);
     }
 
-//    public void defaultInventory(){
-//        Player player = getPlayer();
-//        player.getItems().get(0).setEquipped(false);
-//        player.getItems().get(1).setEquipped(false);
-//        player.getItems().get(2).setEquipped(false);
-//        player.getItems().get(3).setEquipped(false);
-//        player.getItems().get(4).setEquipped(false);
-//        player.getItems().get(5).setEquipped(false);
-//        player.getItems().get(6).setEquipped(false);
-//        player.getItems().get(7).setEquipped(false);
-//    }
-
     public void setPlayerDefault(){
         Player player = getPlayer();
         player.setHealthPoints(38);
@@ -1307,7 +1295,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
-        if(player.getInsight()>=2){
+        if(player.getInsight()<=2){
         userInterface.text = "You enter the offices of the Point Pleasant Enquirer located in a converted mobile home in a lot off the main square. It is surprisingly bright and airy inside. The sole journalist in the office stands up when she notices your wild look\n\n'Aha!' She says.'You've seen them too!'";
         userInterface.choice1.setText("What are you talking about?");
         game.choiceButton1="maryTells";
@@ -2185,7 +2173,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/derek2.png");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/derekTwo.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
@@ -2213,7 +2201,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/derek.png");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/derekOne.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
@@ -2242,7 +2230,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/derek3.png");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/derekThree.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
@@ -2275,11 +2263,11 @@ public class Story {
         userInterface.locationTextArea.setText("Tom Duck Way");
 
         if(player.getInsight()>=4) {
-            userInterface.text = "Tom Duck Way is located down a narrow alleyway off the town square. It is part of an old derelict looking building with smashed in windows.\n\nA large oak door you were certain was not there before now stands next to imposing black sedan.";
+            userInterface.text = "Tom Duck Way is located down a narrow alleyway off the town square. It is part of an old derelict looking building with smashed in windows.\n\nA large oak door you were certain was not there before has appeared. Parked next to it is an imposing black sedan.";
             userInterface.choice1.setText("Enter Building");
             game.choiceButton1="library2";
         }else {
-            userInterface.text = "Tom Duck Way is located down a narrow alleyway off the town square. It is part of an old derelict looking building with smashed in windows. A series of plain black doors line the wall, each marked by brass numbers. It is is difficult to discern what the purpose of this building was. The numbers however only go up to 28.(+4 Insight required)";
+            userInterface.text = "Tom Duck Way is located down a narrow alleyway off the town square. It is part of an old derelict looking building with smashed in windows. A series of plain black doors line the wall, each marked by brass numbers. It is difficult to discern what the purpose of this building was. The numbers however only go up to 28.\n(+4 Insight required)";
             userInterface.choice1.setText("");
             game.choiceButton1="";
         }
@@ -2426,7 +2414,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House");
 
-        userInterface.text = "Mary's house is a single-storey terracotta-walled bungalow with a gabled roof and overhanging eaves. It stands alone, swathed in mist, with its back against a very thick and imposing forest.\n\nThe next closet house is five minutes away.";
+        userInterface.text = "Mary's house is a single-storey terracotta-walled bungalow with a gabled roof and overhanging eaves. It stands alone, swathed in mist, with its back against a very thick and imposing forest.\n\nThe next closest house is five minutes away.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Enter");
@@ -2455,11 +2443,9 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House");
 
-        if(player.getItemByName("Alloy Tube").isEquipped()){
-            userInterface.text = "The main area of the house combines a kitchenette and living room. Dark, earthy tones predominate. Framed photos of her family, nieces and nephews, brothers, parents, are in abundance.\n\nYou hear an odd groaning coming from the basement";
-        }else{
-            userInterface.text = "The main area of the house combines a kitchenette and living room. Dark, earthy tones predominate. Framed photos of her family, nieces and nephews, brothers, parents, are in abundance.\n\nThe shelves in the main living area are bursting with books.";
-        }
+
+        userInterface.text = "The main area of the house combines a kitchenette and living room. Dark, earthy tones predominate. Framed photos of her family, nieces and nephews, brothers, parents, are in abundance.\n\nThe shelves in the main living area are bursting with books.";
+
         userInterface.prepareText();
 
         if(enemy.getHealthPoints()==0 && !player.getItemByName("Keycard").isEquipped()){
@@ -3046,7 +3032,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House Basement");
 
-        userInterface.text = "You press your thumb to the depression on the alloy tube and the gaseous blob groans. It writhes in the air for a moment, green tendrils lashing out in all directions until it succumbs to the effects of the device you are holding and is slowly, reluctantly, sucked into the tube.\n\nYou can now get to the safe on the wall.";
+        userInterface.text = "You put your thumb to the depression on the alloy tube and the gaseous blob groans. It writhes in the air for a moment, green tendrils lashing out in all directions until it succumbs to the effects of the device you are holding and is slowly, reluctantly, sucked into the tube.\n\nYou can now get to the safe on the wall.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Examine the safe");
@@ -3063,6 +3049,7 @@ public class Story {
 
         game.weapon1 = "getAlloyTube";
 
+        game.inventoryButton8 = "getWindupTorch";
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
         this.game.getEnemyRepository().save(enemy);
