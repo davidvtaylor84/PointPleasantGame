@@ -4,19 +4,10 @@ package com.pointpleasant.PointPleasantGame.game;
 import com.pointpleasant.PointPleasantGame.models.Player;
 import com.pointpleasant.PointPleasantGame.models.enemies.Enemy;
 import com.pointpleasant.PointPleasantGame.models.inventory.items.Item;
-import com.pointpleasant.PointPleasantGame.models.inventory.weapons.Weapon;
 import com.pointpleasant.PointPleasantGame.repositories.EnemyRepository;
 import com.pointpleasant.PointPleasantGame.repositories.PlayerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class Story {
@@ -279,6 +270,10 @@ public class Story {
             case "oneButtonOnSafe": oneButtonOnSafe();break;
             case "zeroButtonOnSafe": zeroButtonOnSafe();break;
             case "twoButtonOnSafe2": twoButtonOnSafe2();break;
+            case "bedFactory": bedFactory();break;
+            case "observeBedFactory": observeBedFactory();break;
+            case "enterBedFactoryDeath":enterBedFactoryDeath();break;
+            case "doorInBedFactory": doorInBedFactory();break;
 
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
@@ -1330,6 +1325,7 @@ public class Story {
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
         userInterface.text = "'Let me guess,' she says. 'You suspect you fell asleep at the wheel of your and you woke up in the morning at the side of the road.'\n\n'It's happened a bunch of times over the past few weeks, ever since everything started going crazy round here. Kooks and soldiers showing up and whatnot.'";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("Tell me more");
         userInterface.choice2.setText("Leave");
@@ -2701,11 +2697,11 @@ public class Story {
             player.setItemToEquipped("Ammonite");}
         userInterface.prepareText();
 
-        if(player.getItemByName("Army Uniform").isEquipped()&&player.getWeaponByName("Colt revolver").isEquipped()){
+        if(player.getWeaponByName("Colt revolver").isEquipped()){
             userInterface.choice2.setText("");
             game.choiceButton2 = "";
         } else{
-            userInterface.choice2.setText("Take Gun & Uniform");
+            userInterface.choice2.setText("Take Pistol");
             game.choiceButton2 = "takeGunAndUniform";
         }
 
@@ -2757,7 +2753,6 @@ public class Story {
     public void takeGunAndUniform(){
         Player player = getPlayer();
         player.setWeaponToEquipped("Colt revolver");
-        player.setItemToEquipped("Army Uniform");
         inventoryButtons();
         weaponButtons();
 
@@ -2765,7 +2760,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bedlam Forest");
 
-        userInterface.text = "The gun feels unnatural in your hand. Alongside the items are bullets which you fill your pockets with. These are strange times. You feel as though you are being directed by some unnatural force to do things you wouldn't otherwise do.\n\n(Colt revolver and Army Uniform added to Inventory)";
+        userInterface.text = "The gun feels unnatural in your hand. Alongside the items are bullets which you fill your pockets with. These are strange times. You feel as though you are being directed by some unnatural force to do things you wouldn't otherwise do.\n\n(Colt revolver added to Inventory)";
         userInterface.prepareText();
 
         userInterface.choice1.setText("< < <");
@@ -3195,6 +3190,126 @@ public class Story {
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void bedFactory(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/thebeds.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        userInterface.text = "You walk down the hill to the industrial estate and observe from behind a parked car. You don't see anything unusual besides people ferrying cellophane-covered beds to trucks from the open mouth of a factory door. Most of the workers look bored and tired.\n\nYou wonder why Vadig's sister sent you here.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Leave");
+        userInterface.choice2.setText("Wait and Observe");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "toMarysHouse";
+        game.choiceButton2 = "observeBedFactory";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void doorInBedFactory(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/alcovedoor.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        userInterface.text = "A white door stands in the alcove. A black keycard reader is set into the wall at the side. .\n\nYour heart beats heavily in your chest. You have no idea what you will find beyond this portal.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Leave");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "toMarysHouse";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.inventoryButton6 = "enterBedFactoryDeath";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void observeBedFactory(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/jeepfactory.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        userInterface.text = "After 20 minutes of observation, you eventually catch a break.\n\nA US army jeep parks up next to an alcove in the side of the building and a soldier wearing green fatigues steps out and enters the door there.\n\nThe jeep speeds off.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Leave");
+        userInterface.choice2.setText("Go to the door");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "toMarysHouse";
+        game.choiceButton2 = "doorInBedFactory";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+
+//        game.inventoryButton6 = "getKeyCard";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void enterBedFactoryDeath(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/gunfiregloom.png");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        userInterface.text = "You use the keycard. The door clicks open.\n\nAn excruciating burning sensation rips through your chest as you see sparks of fiery light explode in the gloom ahead. Bleeding out on the floor, you realise that stepping through that door was a foolish idea, looking as you do, like a wild eyed stranger.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "awakenInBedFactory";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+//        game.inventoryButton6 = "enterBedFactoryDeath";
+        game.inventoryButton6 = "getKeyCard";
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);

@@ -1,10 +1,7 @@
 package com.pointpleasant.PointPleasantGame.game;
 
-import com.pointpleasant.PointPleasantGame.models.Player;
-import com.pointpleasant.PointPleasantGame.models.inventory.items.Key;
 import com.pointpleasant.PointPleasantGame.repositories.EnemyRepository;
 import com.pointpleasant.PointPleasantGame.repositories.PlayerRepository;
-import org.springframework.context.ConfigurableApplicationContext;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

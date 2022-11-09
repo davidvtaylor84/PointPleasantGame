@@ -21,7 +21,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Profile("!test")
-//@Component
+@Component
 public class DataLoader implements ApplicationRunner {
 
     @Autowired
@@ -43,7 +43,7 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) {
 
 
-        Player player = new Player("John Leek", 30, 0, 14, 7, 5, 70, 1);
+        Player player = new Player("John Leek", 30, 0, 14, 7, 5, 70, 0);
         playerRepository.save(player);
 
         Disguise disguise = new Disguise("Army Uniform", "STANDARD ISSUE UNIFORM \n\nDescription: An army uniform, slightly worn, found in a locker.\n\nCould be used to disguise oneself, but your non-regulation haircut and startled bearing won't fool them for long.\n\nCannot be used here.", false, 0,player, 10);
@@ -61,11 +61,11 @@ public class DataLoader implements ApplicationRunner {
         Key key1 = new Key("Rusted Key", "RUSTED KEY\n\nDescription: Small metal key given to you by Vadig. What it opens, god only knows, and I'm guessing god doesn't want to know.\n\nOnly distinguishing feature is a heart-shape on the bow.\n\nCannot be used here", false, 0, player, "Unused");
         itemRepository.save(key1);
 
-        Key key2 = new Key("Keycard", "KEYCARD\n\nDescription: Found in Mary Hyre's safe. You hope that this is the item she was protecting and it wasn't some of the jewels, or even the cash. Maybe the aliens need money?!\n\nCannot be used here", false, 0, player, "Unused");
+        Key key2 = new Key("Keycard", "KEYCARD\n\nDescription: Found in Mary Hyre's safe.\n\nYou hope that this is the item she was protecting and it wasn't some of the jewels, or even the cash. Maybe the aliens need money?!\n\nCannot be used here", false, 0, player, "Unused");
         itemRepository.save(key2);
         Key key3 = new Key("Ammonite", "AMMONITE WHORL\n\nDescription: Weird fossil found in a box behind the Dynamite Diner. It feels heavier than it should.\n\nFossils lie heavy with dream, or so some ostensibly useful idiot once quipped. Use is unknown(for now).\n\nCannot be used here", false, 0,player, "Unused");
         itemRepository.save(key3);
-        Torch torch = new Torch("Windup Torch", "WINDUP TORCH\n\nDescription: A mere toy that reminds of a gift you received as a child. You chide yourself for being so sentimental, but it's stuff like this that makes us human.\n\nIt's use is obvious", false, 0,player, 20);
+        Torch torch = new Torch("Windup Torch", "WINDUP TORCH\n\nDescription: A mere toy that reminds of a gift you received as a child.\n\nYou chide yourself for being so sentimental, but it's stuff like this that makes us human.\n\nIt's use is obvious", false, 0,player, 20);
         itemRepository.save(torch);
 
         AlienAlloyTube alienAlloyTube = new AlienAlloyTube("Alloy Tube", "ALLOY TUBE\n\nDescription: Non-descript polished metal tube found on a dead alien. It's use is currently unknown but it'll probably come in useful.\n\nMakes a slight sucking sound.\n\nCannot be used here", 20, false,  player, 78);
