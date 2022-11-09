@@ -2100,7 +2100,7 @@ public class Story {
         inventoryButtons();
          weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/jailed3.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Sheriff's Department");
 
@@ -2128,7 +2128,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/jailed.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Sheriff's Department");
 
@@ -2157,7 +2157,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/copJail.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Sheriff's Department");
 
@@ -2185,7 +2185,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/derek2.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
@@ -2213,7 +2213,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/derek.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
@@ -2242,7 +2242,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/derek3.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
