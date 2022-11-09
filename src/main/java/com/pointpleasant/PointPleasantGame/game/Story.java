@@ -704,7 +704,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Highway fight aftermath");
 
-        userInterface.text = "Vadig falls to the ground and laughs.\n\n'Well done', he says. 'I had to test you for what is to come.'\n\nHe stands up slowly and hands you a rusted key. His height seems to have increased.\n(+2 Defence. +3 Attack)";
+        userInterface.text = "Vadig falls to the ground and laughs.\n\n'Well done', he says. 'I had to test you for what is to come.'\n\nHe stands up slowly and hands you a rusted key.\n(+2 Defence. +3 Attack)";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -3139,7 +3139,7 @@ public class Story {
         ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/thesafe.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House Basement");
-        
+
         userInterface.mainTextArea.setText("You approach the safe in the basement wall. It's the kind that takes four digit passwords.\n\nExamining the keypad, you notice that the numbers 0,1, and 2 are most worn.");
 
         userInterface.choice1.setText("1");
