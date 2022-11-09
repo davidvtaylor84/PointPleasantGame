@@ -2952,7 +2952,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/alienfalls.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bedlam Forest");
 
@@ -2983,7 +2983,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/alloytube.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bedlam Forest");
 
@@ -3013,7 +3013,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/runningaway.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bedlam Forest");
 
@@ -3042,11 +3042,11 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/attackblob.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House Basement");
 
-        userInterface.text = "You press your thumb to the depression on the alloy tube and the gaseous blob groans. It writhes in the air for a moment, purple tendrils lashing out in all directions until it succumbs to the effects of the device you are holding and is slowly, reluctantly, sucked into the tube.\n\nYou can now get to the safe on the wall.";
+        userInterface.text = "You press your thumb to the depression on the alloy tube and the gaseous blob groans. It writhes in the air for a moment, green tendrils lashing out in all directions until it succumbs to the effects of the device you are holding and is slowly, reluctantly, sucked into the tube.\n\nYou can now get to the safe on the wall.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Examine the safe");
