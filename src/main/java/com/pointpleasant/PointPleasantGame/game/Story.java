@@ -3513,4 +3513,146 @@ public class Story {
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
     }
+
+    public void useSnackMachine(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        userInterface.text = "This machine only sells Energy Bars. They are tasteless things but you feel much better after eating them. Probably because they contain a silly amount of sugar.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "bedFactoryCorridor";
+
+        if(player.getItemByName("Energy Bar+").isEquipped()) {
+            userInterface.choice2.setText("");
+            game.choiceButton2 = "";
+        } else{
+            userInterface.choice2.setText("Buy Energy Bar+($4)");;
+            game.choiceButton2 = "buyEnergyBarPlusFromMachine";
+        }
+
+        if(player.getItemByName("Average Energy Bar").isEquipped()) {
+            userInterface.choice3.setText("");
+            game.choiceButton3 = "";
+        } else{
+            userInterface.choice3.setText("Buy Average Energy Bar($3)");
+            game.choiceButton3 = "buyAverageEnergyBarFromMachine";
+        }
+
+        if(player.getWeaponByName("Mediocre Energy Bare").isEquipped()) {
+            userInterface.choice4.setText("");
+            game.choiceButton4 = "";
+        } else{
+            userInterface.choice4.setText("Buy Mediocre Energy Bar($2)");
+            game.choiceButton4 = "buyMediocreEnergyBarFromMachine";
+        }
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void buyEnergyBarPlusFromMachine(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        if(player.getCash()>=4 && !player.getItemByName("Energy Bar+").isEquipped()) {
+            player.setCash(player.getCash() - 4);
+            userInterface.text = "One Bazlinton's Energy Bar+ falls into the tray.\n\n(Energy Bar+ added to Inventory(HP+15). Cash -$4)";
+            player.setItemToEquipped("Energy Bar+");
+        }else{userInterface.text = "Not enough cash. Maybe try working for it. Everyone has to have a job in this economy.";}
+        userInterface.prepareText();
+
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="useSnackMachine";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void buyAverageEnergyBarFromMachine(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        if(player.getCash()>=3 && !player.getItemByName("Average Energy Bar").isEquipped()) {
+            player.setCash(player.getCash() - 3);
+            userInterface.text = "One Creeper's Energy Bar falls into the tray.\n\n(Average Energy Bar added to Inventory(HP+15). Cash -$3)";
+            player.setItemToEquipped("Average Energy Bar");
+        }else{userInterface.text = "Not enough cash. Maybe try working for it. Everyone has to have a job in this economy.";}
+        userInterface.prepareText();
+
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="useSnackMachine";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void buyMediocreEnergyBarFromMachine(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        if(player.getCash()>=2 && !player.getItemByName("Mediocre Energy Bar").isEquipped()) {
+            player.setCash(player.getCash() - 2);
+            userInterface.text = "One Indrid's Energy Bar falls into the tray.\n\n(Mediocre Energy Bar added to Inventory(HP+15). Cash -$3)";
+            player.setItemToEquipped("Mediocre Energy Bar");
+        }else{userInterface.text = "Not enough cash. Maybe try working for it. Everyone has to have a job in this economy.";}
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1="useSnackMachine";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
 }
