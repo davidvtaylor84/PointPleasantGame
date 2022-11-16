@@ -2092,7 +2092,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Sheriff's Department");
 
-        userInterface.text = "You have been sitting in the jail cell of the Point Pleasant Sheriff's Dept for three hours arrested on suspicion of criminal activity. It is dank in there with only a small window high-up in the wall to let in the paltry light.\n\nThere is an old drunk in there locked in to dry off. He mumbles in his sleep.";
+        userInterface.text = "You have been sitting in the jail cell of the Point Pleasant Sheriff's Dept for three hours arrested on suspicion of criminal activity. It is dank in there with only a small window high-up in the wall to let in the paltry light.There is an old sleeping drunk in there locked in to dry off.\n(Baseball bat removed from Inventory)";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -2141,7 +2141,6 @@ public class Story {
 
     public void jailed3(){
         Player player = getPlayer();
-        player.setWeaponToEquipped("Baseball Bat");
         inventoryButtons();
         weaponButtons();
 
@@ -3700,7 +3699,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
-        userInterface.text = "";
+        userInterface.text = "The truck is an immense white freighter with the words 'I.Cold Refrigeration' written on its side. It stands alone in the middle of the parking area under a lamp post far from the bustle of the bed factory. There doesn't appear to be anyone in the cabin.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Investigate truck");
@@ -3719,4 +3718,283 @@ public class Story {
         this.game.getPlayerRepository().save(player);
     }
 
+    public void investigateTruck(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        userInterface.text = "You walk around the truck. Unusually, it's immense backdoors appear to be locked using the an internal mechanism, probably unlocked using a button in the cabin. Listening closely, you can hear somebody, a woman, whimpering deep within. You walk around the truck and come to the driver's side door.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("Go to back into factory");
+        userInterface.choice3.setText("Leave");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "investigateTruck2";
+        game.choiceButton2 = "bedFactoryFloor";
+        game.choiceButton3 = "bedFactory";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void investigateTruck2(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        userInterface.text = "You step up onto the footplate so you can look into the cabin. The door is suddenly thrust open from the inside and you fall back onto the tarmac.\n\nA soldier, wearing full combat gear, looks down at you: 'You have ten seconds to get out of here, or I'm gonna put your curious ass in the back of this truck.'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Ask him what's inside");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("Leave");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "investigateTruck3";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "bedFactory";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void investigateTruck3(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        userInterface.text = "The soldier, a young man with red hair and buck teeth, who appears to be alone, steps down from the truck and shoves you in the direction of the bed factory.\n\n'I told you to get the hell out of here,' says the soldier. 'You're gonna be in real trouble if you don't.'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Fight back");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("Leave");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "fightSoldier";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "bedFactory";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void fightSoldier(){
+        Player player = getPlayer();
+        Enemy enemy = getEnemyByName("John Hell");
+        inventoryButtons();
+        weaponButtons();
+
+        int attackRoll = new java.util.Random().nextInt(20);
+
+        int playerAttack = player.attackEnemy(enemy.getDefence(), attackRoll);
+
+        enemy.takeDamage(playerAttack);
+
+        ImageIcon shimmer = new ImageIcon("");
+        userInterface.imageLabel.setIcon(shimmer);
+        userInterface.locationTextArea.setText("Fight with Soldier");
+
+        userInterface.text = "SOLDIER HP: "+enemy.getHealthPoints()+"\n\nYOUR D20 ATTACK ROLL: "+attackRoll+" vs SOLDIER DEFENCE RATING: "+enemy.getDefence()+"\n\nYou grapple with the Soldier and inflict " + playerAttack+ " points of damage";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        if(enemy.getHealthPoints()>0){
+            game.choiceButton1 = "soldierFightsBack";
+        } else{
+            game.choiceButton1 = "winOverSoldier";
+        }
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon3 = "getColt";
+
+        getPlayerDefault();
+        this.game.getEnemyRepository().save(enemy);
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void soldierFightsBack(){
+        Player player = getPlayer();
+        Enemy enemy = getEnemyByName("John Hell");
+        inventoryButtons();
+        weaponButtons();
+
+        int attackRoll = new java.util.Random().nextInt(20);
+
+        int enemyAttack = enemy.attackPlayer(player.getDefence(), attackRoll);
+
+        player.takeDamage(enemyAttack);
+
+        ImageIcon shimmer = new ImageIcon("");
+        userInterface.imageLabel.setIcon(shimmer);
+        userInterface.locationTextArea.setText("Fight with Soldier");
+
+        userInterface.text = "The soldier attempts to wrestle you to the ground.\n\nENEMY D20 ATTACK ROLL: "+attackRoll+" vs YOUR DEFENCE RATING: "+player.getDefence()+"\n\nThe soldier inflicts " + enemyAttack+ " points of damage";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Fight Back");
+        userInterface.choice2.setText("Inspired Grapple");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        if(player.getHealthPoints()>0){
+            game.choiceButton1 = "fightSoldier";
+            if(player.getInspiration()>0){
+                game.choiceButton2 = "inspiredAttackAgainstSoldier";}
+            else {game.choiceButton2 = "";}
+        } else{
+            game.choiceButton1 = "breakdown";
+            game.choiceButton2 = "";
+        }
+
+        if(player.getWeaponByName("Colt revolver").isEquipped())
+        {game.weapon3 ="shootAtSoldier";}
+
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getEnemyRepository().save(enemy);
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void inspiredAttackAgainstSoldier(){
+        Player player = getPlayer();
+        Enemy enemy = getEnemyByName("John Hell");
+        inventoryButtons();
+        weaponButtons();
+
+        int attackRoll = new java.util.Random().nextInt(20);
+
+        int roll = player.attackEnemy(enemy.getDefence(), attackRoll);
+
+        int damageTotal = roll +3;
+
+        enemy.takeDamage(damageTotal);
+
+        player.setInspiration(player.getInspiration()-1);
+
+        ImageIcon shimmer = new ImageIcon("");
+        userInterface.imageLabel.setIcon(shimmer);
+        userInterface.locationTextArea.setText("Fight with Soldier");
+
+        userInterface.text = "Soldier HP:"+enemy.getHealthPoints()+"\nYou used 1 point of Inspiration to add +3 damage to a successful or unsuccessful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs SOLDIER DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        if(enemy.getHealthPoints()>0){
+            game.choiceButton1 = "soldierFightsBack";
+        } else{
+            game.choiceButton1 = "winOverSoldier";
+            userInterface.choice2.setText("");
+        }
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon3 = "getColt";
+
+        getPlayerDefault();
+        this.game.getEnemyRepository().save(enemy);
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void shootAtSoldier(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Fight with Soldier");
+
+        userInterface.text = "You shoot at the soldier with your pistol. It misses, but the sound draws the attention of the workers. A sniper on the factory roof, who had dozed off at his post, has been roused by the gunfire. He quickly finds his target and shoots.\n\nYOU DIED.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "youAwakenInTheBedFactory";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon3 = "getColt";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void winOverSoldier(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Fight with Soldier");
+
+        userInterface.text = "You shoot at the soldier with your pistol. It misses, but the sound draws the attention of the workers. A sniper on the factory roof, who had dozed off at his post, has been roused by the gunfire. He quickly finds his target and shoots.\n\nYOU DIED.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "youAwakenInTheBedFactory";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon3 = "getColt";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
 }
