@@ -3205,13 +3205,20 @@ public class Story {
 
         userInterface.choice1.setText("Leave");
         userInterface.choice2.setText("Wait and Observe");
-        userInterface.choice3.setText("");
+
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
+        if(player.getGameProgress()==6){
+            userInterface.choice3.setText("Investigate I.Cold truck");
+            game.choiceButton3 = "refrigerationTruck";
+        } else{
+            userInterface.choice3.setText("");
+            game.choiceButton3 = "";
+        }
+
         game.choiceButton1= "toMarysHouse";
         game.choiceButton2 = "observeBedFactory";
-        game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
@@ -3452,6 +3459,34 @@ public class Story {
         this.game.getPlayerRepository().save(player);
     }
 
+    public void IAmNotWoody(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        userInterface.text = "'What the hell are you doing here then?!' He yells. 'This isn't a tourist joint.'\n\nHe points to the door: 'The exit is that way. Scram!'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Ask about soldiers");
+        userInterface.choice2.setText("Go to Canteen");
+        userInterface.choice3.setText("Leave factory");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "askForeman";
+        game.choiceButton2 = "bedFactoryCorridor";
+        game.choiceButton3 = "bedFactory";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
     public void askForeman(){
         Player player = getPlayer();
         inventoryButtons();
@@ -3655,4 +3690,33 @@ public class Story {
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
     }
+
+    public void refrigerationTruck(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        userInterface.text = "";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Bribe him($50)");
+        userInterface.choice2.setText("Go to Canteen");
+        userInterface.choice3.setText("Leave factory");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "bribeForeman";
+        game.choiceButton2 = "bedFactoryCorridor";
+        game.choiceButton3 = "bedFactory";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
 }
