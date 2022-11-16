@@ -34,9 +34,10 @@ public class UserInterface {
     public void createInterface(Game.DecisionHandler decisionHandler){
 
 //        Main Game Window
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+//        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         window = new JFrame();
-        window.setSize(screenSize.width, screenSize.height);
+        window.setSize(1440, 800);
+//        window.setSize(screenSize.width, screenSize.height);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.getContentPane().setBackground(Color.BLACK);
         window.setLayout(null);
@@ -52,7 +53,8 @@ public class UserInterface {
         titleNamePanel.add(titleNameLabel);
 
         titleImagePanel = new JPanel();
-        titleImagePanel.setBounds(0, 0, screenSize.width, 900);
+//        titleImagePanel.setBounds(0, 0, screenSize.width, 900);
+        titleImagePanel.setBounds(0, 0, 1440, 800);
         titleImagePanel.setBackground(new Color(0,0,0,0));
         ImageIcon starlitHighway = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/darkhighway.jpeg");
         titleImageLabel = new JLabel();

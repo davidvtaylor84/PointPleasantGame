@@ -77,7 +77,7 @@ public class DataLoader implements ApplicationRunner {
         BaseballBat baseballBat = new BaseballBat("Baseball Bat", "BASEBALL BAT\n\nDescription: A children's toy. Some advice: 'If you don't think too much, don't think too much'. If that makes sense, maybe this weapon is for you.\n\nAdds +9 damage to successful attack.\n\nCannot be used here", 9, false, player, 150);
         weaponRepository.save(baseballBat);
 
-        Gun pistol = new Gun("Colt revolver", "COLT REVOLVER\n\nDescription: Standard revolver pistol found amidst a pile of bodies. Don't worry about the number of bullets you have left. Your pockets are stuffed with them.\n\nCannot be used here.", 12, false, player, "Colt revolver", 20);
+        Gun pistol = new Gun("Colt revolver", "COLT REVOLVER\n\nDescription: Standard revolver pistol found amidst a pile of bodies.\n\nDon't worry about the number of bullets you have left. Your pockets are stuffed with them.\n\nCannot be used here.", 12, false, player, "Colt revolver", 20);
         weaponRepository.save(pistol);
 
         Gun m16 = new Gun("M16", "US Army standard issue (for imperialists)", 25, false, player, "M16", 50);
@@ -113,7 +113,7 @@ public class DataLoader implements ApplicationRunner {
         Soldier steve = new Soldier("Steve MacKinnon", "Human", 12, 13, 3, 14, 10);
         enemyRepository.save(steve);
 
-        Soldier john = new Soldier("John Hell", "Human", 12, 13, 3, 14, 10);
+        Soldier john = new Soldier("John Hell", "Human", 40, 13, 3, 14, 10);
         enemyRepository.save(john);
 
         Soldier general = new Soldier("General Chambers", "Human", 20, 13, 3, 8, 10);

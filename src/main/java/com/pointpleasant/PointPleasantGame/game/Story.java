@@ -3,7 +3,6 @@ package com.pointpleasant.PointPleasantGame.game;
 
 import com.pointpleasant.PointPleasantGame.models.Player;
 import com.pointpleasant.PointPleasantGame.models.enemies.Enemy;
-import com.pointpleasant.PointPleasantGame.models.inventory.items.Item;
 import com.pointpleasant.PointPleasantGame.repositories.EnemyRepository;
 import com.pointpleasant.PointPleasantGame.repositories.PlayerRepository;
 
@@ -13,8 +12,6 @@ import java.util.Optional;
 public class Story {
 
     Game game;
-
-    Item item;
     UserInterface userInterface;
     VisibilityManager visibilityManager;
 
@@ -279,6 +276,36 @@ public class Story {
             case "observeBedFactory": observeBedFactory();break;
             case "enterBedFactoryDeath":enterBedFactoryDeath();break;
             case "doorInBedFactory": doorInBedFactory();break;
+            case "youAwakenInTheBedFactory": youAwakenInTheBedFactory();break;
+            case "bedFactoryCorridor": bedFactoryCorridor();break;
+            case "bedFactoryFloor": bedFactoryFloor();break;
+            case "talkToForeman": talkToForeman();break;
+            case "IAmWoody": IAmWoody();break;
+            case "IAmNotWoody": IAmNotWoody();break;
+            case "askForeman": askForeman();break;
+            case "bribeForeman": bribeForeman();break;
+            case "useSnackMachine": useSnackMachine();break;
+            case "buyEnergyBarPlusFromMachine": buyEnergyBarPlusFromMachine();break;
+            case "buyAverageEnergyBarFromMachine": buyAverageEnergyBarFromMachine(); break;
+            case "buyMediocreEnergyBarFromMachine": buyMediocreEnergyBarFromMachine();break;
+            case "refrigerationTruck": refrigerationTruck();break;
+            case "investigateTruck": investigateTruck();break;
+            case "investigateTruck2": investigateTruck2();break;
+            case "investigateTruck3": investigateTruck3();break;
+            case "fightSoldier": fightSoldier();break;
+            case "soldierFightsBack": soldierFightsBack();break;
+            case "inspiredAttackAgainstSoldier": inspiredAttackAgainstSoldier();break;
+            case "shootAtSoldier": shootAtSoldier();break;
+            case "winOverSoldier": winOverSoldier();break;
+            case "investigateTruckCabin": investigateTruckCabin();break;
+            case "takeUniform": takeUniform();break;
+            case "openTruckDoors": openTruckDoors();break;
+            case "untieMary": untieMary();break;
+            case "untieMary2":untieMary2();break;
+            case "untieMary3": untieMary3();break;
+            case "untieMary4": untieMary4(); break;
+            case "rescueMary": rescueMary();break;
+
 
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
@@ -3203,22 +3230,31 @@ public class Story {
         userInterface.prepareText();
 
         userInterface.choice1.setText("Leave");
-        userInterface.choice2.setText("Wait and Observe");
 
-        userInterface.choice4.setText("");
+        if(player.getGameProgress()>=8) {
+            userInterface.choice2.setText("Go to alcove door");
+            game.choiceButton2 = "doorInBedFactory";
+        }else{
+            userInterface.choice2.setText("Wait and Observe");
+            game.choiceButton2 = "observeBedFactory";
+        }
+
+
         userInterface.choice5.setText("");
 
-        if(player.getGameProgress()==6){
+        if(player.getGameProgress()>=6){
             userInterface.choice3.setText("Investigate I.Cold truck");
             game.choiceButton3 = "refrigerationTruck";
+            userInterface.choice4.setText("Back to Factory Floor");
+            game.choiceButton4 = "bedFactoryFloor";
         } else{
             userInterface.choice3.setText("");
             game.choiceButton3 = "";
+            userInterface.choice4.setText("");
+            game.choiceButton4 = "";
         }
 
         game.choiceButton1= "toMarysHouse";
-        game.choiceButton2 = "observeBedFactory";
-        game.choiceButton4 = "";
         game.choiceButton5 = "";
 
         getPlayerDefault();
@@ -3243,13 +3279,17 @@ public class Story {
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1= "toMarysHouse";
+        game.choiceButton1= "bedFactory";
         game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
         game.inventoryButton6 = "enterBedFactoryDeath";
+
+        if(player.getItemByName("Army Uniform").isEquipped()){
+            game.inventoryButton1 = "intoUniformDisguise";
+        }
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
@@ -3296,7 +3336,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
-        userInterface.text = "You use the keycard. The door clicks open.\n\nAn excruciating burning sensation rips through your chest as you see sparks of fiery light explode in the gloom ahead. Bleeding out on the floor, you realise that stepping through that door was a foolish idea, looking as you do, like a wild eyed stranger.";
+        userInterface.text = "You use the keycard. The door clicks open.\n\nAn excruciating burning sensation rips through your chest as you see sparks of fiery light explode in the gloom at the bottom of the stairs. Bleeding out on the floor, you realise that stepping through that door was a foolish idea, looking as you do, like a wild eyed stranger.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -3439,7 +3479,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
-        userInterface.text = "'Goddammit!' He yells, pointing at your chest. 'You were supposed to start here yesterday. I don't have a job for you now.'\n\nHe assesses your appearance. Your hair is wild. Your clothing is torn. You look a mess.\n\n'The canteen could give you some work,' he adds.";
+        userInterface.text = "'Goddammit!' He yells, pointing at your chest. 'You were supposed to start here yesterday. I don't have a job for you now.'\n\nHe assesses your appearance. Your hair is wild. You look a mess.\n\n'The canteen could give you some work,' he adds.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Ask about soldiers");
@@ -3498,7 +3538,7 @@ public class Story {
         userInterface.text = "The foreman is instantly nervous. He glances around to see if anyone else is paying attention to you both then leans in.\n\n'You didn't see anything,' he hisses. 'There are no soldiers. Forget what you think you saw.'";
         userInterface.prepareText();
 
-        userInterface.choice1.setText("Bribe him($50)");
+        userInterface.choice1.setText("Bribe him($60)");
         userInterface.choice2.setText("Go to Canteen");
         userInterface.choice3.setText("Leave factory");
         userInterface.choice4.setText("");
@@ -3523,10 +3563,10 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
-        if(player.getCash()>=50){
-            player.setCash(player.getCash()-50);
+        if(player.getCash()>=60){
+            player.setCash(player.getCash()-60);
             player.setGameProgress(6);
-            userInterface.text = "'You working for the Enquirer?' He mutters. 'Look, I don't want to get in trouble but something is going on in the basement. I also suggest you check out the I.Cold Refrigeration truck outside. I heard some strange noises coming from it this morning.'\n(Cash -$50)";
+            userInterface.text = "'You working for the Enquirer?' He mutters. 'Look, I don't want to get in trouble but something is going on in the basement. I also suggest you check out the I.Cold Refrigeration truck outside. I heard some strange noises coming from it this morning.'\n(Cash -$60)";
         } else{
             userInterface.text = "'Get the hell away from me?' He says through clenched teeth.\n\nHe turns away red-faced.\n\n($50 Cash required)";
         }
@@ -3569,7 +3609,7 @@ public class Story {
             userInterface.choice2.setText("");
             game.choiceButton2 = "";
         } else{
-            userInterface.choice2.setText("Buy Energy Bar+($4)");;
+            userInterface.choice2.setText("Buy Energy Bar+($4)");
             game.choiceButton2 = "buyEnergyBarPlusFromMachine";
         }
 
@@ -3581,7 +3621,7 @@ public class Story {
             game.choiceButton3 = "buyAverageEnergyBarFromMachine";
         }
 
-        if(player.getWeaponByName("Mediocre Energy Bare").isEquipped()) {
+        if(player.getWeaponByName("Mediocre Energy Bar").isEquipped()) {
             userInterface.choice4.setText("");
             game.choiceButton4 = "";
         } else{
@@ -3692,6 +3732,7 @@ public class Story {
 
     public void refrigerationTruck(){
         Player player = getPlayer();
+        Enemy enemy = getEnemyByName("John Hell");
         inventoryButtons();
         weaponButtons();
 
@@ -3702,13 +3743,22 @@ public class Story {
         userInterface.text = "The truck is an immense white freighter with the words 'I.Cold Refrigeration' written on its side. It stands alone in the middle of the parking area under a lamp post far from the bustle of the bed factory. There doesn't appear to be anyone in the cabin.";
         userInterface.prepareText();
 
-        userInterface.choice1.setText("Investigate truck");
+
         userInterface.choice2.setText("Go to back into factory");
         userInterface.choice3.setText("Leave");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1= "investigateTruck";
+        if(enemy.getHealthPoints()<=0){
+            userInterface.choice1.setText("Investigate truck");
+            game.choiceButton1= "investigateTruckCabin";
+        } else if (player.getGameProgress()>=8){
+            userInterface.choice1.setText("");
+            game.choiceButton1= "";
+        }else
+        {game.choiceButton1= "investigateTruck";
+            userInterface.choice1.setText("Investigate truck");}
+
         game.choiceButton2 = "bedFactoryFloor";
         game.choiceButton3 = "bedFactory";
         game.choiceButton4 = "";
@@ -3727,19 +3777,28 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
-        userInterface.text = "You walk around the truck. Unusually, it's immense backdoors appear to be locked using the an internal mechanism, probably unlocked using a button in the cabin. Listening closely, you can hear somebody, a woman, whimpering deep within. You walk around the truck and come to the driver's side door.";
+        userInterface.text = "You walk around the truck. Unusually, it's immense backdoors can be locked using the an internal mechanism, probably unlocked using a button in the cabin. Listening closely, you can hear something whimpering deep within.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("Go to back into factory");
         userInterface.choice3.setText("Leave");
-        userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1= "investigateTruck2";
+        if(player.getGameProgress()==7){
+            userInterface.choice4.setText("Open Back Doors");
+            game.choiceButton4 = "rescueMary";
+            game.choiceButton1= "investigateTruckCabin";
+        } else {
+            userInterface.choice4.setText("");
+            game.choiceButton4 = "";
+            game.choiceButton1= "investigateTruck2";
+        }
+
+
         game.choiceButton2 = "bedFactoryFloor";
         game.choiceButton3 = "bedFactory";
-        game.choiceButton4 = "";
+
         game.choiceButton5 = "";
 
         getPlayerDefault();
@@ -3970,6 +4029,9 @@ public class Story {
 
     public void winOverSoldier(){
         Player player = getPlayer();
+        player.setAttack(getPlayer().getAttack()+2);
+        player.setDefence(getPlayer().getDefence()+3);
+        player.setInspiration(getPlayer().getInspiration()+2);
         inventoryButtons();
         weaponButtons();
 
@@ -3977,22 +4039,283 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Fight with Soldier");
 
-        userInterface.text = "You shoot at the soldier with your pistol. It misses, but the sound draws the attention of the workers. A sniper on the factory roof, who had dozed off at his post, has been roused by the gunfire. He quickly finds his target and shoots.\n\nYOU DIED.";
+        userInterface.text = "You get the soldier into a headlock. You are amazed by your own strength and martial prowess. Forty-eight hours ago, you would have fled from such matters, even when the cause was just. The soldier has lost consciousness in your arms.\n(Attack increased by +2. Defence increased by +3. Inspiration increased by +2)";
         userInterface.prepareText();
 
-        userInterface.choice1.setText("> > >");
-        userInterface.choice2.setText("");
+        userInterface.choice1.setText("Investigate Truck Cabin");
+        userInterface.choice2.setText("Leave");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1= "youAwakenInTheBedFactory";
-        game.choiceButton2 = "";
+        game.choiceButton1= "investigateTruckCabin";
+        game.choiceButton2 = "bedFactory";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
         game.weapon3 = "getColt";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void investigateTruckCabin(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Refrigeration Truck");
+
+        userInterface.text = "You climb into the cabin and find evidence that the soldier has been in the truck all day. On the passenger seat is an empty burger box, an empty soda can and a book titled Messengers of Deception. The back door release is above the dashboard radio and under the passenger seat is a set of fatigues.";
+        userInterface.prepareText();
+
+
+        userInterface.choice2.setText("Press Back Door Release");
+        userInterface.choice3.setText("Leave Cabin");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        if(player.getItemByName("Army Uniform").isEquipped()){
+            userInterface.choice1.setText("");
+            game.choiceButton1= "";
+        }else{
+        userInterface.choice1.setText("Take Uniform");
+        game.choiceButton1= "takeUniform";}
+
+        game.choiceButton2 = "openTruckDoors";
+        game.choiceButton3 = "investigateTruck";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void takeUniform(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+        player.setItemToEquipped("Army Uniform");
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Refrigeration Truck");
+
+        userInterface.text = "You climb into the cabin and find evidence that the soldier has been in the truck all day. On the passenger seat is an empty burger box, an empty soda can and a book titled Messengers of Deception. The back door release is above the dashboard radio and under the passenger seat is a set of fatigues.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "investigateTruckCabin";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void openTruckDoors(){
+        Player player = getPlayer();
+        player.setGameProgress(7);
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Refrigeration Truck");
+
+        userInterface.text = "You press on a green button and you hear the doors to the truck click open. The strange whimpering you heard earlier is louder now.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "investigateTruckCabin";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void rescueMary(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Refrigeration Truck");
+
+        userInterface.text = "To your relief, you find only Mary tied to a chair at the back of the truck surrounded by an array of high-tech surveillance equipment and army gear. Her hands are tied behind her back and her mouth is bound and gagged. Mary is relieved when she finally realises it is you. She has been sitting in the dark too long.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Untie her");
+        userInterface.choice2.setText("Leave");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "untieMary";
+        game.choiceButton2 = "refrigerationTruck";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void untieMary(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Refrigeration Truck");
+
+        userInterface.text = "'Oh thank heavens, it's you!' She exclaims. 'I've been locked in here for hours. I think they were scared that I would blab to the world about what they're doing here. I finally figured it all out.'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("What is going on?");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "untieMary2";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void untieMary2(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Refrigeration Truck");
+
+        userInterface.text = "'I believe the creature known as the Mothman has been captured by an alliance of the Galactic Federation and the US Army. They're keeping it in the basement, intending to use its power of prophecy to control the future. The Army engineered the problems with the power plant knowing that it would attract the Mothman.'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("What is the galactic federation?");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "untieMary3";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void untieMary3(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Refrigeration Truck");
+
+        userInterface.text = "'A nefarious faction of grey aliens, fighting against another faction who work with the Mothman. The latter are the ones that captured you and implanted a chip in your head. The Mothman is using it's psychic power from captivity to lock onto this chip and direct you towards its rescue since the aliens are obligated not to interfere in Earth matters.'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Tell her your travails");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "untieMary4";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void untieMary4(){
+        Player player = getPlayer();
+        player.setGameProgress(8);
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Refrigeration Truck");
+
+        userInterface.text = "'Excellent! You have the keycard,' she says. 'You need to get down there and confront the General.'\n\nShe ponders for a moment: 'I'll take care of the unconscious soldier. Tie him up and hide him behind the wheels. Don't worry. I'm stronger than I look.'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Go");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "bedFactory";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void canteen(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("");
+        userInterface.choice2.setText("Back to corridor");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "";
+        game.choiceButton2 = "bedFactoryCorridor";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
