@@ -3389,13 +3389,13 @@ public class Story {
 
         userInterface.choice1.setText("Talk to foreman");
         userInterface.choice2.setText("Leave factory");
-        userInterface.choice3.setText("");
+        userInterface.choice3.setText("Return to Corridor");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
         game.choiceButton1= "talkToForeman";
         game.choiceButton2 = "bedFactory";
-        game.choiceButton3 = "";
+        game.choiceButton3 = "bedFactoryCorridor";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
@@ -3527,7 +3527,7 @@ public class Story {
         if(player.getCash()>=50){
             player.setCash(player.getCash()-50);
             player.setGameProgress(6);
-            userInterface.text = "'You working for the Enquirer?' He mutters. 'Look, I don't want to get in trouble but something is going on in the basement. Early this morning, I saw these army guys drag a woman in through the side door.'\n\n'I advise you to check out the truck outside with I.Cold Refrigeration outside.''\n(Cash -$50)";
+            userInterface.text = "'You working for the Enquirer?' He mutters. 'Look, I don't want to get in trouble but something is going on in the basement. I also suggest you check out the I.Cold Refrigeration truck outside. I heard some strange noises coming from it this morning.'\n(Cash -$50)";
         } else{
             userInterface.text = "'Get the hell away from me?' He says through clenched teeth.\n\nHe turns away red-faced.\n\n($50 Cash required)";
         }
@@ -3703,14 +3703,14 @@ public class Story {
         userInterface.text = "";
         userInterface.prepareText();
 
-        userInterface.choice1.setText("Bribe him($50)");
-        userInterface.choice2.setText("Go to Canteen");
-        userInterface.choice3.setText("Leave factory");
+        userInterface.choice1.setText("Investigate truck");
+        userInterface.choice2.setText("Go to back into factory");
+        userInterface.choice3.setText("Leave");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1= "bribeForeman";
-        game.choiceButton2 = "bedFactoryCorridor";
+        game.choiceButton1= "investigateTruck";
+        game.choiceButton2 = "bedFactoryFloor";
         game.choiceButton3 = "bedFactory";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
