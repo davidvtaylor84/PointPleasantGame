@@ -10,6 +10,7 @@ import com.pointpleasant.PointPleasantGame.models.inventory.items.Torch;
 import com.pointpleasant.PointPleasantGame.models.inventory.weapons.AlienAlloyTube;
 import com.pointpleasant.PointPleasantGame.models.inventory.weapons.BaseballBat;
 import com.pointpleasant.PointPleasantGame.models.inventory.weapons.Gun;
+import com.pointpleasant.PointPleasantGame.models.inventory.weapons.Weapon;
 import com.pointpleasant.PointPleasantGame.repositories.EnemyRepository;
 import com.pointpleasant.PointPleasantGame.repositories.ItemRepository;
 import com.pointpleasant.PointPleasantGame.repositories.PlayerRepository;
@@ -20,8 +21,10 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
 @Profile("!test")
-@Component
+//@Component
 public class DataLoader implements ApplicationRunner {
 
     @Autowired
@@ -118,6 +121,17 @@ public class DataLoader implements ApplicationRunner {
 
         MothMan mothman = new MothMan("Phone", "Mothman", 40, 15, 12, "There are Christmas presents in the water beneath the bridge", "Don't lie down on your search for the factory", "We do not look like how you are seeing us.");
         enemyRepository.save(mothman);
+
+
+        Gun pistol1 = new Gun("Colt revolver", "COLT REVOLVER\n\nDescription: Standard revolver pistol found amidst a pile of bodies. Don't worry about the number of bullets you have left. Your pockets are stuffed with them.\n\nCannot be used here.", 12, false, player, "Colt revolver", 20);
+        BaseballBat baseballBat1 = new BaseballBat("Baseball Bat", "BASEBALL BAT\n\nDescription: A children's toy. Some advice: 'If you don't think too much, don't think too much'. If that makes sense, maybe this weapon is for you.\n\nAdds +9 damage to successful attack.\n\nCannot be used here", 9, false, player, 150);
+
+        ArrayList<Weapon> weapons = new ArrayList<>();
+        weapons.add(pistol1);
+        weapons.add(baseballBat1);
+
+
+
 
 
 

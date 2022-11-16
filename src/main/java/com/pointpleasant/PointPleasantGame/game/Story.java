@@ -142,7 +142,12 @@ public class Story {
             breakdown();
             setPlayerDefault();
             visibilityManager.showIntroScreen();
-        }else{youAwaken();
+        }else if(player.getGameProgress()>=6){
+            youAwakenInTheBedFactory();
+            if(player.getHealthPoints()<=0){
+                player.setHealthPoints(10);
+            }}
+        else {youAwaken();
             if(player.getHealthPoints()<=0){
                 player.setHealthPoints(20);
             }
@@ -2257,12 +2262,12 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Tom Duck Way");
 
-        if(player.getInsight()>=4) {
+        if(player.getInsight()>=5) {
             userInterface.text = "Tom Duck Way is located down a narrow alleyway off the town square. It is part of an old derelict looking building with smashed in windows.\n\nA large oak door you were certain was not there before has appeared. Parked next to it is an imposing black sedan.";
             userInterface.choice1.setText("Enter Building");
             game.choiceButton1="library2";
         }else {
-            userInterface.text = "Tom Duck Way is located down a narrow alleyway off the town square. It is part of an old derelict looking building with smashed in windows. A series of plain black doors line the wall, each marked by brass numbers. It is difficult to discern what the purpose of this building was. The numbers however only go up to 28.\n(+4 Insight required)";
+            userInterface.text = "Tom Duck Way is located down a narrow alleyway off the town square. It is part of an old derelict looking building with smashed in windows. A series of plain black doors line the wall, each marked by brass numbers. It is difficult to discern what the purpose of this building was. The numbers however only go up to 28.\n(+5 Insight required)";
             userInterface.choice1.setText("");
             game.choiceButton1="";
         }
@@ -3195,7 +3200,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
-        userInterface.text = "You walk down the hill to the industrial estate and observe from behind a parked car. You don't see anything unusual besides people ferrying cellophane-covered beds to trucks from the open mouth of a factory door. Most of the workers look bored and tired.\n\nYou wonder why Vadig's sister sent you here.";
+        userInterface.text = "Beneath the hill overlooking the industrial estate, you observe from behind a parked car. You don't see anything unusual besides people ferrying cellophane-covered beds to trucks from the open mouth of a factory door. Most of the workers look bored and tired.\n\nYou wonder why Vadig's sister sent you here.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Leave");
@@ -3277,6 +3282,7 @@ public class Story {
 
     public void enterBedFactoryDeath(){
         Player player = getPlayer();
+        player.setHealthPoints(10);
         inventoryButtons();
         weaponButtons();
 
@@ -3293,14 +3299,216 @@ public class Story {
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1= "awakenInBedFactory";
+        game.choiceButton1= "youAwakenInTheBedFactory";
         game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
-//        game.inventoryButton6 = "enterBedFactoryDeath";
+
         game.inventoryButton6 = "getKeyCard";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void youAwakenInTheBedFactory(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        userInterface.text = "An age passes in which a floating sensation suffuses every cell, and you are elevated through a floor into a darkened room, where cold linoleum is pressed to your face. You slowly stand, feeling weak, and realise you are in a cleaning cupboard.\n\nEven death is out of your hands.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "bedFactoryCorridor";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void bedFactoryCorridor(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        userInterface.text = "You are in a narrow corridor, you assume, inside the bed factory. Workers shuttle back and forth carrying beds past the open doorway at the end which leads to the factory floor and the exit.\n\nTo your right, the corridor leads to a busy canteen. In front of you is a snack machine.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Factory floor");
+        userInterface.choice2.setText("Canteen");
+        userInterface.choice3.setText("Use Snack Machine");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "bedFactoryFloor";
+        game.choiceButton2 = "canteen";
+        game.choiceButton3 = "useSnackMachine";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void bedFactoryFloor(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        userInterface.text = "The main factory floor is a large silvery warehouse room with fluorescent lighting. Workers in blue overalls stand at machines emitting loud whirring noises, whilst others work at benches with half-finished mattresses on top.\n\nA foreman in a short-sleeved shirt stands to the side.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Talk to foreman");
+        userInterface.choice2.setText("Leave factory");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "talkToForeman";
+        game.choiceButton2 = "bedFactory";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void talkToForeman(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        userInterface.text = "The foreman is a large weary man with a weathered face. He would've been quite handsome in his youth.\n\n'Who are the hell are you?' He says, looking you up and down. 'Wait a minute! Are you Woody?'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Yes");
+        userInterface.choice2.setText("No");
+        userInterface.choice3.setText("Leave factory");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "IAmWoody";
+        game.choiceButton2 = "IAmNotWoody";
+        game.choiceButton3 = "bedFactory";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void IAmWoody(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        userInterface.text = "'Goddammit!' He yells, pointing at your chest. 'You were supposed to start here yesterday. I don't have a job for you now.'\n\nHe assesses your appearance. Your hair is wild. Your clothing is torn. You look a mess.\n\n'The canteen could give you some work,' he adds.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Ask about soldiers");
+        userInterface.choice2.setText("Go to Canteen");
+        userInterface.choice3.setText("Leave factory");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "askForeman";
+        game.choiceButton2 = "bedFactoryCorridor";
+        game.choiceButton3 = "bedFactory";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void askForeman(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        userInterface.text = "The foreman is instantly nervous. He glances around to see if anyone else is paying attention to you both then leans in.\n\n'You didn't see anything,' he hisses. 'There are no soldiers. Forget what you think you saw.'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Bribe him($50)");
+        userInterface.choice2.setText("Go to Canteen");
+        userInterface.choice3.setText("Leave factory");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "bribeForeman";
+        game.choiceButton2 = "bedFactoryCorridor";
+        game.choiceButton3 = "bedFactory";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void bribeForeman(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        if(player.getCash()>=50){
+            player.setCash(player.getCash()-50);
+            player.setGameProgress(6);
+            userInterface.text = "'You working for the Enquirer?' He mutters. 'Look, I don't want to get in trouble but something is going on in the basement. Early this morning, I saw these army guys drag a woman in through the side door.'\n\n'I advise you to check out the truck outside with I.Cold Refrigeration outside.''\n(Cash -$50)";
+        } else{
+            userInterface.text = "'Get the hell away from me?' He says through clenched teeth.\n\nHe turns away red-faced.\n\n($50 Cash required)";
+        }
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Go to Canteen");
+        userInterface.choice2.setText("Leave factory");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "bedFactoryCorridor";
+        game.choiceButton2 = "bedFactory";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
