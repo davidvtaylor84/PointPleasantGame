@@ -305,7 +305,27 @@ public class Story {
             case "untieMary3": untieMary3();break;
             case "untieMary4": untieMary4(); break;
             case "rescueMary": rescueMary();break;
-
+            case "canteen": canteen();break;
+            case "askPhoneAboutSoldiers": askPhoneAboutSoldiers();break;
+            case "askPhoneAboutSoldiers2": askPhoneAboutSoldiers2();break;
+            case "riddleOne": riddleOne();break;
+            case "riddleTwo": riddleTwo();break;
+            case "riddleThree": riddleThree();break;
+            case "getTheM16": getTheM16();break;
+            case "canteenWork": canteenWork();break;
+            case "sinigangRecipe": sinigangRecipe();break;
+            case "cookingOne": cookingOne();break;
+            case "cookingTwo": cookingTwo();break;
+            case "cookingThree": cookingThree();break;
+            case "cookingFour": cookingFour();break;
+            case "cookingFive": cookingFive();break;
+            case "cookingSix": cookingSix();break;
+            case "cookingSeven": cookingSeven();break;
+            case "sinigangComplete": sinigangComplete();break;
+            case "cookingError": cookingError();break;
+            case "buySinigang": buySinigang();break;
+            case "intoUniformDisguise": intoUniformDisguise();break;
+            case "enterBedFactoryBasement": enterBedFactoryBasement();break;
 
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
@@ -4313,7 +4333,7 @@ public class Story {
 
         game.choiceButton1= "canteenWork";
         game.choiceButton2 = "askPhoneAboutSoldiers";
-        game.choiceButton3 = "buyBurrito";
+        game.choiceButton3 = "buySinigang";
         game.choiceButton4 = "bedFactoryCorridor";
         game.choiceButton5 = "";
 
@@ -4794,6 +4814,96 @@ public class Story {
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void buySinigang(){
+        Player player = getPlayer();
+        player.setCash(player.getCash()-7);
+        player.setHealthPoints(player.getHealthPoints()+17);
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "The cook serves you a bowl of Sinigang na Baboy with rice. It's the most delicious thing you have eaten in a long time, also the first Filipino dish you have tried. You need to try more if you survive this mess. It's also very healthy.\n(Health increased by +17. Cash decreased by -$7)";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "canteen";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void intoUniformDisguise(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Meera's Bed Factory");
+
+        userInterface.text = "Now properly attired you feel as though you will be able to enter this side door without being gunned down. You are ready to face whatever awaits you in the bed factory basement. It simply remains for you to keep your cool, no matter what happens.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Leave");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "bedFactory";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.inventoryButton6 = "enterBedFactoryBasement";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void enterBedFactoryBasement(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Factory Basement");
+
+        userInterface.text = "You use the keycard and walk down a flight of stairs towards some soldiers sitting in the gloom at the bottom behind some sandbags. Once they see the uniform they point their M16s away and allow you to squeeze past into long narrow corridor.\n\nThe door has locked behind you. There is no going back.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "generalChambersOffice";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.inventoryButton6 = "getKeyCard";
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
