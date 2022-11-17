@@ -4353,13 +4353,20 @@ public class Story {
         userInterface.text = "'I haven't seen anything,' he declares, laughing.'I am blind you see.'\n\nHe waves his hand in front of his eyes.\n\n'You may want to ask the foreman. I think he saw or heard something this morning, though he is reluctant to talk about it.'";
         userInterface.prepareText();
 
-        userInterface.choice1.setText("> > >");
+        if(player.getItemByName("M16").isEquipped()) {
+            userInterface.choice1.setText("< < <");
+            game.choiceButton1 = "canteen";
+        }else{
+            userInterface.choice1.setText("> > >");
+            game.choiceButton1 = "askPhoneAboutSoldiers2";
+        }
+
         userInterface.choice2.setText("");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1= "askPhoneAboutSoldiers2";
+
         game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
@@ -4897,6 +4904,35 @@ public class Story {
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
+        game.choiceButton1= "generalChambersOfficeDoor";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.inventoryButton6 = "getKeyCard";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void generalChambersOfficeDoor(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Factory Basement");
+
+        userInterface.text = "You walk to the end of the corridor lit by strip lighting. A single unmarked door lies at its end. You put your ear to it and hear the whirr of machinery, but underneath this an unearthly drone resounds.";
+
+        userInterface.choice1.setText("Enter Room");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
         game.choiceButton1= "generalChambersOffice";
         game.choiceButton2 = "";
         game.choiceButton3 = "";
@@ -4904,6 +4940,33 @@ public class Story {
         game.choiceButton5 = "";
 
         game.inventoryButton6 = "getKeyCard";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void generalChambersOffice(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Factory Basement");
+
+        userInterface.text = "You enter a long grey-carpeted room with a low ceiling and blank walls. At its end is a large oak desk. Behind it sits a large man in a General's gray uniform with various coloured badges on his lapel. He is sitting in front of double doors with a large padlocked chain holding the handles together.\n\nHe stands at your entrance.";
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "generalChambersOffice2";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
