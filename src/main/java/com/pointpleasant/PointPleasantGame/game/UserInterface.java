@@ -45,7 +45,7 @@ public class UserInterface {
 
         //    Title Screen
         titleNamePanel = new JPanel();
-        titleNamePanel.setBounds(300, 80, 800, 150);
+        titleNamePanel.setBounds(320, 80, 800, 150);
         titleNamePanel.setBackground(new Color(0,0,0,0));
         titleNameLabel = new JLabel("Point Pleasant");
         titleNameLabel.setForeground(Color.WHITE);

@@ -4302,17 +4302,214 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
-        userInterface.text = "";
+        userInterface.text = "The canteen, a square room with one large window behind the counter and a small kitchen alcove off to the side, is empty. Metal tables and chairs are scattered around with little care for their arrangement. A heavy-set man stands in semi-darkness within the kitchen alcove stirring a pot. He is grinning at you. His lips are bright red.";
         userInterface.prepareText();
 
-        userInterface.choice1.setText("");
-        userInterface.choice2.setText("Back to corridor");
+        userInterface.choice1.setText("Ask him about earning money");
+        userInterface.choice2.setText("Ask about the soldiers");
+        userInterface.choice3.setText("Buy some Sinigang na Baboy($7)");
+        userInterface.choice4.setText("Back to corridor");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "canteenWork";
+        game.choiceButton2 = "askPhoneAboutSoldiers";
+        game.choiceButton3 = "buyBurrito";
+        game.choiceButton4 = "bedFactoryCorridor";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void askPhoneAboutSoldiers(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "'I haven't seen anything,' he declares, laughing.'I am blind you see.'\n\nHe waves his hand in front of his eyes.\n\n'You may want to ask the foreman. I think he saw or heard something this morning, though he is reluctant to talk about it.'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1= "";
-        game.choiceButton2 = "bedFactoryCorridor";
+        game.choiceButton1= "askPhoneAboutSoldiers2";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void askPhoneAboutSoldiers2(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "He leans in. His breath, like Vadig's, smells of almonds: 'I did however pick up something which might be of use to you. You must answer four riddles. One wrong answer and it's instant death.'\n\nHe draws his thumb across his throat.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("Attempt Riddles");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "canteen";
+        game.choiceButton2 = "riddleOne";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void riddleOne(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "'Excellent!' He exclaims and claps his hands. 'Okay. The first riddle.\n\n'What comes once in a minute, twice in a moment, but never in a thousand years?'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Thirty-one seconds");
+        userInterface.choice2.setText("1/1000 of a decade");
+        userInterface.choice3.setText("One-tenth of a century");
+        userInterface.choice4.setText("The letter 'M");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "youAwakenInTheBedFactory";
+        game.choiceButton2 = "youAwakenInTheBedFactory";
+        game.choiceButton3 = "youAwakenInTheBedFactory";
+        game.choiceButton4 = "riddleTwo";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void riddleTwo(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "'That was an easy one,' he smiles. The garish red lips, you notice, are lipstick. He has no lips.\n\n'Next riddle - Vadig, 12 years old, is three times as old as Indrid. How old will they be when they are twice as old as Indrid?'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("18");
+        userInterface.choice2.setText("14");
+        userInterface.choice3.setText("16");
+        userInterface.choice4.setText("24");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "youAwakenInTheBedFactory";
+        game.choiceButton2 = "youAwakenInTheBedFactory";
+        game.choiceButton3 = "riddleThree";
+        game.choiceButton4 = "youAwakenInTheBedFactory";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void riddleThree(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "'Haha!' The leans in closer. 'Doing well, my child. You may conquer the world yet?'\n\n'Final riddle. A bakery has three slices of beef cut into eighths. Three quarters of all pieces are sold. How many pieces were not sold?'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("6");
+        userInterface.choice2.setText("8");
+        userInterface.choice3.setText("9");
+        userInterface.choice4.setText("12");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "getTheM16";
+        game.choiceButton2 = "youAwakenInTheBedFactory";
+        game.choiceButton3 = "youAwakenInTheBedFactory";
+        game.choiceButton4 = "youAwakenInTheBedFactory";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void getTheM16(){
+        Player player = getPlayer();
+        player.setWeaponToEquipped("M16");
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "'Congratulations,' he punches your shoulder, reaches below the counter and lifts up a US army standard issue M16 rifle.\n\nYou warily take it. One worker stands at the snack machine in the corridor and glances in but he notices nothing untoward.\n(M16 added to Inventory)";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "canteen";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void canteenWork(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "'Congratulations,' he punches your shoulder, reaches below the counter and lifts up a US army standard issue M16 rifle.\n\nYou warily take it. One worker stands at the snack machine in the corridor and glances in but he notices nothing untoward.\n(M16 added to Inventory)";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("< < <");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "canteen";
+        game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
