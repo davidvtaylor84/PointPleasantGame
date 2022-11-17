@@ -2927,7 +2927,7 @@ public class Story {
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
-        game.weapon3 ="";
+        game.weapon3 ="getColt";
         getPlayerDefault();
         this.game.getEnemyRepository().save(enemy);
         this.game.getPlayerRepository().save(player);
@@ -3641,7 +3641,7 @@ public class Story {
             game.choiceButton3 = "buyAverageEnergyBarFromMachine";
         }
 
-        if(player.getWeaponByName("Mediocre Energy Bar").isEquipped()) {
+        if(player.getItemByName("Mediocre Energy Bar").isEquipped()) {
             userInterface.choice4.setText("");
             game.choiceButton4 = "";
         } else{
@@ -4145,7 +4145,7 @@ public class Story {
 
     public void openTruckDoors(){
         Player player = getPlayer();
-        player.setGameProgress(7);
+        player.setGameProgress(getPlayer().getGameProgress()+1);
         inventoryButtons();
         weaponButtons();
 
@@ -4931,6 +4931,7 @@ public class Story {
         userInterface.locationTextArea.setText("Factory Basement");
 
         userInterface.text = "You walk to the end of the corridor lit by strip lighting. A single unmarked door lies at its end. You put your ear to it and hear the whirr of machinery, but underneath this an unearthly drone resounds.";
+        userInterface.prepareText();
 
         userInterface.choice1.setText("Enter Room");
         userInterface.choice2.setText("");
@@ -4957,9 +4958,11 @@ public class Story {
 
         ImageIcon image = new ImageIcon("");
         userInterface.imageLabel.setIcon(image);
-        userInterface.locationTextArea.setText("Factory Basement");
+        userInterface.locationTextArea.setText("General Chambers' Office");
 
         userInterface.text = "You enter a long grey-carpeted room with a low ceiling and blank walls. At its end is a large oak desk. Behind it sits a large man in a General's gray uniform with various coloured badges on his lapel. He is sitting in front of double doors with a large padlocked chain holding the handles together.\n\nHe stands at your entrance.";
+        userInterface.prepareText();
+
 
         userInterface.choice1.setText("> > >");
         userInterface.choice2.setText("");
@@ -4974,6 +4977,120 @@ public class Story {
         game.choiceButton5 = "";
 
         getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void generalChambersOffice2(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("General Chambers' Office");
+
+        userInterface.text = "'It's you!' He exclaims. He is a large older man with sunburn much like your own. 'How did you get in here? The creature foretold that you would come and be my doom but but I took all precautions. You won't get past me! The creature is mine.'\n\nHe pulls out his own M16 and starts firing.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "generalChambersAttacks";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void generalChambersAttacks(){
+        Player player = getPlayer();
+        Enemy enemy = getEnemyByName("General Chambers");
+        inventoryButtons();
+        weaponButtons();
+
+        int attackRoll = new java.util.Random().nextInt(20);
+
+        int enemyAttack = enemy.attackPlayer(player.getDefence(), attackRoll);
+
+        player.takeDamage(enemyAttack);
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Fight with General Chambers");
+
+        userInterface.text = "General Chambers shoots his M16.\n\nENEMY D20 ATTACK ROLL: " + attackRoll + " vs YOUR DEFENCE RATING: " + player.getDefence() + "\n\nGeneral Chambers inflicts " + enemyAttack + " points of damage";
+        userInterface.prepareText();
+
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        if (player.getHealthPoints() <= 0) {
+            game.choiceButton1 = "youAwaken";
+            userInterface.choice1.setText("> > >");
+        } else {
+            game.choiceButton1 = "Grapple";
+            userInterface.choice1.setText("grappleChambers");
+        }
+
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        if(player.getWeaponByName("M16").isEquipped()&&player.getHealthPoints()>0)
+        {game.weapon4 ="shootAtGeneralChambers";}
+
+        getPlayerDefault();
+        this.game.getEnemyRepository().save(enemy);
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void shootAtGeneralChambers(){
+        Player player = getPlayer();
+        Enemy enemy = getEnemyByName("General Chambers");
+        inventoryButtons();
+        weaponButtons();
+
+        int attackRoll = new java.util.Random().nextInt(20);
+
+        int damageTotal = player.attackEnemyWithWeapon(enemy.getDefence(), attackRoll, "M16");
+
+        enemy.takeDamage(damageTotal);
+
+        ImageIcon shimmer = new ImageIcon("");
+        userInterface.imageLabel.setIcon(shimmer);
+        userInterface.locationTextArea.setText("Fight with General Chambers");
+
+        userInterface.text = "General Chambers HP:"+enemy.getHealthPoints()+"\nYou shoot the M16 to add +18 damage to a successful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs GENERAL CHAMBERS DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        if(enemy.getHealthPoints()>0){
+            game.choiceButton1 = "generalChambersAttacks";
+        } else{
+            game.choiceButton1 = "winOverGeneralChambers";
+        }
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon4 ="getM16";
+        getPlayerDefault();
+        this.game.getEnemyRepository().save(enemy);
         this.game.getPlayerRepository().save(player);
     }
 }

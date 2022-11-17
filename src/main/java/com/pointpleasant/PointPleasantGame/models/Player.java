@@ -93,6 +93,15 @@ public class Player {
         this.healthPoints = healthPoints;
     }
 
+//    public void setHealthPoints(Integer healthIncrease) {
+//        int total = healthPoints + healthIncrease;
+//        if(total>maxHealth){
+//            this.healthPoints = maxHealth;
+//        } else{
+//            this.healthPoints += healthIncrease;
+//        }
+//    }
+
     public Integer getInsight() {
         return insight;
     }
@@ -240,6 +249,14 @@ public class Player {
         int restoration = getItemByName(name).getRestoration();
         this.setHealthPoints(healthPoints + restoration);
     }
+
+//    public void useHealthBooster(String name){
+//        int restoration = getItemByName(name).getRestoration();
+//        int totalRestoration = healthPoints + restoration;
+//        if(totalRestoration>maxHealth){
+//            this.setHealthPoints(maxHealth);
+//        } else{this.setHealthPoints(healthPoints + restoration);}
+//    }
 
 
 
