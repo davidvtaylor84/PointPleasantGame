@@ -3806,7 +3806,7 @@ public class Story {
         userInterface.choice5.setText("");
 
         if(player.getGameProgress()==7){
-            userInterface.choice4.setText("Open Back Doors");
+            userInterface.choice4.setText("Open Truck's Back Doors");
             game.choiceButton4 = "rescueMary";
             game.choiceButton1= "investigateTruckCabin";
         } else {
@@ -4353,7 +4353,7 @@ public class Story {
         userInterface.text = "'I haven't seen anything,' he declares, laughing.'I am blind you see.'\n\nHe waves his hand in front of his eyes.\n\n'You may want to ask the foreman. I think he saw or heard something this morning, though he is reluctant to talk about it.'";
         userInterface.prepareText();
 
-        if(player.getItemByName("M16").isEquipped()) {
+        if(player.getWeaponByName("M16").isEquipped()) {
             userInterface.choice1.setText("< < <");
             game.choiceButton1 = "canteen";
         }else{
@@ -4530,13 +4530,13 @@ public class Story {
         userInterface.prepareText();
 
         userInterface.choice1.setText("Yes");
-        userInterface.choice2.setText("");
+        userInterface.choice2.setText("Leave");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
         game.choiceButton1= "sinigangRecipe";
-        game.choiceButton2 = "";
+        game.choiceButton2 = "canteen";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
@@ -4828,8 +4828,6 @@ public class Story {
 
     public void buySinigang(){
         Player player = getPlayer();
-        player.setCash(player.getCash()-7);
-        player.setHealthPoints(player.getHealthPoints()+17);
         inventoryButtons();
         weaponButtons();
 
@@ -4837,7 +4835,13 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
-        userInterface.text = "The cook serves you a bowl of Sinigang na Baboy with rice. It's the most delicious thing you have eaten in a long time, also the first Filipino dish you have tried. You need to try more if you survive this mess. It's also very healthy.\n(Health increased by +17. Cash decreased by -$7)";
+        if(player.getCash()>=7){
+            userInterface.text = "The cook serves you a bowl of Sinigang na Baboy with rice. It's the most delicious thing you have eaten in a long time, also the first Filipino dish you have tried. You need to try more if you survive this mess. It's also very healthy.\n(Health increased by +17. Cash decreased by -$7)";
+            player.setCash(player.getCash()-7);
+            player.setHealthPoints(player.getHealthPoints()+17);
+        } else{
+            userInterface.text = "'I don't intend to give you a free meal,' the cook chuckles. 'Everyone must have a job in this economy. This universe is a harsh mistress, like the moon.'";
+        }
         userInterface.prepareText();
 
         userInterface.choice1.setText("< < <");
@@ -4881,6 +4885,7 @@ public class Story {
         game.choiceButton5 = "";
 
         game.inventoryButton6 = "enterBedFactoryBasement";
+        game.inventoryButton1 = "getArmyUniform";
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
