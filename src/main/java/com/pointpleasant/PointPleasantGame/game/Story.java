@@ -4499,7 +4499,260 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
-        userInterface.text = "'Congratulations,' he punches your shoulder, reaches below the counter and lifts up a US army standard issue M16 rifle.\n\nYou warily take it. One worker stands at the snack machine in the corridor and glances in but he notices nothing untoward.\n(M16 added to Inventory)";
+        userInterface.text = "'Absolutely, dear fellow,' he slaps a hand down on the counter. 'I can't cook this stuff all by myself. Today's dish is Sinigang na Baboy. The workers just want fries, burgers or salads. To hell with them.\n\n'You must cook it to the following specifications. I'll give you $80. Ready?'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Yes");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "sinigangRecipe";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void sinigangRecipe(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "'In a pot, combine the chopped pork and water. Bring to a boil. Add tomatoes, onion and fish sauce and simmer for 1 hour. Add gabi and cook for 6 minutes. Add long beans and cook for 2 minutes. Add eggplant and cook for 2 minutes. Put in tamarind base. Finally, add bok choy and cook for one minute. Got it?'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Yes");
+        userInterface.choice2.setText("Leave");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "cookingOne";
+        game.choiceButton2 = "canteen";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void cookingTwo(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "You bring the pork and water to a boil as the canteen cook outlined and move onto the next stage.\n\nThe cook is staring into nothingness, a demented grin on his face.\n\nThe next ingredients are?";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Onion, Tomatoes, Soy");
+        userInterface.choice2.setText("Garlic, green beans, Soy");
+        userInterface.choice3.setText("Tomatoes, Onion, Fish Sauce");
+        userInterface.choice4.setText("Fish sauce, Garlic, Bok Choy");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "cookingError";
+        game.choiceButton2 = "cookingError";
+        game.choiceButton3 = "cookingThree";
+        game.choiceButton4 = "cookingError";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void cookingOne(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "You go into the darkened kitchen and turn on the light. After washing your hands, you stand at the stove and get ready to cook. You really don't have time for all this nonsense. Where to start?";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Combine pork and water");
+        userInterface.choice2.setText("Combine pork and vinegar");
+        userInterface.choice3.setText("Combine pork and fish sauce");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "cookingTwo";
+        game.choiceButton2 = "cookingError";
+        game.choiceButton3 = "cookingError";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void cookingThree(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "You let the broth simmer for an hour after adding the tomatoes, onion and fish sauce.\n\nIn the meantime, the cook has been drinking water straight from a bowl. His lipstick marks the rim.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Add Brie");
+        userInterface.choice2.setText("Add Long Beans");
+        userInterface.choice3.setText("Add Gabi");
+        userInterface.choice4.setText("Add Bok Choy");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "cookingError";
+        game.choiceButton2 = "cookingError";
+        game.choiceButton3 = "cookingFour";
+        game.choiceButton4 = "cookingError";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void cookingFour(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "You have added the gabi. You have never encountered this ingredient before. Apparently it's poisonous when eaten raw.\n\nYou let it cook for 6 minutes, then?";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Add Rice");
+        userInterface.choice2.setText("Add Long Beans");
+        userInterface.choice3.setText("Add Bok Choy");
+        userInterface.choice4.setText("Add Eggplant");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "cookingError";
+        game.choiceButton2 = "cookingFive";
+        game.choiceButton3 = "cookingError";
+        game.choiceButton4 = "cookingError";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void cookingFive(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "You add the long beans and let it cook for two minutes. The cook has vanished from view but you get the odd feeling that he is standing behind the wall to the kitchen alcove.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Add Tamarind");
+        userInterface.choice2.setText("Add Long Beans");
+        userInterface.choice3.setText("Add Bok Choy");
+        userInterface.choice4.setText("Add Eggplant");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "cookingError";
+        game.choiceButton2 = "cookingError";
+        game.choiceButton3 = "cookingError";
+        game.choiceButton4 = "cookingSix";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void cookingSix(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "You have added the eggplant and let it cook for two minutes.\n\nThe cook is now humming what sounds like 'Bridge Over Troubled Water by Simon & Garfunkel.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Add Chilli");
+        userInterface.choice2.setText("Add Tamarind base");
+        userInterface.choice3.setText("Add Bok Choy");
+        userInterface.choice4.setText("Add Potato");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "cookingError";
+        game.choiceButton2 = "cookingSeven";
+        game.choiceButton3 = "cookingError";
+        game.choiceButton4 = "cookingError";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void cookingSeven(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "You add the Tamarind base. The cook stands beside you impatiently. He is cackling softly to himself. You only have one ingredient left to add.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Add Chicken");
+        userInterface.choice2.setText("Add Olives");
+        userInterface.choice3.setText("Add Fish Sauce");
+        userInterface.choice4.setText("Add Bok Choy");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "cookingError";
+        game.choiceButton2 = "cookingError";
+        game.choiceButton3 = "cookingError";
+        game.choiceButton4 = "sinigangComplete";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void sinigangComplete(){
+        Player player = getPlayer();
+        player.setCash(player.getCash()+80);
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "'Well done,' he says. 'You have cooked lunch though I don't think anyone here will eat it. They don't want unusual foods.'\n\nHe hands over $80 in cash and adds:'You earned this.'\n(Cash increased by +$80)";
         userInterface.prepareText();
 
         userInterface.choice1.setText("< < <");
@@ -4510,6 +4763,34 @@ public class Story {
 
         game.choiceButton1= "canteen";
         game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void cookingError(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Bed Factory Canteen");
+
+        userInterface.text = "'No! No! No!' He collapses against the wall dramatically, then picks up the cooking pot and pours it into the sink. 'You did it wrong. You're going to have to start over. Must I repeat the recipe?'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Ask for recipe");
+        userInterface.choice2.setText("Leave");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "sinigangRecipe";
+        game.choiceButton2 = "canteen";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
