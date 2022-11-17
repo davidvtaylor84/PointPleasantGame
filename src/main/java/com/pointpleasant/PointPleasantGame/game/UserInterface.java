@@ -11,7 +11,7 @@ public class UserInterface {
 
     JFrame window, inventoryDetail;
     JPanel titleNamePanel, startButtonPanel, locationPanel, mainTextPanel, choiceButtonPanel, imagePanel, inventoryPanel, playerStatsPanel, introPanel, introButtonPanel, itemDescriptionPanel, titleImagePanel, openingImagePanel;
-    JLabel titleNameLabel, healthLabel, healthLabelStat, insightLabel, insightLabelStat, defenceLabel, defenceLabelStat,intelligenceLabel, intelligenceLabelStat, inspirationLabel, inspirationLabelStat, imageLabel, cashLabel, cashLabelStat, titleImageLabel, openingImageLabel;
+    JLabel titleNameLabel, maxHealthLabel, maxHealthLabelStat, healthLabel, healthLabelStat, insightLabel, insightLabelStat, defenceLabel, defenceLabelStat,intelligenceLabel, intelligenceLabelStat, inspirationLabel, inspirationLabelStat, imageLabel, cashLabel, cashLabelStat, titleImageLabel, openingImageLabel;
     JButton startButton, continueButton, introButton;
     JButton weapon1, weapon2, weapon3, weapon4, inventory1, inventory2, inventory3, inventory4, inventory5, inventory6, inventory7, inventory8, blankButton;
     Container container;
@@ -337,11 +337,19 @@ public class UserInterface {
         choiceButtonPanel.add(choice5);
 
         playerStatsPanel = new JPanel();
-        playerStatsPanel.setBounds(150, 650, 1220, 50);
+        playerStatsPanel.setBounds(120, 670, 1280, 50);
         playerStatsPanel.setBackground(Color.BLACK);
         playerStatsPanel.setLayout(new GridLayout(1,12));
         inventoryPanel.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
         window.add(playerStatsPanel, BorderLayout.PAGE_END);
+
+        maxHealthLabel = new JLabel("MAX-HP:");
+        maxHealthLabel.setFont(font3);
+        maxHealthLabel.setForeground(Color.WHITE);
+        playerStatsPanel.add(maxHealthLabel);
+        maxHealthLabelStat = new JLabel("");
+        maxHealthLabelStat.setForeground(Color.WHITE);
+        playerStatsPanel.add(maxHealthLabelStat);
 
         healthLabel = new JLabel("HP:");
         healthLabel.setFont(font3);
@@ -378,7 +386,7 @@ public class UserInterface {
         intelligenceLabelStat.setForeground(Color.WHITE);
         playerStatsPanel.add(intelligenceLabelStat);
 
-        inspirationLabel = new JLabel("INSPIRATION:");
+        inspirationLabel = new JLabel("SPUR:");
         inspirationLabel.setFont(font3);
         inspirationLabel.setForeground(Color.WHITE);
         playerStatsPanel.add(inspirationLabel);

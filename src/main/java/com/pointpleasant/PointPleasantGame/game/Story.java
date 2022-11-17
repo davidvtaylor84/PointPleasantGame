@@ -42,9 +42,10 @@ public class Story {
 
     public void setPlayerDefault(){
         Player player = getPlayer();
+        player.setMaxHealthPoints(40);
         player.setHealthPoints(38);
         player.setInsight(0);
-        player.setDefence(10);
+        player.setDefence(8);
         player.setAttack(7);
         player.setInspiration(4);
         player.setCash(180);
@@ -64,8 +65,33 @@ public class Story {
         this.game.getPlayerRepository().save(player);
     }
 
+    public void setEnemyDefault(){
+        Enemy enemy1 = getEnemyByName("Vadig");
+        Enemy enemy2 = getEnemyByName("agentK");
+        Enemy enemy3 = getEnemyByName("Hank");
+        Enemy enemy4 = getEnemyByName("x42");
+        Enemy enemy5 = getEnemyByName("John Hell");
+        Enemy enemy6 = getEnemyByName("General Chambers");
+        Enemy enemy7 = getEnemyByName("Phone");
+        enemy1.setHealthPoints(20);
+        enemy2.setHealthPoints(30);
+        enemy3.setHealthPoints(50);
+        enemy4.setHealthPoints(40);
+        enemy5.setHealthPoints(40);
+        enemy6.setHealthPoints(60);
+        enemy7.setHealthPoints(150);
+        this.game.getEnemyRepository().save(enemy1);
+        this.game.getEnemyRepository().save(enemy2);
+        this.game.getEnemyRepository().save(enemy3);
+        this.game.getEnemyRepository().save(enemy4);
+        this.game.getEnemyRepository().save(enemy5);
+        this.game.getEnemyRepository().save(enemy6);
+        this.game.getEnemyRepository().save(enemy7);
+    }
+
     public void getPlayerDefault(){
         Player player = getPlayer();
+        userInterface.maxHealthLabelStat.setText(Integer.toString(player.getMaxHealthPoints()));
         userInterface.healthLabelStat.setText(Integer.toString(player.getHealthPoints()));
         userInterface.insightLabelStat.setText(Integer.toString(player.getInsight()));
         userInterface.defenceLabelStat.setText(Integer.toString(player.getDefence()));
@@ -326,6 +352,7 @@ public class Story {
             case "buySinigang": buySinigang();break;
             case "intoUniformDisguise": intoUniformDisguise();break;
             case "enterBedFactoryBasement": enterBedFactoryBasement();break;
+            case "youAwakenMIB": youAwaken();player.unEquipItem("Ammonite");player.setHealthPoints(0);game.getPlayerRepository().save(player);break;
 
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
@@ -341,6 +368,7 @@ public class Story {
             case "getBaseballBat": showWeaponItem("Baseball Bat"); break;
             case "getColt": showWeaponItem("Colt revolver"); break;
             case "getM16": showWeaponItem("M16"); break;
+
         }
     }
 
@@ -1883,8 +1911,8 @@ public class Story {
         userInterface.choice5.setText("");
 
         if (player.getHealthPoints() <= 0) {
-            game.choiceButton1 = "youAwaken";
-            game.choiceButton2 = "youAwaken";
+            game.choiceButton1 = "youAwakenMIB";
+            game.choiceButton2 = "youAwakenMIB";
         } else {
             game.choiceButton1 = "playerAttacksMIB";
             player.unEquipItem("Ammonite");

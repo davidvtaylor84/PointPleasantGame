@@ -16,8 +16,8 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="name")
-    private String name;
+    @Column(name="maxHealth")
+    private Integer maxHealthPoints;
 
     @Column(name = "healthPoints")
     private Integer healthPoints;
@@ -47,8 +47,8 @@ public class Player {
     @OneToMany(mappedBy = "player", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Weapon> weapons;
 
-    public Player(String name, Integer healthPoints, Integer insight, Integer defence, Integer attack, Integer inspiration, Integer cash, Integer gameProgress)  {
-        this.name = name;
+    public Player(Integer maxHealthPoints, Integer healthPoints, Integer insight, Integer defence, Integer attack, Integer inspiration, Integer cash, Integer gameProgress)  {
+        this.maxHealthPoints = maxHealthPoints;
         this.healthPoints = healthPoints;
         this.insight = insight;
         this.defence = defence;
@@ -77,30 +77,30 @@ public class Player {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Integer getHealthPoints() {
         return healthPoints;
     }
 
-    public void setHealthPoints(Integer healthPoints) {
-        this.healthPoints = healthPoints;
+//    public void setHealthPoints(Integer healthPoints) {
+//        this.healthPoints = healthPoints;
+//    }
+
+    public void setHealthPoints(Integer healthIncrease) {
+        if(healthIncrease>maxHealthPoints){
+            this.healthPoints = maxHealthPoints;
+        } else{
+            this.healthPoints = healthIncrease;
+        }
     }
 
-//    public void setHealthPoints(Integer healthIncrease) {
-//        int total = healthPoints + healthIncrease;
-//        if(total>maxHealth){
-//            this.healthPoints = maxHealth;
-//        } else{
-//            this.healthPoints += healthIncrease;
-//        }
-//    }
+
+    public Integer getMaxHealthPoints() {
+        return maxHealthPoints;
+    }
+
+    public void setMaxHealthPoints(Integer maxHealthPoints) {
+        this.maxHealthPoints = maxHealthPoints;
+    }
 
     public Integer getInsight() {
         return insight;
@@ -245,18 +245,18 @@ public class Player {
 
 
 
-    public void useHealthBooster(String name){
-        int restoration = getItemByName(name).getRestoration();
-        this.setHealthPoints(healthPoints + restoration);
-    }
-
 //    public void useHealthBooster(String name){
 //        int restoration = getItemByName(name).getRestoration();
-//        int totalRestoration = healthPoints + restoration;
-//        if(totalRestoration>maxHealth){
-//            this.setHealthPoints(maxHealth);
-//        } else{this.setHealthPoints(healthPoints + restoration);}
+//        this.setHealthPoints(healthPoints + restoration);
 //    }
+
+    public void useHealthBooster(String name){
+        int restoration = getItemByName(name).getRestoration();
+        int totalRestoration = healthPoints + restoration;
+        if(totalRestoration>maxHealthPoints){
+            this.setHealthPoints(maxHealthPoints);
+        } else{this.setHealthPoints(healthPoints + restoration);}
+    }
 
 
 
