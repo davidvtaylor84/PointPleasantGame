@@ -5344,7 +5344,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("General Chambers' Office");
 
-        userInterface.text = "'I have seen beyond the veil,' he splutters. He looks up at you and smiles: 'You have too. This reality is not what we think it is, but that knowledge will never do us any good if we don't have the power of whatever that creature is beyond these doors. Do what you think is right? I suppose that's all any of us can do.'";
+        userInterface.text = "'I have seen beyond the veil,' he splutters. 'This reality is not what we think it is, but that knowledge will never do us any good if we don't have that creature's power. Do what you think is right? Breathing through the tube in there will give you all its powers of prophecy, but it will die.'";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Enter double doors");
@@ -5370,7 +5370,7 @@ public class Story {
 
         ImageIcon image = new ImageIcon("");
         userInterface.imageLabel.setIcon(image);
-        userInterface.locationTextArea.setText("Them");
+        userInterface.locationTextArea.setText("The Mothman");
 
         userInterface.text = "You enter the room beyond the doors. It is surprisingly small and dark. Amidst the bed factory machinery lying in storage is a single light source, glowing purple.\n\nIt is a 11ft tall piece of alien tech, made up mostly of a tall glowing bell jar filled with purple swirling smoke. Within is a winged creature, dimly seen, with glowing red eyes.";
         userInterface.prepareText();
@@ -5400,7 +5400,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Mothman");
 
-        userInterface.text = "Upon the base of this bell jar are various runes and carvings in what looks like dark sandstone. The creature presses its rough head against the glass. It is severely weakened. A whorl shape is missing from a panel section outside the glass next to the it's foot. A pipe juts out of the base at mouth height, from which you may imbibe the Mothman's last strength.";
+        userInterface.text = "Upon the base of this bell jar are various runes and carvings in what looks like dark sandstone. The creature presses its rough head against the glass. It is severely weakened. A whorl shape is missing from a panel section outside the glass next to the it's foot. A pipe juts out of the base at mouth height, from which you may imbibe the Mothman's powers.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Imbibe Smoke");
@@ -5409,8 +5409,8 @@ public class Story {
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1= "";
-        game.choiceButton2 = "";
+        game.choiceButton1= "imbibeSmoke";
+        game.choiceButton2 = "leaveMothman";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
@@ -5430,11 +5430,11 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Mothman");
 
-        userInterface.text = "";
+        userInterface.text = "You press the ammonite to the panel. The bell jar lifts slowly, hovering in the air by unknown means, pouring this purple smoke into the room and obscuring your sight. You wonder whether this was a mistake. It's intention was good however. It had come to warn us about the power plant.\n\nIt's 10ft wings unfurl...";
         userInterface.prepareText();
 
-        userInterface.choice1.setText("Imbibe Smoke");
-        userInterface.choice2.setText("Leave");
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
@@ -5445,7 +5445,97 @@ public class Story {
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
-        game.inventoryButton7 = "freeMothman";
+        game.inventoryButton7 = "getAmmonite";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void freeMothman2(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("The Mothman");
+
+        userInterface.text = "It flies up to the ceiling and passes through it. You are left in the dark basement. The smoke smells like almonds.\n\nHad you taken the last of the Mothman's prophetic powers upon yourself, you know that humanity might've had a future, instead of being forced to rely on the mercy of interdimensional beings.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "endingOne";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.inventoryButton7 = "getAmmonite";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void imbibeSmoke(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("The Mothman");
+
+        userInterface.text = "You press your lips to the tube and breath in. The smoke tastes like almonds.\n\nThe creature inside the bell jar writhes and collapses within the swirling purple smoke.\n\nYour head feels as if it will explode. Something is happening...";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "imbibeSmoke2";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.inventoryButton7 = "getAmmonite";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void imbibeSmoke2(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("*&^^C^$C*(&");
+
+        userInterface.text = "*^54HUK^%TRC$£908h%*&^5$9*&^%$£&*^(&*GGtY^%ytRCcuv]][&%V^%ioin87n887%C$*^54HUK^%TRC$£908h%*&^5$9*&^%$£&*^(&*GGtY^%ytRCcuv]][&%V^%ioin87n887%C$*^54HUK^%TRC$£908h%*&^5$9*&^%$£&*(&*GGtY^%ytRCcuv]][&%V^%ioin87n887%C$*^54HUK^%TRC$£908h%*&^5$9*&^%$£&*^(&*GGtY^%ytRCcuv]][&%V^%ioin87n887%C$";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("784677&^");
+        userInterface.choice3.setText("*^0(*&76B");
+        userInterface.choice4.setText("&^%V&^%5C$");
+        userInterface.choice5.setText("&^V%$$£X");
+
+        game.choiceButton1= "endingTwo";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.inventoryButton7 = "getAmmonite";
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
