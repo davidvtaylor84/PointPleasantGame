@@ -4989,7 +4989,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("General Chambers' Office");
 
-        userInterface.text = "You enter a long grey-carpeted room with a low ceiling and blank walls. At its end is a large oak desk. Behind it sits a large man in a General's gray uniform with various coloured badges on his lapel. He is sitting in front of double doors with a large padlocked chain holding the handles together.\n\nHe stands when he sees you enter.";
+        userInterface.text = "You enter a long grey-carpeted room with a low ceiling and blank walls. At its end is a large oak desk. Behind it sits a large man in a General's gray uniform with various coloured badges on his lapel. He is sitting in front of white double doors.\n\nHe stands when he sees you enter.";
         userInterface.prepareText();
 
 
@@ -5347,8 +5347,64 @@ public class Story {
         userInterface.text = "'I have seen beyond the veil,' he splutters. He looks up at you and smiles: 'You have too. This reality is not what we think it is, but that knowledge will never do us any good if we don't have the power of whatever that creature is beyond these doors. Do what you think is right? I suppose that's all any of us can do.'";
         userInterface.prepareText();
 
-        userInterface.choice1.setText("> > >");
+        userInterface.choice1.setText("Enter double doors");
         userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "goIntoLab";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void goIntoLab(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Them");
+
+        userInterface.text = "You enter the room beyond the doors. It is surprisingly small and dark. Amidst the bed factory machinery lying in storage is a single light source, glowing purple.\n\nIt is a 11ft tall piece of alien tech, made up mostly of a tall glowing bell jar filled with purple swirling smoke. Within is a winged creature, dimly seen, with glowing red eyes.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Investigate");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "investigateMothmanPrison";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void investigateMothmanPrison(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("The Mothman");
+
+        userInterface.text = "Upon the base of this bell jar are various runes and carvings in what looks like dark sandstone. The creature presses its rough head against the glass. It is severely weakened. A whorl shape is missing from a panel section outside the glass next to the it's foot. A pipe juts out of the base at mouth height, from which you may imbibe the Mothman's last strength.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Imbibe Smoke");
+        userInterface.choice2.setText("Leave");
         userInterface.choice3.setText("");
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
@@ -5359,8 +5415,37 @@ public class Story {
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
-        game.weapon2 = "getBaseballBat";
-        game.weapon4 ="getM16";
+        game.inventoryButton7 = "freeMothman";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void freeMothman(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("The Mothman");
+
+        userInterface.text = "";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("Imbibe Smoke");
+        userInterface.choice2.setText("Leave");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.inventoryButton7 = "freeMothman";
 
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
