@@ -205,6 +205,14 @@ public class Player {
         }
     }
 
+    public void unEquipWeapon(String weaponName){
+        for(Weapon weapon : weapons){
+            if (weapon.getName().equals(weaponName)){
+                weapon.setEquipped(false);
+            }
+        }
+    }
+
 
     public Item getItemByName(String itemName){
         for(Item item : items){
@@ -257,8 +265,6 @@ public class Player {
             this.setHealthPoints(maxHealthPoints);
         } else{this.setHealthPoints(healthPoints + restoration);}
     }
-
-
 
 
 

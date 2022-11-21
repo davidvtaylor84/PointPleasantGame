@@ -13,8 +13,8 @@ public class Gun extends Weapon implements IWeaponDamage{
     @Column(name = "bullets")
     private int bullets;
 
-    public Gun(String name, String description, int damageValue, boolean equipped, Player player, String typeOfGun, int bullets) {
-        super(name, description, damageValue, equipped, player);
+    public Gun(String name, String description, int damageValue, boolean equipped, int ammo, Player player, String typeOfGun, int bullets) {
+        super(name, description, damageValue, equipped, ammo, player);
         this.typeOfGun = typeOfGun;
         this.bullets = bullets;
     }

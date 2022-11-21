@@ -10,8 +10,8 @@ public class BaseballBat extends Weapon implements IWeaponDamage{
     @Column(name = "fragility")
     private int fragility;
 
-    public BaseballBat(String name, String description, int damageValue, boolean equipped, Player player, int fragility) {
-        super(name, description, damageValue, equipped, player);
+    public BaseballBat(String name, String description, int damageValue, boolean equipped, int ammo, Player player, int fragility) {
+        super(name, description, damageValue, equipped, ammo, player);
         this.fragility = fragility;
     }
 

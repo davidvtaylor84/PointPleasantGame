@@ -4314,6 +4314,7 @@ public class Story {
 
     public void untieMary4(){
         Player player = getPlayer();
+        player.unEquipWeapon("Colt revolver");
         player.setGameProgress(8);
         inventoryButtons();
         weaponButtons();
@@ -4322,7 +4323,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Refrigeration Truck");
 
-        userInterface.text = "'Excellent! You have the keycard,' she says. 'You need to get down there and confront the General.'\n\nShe ponders for a moment: 'I'll take care of the unconscious soldier. Tie him up and hide him behind the wheels. Don't worry. I'm stronger than I look.'";
+        userInterface.text = "'Excellent! You have the keycard,' she says. 'You need to get down there and confront the General.'\n\nShe ponders for a moment: 'I'll take care of the unconscious soldier. Tie him up and hide him behind the wheels. Don't worry. I'm stronger than I look. Gimme that gun.'\n\n(Colt revolver removed from Inventory)";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Go");
@@ -4988,7 +4989,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("General Chambers' Office");
 
-        userInterface.text = "You enter a long grey-carpeted room with a low ceiling and blank walls. At its end is a large oak desk. Behind it sits a large man in a General's gray uniform with various coloured badges on his lapel. He is sitting in front of double doors with a large padlocked chain holding the handles together.\n\nHe stands at your entrance.";
+        userInterface.text = "You enter a long grey-carpeted room with a low ceiling and blank walls. At its end is a large oak desk. Behind it sits a large man in a General's gray uniform with various coloured badges on his lapel. He is sitting in front of double doors with a large padlocked chain holding the handles together.\n\nHe stands when he sees you enter.";
         userInterface.prepareText();
 
 
@@ -5052,7 +5053,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Fight with General Chambers");
 
-        userInterface.text = "General Chambers shoots his M16.\n\nENEMY D20 ATTACK ROLL: " + attackRoll + " vs YOUR DEFENCE RATING: " + player.getDefence() + "\n\nGeneral Chambers inflicts " + enemyAttack + " points of damage";
+        userInterface.text = "General Chambers shoots his M16.\n\nENEMY D20 ATTACK ROLL: " + attackRoll + " vs YOUR DEFENCE RATING: " + player.getDefence() + "\n\nGeneral Chambers inflicts " + enemyAttack + " points of damage.\n\nThe alloy tube quivers.";
         userInterface.prepareText();
 
         userInterface.choice2.setText("");
@@ -5063,18 +5064,30 @@ public class Story {
         if (player.getHealthPoints() <= 0) {
             game.choiceButton1 = "youAwaken";
             userInterface.choice1.setText("> > >");
+            game.choiceButton2 = "";
+            userInterface.choice2.setText("");
         } else {
-            game.choiceButton1 = "Grapple";
-            userInterface.choice1.setText("grappleChambers");
+            game.choiceButton1 = "grappleChambers";
+            userInterface.choice1.setText("Grapple Chambers");
+            if(player.getInspiration()>0){
+            game.choiceButton2 = "inspiredAttackAgainstChambers";
+            userInterface.choice2.setText("Inspired Attack");}
         }
 
-        game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
+        if(player.getWeaponByName("Alloy Tube").isEquipped()&&player.getHealthPoints()>0){
+            game.weapon1 = "useAlloyTubeAgainstChambers";
+        }
+
         if(player.getWeaponByName("M16").isEquipped()&&player.getHealthPoints()>0)
         {game.weapon4 ="shootAtGeneralChambers";}
+
+        if(player.getWeaponByName("Baseball Bat").isEquipped()&&player.getHealthPoints()>0){
+            game.weapon2 = "baseballBatAgainstChambers";
+        }
 
         getPlayerDefault();
         this.game.getEnemyRepository().save(enemy);
@@ -5097,7 +5110,10 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Fight with General Chambers");
 
-        userInterface.text = "General Chambers HP:"+enemy.getHealthPoints()+"\nYou shoot the M16 to add +18 damage to a successful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs GENERAL CHAMBERS DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
+        if(player.getWeaponByName("M16").getAmmo()>0){
+            enemy.takeDamage(damageTotal);
+            userInterface.text = "M16 has " + player.getWeaponByName("M16").getAmmo()+ " bullets left.\n\nGeneral Chambers HP:"+enemy.getHealthPoints()+"\nYou shoot the M16 to add +14 damage to a successful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs GENERAL CHAMBERS DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
+        } else{ userInterface.text = "You pull on the trigger. Nothing happens. Out of bullets, hombre.";}
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -5116,7 +5132,103 @@ public class Story {
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
+        game.weapon1 = "getAlloyTube";
+        game.weapon2 = "getBaseballBat";
         game.weapon4 ="getM16";
+
+        player.getWeaponByName("M16").setAmmo(player.getWeaponByName("M16").getAmmo()-1);
+        getPlayerDefault();
+        this.game.getEnemyRepository().save(enemy);
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void grappleChambers(){
+        Player player = getPlayer();
+        Enemy enemy = getEnemyByName("General Chambers");
+        inventoryButtons();
+        weaponButtons();
+
+        int attackRoll = new java.util.Random().nextInt(20);
+
+        int playerAttack = player.attackEnemy(enemy.getDefence(), attackRoll);
+
+        enemy.takeDamage(playerAttack);
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Fight with General Chambers");
+
+        userInterface.text = "General Chambers HP: "+enemy.getHealthPoints()+"\n\nYOUR D20 ATTACK ROLL: "+attackRoll+" vs GENERAL CHAMBERS DEFENCE RATING: "+enemy.getDefence()+"\n\nYou grapple with the General and inflict " + playerAttack+ " points of damage";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        if(enemy.getHealthPoints()>0){
+            game.choiceButton1 = "generalChambersAttacks";
+        } else{
+            game.choiceButton1 = "winOverGeneralChambers";
+        }
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon1 = "getAlloyTube";
+        game.weapon2 = "getBaseballBat";
+        game.weapon4 ="getM16";
+
+        getPlayerDefault();
+        this.game.getEnemyRepository().save(enemy);
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void inspiredAttackAgainstChambers(){
+        Player player = getPlayer();
+        Enemy enemy = getEnemyByName("General Chambers");
+        inventoryButtons();
+        weaponButtons();
+
+        int attackRoll = new java.util.Random().nextInt(20);
+
+        int roll = player.attackEnemy(enemy.getDefence(), attackRoll);
+
+        int damageTotal = roll +3;
+
+        enemy.takeDamage(damageTotal);
+
+        player.setInspiration(player.getInspiration()-1);
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Fight with General Chambers");
+
+        userInterface.text = "You use 1 General Chambers HP: "+enemy.getHealthPoints()+"\nYou used 1 point of Inspiration to add +3 damage to a successful or unsuccessful attack roll.\n\nYOUR D20 ATTACK ROLL: "+attackRoll+" vs GENERAL CHAMBERS DEFENCE RATING: "+enemy.getDefence()+"\n\nYou grapple with the General and inflict " + damageTotal+ " points of damage";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        if(enemy.getHealthPoints()>0){
+            game.choiceButton1 = "generalChambersAttacks";
+        } else{
+            game.choiceButton1 = "winOverGeneralChambers";
+        }
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon1 = "getAlloyTube";
+        game.weapon2 = "getBaseballBat";
+        game.weapon4 ="getM16";
+
         getPlayerDefault();
         this.game.getEnemyRepository().save(enemy);
         this.game.getPlayerRepository().save(player);

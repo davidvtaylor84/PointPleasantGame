@@ -12,8 +12,8 @@ public class AlienAlloyTube extends Weapon implements IWeaponDamage{
     @Column(name = "batteryPower")
     private int batteryPower;
 
-    public AlienAlloyTube(String name, String description, int damageValue, boolean equipped, Player player, int batteryPower) {
-        super(name, description, damageValue, equipped, player);
+    public AlienAlloyTube(String name, String description, int damageValue, boolean equipped, int ammo, Player player, int batteryPower) {
+        super(name, description, damageValue, equipped, ammo, player);
         this.batteryPower = batteryPower;
     }
 

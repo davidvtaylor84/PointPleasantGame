@@ -24,19 +24,31 @@ public abstract class Weapon {
     @Column(name = "equipped")
     private boolean equipped;
 
+    @Column(name = "ammo")
+    private int ammo;
+
     @ManyToOne
     @JoinColumn(name = "player_id", nullable = false)
     private Player player;
 
-    public Weapon(String name, String description, int damageValue, boolean equipped, Player player) {
+    public Weapon(String name, String description, int damageValue, boolean equipped, int ammo, Player player) {
         this.name = name;
         this.description = description;
         this.damageValue = damageValue;
         this.equipped = equipped;
+        this.ammo = ammo;
         this.player = player;
     }
 
     public Weapon(){}
+
+    public int getAmmo() {
+        return ammo;
+    }
+
+    public void setAmmo(int ammo) {
+        this.ammo = ammo;
+    }
 
     public int getDamageValue() {
         return damageValue;

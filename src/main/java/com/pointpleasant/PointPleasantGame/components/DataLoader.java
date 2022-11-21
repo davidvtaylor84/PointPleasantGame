@@ -68,19 +68,19 @@ public class DataLoader implements ApplicationRunner {
         itemRepository.save(key2);
         Key key3 = new Key("Ammonite", "AMMONITE WHORL\n\nDescription: Weird fossil found in a box behind the Dynamite Diner. It feels heavier than it should.\n\nFossils lie heavy with dream, or so some ostensibly useful idiot once quipped. Use is unknown(for now).\n\nCannot be used here", false, 0,player, "Unused");
         itemRepository.save(key3);
-        Torch torch = new Torch("Windup Torch", "WINDUP TORCH\n\nDescription: A mere toy that reminds of a gift you received as a child.\n\nYou chide yourself for being so sentimental, but it's stuff like this that makes us human.\n\nIt's use is obvious", false, 0,player, 20);
+        Torch torch = new Torch("Windup Torch", "WINDUP TORCH\n\nDescription: A mere toy that reminds of a gift you received as a child.\n\nYou chide yourself for being so sentimental, but it's stuff like this that makes us human.\n\nIt's use is obvious", false,  0,player, 20);
         itemRepository.save(torch);
 
-        AlienAlloyTube alienAlloyTube = new AlienAlloyTube("Alloy Tube", "ALLOY TUBE\n\nDescription: Non-descript polished metal tube found on a dead alien. It's use is currently unknown but it'll probably come in useful.\n\nMakes a slight sucking sound.\n\nCannot be used here", 20, false,  player, 78);
+        AlienAlloyTube alienAlloyTube = new AlienAlloyTube("Alloy Tube", "ALLOY TUBE\n\nDescription: Non-descript polished metal tube found on a dead alien. It's use is currently unknown but it'll probably come in useful.\n\nMakes a slight sucking sound.\n\nCannot be used here", 20, false, 0,  player, 78);
         weaponRepository.save(alienAlloyTube);
 
-        BaseballBat baseballBat = new BaseballBat("Baseball Bat", "BASEBALL BAT\n\nDescription: A children's toy. Some advice: 'If you don't think too much, don't think too much'. If that makes sense, maybe this weapon is for you.\n\nAdds +9 damage to successful attack.\n\nCannot be used here", 9, false, player, 150);
+        BaseballBat baseballBat = new BaseballBat("Baseball Bat", "BASEBALL BAT\n\nDescription: A children's toy. Some advice: 'If you don't think too much, don't think too much'. If that makes sense, maybe this weapon is for you.\n\nAdds +9 damage to successful attack.\n\nCannot be used here", 9, false, 0, player, 150);
         weaponRepository.save(baseballBat);
 
-        Gun pistol = new Gun("Colt revolver", "COLT REVOLVER\n\nDescription: Standard revolver pistol found amidst a pile of bodies.\n\nDon't worry about the number of bullets you have left. Your pockets are stuffed with them.\n\nCannot be used here.", 12, false, player, "Colt revolver", 20);
+        Gun pistol = new Gun("Colt revolver", "COLT REVOLVER\n\nDescription: Standard revolver pistol found amidst a pile of bodies.\n\nDon't worry about the number of bullets you have left. Your pockets are stuffed with them.\n\nCannot be used here.", 12, false, 0, player, "Colt revolver", 20);
         weaponRepository.save(pistol);
 
-        Gun m16 = new Gun("M16", "US Army standard issue (for imperialists)", 25, false, player, "M16", 50);
+        Gun m16 = new Gun("M16", "M16\n\nDescription: US Army standard issue. Has a limited number of bullets, but then you don't intend to go around murdering folk.\n\nAdds +14 damage to a successful attack roll. Limited number of bullets.\n\nCannot be used here.", 15, false, 12, player, "M16", 50);
         weaponRepository.save(m16);
 
         Weirdo vadig = new Weirdo("Vadig", "A short man with thyroid eyes. Talks in a high-pitched sing-song voice", 20, 7, 8, 4, 0);
@@ -116,15 +116,15 @@ public class DataLoader implements ApplicationRunner {
         Soldier john = new Soldier("John Hell", "Human", 40, 13, 3, 14, 10);
         enemyRepository.save(john);
 
-        Soldier general = new Soldier("General Chambers", "Human", 20, 13, 3, 8, 10);
+        Soldier general = new Soldier("General Chambers", "Human", 80, 18, 14, 8, 10);
         enemyRepository.save(general);
 
-        MothMan mothman = new MothMan("Phone", "Mothman", 40, 15, 12, "There are Christmas presents in the water beneath the bridge", "Don't lie down on your search for the factory", "We do not look like how you are seeing us.");
+        MothMan mothman = new MothMan("Phone", "Mothman", 40, 18, 12, "There are Christmas presents in the water beneath the bridge", "Don't lie down on your search for the factory", "We do not look like how you are seeing us.");
         enemyRepository.save(mothman);
 
 
-        Gun pistol1 = new Gun("Colt revolver", "COLT REVOLVER\n\nDescription: Standard revolver pistol found amidst a pile of bodies. Don't worry about the number of bullets you have left. Your pockets are stuffed with them.\n\nCannot be used here.", 12, false, player, "Colt revolver", 20);
-        BaseballBat baseballBat1 = new BaseballBat("Baseball Bat", "BASEBALL BAT\n\nDescription: A children's toy. Some advice: 'If you don't think too much, don't think too much'. If that makes sense, maybe this weapon is for you.\n\nAdds +9 damage to successful attack.\n\nCannot be used here", 9, false, player, 150);
+        Gun pistol1 = new Gun("Colt revolver", "COLT REVOLVER\n\nDescription: Standard revolver pistol found amidst a pile of bodies. Don't worry about the number of bullets you have left. Your pockets are stuffed with them.\n\nCannot be used here.", 12, false, 0, player, "Colt revolver", 20);
+        BaseballBat baseballBat1 = new BaseballBat("Baseball Bat", "BASEBALL BAT\n\nDescription: A children's toy. Some advice: 'If you don't think too much, don't think too much'. If that makes sense, maybe this weapon is for you.\n\nAdds +9 damage to successful attack.\n\nCannot be used here", 9, false, 0, player, 150);
 
         ArrayList<Weapon> weapons = new ArrayList<>();
         weapons.add(pistol1);
