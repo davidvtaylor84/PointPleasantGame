@@ -91,7 +91,7 @@ public class UserInterface {
         introPanel = new JPanel();
         introPanel.setBounds(300, 150, 900, 500);
         introPanel.setBackground(Color.BLACK);
-        introTextArea = new JTextArea("You have been driving for 13 hours. It is now 3am. The headlights form a cone of light on the asphalt, which is eaten up by the car's underside. \n\nBefore you is a highway emptied of traffic and darkened fields marked by telegraph poles on either side. The moon is hidden by clouds. \n\nYou are not aware of losing consciousness...  ");
+        introTextArea = new JTextArea("You have been driving for 13 hours. It is now 3am. Two weeks before Christmas. The headlights form a cone of light on the asphalt, which is eaten up by the car's underside. \n\nBefore you is a highway emptied of traffic and darkened fields marked by telegraph poles on either side. The moon is hidden by clouds. \n\nYou are not aware of losing consciousness...  ");
         introTextArea.setBackground(new Color(0,0,0,0));
         introTextArea.setBounds(300, 150, 900, 500);
         introTextArea.setForeground(Color.WHITE);

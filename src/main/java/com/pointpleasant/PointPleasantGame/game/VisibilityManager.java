@@ -66,7 +66,6 @@ public class VisibilityManager {
         userInterface.inventoryPanel.setVisible(true);
         userInterface.playerStatsPanel.setVisible(true);
         userInterface.itemDescriptionPanel.setVisible(true);
-
     }
 }
 

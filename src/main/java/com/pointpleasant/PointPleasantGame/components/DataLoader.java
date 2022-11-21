@@ -41,10 +41,7 @@ public class DataLoader implements ApplicationRunner {
 
     public DataLoader(){}
 
-
-
     public void run(ApplicationArguments args) {
-
 
         Player player = new Player(40, 30, 0, 14, 7, 5, 70, 0);
         playerRepository.save(player);
@@ -86,32 +83,14 @@ public class DataLoader implements ApplicationRunner {
         Weirdo vadig = new Weirdo("Vadig", "A short man with thyroid eyes. Talks in a high-pitched sing-song voice", 20, 7, 8, 4, 0);
         enemyRepository.save(vadig);
 
-        Weirdo smith = new Weirdo("Indrid", "Apparently human man with dark complexion. Grins constantly", 16, 8,9, 3, 0 );
-        enemyRepository.save(smith);
-
-        Weirdo phyllis = new Weirdo("Smith", "A very tall, blonde woman. Extraordinarily long fingers. Stares blankly", 15, 7, 9, 3, 0);
-        enemyRepository.save(phyllis);
-
         GaseousBlob hank = new GaseousBlob("Hank", "Pink gaseous blob. Noxious smelling", 30, 13, 8, 4);
         enemyRepository.save(hank);
 
         GreyAlien x42 = new GreyAlien("x42", "Grey alien with dented forehead as if having recently been in an accident", 40, 12, 13, "Lanulos", 4);
         enemyRepository.save(x42);
 
-        GreyAlien x47 = new GreyAlien("x47", "Grey alien with broken arm as if having recently been in an accident", 9, 12, 13, "Lanulos", 4);
-        enemyRepository.save(x47);
-
         ManInBlack agentK = new ManInBlack("agentK", "Humanoid. Very red lips. Slow deliberate way of talking", 30, 15, 12, "Has no teeth");
         enemyRepository.save(agentK);
-
-        ManInBlack agentJ = new ManInBlack("agentJ", "Humanoid. Very red lips. Slow deliberate way of talking", 25, 8, 13, "Has no teeth");
-        enemyRepository.save(agentJ);
-
-        ManInBlack agentF = new ManInBlack("agentF", "Humanoid. Very red lips. Slow deliberate way of talking", 18, 15, 18, "Has no teeth");
-        enemyRepository.save(agentF);
-
-        Soldier steve = new Soldier("Steve MacKinnon", "Human", 12, 13, 3, 14, 10);
-        enemyRepository.save(steve);
 
         Soldier john = new Soldier("John Hell", "Human", 40, 13, 3, 14, 10);
         enemyRepository.save(john);
@@ -119,37 +98,12 @@ public class DataLoader implements ApplicationRunner {
         Soldier general = new Soldier("General Chambers", "Human", 80, 18, 14, 8, 10);
         enemyRepository.save(general);
 
-        MothMan mothman = new MothMan("Phone", "Mothman", 40, 18, 12, "There are Christmas presents in the water beneath the bridge", "Don't lie down on your search for the factory", "We do not look like how you are seeing us.");
-        enemyRepository.save(mothman);
-
-
         Gun pistol1 = new Gun("Colt revolver", "COLT REVOLVER\n\nDescription: Standard revolver pistol found amidst a pile of bodies. Don't worry about the number of bullets you have left. Your pockets are stuffed with them.\n\nCannot be used here.", 12, false, 0, player, "Colt revolver", 20);
         BaseballBat baseballBat1 = new BaseballBat("Baseball Bat", "BASEBALL BAT\n\nDescription: A children's toy. Some advice: 'If you don't think too much, don't think too much'. If that makes sense, maybe this weapon is for you.\n\nAdds +9 damage to successful attack.\n\nCannot be used here", 9, false, 0, player, 150);
 
         ArrayList<Weapon> weapons = new ArrayList<>();
         weapons.add(pistol1);
         weapons.add(baseballBat1);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        GreyAlien bob = new GreyAlien("Steve", "Fine Gray", 20, 12, 7, "Spain", 8);
-//        enemyRepository.save(bob);
-
-
-
-
-
 
     }
 }

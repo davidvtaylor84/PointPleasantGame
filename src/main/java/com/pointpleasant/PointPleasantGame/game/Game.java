@@ -20,15 +20,10 @@ public class Game {
     String choiceButton1, choiceButton2, choiceButton3, choiceButton4, choiceButton5;
     String inventoryButton1, inventoryButton2, inventoryButton3, inventoryButton4, inventoryButton5, inventoryButton6, inventoryButton7, inventoryButton8, weapon1, weapon2, weapon3, weapon4;
 
-//    public static void main(String[] args){
-////        new Game();
-//    }
-
     public Game(PlayerRepository playerRepository, EnemyRepository enemyRepository){
         this.playerRepository = playerRepository;
         this.enemyRepository = enemyRepository;
         userInterface.createInterface(decisionHandler);
-//        story.playerDefault();
         visibilityManager.showTitleScreen();
     }
 

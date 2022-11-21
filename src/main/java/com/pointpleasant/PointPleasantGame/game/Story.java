@@ -353,6 +353,32 @@ public class Story {
             case "intoUniformDisguise": intoUniformDisguise();break;
             case "enterBedFactoryBasement": enterBedFactoryBasement();break;
             case "youAwakenMIB": youAwaken();player.unEquipItem("Ammonite");player.setHealthPoints(0);game.getPlayerRepository().save(player);break;
+            case "generalChambersOfficeDoor":generalChambersOfficeDoor();break;
+            case "generalChambersOffice": generalChambersOffice();break;
+            case "generalChambersOffice2": generalChambersOffice2();break;
+            case "generalChambersAttacks": generalChambersAttacks();break;
+            case "shootAtGeneralChambers": shootAtGeneralChambers();break;
+            case "grappleChambers": grappleChambers();break;
+            case "inspiredAttackAgainstChambers": inspiredAttackAgainstChambers();break;
+            case "baseballBatAgainstChambers": baseballBatAgainstChambers();break;
+            case "winOverGeneralChambers": winOverGeneralChambers();break;
+            case "winOverGeneralChambers2": winOverGeneralChambers2();break;
+            case "winOverGeneralChambers3": winOverGeneralChambers3();break;
+            case "goIntoLab": goIntoLab();break;
+            case "investigateMothmanPrison": investigateMothmanPrison();break;
+            case "freeMothman": freeMothman();break;
+            case "freeMothman2": freeMothman2();break;
+            case "imbibeSmoke": imbibeSmoke();break;
+            case "imbibeSmoke2": imbibeSmoke2();break;
+            case "endingOne": endingOne();break;
+            case "endingOne2": endingOne2();break;
+            case "endingOne3": endingOne3();break;
+            case "endingOne4": endingOne4();break;
+            case "endingTwo": endingTwo();break;
+            case "endingTwo2": endingTwo2();break;
+            case "endCredits": endCredits();break;
+
+            case "titleScreenAfterCredits": userInterface.introButton.setActionCommand("startAfterIntro");visibilityManager.showTitleScreen();
 
 
             case "getArmyUniform": showInventoryItem("Army Uniform");break;
@@ -3411,7 +3437,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/youAwakenInCloset.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
@@ -3439,7 +3465,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/corridorMain.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
@@ -3467,7 +3493,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/bedfactoryfloor.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
@@ -3495,7 +3521,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/foremanGuy.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
@@ -3523,7 +3549,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/foremanGuy.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
@@ -3551,7 +3577,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/foremanGuy.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
@@ -3579,7 +3605,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/nervousForeman.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
@@ -3607,7 +3633,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/nervousForeman.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
@@ -3641,7 +3667,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/snackmachine.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
@@ -3685,7 +3711,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/snackmachine.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
@@ -3718,7 +3744,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/snackmachine.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
@@ -3751,7 +3777,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/snackmachine.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
@@ -3784,7 +3810,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/fridge.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
@@ -3821,7 +3847,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/fridge.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
@@ -3842,8 +3868,7 @@ public class Story {
             game.choiceButton4 = "";
             game.choiceButton1= "investigateTruck2";
         }
-
-
+        
         game.choiceButton2 = "bedFactoryFloor";
         game.choiceButton3 = "bedFactory";
 
@@ -5513,6 +5538,7 @@ public class Story {
 
     public void imbibeSmoke2(){
         Player player = getPlayer();
+        player.setInsight(player.getInsight()+3000);
         inventoryButtons();
         weaponButtons();
 
@@ -5520,7 +5546,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("*&^^C^$C*(&");
 
-        userInterface.text = "*^54HUK^%TRC$£908h%*&^5$9*&^%$£&*^(&*GGtY^%ytRCcuv]][&%V^%ioin87n887%C$*^54HUK^%TRC$£908h%*&^5$9*&^%$£&*^(&*GGtY^%ytRCcuv]][&%V^%ioin87n887%C$*^54HUK^%TRC$£908h%*&^5$9*&^%$£&*(&*GGtY^%ytRCcuv]][&%V^%ioin87n887%C$*^54HUK^%TRC$£908h%*&^5$9*&^%$£&*^(&*GGtY^%ytRCcuv]][&%V^%ioin87n887%C$";
+        userInterface.text = "*^54HUK^%TRC$£908h%*&^5$9*&^%$£&*^(&*GGtY^%ytRCcuv]][&%V^%ioin87n887%C$*^54HUK^%TRC$£908h%*&^5$9*&^%$£&*^(&*GGtY^%ytRCcuv]][&%V^%ioin87n887%C$*^54HUK^%TRC$£908h%*&^5$9*&^%$£&*(&*GGtY^%ytRCcuv]][&%V^%ioin87n887%C$*^54HUK^%TRC$£908h%*&^5$9*\n(Insight increased +3000)";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -5535,9 +5561,208 @@ public class Story {
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
-        game.inventoryButton7 = "getAmmonite";
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void endingOne(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Leaving Town");
+
+        userInterface.text = "The next morning, you drop Mary off at her house after she has fixed your car. Down below in the industrial estate, you can see soldiers putting equipment into the back of jeeps. They are leaving as well. It seems as if all the strangeness has ended. Phones and the internet are operational again.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "endingOne2";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
 
         getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void endingOne2(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Leaving Town");
+
+        userInterface.text = "'I'm not sure what it going to happen now,' she says. 'I'm thinking of writing a book about all of this with my friend, John Leek, though I don't think anyone will believe it.'\n\nYou shake her hand and drive to the bridge that will take you out of town.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "endingOne2";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void endingOne3(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Leaving Town");
+
+        userInterface.text = "Before you can reach the bridge, you are stopped by a policeman. Many other cars are queued on the road ahead of you.\n\n'You're going to have to find another route out of town, sir,' he says shakily. 'The Silver Bridge has just collapsed.'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "endingOne2";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void endingOne4(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Leaving Town");
+
+        userInterface.text = "You step out of your car and head towards the Ohio River. People are screaming, held back by police.\n\nThe bridge is a twisted hunk of metal with the middle vanished. In the water, you see Christmas presents floating. The Mothman did not come to warn about the power plant, but about the bridge.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "endCredits";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void endingTwo(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Leaving Town");
+
+        userInterface.text = "It is 8am, you are sitting in your car across two lanes of traffic on the road just before the Silver Bridge that leads out of town. On the other side of the bridge you have parked the I.Cold Refrigeration truck, blocking traffic from the other end.\n\nYou have handcuffed yourself to the wheel. ";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "endingTwo2";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void endingTwo2(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("Leaving Town");
+
+        userInterface.text = "A policeman is thumping at your window. Within an hour they will drag you out of the car. The Mothman came to warn people of the collapse of the bridge, not the faked power plant disaster. You now understand the vision of the Christmas presents floating in the water.\n\nYour insight changes nothing.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "endCredits";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void endCredits(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+
+        userInterface.titleNamePanel.setVisible(false);
+        userInterface.startButtonPanel.setVisible(false);
+        userInterface.titleImagePanel.setVisible(false);
+
+        userInterface.introPanel.setVisible(false);
+        userInterface.introButtonPanel.setVisible(true);
+
+
+        userInterface.mainTextPanel.setVisible(false);
+        userInterface.choiceButtonPanel.setVisible(false);
+        userInterface.playerStatsPanel.setVisible(false);
+        userInterface.locationPanel.setVisible(false);
+        userInterface.mainTextPanel.setVisible(false);
+        userInterface.choiceButtonPanel.setVisible(false);
+        userInterface.imagePanel.setVisible(true);
+        userInterface.inventoryPanel.setVisible(false);
+        userInterface.playerStatsPanel.setVisible(false);
+        userInterface.itemDescriptionPanel.setVisible(false);
+
+        userInterface.introButton.setActionCommand("titleScreenAfterCredits");
+
+        setPlayerDefault();
         this.game.getPlayerRepository().save(player);
     }
 }
