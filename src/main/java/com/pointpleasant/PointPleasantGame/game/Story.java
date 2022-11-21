@@ -5053,7 +5053,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Fight with General Chambers");
 
-        userInterface.text = "General Chambers shoots his M16.\n\nENEMY D20 ATTACK ROLL: " + attackRoll + " vs YOUR DEFENCE RATING: " + player.getDefence() + "\n\nGeneral Chambers inflicts " + enemyAttack + " points of damage.\n\nThe alloy tube quivers.";
+        userInterface.text = "General Chambers shoots his M16.\n\nENEMY D20 ATTACK ROLL: " + attackRoll + " vs YOUR DEFENCE RATING: " + player.getDefence() + "\n\nGeneral Chambers inflicts " + enemyAttack + " points of damage.";
         userInterface.prepareText();
 
         userInterface.choice2.setText("");
@@ -5077,10 +5077,6 @@ public class Story {
         game.choiceButton3 = "";
         game.choiceButton4 = "";
         game.choiceButton5 = "";
-
-        if(player.getWeaponByName("Alloy Tube").isEquipped()&&player.getHealthPoints()>0){
-            game.weapon1 = "useAlloyTubeAgainstChambers";
-        }
 
         if(player.getWeaponByName("M16").isEquipped()&&player.getHealthPoints()>0)
         {game.weapon4 ="shootAtGeneralChambers";}
@@ -5231,6 +5227,142 @@ public class Story {
 
         getPlayerDefault();
         this.game.getEnemyRepository().save(enemy);
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void baseballBatAgainstChambers(){
+        Player player = getPlayer();
+        Enemy enemy = getEnemyByName("General Chambers");
+        inventoryButtons();
+        weaponButtons();
+
+        int attackRoll = new java.util.Random().nextInt(20);
+
+        int damageTotal = player.attackEnemyWithWeapon(enemy.getDefence(), attackRoll, "Baseball Bat");
+
+        enemy.takeDamage(damageTotal);
+
+        ImageIcon shimmer = new ImageIcon("");
+        userInterface.imageLabel.setIcon(shimmer);
+        userInterface.locationTextArea.setText("Fight with General Chambers");
+
+        userInterface.text = "General Chambers HP:"+enemy.getHealthPoints()+"\nYou used the Baseball Bat to add +9 damage to a successful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs GENERAL CHAMBERS DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        if(enemy.getHealthPoints()>0){
+            game.choiceButton1 = "generalChambersAttacks";
+        } else{
+            game.choiceButton1 = "winOverGeneralChambers";
+        }
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon2 = "getBaseballBat";
+        game.weapon4 ="getM16";
+
+        getPlayerDefault();
+        this.game.getEnemyRepository().save(enemy);
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void winOverGeneralChambers(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("General Chambers' Office");
+
+        userInterface.text = "After a terse exchange of gunfire, the immense body of General Chambers slumps back against the double doors he was protecting and slides down it, painting the wood red. His breathing is laboured yet he manages to emit a chuckle.\n\n'Well done,' he mutters. 'What was it all for anyhow?'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "winOverGeneralChambers2";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon2 = "getBaseballBat";
+        game.weapon4 ="getM16";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void winOverGeneralChambers2(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("General Chambers' Office");
+
+        userInterface.text = "'My only goal was to help mankind into the future,' he says, breathing hard. You are standing over him. 'The damn planet is dying. Reality is a chaotic mess. Human beings multiply, fight each other, love each other. All this stupid ceaseless activity and we can't get to the heart of it all. It's all just mirrors reflecting mirrors.'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "winOverGeneralChambers3";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon2 = "getBaseballBat";
+        game.weapon4 ="getM16";
+
+        getPlayerDefault();
+        this.game.getPlayerRepository().save(player);
+    }
+
+    public void winOverGeneralChambers3(){
+        Player player = getPlayer();
+        inventoryButtons();
+        weaponButtons();
+
+        ImageIcon image = new ImageIcon("");
+        userInterface.imageLabel.setIcon(image);
+        userInterface.locationTextArea.setText("General Chambers' Office");
+
+        userInterface.text = "'I have seen beyond the veil,' he splutters. He looks up at you and smiles: 'You have too. This reality is not what we think it is, but that knowledge will never do us any good if we don't have the power of whatever that creature is beyond these doors. Do what you think is right? I suppose that's all any of us can do.'";
+        userInterface.prepareText();
+
+        userInterface.choice1.setText("> > >");
+        userInterface.choice2.setText("");
+        userInterface.choice3.setText("");
+        userInterface.choice4.setText("");
+        userInterface.choice5.setText("");
+
+        game.choiceButton1= "";
+        game.choiceButton2 = "";
+        game.choiceButton3 = "";
+        game.choiceButton4 = "";
+        game.choiceButton5 = "";
+
+        game.weapon2 = "getBaseballBat";
+        game.weapon4 ="getM16";
+
+        getPlayerDefault();
         this.game.getPlayerRepository().save(player);
     }
 }
