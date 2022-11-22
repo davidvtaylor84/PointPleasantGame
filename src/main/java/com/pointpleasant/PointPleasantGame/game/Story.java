@@ -3868,7 +3868,7 @@ public class Story {
             game.choiceButton4 = "";
             game.choiceButton1= "investigateTruck2";
         }
-        
+
         game.choiceButton2 = "bedFactoryFloor";
         game.choiceButton3 = "bedFactory";
 
@@ -3883,7 +3883,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/soldierintruck.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
@@ -3911,11 +3911,11 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/shove.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
-        userInterface.text = "The soldier, a young man with red hair and buck teeth, who appears to be alone, steps down from the truck and shoves you in the direction of the bed factory.\n\n'I told you to get the hell out of here,' says the soldier. 'You're gonna be in real trouble if you don't.'";
+        userInterface.text = "The soldier, a young man with a deep tan and regulation haircut, who appears to be alone, steps down from the truck and shoves you in the direction of the bed factory.\n\n'I told you to get the hell out of here,' says the soldier. 'You're gonna be in real trouble if you don't.'";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Fight back");
@@ -3946,7 +3946,7 @@ public class Story {
 
         enemy.takeDamage(playerAttack);
 
-        ImageIcon shimmer = new ImageIcon("");
+        ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/soldierfights.png");
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Fight with Soldier");
 
@@ -3988,7 +3988,7 @@ public class Story {
 
         player.takeDamage(enemyAttack);
 
-        ImageIcon shimmer = new ImageIcon("");
+        ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/soldierfightsplayer.png");
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Fight with Soldier");
 
@@ -4039,7 +4039,7 @@ public class Story {
 
         player.setInspiration(player.getInspiration()-1);
 
-        ImageIcon shimmer = new ImageIcon("");
+        ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/inspAttackAgainstSoldier.png");
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Fight with Soldier");
 
@@ -4075,7 +4075,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/shotSniper.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Fight with Soldier");
 
@@ -4108,7 +4108,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/winoversoldier.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Fight with Soldier");
 
@@ -4138,7 +4138,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/fastfood.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Refrigeration Truck");
 
@@ -4173,11 +4173,11 @@ public class Story {
         weaponButtons();
         player.setItemToEquipped("Army Uniform");
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/fastfood.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Refrigeration Truck");
 
-        userInterface.text = "You climb into the cabin and find evidence that the soldier has been in the truck all day. On the passenger seat is an empty burger box, an empty soda can and a book titled Messengers of Deception. The back door release is above the dashboard radio and under the passenger seat is a set of fatigues.";
+        userInterface.text = "You stuff the uniform into your rucksack in the hopes that it'll come in useful later.\n\n(Army Uniform added to inventory)";
         userInterface.prepareText();
 
         userInterface.choice1.setText("< < <");
@@ -4202,7 +4202,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/greenbutton.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Refrigeration Truck");
 
@@ -4230,7 +4230,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/maryintruck.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Refrigeration Truck");
 
@@ -4258,7 +4258,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/untieMaryImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Refrigeration Truck");
 
@@ -4286,7 +4286,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/untieMaryImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Refrigeration Truck");
 
@@ -4314,7 +4314,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/untieMaryImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Refrigeration Truck");
 
@@ -4344,7 +4344,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/untieMaryImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Refrigeration Truck");
 
@@ -4372,7 +4372,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/canteenImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
@@ -4400,7 +4400,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/phoneImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
@@ -4435,7 +4435,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/phoneImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
@@ -4463,7 +4463,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/phoneImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
@@ -4491,7 +4491,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/phoneImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
@@ -4519,7 +4519,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/phoneImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
@@ -4548,7 +4548,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/m16Image.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
@@ -4576,7 +4576,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/sinigangRecipeImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
@@ -4604,7 +4604,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/sinigangRecipeImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
@@ -4632,7 +4632,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/cookingImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
@@ -4660,7 +4660,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/cookingImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
@@ -4688,7 +4688,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/cookingImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
@@ -4716,7 +4716,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/cookingImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
@@ -4744,7 +4744,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/cookingImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
@@ -4772,7 +4772,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/cookingImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
@@ -4800,7 +4800,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/cookingImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
