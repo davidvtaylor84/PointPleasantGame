@@ -4857,7 +4857,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/cookingerror.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
@@ -4885,7 +4885,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/sinigang.jpeg");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
@@ -4919,7 +4919,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/uniformImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Meera's Bed Factory");
 
@@ -4950,11 +4950,11 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/sandbagsImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Factory Basement");
 
-        userInterface.text = "You use the keycard and walk down a flight of stairs towards some soldiers sitting in the gloom at the bottom behind some sandbags. Once they see the uniform they point their M16s away and allow you to squeeze past into long narrow corridor.\n\nThe door has locked behind you. There is no going back.";
+        userInterface.text = "You use the keycard and walk down a flight of stairs towards some soldiers standing in the gloom at the bottom behind some sandbags. Once they see the uniform they point their M16s away and allow you to squeeze past into long narrow corridor.\n\nThe door has locked behind you. There is no going back.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -4980,7 +4980,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/whiteDoorImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Factory Basement");
 
@@ -5010,7 +5010,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/chambersDeskImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("General Chambers' Office");
 
@@ -5039,7 +5039,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/chambersDeskImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("General Chambers' Office");
 
@@ -5074,7 +5074,7 @@ public class Story {
 
         player.takeDamage(enemyAttack);
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/chambersFires.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Fight with General Chambers");
 
@@ -5127,7 +5127,7 @@ public class Story {
 
         enemy.takeDamage(damageTotal);
 
-        ImageIcon shimmer = new ImageIcon("");
+        ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/firingGunImage.png");
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Fight with General Chambers");
 
@@ -5175,7 +5175,7 @@ public class Story {
 
         enemy.takeDamage(playerAttack);
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/grappleChambers.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Fight with General Chambers");
 
@@ -5223,7 +5223,7 @@ public class Story {
 
         player.setInspiration(player.getInspiration()-1);
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/inspiredChambersGrapple.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Fight with General Chambers");
 
@@ -5267,7 +5267,7 @@ public class Story {
 
         enemy.takeDamage(damageTotal);
 
-        ImageIcon shimmer = new ImageIcon("");
+        ImageIcon shimmer = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/batAttackImage.png");
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Fight with General Chambers");
 
@@ -5303,7 +5303,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/chambersBeatenImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("General Chambers' Office");
 
@@ -5334,7 +5334,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/chambersBeatenImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("General Chambers' Office");
 
@@ -5365,7 +5365,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/chambersBeatenImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("General Chambers' Office");
 
@@ -5393,7 +5393,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/mothmanLabImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Mothman");
 
@@ -5421,7 +5421,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/scaredManImg.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Mothman");
 
@@ -5451,7 +5451,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/mothmanImg.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Mothman");
 
@@ -5481,7 +5481,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/mothmanImg.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Mothman");
 
@@ -5511,7 +5511,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/purpleSmokeImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Mothman");
 
@@ -5542,7 +5542,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/outside.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("*&^^C^$C*(&");
 
