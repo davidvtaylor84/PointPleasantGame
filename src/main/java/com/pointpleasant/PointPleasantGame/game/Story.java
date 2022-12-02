@@ -45,7 +45,7 @@ public class Story {
         player.setMaxHealthPoints(40);
         player.setHealthPoints(38);
         player.setInsight(0);
-        player.setDefence(8);
+        player.setDefence(6);
         player.setAttack(7);
         player.setInspiration(4);
         player.setCash(180);
@@ -3643,7 +3643,7 @@ public class Story {
             player.setGameProgress(6);
             userInterface.text = "'You working for the Enquirer?' He mutters. 'Look, I don't want to get in trouble but something is going on in the basement. I also suggest you check out the I.Cold Refrigeration truck outside. I heard some strange noises coming from it this morning.'\n(Cash -$60)";
         } else{
-            userInterface.text = "'Get the hell away from me?' He says through clenched teeth.\n\nHe turns away red-faced.\n\n($50 Cash required)";
+            userInterface.text = "'Get the hell away from me?' He says through clenched teeth.\n\nHe turns away red-faced.\n\n($60 Cash required)";
         }
         userInterface.prepareText();
 
@@ -4109,7 +4109,7 @@ public class Story {
         player.setAttack(getPlayer().getAttack()+2);
         player.setDefence(getPlayer().getDefence()+3);
         player.setInspiration(getPlayer().getInspiration()+2);
-        player.setMaxHealthPoints(player.getHealthPoints()+2);
+        player.setMaxHealthPoints(player.getMaxHealthPoints()+2);
         inventoryButtons();
         weaponButtons();
 
@@ -4203,7 +4203,7 @@ public class Story {
 
     public void openTruckDoors(){
         Player player = getPlayer();
-        player.setGameProgress(getPlayer().getGameProgress()+1);
+        player.setGameProgress(7);
         inventoryButtons();
         weaponButtons();
 
@@ -4295,7 +4295,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Refrigeration Truck");
 
-        userInterface.text = "'I believe the creature known as the Mothman has been captured by an alliance of the Galactic Federation and the US Army. They're keeping it in the basement, intending to use its power of prophecy to control the future. The Army engineered the problems with the power plant knowing that it would attract the Mothman.'";
+        userInterface.text = "'I believe the creature known as the Mothman has been captured by an alliance of the Galactic Federation and the US Army. General Chambers is keeping it in the basement, intending to use its power of prophecy to control the future. The Army engineered the problems with the power plant knowing that it would attract the Mothman.'";
         userInterface.prepareText();
 
         userInterface.choice1.setText("What is the galactic federation?");
@@ -5577,7 +5577,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/endingOne.png");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/soldiersLoading.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Leaving Town");
 
@@ -5609,7 +5609,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Leaving Town");
 
-        userInterface.text = "'I'm not sure what it going to happen now,' she says. 'I'm thinking of writing a book about all of this with my friend, John Leek, though I don't think anyone will believe it.'\n\nYou shake her hand and drive to the bridge that will take you out of town.";
+        userInterface.text = "'I'm not sure what is going to happen now,' she says. 'I'm thinking of writing a book about all of this with my friend, John Leek, though I don't think anyone will believe it.'\n\nYou shake her hand and drive to the bridge that will take you out of town.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -5618,7 +5618,7 @@ public class Story {
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1= "endingOne2";
+        game.choiceButton1= "endingOne3";
         game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
@@ -5646,7 +5646,7 @@ public class Story {
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1= "endingOne2";
+        game.choiceButton1= "endingOne4";
         game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
@@ -5745,10 +5745,10 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/endCredits2.png");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/endCreditsRedone.png");
         userInterface.imageLabel.setIcon(image);
 
-        userInterface.text = "Point Pleasant was written and designed by David Valdez Taylor.\n\nPlease close this window and go about your business. Life is too short for games.";
+        userInterface.text = "Point Pleasant was written and designed by David Valdez Taylor.\n\nPlease close this window. Life is too short for games.\n\n© Copyright D.Taylor 2022";
         userInterface.prepareText();
 
         userInterface.titleNamePanel.setVisible(false);
@@ -5763,7 +5763,6 @@ public class Story {
         userInterface.choiceButtonPanel.setVisible(false);
         userInterface.playerStatsPanel.setVisible(false);
         userInterface.locationPanel.setVisible(false);
-        userInterface.mainTextPanel.setVisible(false);
         userInterface.choiceButtonPanel.setVisible(false);
         userInterface.imagePanel.setVisible(true);
         userInterface.inventoryPanel.setVisible(false);
