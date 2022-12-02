@@ -377,6 +377,7 @@ public class Story {
             case "endingTwo": endingTwo();break;
             case "endingTwo2": endingTwo2();break;
             case "endCredits": endCredits();break;
+            case "youAwaken": youAwaken();break;
 
             case "titleScreenAfterCredits": userInterface.introButton.setActionCommand("startAfterIntro");visibilityManager.showTitleScreen();
 
@@ -560,7 +561,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Roadside");
 
-        userInterface.text ="You wait for an hour. No cars pass. Everything is still and quiet save for the gentle rustling of wind through the crops. You have drunk the remnants of your water bottle.\n\nYou are now very hungry.";
+        userInterface.text ="You wait for an hour. No cars pass. Everything is still and quiet save for the gentle rustling of wind through the crops. You are out of water.\n\nYou are also very hungry.";
         userInterface.prepareText();
 
 
@@ -593,7 +594,7 @@ public class Story {
         userInterface.imageLabel.setIcon(shimmer);
         userInterface.locationTextArea.setText("Towards Point Pleasant");
 
-        userInterface.text = "After walking for 20 minutes in the increasingly hot sun, a very tall man emerges from the scrub from the side of the road.\n\nHe waves and runs to you, grinning and laughing, his gait like that of a gazelle with a broken leg. In less time that you can think to react, he stands with his face very close to yours. His breath smells like almonds.";
+        userInterface.text = "After walking for 20 minutes in the cold winter sun, a very tall man emerges from the scrub from the side of the road.\n\nHe waves and runs to you, grinning and laughing, his gait like that of a gazelle with a broken leg. In less time that you can think to react, he stands with his face very close to yours. His breath smells like almonds.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -1514,7 +1515,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
-        userInterface.text = "'Your description of this man doesn't ring any bells,' she says, 'but we have had incidents in the town in recent days where strange people turn up and try to convince people that that they are from here.\n\n'Vadig said that his sister works in the library?,' she adds, 'That doesn't make sense. The library shut down three years ago.'";
+        userInterface.text = "'Your description of this man doesn't ring any bells,' she says, 'but we have had incidents in the town in recent days where strangers turn up and try to convince people that that they are from here.\n\n'Vadig said that his sister works in the library?,' she adds, 'That doesn't make sense. The library shut down three years ago.'";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Leave");
@@ -1828,7 +1829,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Dumpster Encounter");
 
-        userInterface.text = "Behind the diner is a small lot filled with trash and overgrown weeds. Nothing appears untoward. You approach the dumpster filled with food waste and find a small ornate wooden box attached to the wall with a chain. It is very out of place.\n\nYou pick it up. A heart is carved onto the lid.";
+        userInterface.text = "Behind the diner is a small lot filled with trash and overgrown weeds. Nothing appears untoward. You approach the dumpster filled with food waste and find a small locked wooden box attached to the wall with a chain. It is very out of place.\n\nYou pick it up. A heart is carved onto the lid.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Leave");
@@ -1861,7 +1862,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Dumpster Encounter");
 
-        userInterface.text = "You unlock the box with the Rusted Key. Within is an ammonite fossil. A plunging sensation move through your body. A mental image of the Mothman, red eyes gleaming from a glass enclosure enshrouded by smoke. It feels like your brain is going to crack.\n\n(Insight increased by +1. Ammonite added to Inventory)";
+        userInterface.text = "You unlock the box with the Rusted Key. Within is an ammonite fossil. A plunging sensation moves through your body. A mental image of the Mothman, red eyes gleaming from a glass enclosure enshrouded by smoke. It feels like your brain is going to crack.\n\n(Insight increased by +1. Ammonite added to Inventory)";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -1938,10 +1939,10 @@ public class Story {
 
         if (player.getHealthPoints() <= 0) {
             game.choiceButton1 = "youAwakenMIB";
+            player.unEquipItem("Ammonite");
             game.choiceButton2 = "youAwakenMIB";
         } else {
             game.choiceButton1 = "playerAttacksMIB";
-            player.unEquipItem("Ammonite");
             if(player.getInspiration()>0){
                 game.choiceButton2 = "inspiredAttackAgainstMIB";}
         }
@@ -2123,6 +2124,7 @@ public class Story {
 
     public void winOverMIB(){
         Player player = getPlayer();
+        player.setMaxHealthPoints(player.getMaxHealthPoints()+3);
         player.setAttack(player.getAttack()+3);
         player.setDefence(player.getDefence()+2);
         inventoryButtons();
@@ -2132,7 +2134,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Dumpster Encounter");
 
-        userInterface.text = "The broad body crumples to the floor, his body thudding on the asphalt. A purple noxious gas pours forth from under his clothing. His body dissolves into a putrid puddle, leaving only a heap of black clothing.\n\n'Don't move creep!' Yells a voice behind you.\n(Defence increased +2. Attack increased +3)";
+        userInterface.text = "The broad body crumples to the asphalt. A purple noxious gas pours forth from under his clothing. His body dissolves into a putrid puddle, leaving only a heap of black clothing.\n\n'Don't move creep!' Yells a voice behind you.\n(Defence increased +2. Attack increased +3. Max-HP increased +3)";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -2155,7 +2157,6 @@ public class Story {
 
     public void arrested(){
         Player player = getPlayer();
-        player.unEquipItem("Baseball Bat");
         inventoryButtons();
         weaponButtons();
 
@@ -2277,7 +2278,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Point Pleasant Enquirer");
 
-        userInterface.text = "You enter the small office and a small balding man you have never seen before looks up from his computer.\n\n'Oh it's you!' He exclaims,'Mary has filled me in. The name's Derek. I'm the Copy Editor. She isn't here at the moment but you're free to wait for her if you'd like.'";
+        userInterface.text = "You enter the small office and a very bald man you have never seen before looks up from his computer.\n\n'Oh it's you!' He exclaims,'Mary has filled me in. The name's Derek. I'm the Copy Editor. She isn't here at the moment but you're free to wait for her if you'd like.'";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Wait for Mary");
@@ -3272,7 +3273,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Mary's House Basement");
 
-        userInterface.text = "The safe clicks open and reveals a wooden jewellery box, some piles of cash and a plain brown manilla envelope. You open the envelope and out slips a plain white keycard. This must be what Mary was protecting. You take the card and lock the safe.\n\n(Keycard added to Inventory)";
+        userInterface.text = "The safe clicks open and reveals a wooden jewellery box, some piles of cash and a plain brown manilla envelope. You open the envelope and out slips a white keycard. This must be what Mary was protecting. You take the card and lock the safe.\n\n(Keycard added to Inventory)";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Leave basement");
@@ -3970,6 +3971,7 @@ public class Story {
         game.choiceButton5 = "";
 
         game.weapon3 = "getColt";
+        game.weapon4 = "getM16";
 
         getPlayerDefault();
         this.game.getEnemyRepository().save(enemy);
@@ -4013,6 +4015,8 @@ public class Story {
 
         if(player.getWeaponByName("Colt revolver").isEquipped())
         {game.weapon3 ="shootAtSoldier";}
+        if(player.getWeaponByName("Colt revolver").isEquipped())
+        {game.weapon4 ="shootAtSoldier";}
 
         game.choiceButton3 = "";
         game.choiceButton4 = "";
@@ -4105,6 +4109,7 @@ public class Story {
         player.setAttack(getPlayer().getAttack()+2);
         player.setDefence(getPlayer().getDefence()+3);
         player.setInspiration(getPlayer().getInspiration()+2);
+        player.setMaxHealthPoints(player.getHealthPoints()+2);
         inventoryButtons();
         weaponButtons();
 
@@ -4112,7 +4117,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Fight with Soldier");
 
-        userInterface.text = "You get the soldier into a headlock. You are amazed by your own strength and martial prowess. Forty-eight hours ago, you would have fled from such matters, even when the cause was just. The soldier has lost consciousness in your arms.\n(Attack increased by +2. Defence increased by +3. Inspiration increased by +2)";
+        userInterface.text = "You get the soldier into a headlock. You are amazed by your own strength and martial prowess. Forty-eight hours ago, you would have fled from such matters, even when the cause was just. The soldier has lost consciousness in your arms.\n(Attack increased by +2. Defence increased by +3. Inspiration increased by +2. Max HP increased by +2)";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Investigate Truck Cabin");
@@ -4363,6 +4368,8 @@ public class Story {
         game.choiceButton4 = "";
         game.choiceButton5 = "";
 
+        userInterface.weapon3.setText("(Weapon slot 3)");
+
         getPlayerDefault();
         this.game.getPlayerRepository().save(player);
     }
@@ -4376,12 +4383,12 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
-        userInterface.text = "The canteen, a square room with one large window behind the counter and a small kitchen alcove off to the side, is empty. Metal tables and chairs are scattered around with little care for their arrangement. A heavy-set man stands in semi-darkness within the kitchen alcove stirring a pot. He is grinning at you. His lips are bright red.";
+        userInterface.text = "The canteen, a square room with one large window behind the counter and a small kitchen alcove off to the side, is empty. Metal tables and chairs are scattered around with little care for their arrangement.\n\nA heavy-set man stands in semi-darkness within the kitchen alcove stirring a pot. He is grinning at you. His lips are bright red.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Ask him about earning money");
         userInterface.choice2.setText("Ask about the soldiers");
-        userInterface.choice3.setText("Buy some Sinigang na Baboy($7)");
+        userInterface.choice3.setText("Buy some Sinigang($7)");
         userInterface.choice4.setText("Back to corridor");
         userInterface.choice5.setText("");
 
@@ -4829,7 +4836,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/sinigangRecipeImage.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Bed Factory Canteen");
 
@@ -5133,7 +5140,7 @@ public class Story {
 
         if(player.getWeaponByName("M16").getAmmo()>0){
             enemy.takeDamage(damageTotal);
-            userInterface.text = "M16 has " + player.getWeaponByName("M16").getAmmo()+ " bullets left.\n\nGeneral Chambers HP:"+enemy.getHealthPoints()+"\nYou shoot the M16 to add +14 damage to a successful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs GENERAL CHAMBERS DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
+            userInterface.text = "M16 has " + player.getWeaponByName("M16").getAmmo()+ " bullets left.\nGeneral Chambers HP:"+enemy.getHealthPoints()+"\nYou shoot the M16 to add +14 damage to a successful attack roll.\n\nD20 ATTACK ROLL: "+attackRoll+" vs GENERAL CHAMBERS DEFENCE RATING: "+enemy.getDefence()+"\nYou inflict " + damageTotal+ " points of damage.";
         } else{ userInterface.text = "You pull on the trigger. Nothing happens. Out of bullets, hombre.";}
         userInterface.prepareText();
 
@@ -5397,7 +5404,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Mothman");
 
-        userInterface.text = "You enter the room beyond the doors. It is surprisingly small and dark. Amidst the bed factory machinery lying in storage is a single light source, glowing purple.\n\nIt is a 11ft tall piece of alien tech, made up mostly of a tall glowing bell jar filled with purple swirling smoke. Within is a winged creature, dimly seen, with glowing red eyes.";
+        userInterface.text = "You enter the room. It is surprisingly small and dark. Amidst the bed factory machinery lying in storage is a single light source, glowing purple.\n\nIt is a 11ft tall piece of alien tech, made up mostly of a tall glowing bell jar filled with purple swirling smoke. Within is a winged creature, dimly seen, with glowing red eyes.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("Investigate");
@@ -5464,7 +5471,7 @@ public class Story {
         userInterface.choice4.setText("");
         userInterface.choice5.setText("");
 
-        game.choiceButton1= "";
+        game.choiceButton1= "freeMothman2";
         game.choiceButton2 = "";
         game.choiceButton3 = "";
         game.choiceButton4 = "";
@@ -5515,7 +5522,7 @@ public class Story {
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("The Mothman");
 
-        userInterface.text = "You press your lips to the tube and breath in. The smoke tastes like almonds.\n\nThe creature inside the bell jar writhes and collapses within the swirling purple smoke.\n\nYour head feels as if it will explode. Something is happening...";
+        userInterface.text = "You press your lips to the tube and breath in. The smoke tastes like almonds.\n\nThe creature inside the bell jar writhes and collapses within the swirling purple smoke. Your head feels as if it will explode. Something is happening...";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -5570,7 +5577,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/endingOne.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Leaving Town");
 
@@ -5598,7 +5605,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/endingMaryImg.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Leaving Town");
 
@@ -5626,7 +5633,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/bridgeTraffic.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Leaving Town");
 
@@ -5654,7 +5661,7 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/presents.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Leaving Town");
 
@@ -5682,11 +5689,11 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/onTheBridgeImg.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Leaving Town");
 
-        userInterface.text = "It is 8am, you are sitting in your car across two lanes of traffic on the road just before the Silver Bridge that leads out of town. On the other side of the bridge you have parked the I.Cold Refrigeration truck, blocking traffic from the other end.\n\nYou have handcuffed yourself to the wheel. ";
+        userInterface.text = "It is 5am, you are sitting on your car across two lanes of traffic on the road just before the Silver Bridge that leads out of town. On the other side of the bridge you have parked the I.Cold Refrigeration truck, blocking traffic from the other end.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -5710,11 +5717,11 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/presents.png");
         userInterface.imageLabel.setIcon(image);
         userInterface.locationTextArea.setText("Leaving Town");
 
-        userInterface.text = "A policeman is thumping at your window. Within an hour they will drag you out of the car. The Mothman came to warn people of the collapse of the bridge, not the faked power plant disaster. You now understand the vision of the Christmas presents floating in the water.\n\nYour insight changes nothing.";
+        userInterface.text = "Later, a policeman is thumping at your window. Within an hour they will drag you out of the car. The Mothman came to warn people of the collapse of the bridge, not the faked power plant disaster. You now understand the vision of the Christmas presents floating in the water.\n\nYour insight changes nothing.";
         userInterface.prepareText();
 
         userInterface.choice1.setText("> > >");
@@ -5738,18 +5745,21 @@ public class Story {
         inventoryButtons();
         weaponButtons();
 
-        ImageIcon image = new ImageIcon("");
+        ImageIcon image = new ImageIcon("src/main/java/com/pointpleasant/PointPleasantGame/game/resources/endCredits2.png");
         userInterface.imageLabel.setIcon(image);
+
+        userInterface.text = "Point Pleasant was written and designed by David Valdez Taylor.\n\nPlease close this window and go about your business. Life is too short for games.";
+        userInterface.prepareText();
 
         userInterface.titleNamePanel.setVisible(false);
         userInterface.startButtonPanel.setVisible(false);
         userInterface.titleImagePanel.setVisible(false);
 
         userInterface.introPanel.setVisible(false);
-        userInterface.introButtonPanel.setVisible(true);
+        userInterface.introButtonPanel.setVisible(false);
 
 
-        userInterface.mainTextPanel.setVisible(false);
+        userInterface.mainTextPanel.setVisible(true);
         userInterface.choiceButtonPanel.setVisible(false);
         userInterface.playerStatsPanel.setVisible(false);
         userInterface.locationPanel.setVisible(false);
@@ -5760,7 +5770,7 @@ public class Story {
         userInterface.playerStatsPanel.setVisible(false);
         userInterface.itemDescriptionPanel.setVisible(false);
 
-        userInterface.introButton.setActionCommand("titleScreenAfterCredits");
+
 
         setPlayerDefault();
         this.game.getPlayerRepository().save(player);

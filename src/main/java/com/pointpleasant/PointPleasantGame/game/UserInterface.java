@@ -386,7 +386,7 @@ public class UserInterface {
         intelligenceLabelStat.setForeground(Color.WHITE);
         playerStatsPanel.add(intelligenceLabelStat);
 
-        inspirationLabel = new JLabel("SPUR:");
+        inspirationLabel = new JLabel("INSP:");
         inspirationLabel.setFont(font3);
         inspirationLabel.setForeground(Color.WHITE);
         playerStatsPanel.add(inspirationLabel);
